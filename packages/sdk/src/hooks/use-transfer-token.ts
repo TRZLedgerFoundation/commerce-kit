@@ -55,7 +55,7 @@ export interface TransferTokenOptions {
  *
  * // With custom retry configuration
  * await transferToken({
- *   mint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+ *   mint: 'EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS',
  *   to: '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
  *   amount: BigInt(1000000), // 1 USDC
  *   retryConfig: {

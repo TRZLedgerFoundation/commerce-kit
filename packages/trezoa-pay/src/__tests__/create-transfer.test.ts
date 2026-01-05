@@ -31,7 +31,7 @@ describe('createTransfer', () => {
 
     const testSender = address('A7CyPfXWBczBhUwdSWmg6TZdWrqBfhCQ2GxEz4WZ4Z8B');
     const testRecipient = address('9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM');
-    const testSplToken = address('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
+    const testSplToken = address('EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS');
     const testReference = address('4fYNw3dojWmQ2dXuYHdhTWgJyg7BLZZeEfH5TjxH6nKK');
 
     beforeEach(() => {
@@ -169,7 +169,7 @@ describe('createTransfer', () => {
         });
 
         it('should handle different TPL tokens', async () => {
-            const usdtToken = address('Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB');
+            const usdtToken = address('GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA');
             const fields: CreateTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000n,
@@ -398,7 +398,7 @@ describe('createTransfer', () => {
             // Test with different valid addresses
             const addresses = [
                 address('9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM'),
-                address('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'),
+                address('4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic'),
                 address('11111111111111111111111111111112'),
             ];
 

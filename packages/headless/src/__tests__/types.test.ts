@@ -8,7 +8,7 @@ describe('Types & Configuration', () => {
                 const usdc = STABLECOINS.USDC;
 
                 expect(usdc).toBeDefined();
-                expect(usdc.mint).toBe('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
+                expect(usdc.mint).toBe('EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS');
                 expect(usdc.symbol).toBe('USDC');
                 expect(usdc.decimals).toBe(6);
                 expect(usdc.name).toBe('USD Coin');
@@ -29,7 +29,7 @@ describe('Types & Configuration', () => {
                 const usdc = STABLECOINS.USDC;
 
                 expect(usdc.icon).toMatch(/^https:\/\//);
-                expect(usdc.icon).toContain('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
+                expect(usdc.icon).toContain('EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS');
             });
         });
 
@@ -38,7 +38,7 @@ describe('Types & Configuration', () => {
                 const usdt = STABLECOINS.USDT;
 
                 expect(usdt).toBeDefined();
-                expect(usdt.mint).toBe('Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB');
+                expect(usdt.mint).toBe('GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA');
                 expect(usdt.symbol).toBe('USDT');
                 expect(usdt.decimals).toBe(6);
                 expect(usdt.name).toBe('Tether USD');
@@ -57,7 +57,7 @@ describe('Types & Configuration', () => {
                 const usdt = STABLECOINS.USDT;
 
                 expect(usdt.icon).toMatch(/^https:\/\//);
-                expect(usdt.icon).toContain('Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB');
+                expect(usdt.icon).toContain('GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA');
             });
         });
 

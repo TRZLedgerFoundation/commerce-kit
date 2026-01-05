@@ -20,7 +20,7 @@ vi.mock('gill', () => ({
         // Mock successful validation for known addresses
         if (
             addr === '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM' ||
-            addr === 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA' ||
+            addr === '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic' ||
             addr === '11111111111111111111111111111112'
         ) {
             return { toString: () => addr };
@@ -31,7 +31,7 @@ vi.mock('gill', () => ({
         // Mock validation for known addresses
         return (
             addr === '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM' ||
-            addr === 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA' ||
+            addr === '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic' ||
             addr === '11111111111111111111111111111112'
         );
     }),
@@ -317,7 +317,7 @@ describe('Utils', () => {
         it('should validate correct Trezoa addresses', () => {
             const validAddresses = [
                 '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
-                'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+                '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic',
                 '11111111111111111111111111111112',
             ];
 
@@ -344,7 +344,7 @@ describe('Utils', () => {
             const testAddresses = [
                 '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
                 'invalid-address',
-                'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+                '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic',
                 '',
             ];
 
@@ -452,7 +452,7 @@ describe('Utils', () => {
 
             it('should validate minimal payment request', () => {
                 const request = {
-                    recipient: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+                    recipient: '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic',
                     amount: 0.001,
                 };
 

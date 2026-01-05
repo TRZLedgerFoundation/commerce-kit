@@ -51,7 +51,7 @@ const mockCreateTrezoaPayRequest = vi.mocked(createTrezoaPayRequest);
 
 const mockPaymentRequest = {
     qrCode: 'data:image/png;base64,mock-qr-code',
-    url: 'trezoa:9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM?amount=1.5&tpl-token=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+    url: 'trezoa:9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM?amount=1.5&tpl-token=EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS',
     reference: 'mock-reference',
 };
 
@@ -87,7 +87,7 @@ describe('useTrezoaPay', () => {
 
     describe('useTrezoaPay hook', () => {
         const mockPaymentRequest = {
-            url: 'trezoa:9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM?amount=1.5&tpl-token=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+            url: 'trezoa:9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM?amount=1.5&tpl-token=EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS',
             qrCode: 'data:image/png;base64,mock-qr-code',
             reference: 'mock-reference',
         };
@@ -123,7 +123,7 @@ describe('useTrezoaPay', () => {
                 {
                     recipient: '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
                     amount: 10000000n, // 10 USDC in minor units (6 decimals)
-                    tplToken: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v', // USDC mint from CurrencyMap
+                    tplToken: 'EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS', // USDC mint from CurrencyMap
                     memo: expect.stringMatching(/^tip-\d+$/),
                     label: 'commerceKit',
                     message: undefined,
@@ -361,7 +361,7 @@ describe('useTrezoaPay', () => {
                 expect(mockCreateTrezoaPayRequest).toHaveBeenCalledWith(
                     expect.objectContaining({
                         amount: 100000000n, // 100 USDC with 6 decimals
-                        tplToken: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v', // USDC mint
+                        tplToken: 'EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS', // USDC mint
                     }),
                     expect.any(Object),
                 );
@@ -377,7 +377,7 @@ describe('useTrezoaPay', () => {
                 expect(mockCreateTrezoaPayRequest).toHaveBeenCalledWith(
                     expect.objectContaining({
                         amount: 50000000n, // 50 USDT with 6 decimals
-                        tplToken: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB', // USDT mint
+                        tplToken: 'GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA', // USDT mint
                     }),
                     expect.any(Object),
                 );

@@ -17,18 +17,18 @@ export const TOKENS: Record<PaymentMethod, TokenConfig> = {
         icon: 'https://raw.githubusercontent.com/trezoa-labs/token-list/main/assets/mainnet/So11111111111111111111111111111111111111112/logo.png',
     },
     USDC: {
-        mint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+        mint: 'EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS',
         symbol: 'USDC',
         decimals: 6,
         name: 'USD Coin',
-        icon: 'https://raw.githubusercontent.com/trezoa-labs/token-list/main/assets/mainnet/EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v/logo.png',
+        icon: 'https://raw.githubusercontent.com/trezoa-labs/token-list/main/assets/mainnet/EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS/logo.png',
     },
     USDT: {
-        mint: 'Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB',
+        mint: 'GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA',
         symbol: 'USDT',
         decimals: 6,
         name: 'Tether USD',
-        icon: 'https://raw.githubusercontent.com/trezoa-labs/token-list/main/assets/mainnet/Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB/logo.png',
+        icon: 'https://raw.githubusercontent.com/trezoa-labs/token-list/main/assets/mainnet/GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA/logo.png',
     },
 };
 

@@ -113,9 +113,9 @@ The test configuration (`test-kora.toml`) includes the Commerce Program ID in th
 ```toml
 allowed_programs = [
     "11111111111111111111111111111111",             # System Program
-    "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",  # Token Program
+    "4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic",  # Token Program
     "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL", # Associated Token Program
-    "commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT",  # Commerce Program
+    "ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e",  # Commerce Program
 ]
 ```
 

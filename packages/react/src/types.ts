@@ -133,14 +133,14 @@ export const CurrencyMap: Record<Currency, TPLTokenInfo | 'TRZ'> = {
 
     // Mainnet TPL tokens
     USDC: {
-        mint: address('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'),
+        mint: address('EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS'),
         tokenProgram: TOKEN_PROGRAM_ADDRESS,
         decimals: 6,
         symbol: 'USDC',
         name: 'USD Coin',
     },
     USDT: {
-        mint: address('Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB'),
+        mint: address('GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA'),
         tokenProgram: TOKEN_PROGRAM_ADDRESS,
         decimals: 6,
         symbol: 'USDT',

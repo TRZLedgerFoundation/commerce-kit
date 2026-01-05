@@ -10,7 +10,7 @@ import { address } from 'gill';
 
 describe('encodeURL', () => {
     const testRecipient = address('9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM');
-    const testSplToken = address('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
+    const testSplToken = address('EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS');
     const testReference = address('4fYNw3dojWmQ2dXuYHdhTWgJyg7BLZZeEfH5TjxH6nKK');
 
     describe('encodeTransferRequestURL', () => {

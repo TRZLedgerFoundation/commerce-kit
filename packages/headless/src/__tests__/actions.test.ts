@@ -16,7 +16,7 @@ vi.mock('gill', () => ({
 
 vi.mock('gill/programs/token', () => ({
     getAssociatedTokenAccountAddress: vi.fn().mockResolvedValue({ toString: () => 'mock-ata-address' }),
-    TOKEN_PROGRAM_ADDRESS: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+    TOKEN_PROGRAM_ADDRESS: '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic',
     TOKEN_2022_PROGRAM_ADDRESS: 'TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb',
 }));
 
@@ -489,7 +489,7 @@ describe('Payment Actions', () => {
                         postTokenBalances: [
                             {
                                 accountIndex: 0,
-                                mint: 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+                                mint: 'EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS',
                                 uiTokenAmount: { amount: '1000000' }, // 1 USDC
                             },
                         ],
@@ -505,7 +505,7 @@ describe('Payment Actions', () => {
                     'test-signature',
                     1000000, // Expected 1 USDC
                     '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
-                    'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+                    'EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS',
                 );
 
                 expect(result.verified).toBe(true);
@@ -527,7 +527,7 @@ describe('Payment Actions', () => {
                     'test-signature',
                     1000000,
                     '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
-                    'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v',
+                    'EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS',
                 );
 
                 expect(result.verified).toBe(true); // Transaction has blockTime, so it's verified as confirmed

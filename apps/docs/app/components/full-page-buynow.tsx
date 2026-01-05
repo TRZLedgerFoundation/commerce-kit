@@ -15,7 +15,7 @@ export function FullPageBuyNow({ rpcUrl }: FullPageBuyNowProps = {}) {
       position: 'inline',
       merchant: {
         name: 'Demo Store',
-        wallet: 'BQWWFhzBdw2vKKBUX17NHeFbCoFQHfRARpdztPE2tDJ',
+        wallet: 'FMdNo2Rfg6DUCdHCwZCC3wLkYn53JQCoMgzfXfqTH5Uv',
         description: 'Experience Trezoa Commerce SDK'
       },
       theme: {
@@ -58,7 +58,7 @@ export function FullPageBuyNow2() {
       position: 'overlay',
       merchant: {
         name: 'Demo Store',
-        wallet: 'BQWWFhzBdw2vKKBUX17NHeFbCoFQHfRARpdztPE2tDJ',
+        wallet: 'FMdNo2Rfg6DUCdHCwZCC3wLkYn53JQCoMgzfXfqTH5Uv',
         description: 'Experience Trezoa Commerce SDK'
       },
       theme: {

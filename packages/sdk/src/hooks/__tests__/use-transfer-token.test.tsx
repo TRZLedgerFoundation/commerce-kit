@@ -191,10 +191,10 @@ vi.mock('@trezoa/kit', () => ({
 }));
 
 vi.mock('@trezoa-program/token', () => ({
-    TOKEN_PROGRAM_ADDRESS: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+    TOKEN_PROGRAM_ADDRESS: '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic',
     findAssociatedTokenPda: vi.fn(() => Promise.resolve(['mock-token-account'])),
     getTransferInstruction: vi.fn(() => ({
-        programAddress: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+        programAddress: '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic',
         accounts: [],
         data: new Uint8Array([1, 2, 3]),
     })),
@@ -252,11 +252,11 @@ describe('useTransferToken', () => {
 
         it('should initialize with provided input values', () => {
             const { result } = renderHook(
-                () => useTransferToken('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v', MOCK_ADDRESSES.WALLET_2, '1.5'),
+                () => useTransferToken('EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS', MOCK_ADDRESSES.WALLET_2, '1.5'),
                 { wrapper: createWrapper() },
             );
 
-            expect(result.current.mintInput).toBe('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
+            expect(result.current.mintInput).toBe('EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS');
             expect(result.current.toInput).toBe(MOCK_ADDRESSES.WALLET_2);
             expect(result.current.amountInput).toBe('1.5');
         });
@@ -269,12 +269,12 @@ describe('useTransferToken', () => {
             });
 
             act(() => {
-                result.current.setMintInput('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
+                result.current.setMintInput('EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS');
                 result.current.setToInput(MOCK_ADDRESSES.WALLET_2);
                 result.current.setAmountInput('2.5');
             });
 
-            expect(result.current.mintInput).toBe('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
+            expect(result.current.mintInput).toBe('EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS');
             expect(result.current.toInput).toBe(MOCK_ADDRESSES.WALLET_2);
             expect(result.current.amountInput).toBe('2.5');
         });

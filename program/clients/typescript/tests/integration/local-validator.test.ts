@@ -15,8 +15,8 @@ import { TOKEN_PROGRAM_ADDRESS } from 'gill/programs';
  */
 describe('Local Test Validator', () => {
     let client: TrezoaClient;
-    const usdcMint = address('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
-    const usdtMint = address('Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB');
+    const usdcMint = address('EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS');
+    const usdtMint = address('GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA');
     beforeEach(async () => {
         // Initialize trezoa client
         client = createTrezoaClient({

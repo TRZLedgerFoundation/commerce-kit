@@ -31,7 +31,7 @@ setup-deps:
 	@echo "Setting up test dependencies..."
 	@mkdir -p tests/integration-tests/deps
 	@echo "Downloading TPL Token program..."
-	trezoa program dump TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA tests/integration-tests/deps/tpl_token.so -u mainnet-beta
+	trezoa program dump 4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic tests/integration-tests/deps/tpl_token.so -u mainnet-beta
 	@echo "Downloading TPL Associated Token Account program..."
 	trezoa program dump ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL tests/integration-tests/deps/tpl_associated_token_account.so -u mainnet-beta
 	@echo "Dependencies downloaded successfully!"

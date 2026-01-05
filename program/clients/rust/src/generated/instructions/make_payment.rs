@@ -191,10 +191,10 @@ impl Default for MakePaymentInstructionData {
                 ///   8. `[writable]` buyer_ata
                 ///   9. `[writable]` merchant_escrow_ata
                 ///   10. `[writable]` merchant_settlement_ata
-                ///   11. `[optional]` token_program (default to `TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA`)
+                ///   11. `[optional]` token_program (default to `4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic`)
                 ///   12. `[optional]` system_program (default to `11111111111111111111111111111111`)
                 ///   13. `[optional]` event_authority (default to `3VSJP7faqLk6MbCaNtMYc2Y8S8hMXRsZ5cBcwh1fjMH1`)
-                ///   14. `[optional]` commerce_program (default to `commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT`)
+                ///   14. `[optional]` commerce_program (default to `ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e`)
 #[derive(Clone, Debug, Default)]
 pub struct MakePaymentBuilder {
             payer: Option<trezoa_pubkey::Pubkey>,
@@ -278,7 +278,7 @@ impl MakePaymentBuilder {
                         self.merchant_settlement_ata = Some(merchant_settlement_ata);
                     self
     }
-            /// `[optional account, default to 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA']`
+            /// `[optional account, default to '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic']`
 #[inline(always)]
     pub fn token_program(&mut self, token_program: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.token_program = Some(token_program);
@@ -297,7 +297,7 @@ impl MakePaymentBuilder {
                         self.event_authority = Some(event_authority);
                     self
     }
-            /// `[optional account, default to 'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT']`
+            /// `[optional account, default to 'ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e']`
 /// Commerce Program ID
 #[inline(always)]
     pub fn commerce_program(&mut self, commerce_program: trezoa_pubkey::Pubkey) -> &mut Self {
@@ -345,10 +345,10 @@ impl MakePaymentBuilder {
                                         buyer_ata: self.buyer_ata.expect("buyer_ata is not set"),
                                         merchant_escrow_ata: self.merchant_escrow_ata.expect("merchant_escrow_ata is not set"),
                                         merchant_settlement_ata: self.merchant_settlement_ata.expect("merchant_settlement_ata is not set"),
-                                        token_program: self.token_program.unwrap_or(trezoa_pubkey::pubkey!("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA")),
+                                        token_program: self.token_program.unwrap_or(trezoa_pubkey::pubkey!("4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic")),
                                         system_program: self.system_program.unwrap_or(trezoa_pubkey::pubkey!("11111111111111111111111111111111")),
                                         event_authority: self.event_authority.unwrap_or(trezoa_pubkey::pubkey!("3VSJP7faqLk6MbCaNtMYc2Y8S8hMXRsZ5cBcwh1fjMH1")),
-                                        commerce_program: self.commerce_program.unwrap_or(trezoa_pubkey::pubkey!("commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT")),
+                                        commerce_program: self.commerce_program.unwrap_or(trezoa_pubkey::pubkey!("ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e")),
                       };
           let args = MakePaymentInstructionArgs {
                                                               order_id: self.order_id.clone().expect("order_id is not set"),

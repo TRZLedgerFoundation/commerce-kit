@@ -74,7 +74,7 @@ The trezoa program follows standard structure:
 - `events.rs` - Program events
 - `constants.rs` - Program constants
 
-The program ID is declared as: `commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT.json`
+The program ID is declared as: `ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e.json`
 
 ## Features
 

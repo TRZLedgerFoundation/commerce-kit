@@ -4,7 +4,7 @@ import { platform } from 'os';
 
 const config = {
   validatorStartupTime: parseInt(process.env.TREZOA_VALIDATOR_STARTUP_TIME) || 10_000,
-  validatorArgs: (process.env.TREZOA_VALIDATOR_ARGS || '-r --account EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v tests/setup/mints/usdc.json --account Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB tests/setup/mints/usdt.json --bpf-program commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT ../../target/deploy/commerce_program.so').split(' '),
+  validatorArgs: (process.env.TREZOA_VALIDATOR_ARGS || '-r --account EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS tests/setup/mints/usdc.json --account GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA tests/setup/mints/usdt.json --bpf-program ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e ../../target/deploy/commerce_program.so').split(' '),
   maxHealthCheckRetries: 10
 };
 

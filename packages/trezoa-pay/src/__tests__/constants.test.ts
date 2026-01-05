@@ -29,7 +29,7 @@ describe('Constants', () => {
         it('should have valid token program ID', () => {
             expect(TOKEN_PROGRAM_ID).toBeDefined();
             expect(typeof TOKEN_PROGRAM_ID.toString).toBe('function');
-            expect(TOKEN_PROGRAM_ID.toString()).toBe('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA');
+            expect(TOKEN_PROGRAM_ID.toString()).toBe('4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic');
         });
 
         it('should have program IDs as proper Address objects', () => {

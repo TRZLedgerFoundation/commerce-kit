@@ -13,7 +13,7 @@ export function FloatingCommerceButton() {
           position: 'overlay',
           merchant: {
             name: 'Hackweek Store',
-            wallet: 'A7Xmq3qqt4uvw3GELHw9HHNFbwZzHDJNtmk6fe2p5b5s',
+            wallet: 'A1ghCNKvMCPKqzjdvnjYk3YFR13RiP8dh9HxBetr9kon',
             description: 'Experience the Trezoa Commerce SDK'
           },
           theme: {

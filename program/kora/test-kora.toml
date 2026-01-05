@@ -20,14 +20,14 @@ price_source = "Mock"
 
 allowed_programs = [
     "11111111111111111111111111111111",             # System Program
-    "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA",  # Token Program
+    "4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic",  # Token Program
     "ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL", # Associated Token Program
-    "commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT",  # Commerce Program
+    "ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e",  # Commerce Program
     "ComputeBudget111111111111111111111111111111",   # Compute Budget Program
 ]
 allowed_tokens = [
-    "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v", # USDC
-    "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB", # USDT
+    "EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS", # USDC
+    "GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA", # USDT
     "3xBgvWJBV2SrgkPzfNNegkLm4Diom5kzTsZWfa1D8HRp", # Test mint for gasless transactions
 ]
 allowed_tpl_paid_tokens = [

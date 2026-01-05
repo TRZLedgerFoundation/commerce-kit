@@ -4,7 +4,7 @@ import { address } from 'gill';
 
 describe('Utils', () => {
     const validAddress = '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM';
-    const validTokenAddress = 'EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v';
+    const validTokenAddress = 'EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS';
 
     describe('createTPLToken', () => {
         it('should create TPL token from valid address string', () => {
@@ -27,7 +27,7 @@ describe('Utils', () => {
             const addresses = [
                 validTokenAddress,
                 'So11111111111111111111111111111111111111112', // Wrapped TRZ
-                'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA', // Token Program
+                '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic', // Token Program
             ];
 
             addresses.forEach(addr => {
@@ -60,7 +60,7 @@ describe('Utils', () => {
         it('should handle various valid address formats', () => {
             const validAddresses = [
                 validAddress,
-                'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+                '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic',
                 '11111111111111111111111111111112', // System program
                 'Vote111111111111111111111111111111111111111', // Vote program
             ];
@@ -91,7 +91,7 @@ describe('Utils', () => {
             const validAddresses = [
                 validAddress,
                 validTokenAddress,
-                'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+                '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic',
                 '11111111111111111111111111111112',
                 'Vote111111111111111111111111111111111111111',
                 'So11111111111111111111111111111111111111112',
@@ -129,7 +129,7 @@ describe('Utils', () => {
 
         it('should be consistent with address creation', () => {
             // If isValidTrezoaAddress returns true, creating an address should not throw
-            const testAddresses = [validAddress, validTokenAddress, 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'];
+            const testAddresses = [validAddress, validTokenAddress, '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic'];
 
             testAddresses.forEach(addr => {
                 const isValid = isValidTrezoaAddress(addr);
@@ -270,7 +270,7 @@ describe('Utils', () => {
                 'invalid',
                 validTokenAddress,
                 'also-invalid',
-                'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+                '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic',
             ];
 
             const validationResults = mixedAddresses.map(addr => ({

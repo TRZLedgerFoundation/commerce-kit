@@ -190,7 +190,7 @@ describe('MerchantOperatorConfig Account', () => {
   });
 
   it('should encode/decode accepted currencies', () => {
-    const USDC = address('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
+    const USDC = address('EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS');
     const USDT = address('EPpDmWbzEYpTtfzbqqDGMyKB42kFaP3166ZGdUVW5kWH');
     const data: MerchantOperatorConfigArgs = {
       discriminator: 0,

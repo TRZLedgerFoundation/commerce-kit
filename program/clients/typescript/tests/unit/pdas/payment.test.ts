@@ -10,8 +10,8 @@ describe('Payment PDA', () => {
   // Sample addresses for testing
   const sampleOwner = address('7JttKuoVeFqzMkspfBvTxGiHjYr9dT4GozFvJC5A7Nfa');
   const sampleBuyer = address('HJKATa5s6jwQzM23DaBJPRJ8qdH7YN7wLPgw9w3gicZD');
-  const sampleMint = address('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'); // USDC mint
-  const sampleMint2 = address('Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB'); // USDT mint
+  const sampleMint = address('EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS'); // USDC mint
+  const sampleMint2 = address('GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA'); // USDT mint
   const sampleMerchant = address('5Q544fKrFoe6tsEbD7S8EmxGTJYAKtTVhAW5Q5pge4j1');
 
   it('should generate payment PDA matching expected values', async () => {

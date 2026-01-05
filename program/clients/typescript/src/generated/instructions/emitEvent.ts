@@ -39,7 +39,7 @@ export type EmitEventInstruction<
   TProgram extends string = typeof COMMERCE_PROGRAM_PROGRAM_ADDRESS,
   TAccountEventAuthority extends
     | string
-    | AccountMeta<string> = '3VSJP7faqLk6MbCaNtMYc2Y8S8hMXRsZ5cBcwh1fjMH1',
+    | AccountMeta<string> = 'EWnRn14TUSkDnsj9XQktY36Gs2FnKrEMKEtCHZRDVWC4',
   TRemainingAccounts extends readonly AccountMeta<string>[] = [],
 > = Instruction<TProgram> &
   InstructionWithData<ReadonlyUint8Array> &
@@ -105,7 +105,7 @@ export function getEmitEventInstruction<
   // Resolve default values.
   if (!accounts.eventAuthority.value) {
     accounts.eventAuthority.value =
-      '3VSJP7faqLk6MbCaNtMYc2Y8S8hMXRsZ5cBcwh1fjMH1' as Address<'3VSJP7faqLk6MbCaNtMYc2Y8S8hMXRsZ5cBcwh1fjMH1'>;
+      'EWnRn14TUSkDnsj9XQktY36Gs2FnKrEMKEtCHZRDVWC4' as Address<'EWnRn14TUSkDnsj9XQktY36Gs2FnKrEMKEtCHZRDVWC4'>;
   }
 
   const getAccountMeta = getAccountMetaFactory(programAddress, 'programId');

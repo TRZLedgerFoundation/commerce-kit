@@ -218,7 +218,7 @@ export async function getClosePaymentInstructionAsync<
   if (!accounts.operator.value) {
     accounts.operator.value = await getProgramDerivedAddress({
       programAddress:
-        'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT' as Address<'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT'>,
+        'ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e' as Address<'ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e'>,
       seeds: [
         getUtf8Encoder().encode('operator'),
         getAddressEncoder().encode(

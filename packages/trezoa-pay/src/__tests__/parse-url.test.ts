@@ -18,7 +18,7 @@ describe('parseURL', () => {
 
         it('should parse a valid TPL token transfer URL', () => {
             const url =
-                'trezoa:9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM?amount=1.5&tpl-token=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v';
+                'trezoa:9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM?amount=1.5&tpl-token=EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS';
             const result = parseURL(url);
 
             expect(result.recipient).toBeDefined();
@@ -88,7 +88,7 @@ describe('parseURL', () => {
             const url =
                 'trezoa:9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM' +
                 '?amount=1.5' +
-                '&tpl-token=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v' +
+                '&tpl-token=EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS' +
                 '&reference=4fYNw3dojWmQ2dXuYHdhTWgJyg7BLZZeEfH5TjxH6nKK' +
                 '&label=Test%20Payment' +
                 '&message=Payment%20for%20services' +

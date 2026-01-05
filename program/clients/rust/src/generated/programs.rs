@@ -9,5 +9,5 @@ use trezoa_pubkey::{pubkey, Pubkey};
 
 
   /// `commerce_program` program ID.
-  pub const COMMERCE_PROGRAM_ID: Pubkey = pubkey!("commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT");
+  pub const COMMERCE_PROGRAM_ID: Pubkey = pubkey!("ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e");
 

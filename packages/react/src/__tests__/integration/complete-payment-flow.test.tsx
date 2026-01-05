@@ -139,9 +139,9 @@ const CompletePaymentFlow = ({
                     <div data-testid="payment-url">
                         trezoa:{recipient}?amount={finalAmount}
                         {selectedCurrency === 'USDC'
-                            ? '&tpl-token=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'
+                            ? '&tpl-token=EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS'
                             : selectedCurrency === 'USDT'
-                              ? '&tpl-token=Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB'
+                              ? '&tpl-token=GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA'
                               : ''}
                     </div>
                 </div>

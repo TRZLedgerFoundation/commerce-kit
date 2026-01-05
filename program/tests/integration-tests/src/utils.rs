@@ -25,8 +25,8 @@ pub const MAX_BPS: u64 = 10_000;
 pub const DAYS_TO_CLOSE: u16 = 7;
 
 pub const ATA_PROGRAM_ID: Pubkey = pubkey!("ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL");
-pub const USDC_MINT: Pubkey = pubkey!("EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v");
-pub const USDT_MINT: Pubkey = pubkey!("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB");
+pub const USDC_MINT: Pubkey = pubkey!("EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS");
+pub const USDT_MINT: Pubkey = pubkey!("GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA");
 
 // Commerce Program Error Codes (using generated error enum)
 pub const INVALID_MINT_ERROR: u32 = CommerceProgramError::InvalidMint as u32;

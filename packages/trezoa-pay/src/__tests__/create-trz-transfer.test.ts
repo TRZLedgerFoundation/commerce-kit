@@ -536,7 +536,7 @@ describe('createSolTransfer', () => {
         it('should work with different recipient addresses', async () => {
             const recipients = [
                 address('9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM'),
-                address('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'),
+                address('4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic'),
                 address('11111111111111111111111111111112'),
             ];
 

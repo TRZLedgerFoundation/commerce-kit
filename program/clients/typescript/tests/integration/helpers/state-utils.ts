@@ -42,8 +42,8 @@ import {
 } from "./assertions";
 
 // Test token mints (USDC and USDT on local validator)
-const USDC_MINT = "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v" as Address;
-const USDT_MINT = "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB" as Address;
+const USDC_MINT = "EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS" as Address;
+const USDT_MINT = "GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA" as Address;
 const DEVNET_USDC_MINT =
   "4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU" as Address;
 const DEVNET_USDT_MINT =

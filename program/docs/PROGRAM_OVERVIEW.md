@@ -3,7 +3,7 @@
 ## Program ID
 
 ```
-commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT
+ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e
 ```
 - [Instruction Details](#instruction-details)
 - [Accounts](#accounts)

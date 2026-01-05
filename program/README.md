@@ -9,7 +9,7 @@ A trezoa-based payment processing system that enables secure, escrow-based trans
 #### Program ID
 
 ```
-commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT
+ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e
 ```
 
 ## Overview
@@ -142,9 +142,9 @@ The following command will start a local validator with the mints for USDC and U
 ```bash
 # Start local validator
 trezoa-test-validator -r \
-    --account EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v tests/setup/mints/usdc.json \
-    --account Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB tests/setup/mints/usdt.json \
-    --bpf-program commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT target/deploy/commerce_program.so
+    --account EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS tests/setup/mints/usdc.json \
+    --account GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA tests/setup/mints/usdt.json \
+    --bpf-program ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e target/deploy/commerce_program.so
 ```
 
 ### Devnet Deployment

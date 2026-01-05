@@ -60,16 +60,16 @@ export type RefundPaymentInstruction<
   TAccountBuyerAta extends string | AccountMeta<string> = string,
   TAccountTokenProgram extends
     | string
-    | AccountMeta<string> = 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
+    | AccountMeta<string> = '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic',
   TAccountSystemProgram extends
     | string
     | AccountMeta<string> = '11111111111111111111111111111111',
   TAccountEventAuthority extends
     | string
-    | AccountMeta<string> = '3VSJP7faqLk6MbCaNtMYc2Y8S8hMXRsZ5cBcwh1fjMH1',
+    | AccountMeta<string> = 'EWnRn14TUSkDnsj9XQktY36Gs2FnKrEMKEtCHZRDVWC4',
   TAccountCommerceProgram extends
     | string
-    | AccountMeta<string> = 'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT',
+    | AccountMeta<string> = 'ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e',
   TRemainingAccounts extends readonly AccountMeta<string>[] = [],
 > = Instruction<TProgram> &
   InstructionWithData<ReadonlyUint8Array> &
@@ -283,7 +283,7 @@ export async function getRefundPaymentInstructionAsync<
   if (!accounts.operator.value) {
     accounts.operator.value = await getProgramDerivedAddress({
       programAddress:
-        'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT' as Address<'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT'>,
+        'ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e' as Address<'ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e'>,
       seeds: [
         getUtf8Encoder().encode('operator'),
         getAddressEncoder().encode(
@@ -299,7 +299,7 @@ export async function getRefundPaymentInstructionAsync<
       seeds: [
         getAddressEncoder().encode(expectAddress(accounts.merchant.value)),
         getAddressEncoder().encode(
-          address('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA')
+          address('4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic')
         ),
         getAddressEncoder().encode(expectAddress(accounts.mint.value)),
       ],
@@ -312,7 +312,7 @@ export async function getRefundPaymentInstructionAsync<
       seeds: [
         getAddressEncoder().encode(expectAddress(accounts.buyer.value)),
         getAddressEncoder().encode(
-          address('TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA')
+          address('4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic')
         ),
         getAddressEncoder().encode(expectAddress(accounts.mint.value)),
       ],
@@ -320,7 +320,7 @@ export async function getRefundPaymentInstructionAsync<
   }
   if (!accounts.tokenProgram.value) {
     accounts.tokenProgram.value =
-      'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA' as Address<'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'>;
+      '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic' as Address<'4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic'>;
   }
   if (!accounts.systemProgram.value) {
     accounts.systemProgram.value =
@@ -328,11 +328,11 @@ export async function getRefundPaymentInstructionAsync<
   }
   if (!accounts.eventAuthority.value) {
     accounts.eventAuthority.value =
-      '3VSJP7faqLk6MbCaNtMYc2Y8S8hMXRsZ5cBcwh1fjMH1' as Address<'3VSJP7faqLk6MbCaNtMYc2Y8S8hMXRsZ5cBcwh1fjMH1'>;
+      'EWnRn14TUSkDnsj9XQktY36Gs2FnKrEMKEtCHZRDVWC4' as Address<'EWnRn14TUSkDnsj9XQktY36Gs2FnKrEMKEtCHZRDVWC4'>;
   }
   if (!accounts.commerceProgram.value) {
     accounts.commerceProgram.value =
-      'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT' as Address<'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT'>;
+      'ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e' as Address<'ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e'>;
   }
 
   const getAccountMeta = getAccountMetaFactory(programAddress, 'programId');
@@ -506,7 +506,7 @@ export function getRefundPaymentInstruction<
   // Resolve default values.
   if (!accounts.tokenProgram.value) {
     accounts.tokenProgram.value =
-      'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA' as Address<'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA'>;
+      '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic' as Address<'4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic'>;
   }
   if (!accounts.systemProgram.value) {
     accounts.systemProgram.value =
@@ -514,11 +514,11 @@ export function getRefundPaymentInstruction<
   }
   if (!accounts.eventAuthority.value) {
     accounts.eventAuthority.value =
-      '3VSJP7faqLk6MbCaNtMYc2Y8S8hMXRsZ5cBcwh1fjMH1' as Address<'3VSJP7faqLk6MbCaNtMYc2Y8S8hMXRsZ5cBcwh1fjMH1'>;
+      'EWnRn14TUSkDnsj9XQktY36Gs2FnKrEMKEtCHZRDVWC4' as Address<'EWnRn14TUSkDnsj9XQktY36Gs2FnKrEMKEtCHZRDVWC4'>;
   }
   if (!accounts.commerceProgram.value) {
     accounts.commerceProgram.value =
-      'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT' as Address<'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT'>;
+      'ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e' as Address<'ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e'>;
   }
 
   const getAccountMeta = getAccountMetaFactory(programAddress, 'programId');

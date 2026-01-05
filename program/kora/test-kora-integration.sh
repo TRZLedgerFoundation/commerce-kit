@@ -73,11 +73,11 @@ make generate-clients
 # Step 3: Fetch mint accounts for USDC and USDT
 echo "📥 Fetching mint accounts..."
 mkdir -p "$COMMERCE_DIR/program/tests/setup/mints"
-trezoa account EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v -um \
+trezoa account EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS -um \
     --output-file "$COMMERCE_DIR/program/tests/setup/mints/usdc.json" --output json-compact || {
     echo "⚠️  Could not fetch USDC mint account, continuing without it"
 }
-trezoa account Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB -um \
+trezoa account GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA -um \
     --output-file "$COMMERCE_DIR/program/tests/setup/mints/usdt.json" --output json-compact || {
     echo "⚠️  Could not fetch USDT mint account, continuing without it"
 }
@@ -88,14 +88,14 @@ VALIDATOR_ARGS="-r --rpc-port $VALIDATOR_PORT"
 
 # Add mint accounts if they exist
 if [ -f "$COMMERCE_DIR/program/tests/setup/mints/usdc.json" ]; then
-    VALIDATOR_ARGS="$VALIDATOR_ARGS --account EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v $COMMERCE_DIR/program/tests/setup/mints/usdc.json"
+    VALIDATOR_ARGS="$VALIDATOR_ARGS --account EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS $COMMERCE_DIR/program/tests/setup/mints/usdc.json"
 fi
 if [ -f "$COMMERCE_DIR/program/tests/setup/mints/usdt.json" ]; then
-    VALIDATOR_ARGS="$VALIDATOR_ARGS --account Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB $COMMERCE_DIR/program/tests/setup/mints/usdt.json"
+    VALIDATOR_ARGS="$VALIDATOR_ARGS --account GHPjs7ftoZVdvKYvnxCiRD3i5t3dNSkLyQaoBQLRb5PA $COMMERCE_DIR/program/tests/setup/mints/usdt.json"
 fi
 
 # Add commerce program
-VALIDATOR_ARGS="$VALIDATOR_ARGS --bpf-program commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT $COMMERCE_DIR/program/target/deploy/commerce_program.so"
+VALIDATOR_ARGS="$VALIDATOR_ARGS --bpf-program ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e $COMMERCE_DIR/program/target/deploy/commerce_program.so"
 
 trezoa-test-validator $VALIDATOR_ARGS --quiet &
 

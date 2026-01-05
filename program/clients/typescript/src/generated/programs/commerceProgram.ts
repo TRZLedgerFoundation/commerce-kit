@@ -27,7 +27,7 @@ import {
 } from '../instructions';
 
 export const COMMERCE_PROGRAM_PROGRAM_ADDRESS =
-  'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT' as Address<'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT'>;
+  'ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e' as Address<'ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e'>;
 
 export enum CommerceProgramAccount {
   Merchant,
@@ -93,7 +93,7 @@ export function identifyCommerceProgramInstruction(
 }
 
 export type ParsedCommerceProgramInstruction<
-  TProgram extends string = 'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT',
+  TProgram extends string = 'ECWxgnnpYoq57eNBuxmP8SKLmCFDSh4z8R4gYw7wm52e',
 > =
   | ({
       instructionType: CommerceProgramInstruction.InitializeMerchant;

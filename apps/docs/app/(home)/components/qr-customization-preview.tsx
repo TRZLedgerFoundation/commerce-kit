@@ -15,7 +15,7 @@ interface QRCustomizationPreviewProps {
 
 
 
-const sampleURL = 'trezoa:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v?amount=1&memo=demo';
+const sampleURL = 'trezoa:EFewYfHeQhkKpbDzpmyygdT54hn85dUj3VZ8b7dC21KS?amount=1&memo=demo';
 
 
 
