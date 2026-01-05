@@ -1,8 +1,8 @@
 'use client';
 
 /**
- * Solana Commerce SDK - React Components
- * Production-ready e-commerce solution for Solana payments
+ * Trezoa Commerce SDK - React Components
+ * Production-ready e-commerce solution for Trezoa payments
  */
 
 // Re-export components
@@ -36,7 +36,7 @@ export { Z_INDEX, Z_INDEX_CSS_VARS } from './ui-primitives/constants';
 export type {
     MerchantConfig,
     ThemeConfig,
-    SolanaCommerceConfig,
+    TrezoaCommerceConfig,
     PaymentCallbacks,
     PaymentButtonProps,
     CommerceMode,
@@ -45,8 +45,8 @@ export type {
     Network,
 } from './types';
 
-// Re-export SolanaClusterMoniker from gill for convenience
-export type { SolanaClusterMoniker } from 'gill';
+// Re-export TrezoaClusterMoniker from gill for convenience
+export type { TrezoaClusterMoniker } from 'gill';
 
 // Re-export payment configuration types
 export type { PaymentConfig, Product } from './components/ui/secure-iframe-shell';
@@ -63,15 +63,15 @@ export { POST as rpcEndpointsHandler } from './api/rpc-endpoints';
 import React, { useState, useCallback, useMemo, memo, useEffect } from 'react';
 import { ResponsiveShell } from './components/ui/responsive-shell';
 import { SecureIframeShell } from './components/ui/secure-iframe-shell';
-import { AppProvider } from '@solana-commerce/connector';
-import { ArcProvider } from '@solana-commerce/sdk';
+import { AppProvider } from '@trezoa-commerce/connector';
+import { ArcProvider } from '@trezoa-commerce/sdk';
 import { isAddress } from 'gill';
 import { useTheme, useTotalAmount, usePaymentUrl, createPaymentError, getBorderRadius } from './utils';
 import { TriggerButton } from './components/ui';
 import type { PaymentButtonProps } from './types';
 
 /**
- * Main Solana Commerce SDK Component
+ * Main Trezoa Commerce SDK Component
  */
 export const PaymentButton = memo<PaymentButtonProps>(function PaymentButton({
     config,
@@ -141,7 +141,7 @@ export const PaymentButton = memo<PaymentButtonProps>(function PaymentButton({
                 }}
             >
                 <div style={{ fontWeight: '500', marginBottom: '0.5rem' }}>Invalid Configuration</div>
-                <div style={{ fontSize: '0.875rem' }}>Please provide a valid Solana wallet address.</div>
+                <div style={{ fontSize: '0.875rem' }}>Please provide a valid Trezoa wallet address.</div>
             </div>
         );
     }
@@ -170,7 +170,7 @@ export const PaymentButton = memo<PaymentButtonProps>(function PaymentButton({
     // Determine network and RPC for the global ArcProvider
     const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost';
     // Force mainnet for testing with real USDC - change back to devnet logic later if needed
-    const rpcUrl = config.rpcUrl || 'https://api.mainnet-beta.solana.com';
+    const rpcUrl = config.rpcUrl || 'https://api.mainnet-beta.trezoa.com';
     const network = 'mainnet';
 
     // Server-side RPC URL resolution
@@ -309,4 +309,4 @@ export const PaymentButton = memo<PaymentButtonProps>(function PaymentButton({
 PaymentButton.displayName = 'PaymentButton';
 
 // Deprecated alias for backward compatibility
-export const SolanaCommerceSDK = PaymentButton;
+export const TrezoaCommerceSDK = PaymentButton;

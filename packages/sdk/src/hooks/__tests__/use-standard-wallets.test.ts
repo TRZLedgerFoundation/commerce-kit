@@ -17,7 +17,7 @@ const createMockWallet = (name: string, features: string[] = []): Wallet => ({
                         {
                             address: '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
                             publicKey: new Uint8Array(32),
-                            chains: ['solana:devnet'],
+                            chains: ['trezoa:devnet'],
                         },
                     ],
                 }),
@@ -27,14 +27,14 @@ const createMockWallet = (name: string, features: string[] = []): Wallet => ({
         },
         {} as Record<string, unknown>,
     ),
-    chains: ['solana:mainnet', 'solana:devnet'],
+    chains: ['trezoa:mainnet', 'trezoa:devnet'],
 });
 
 const mockWallets: Wallet[] = [
-    createMockWallet('Phantom', ['standard:connect', 'solana:signTransaction', 'solana:signMessage']),
-    createMockWallet('Solflare', ['standard:connect', 'solana:signTransaction']),
-    createMockWallet('Backpack', ['standard:connect', 'solana:signTransaction']),
-    createMockWallet('Non-Solana Wallet', ['ethereum:connect']), // Should be filtered out
+    createMockWallet('Phantom', ['standard:connect', 'trezoa:signTransaction', 'trezoa:signMessage']),
+    createMockWallet('Solflare', ['standard:connect', 'trezoa:signTransaction']),
+    createMockWallet('Backpack', ['standard:connect', 'trezoa:signTransaction']),
+    createMockWallet('Non-Trezoa Wallet', ['ethereum:connect']), // Should be filtered out
 ];
 
 const mockWalletsApi = {
@@ -49,7 +49,7 @@ vi.mock('@wallet-standard/app', () => ({
     getWallets: () => mockWalletsApi,
 }));
 
-vi.mock('@solana/kit', () => ({
+vi.mock('@trezoa/kit', () => ({
     address: vi.fn((addr: string) => addr),
 }));
 
@@ -61,7 +61,7 @@ describe('useStandardWallets', () => {
     });
 
     describe('Wallet Discovery', () => {
-        it('should discover and filter Solana-compatible wallets', () => {
+        it('should discover and filter Trezoa-compatible wallets', () => {
             const { result } = renderHook(() => useStandardWallets());
 
             // Ensure hook returned something
@@ -69,7 +69,7 @@ describe('useStandardWallets', () => {
             expect(result.current.wallets).toBeDefined();
             expect(Array.isArray(result.current.wallets)).toBe(true);
 
-            // Should filter out non-Solana wallets (the Non-Solana Wallet should be filtered)
+            // Should filter out non-Trezoa wallets (the Non-Trezoa Wallet should be filtered)
             // But it actually includes wallets with "connect" feature, so it stays
             expect(result.current.wallets.length).toBeGreaterThanOrEqual(3);
 
@@ -106,7 +106,7 @@ describe('useStandardWallets', () => {
             const mockAccount = {
                 address: '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
                 publicKey: new Uint8Array(32),
-                chains: ['solana:devnet'],
+                chains: ['trezoa:devnet'],
             };
 
             const mockConnectFeature = {
@@ -119,7 +119,7 @@ describe('useStandardWallets', () => {
                 ...mockWallets[0],
                 features: {
                     'standard:connect': mockConnectFeature,
-                    'solana:signTransaction': { signTransaction: vi.fn() },
+                    'trezoa:signTransaction': { signTransaction: vi.fn() },
                 },
             };
 
@@ -172,7 +172,7 @@ describe('useStandardWallets', () => {
                 ...mockWallets[0],
                 features: {
                     // Missing standard:connect
-                    'solana:signTransaction': { signTransaction: vi.fn() },
+                    'trezoa:signTransaction': { signTransaction: vi.fn() },
                 },
             };
 

@@ -16,7 +16,7 @@ import {
   type ProgramDerivedAddress,
   type TransactionSigner,
   upgradeRoleToSigner,
-} from '@solana/kit';
+} from '@trezoa/kit';
 
 /**
  * Asserts that the given value is not null or undefined.

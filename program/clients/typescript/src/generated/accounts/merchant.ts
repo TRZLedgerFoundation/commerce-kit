@@ -29,7 +29,7 @@ import {
   type FixedSizeEncoder,
   type MaybeAccount,
   type MaybeEncodedAccount,
-} from '@solana/kit';
+} from '@trezoa/kit';
 
 export type Merchant = {
   discriminator: number;

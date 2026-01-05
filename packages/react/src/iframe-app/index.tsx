@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import type { SolanaCommerceConfig, ThemeConfig } from '../types';
+import type { TrezoaCommerceConfig, ThemeConfig } from '../types';
 
 // No shim system needed - use real components directly
 // Import iframe-safe modal components
@@ -28,7 +28,7 @@ export function getParentOrigin(): string | null {
 // Message types
 interface InitMessage {
     type: 'init';
-    config: SolanaCommerceConfig;
+    config: TrezoaCommerceConfig;
     theme: Required<ThemeConfig>;
     totalAmount?: number;
     paymentUrl?: string;
@@ -79,7 +79,7 @@ function IframeApp({
     totalAmount,
     paymentUrl,
 }: {
-    config: SolanaCommerceConfig;
+    config: TrezoaCommerceConfig;
     theme: Required<ThemeConfig>;
     totalAmount?: number;
     paymentUrl?: string;
@@ -118,7 +118,7 @@ function IframeApp({
             theme={theme}
             totalAmount={totalAmount || 0}
             paymentUrl={paymentUrl || ''}
-            onPayment={() => handlePayment(totalAmount || 0, config.allowedMints?.[0] || 'SOL')}
+            onPayment={() => handlePayment(totalAmount || 0, config.allowedMints?.[0] || 'TRZ')}
             onCancel={handleCancel}
         />
     );

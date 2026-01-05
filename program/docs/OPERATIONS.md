@@ -1,6 +1,6 @@
 # Operational Deployment Guide
 
-This document covers critical operational considerations for using the Solana Commerce Program in production environments.
+This document covers critical operational considerations for using the trezoa Commerce Program in production environments.
 
 ## Table of Contents
 
@@ -28,7 +28,7 @@ This document covers critical operational considerations for using the Solana Co
      const ata = await findAssociatedTokenPda({
        mint,
        owner: settlementWallet // or operator authority
-       tokenProgram: TOKEN_PROGRAM_ADDRESS, // currently all tokens use the SPL Token Program
+       tokenProgram: TOKEN_PROGRAM_ADDRESS, // currently all tokens use the TPL Token Program
      });
      
      if (!await accountExists(ata)) {

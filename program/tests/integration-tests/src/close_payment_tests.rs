@@ -11,7 +11,7 @@ use commerce_program_client::{
     instructions::ClosePaymentBuilder,
     types::{FeeType, PolicyData, SettlementPolicy},
 };
-use solana_sdk::{
+use trezoa_sdk::{
     instruction::{AccountMeta, Instruction},
     pubkey::Pubkey,
     signature::Keypair,

@@ -1,5 +1,5 @@
 /**
- * Solana Commerce SDK - Utilities
+ * Trezoa Commerce SDK - Utilities
  * Production-ready utilities, validation, and hooks
  */
 
@@ -41,7 +41,7 @@ export const DEFAULT_THEME: Required<ThemeConfig> = {
 
 // Currency utility functions
 export const getDecimals = (currency: Currency): number => {
-    return CURRENCY_DECIMALS[currency] ?? 9; // Default to 9 decimals for SOL-like tokens
+    return CURRENCY_DECIMALS[currency] ?? 9; // Default to 9 decimals for TRZ-like tokens
 };
 
 // Utility functions
@@ -242,7 +242,7 @@ export const usePaymentUrl = (merchant: MerchantConfig, amount: number, mode: Co
             message: mode === 'tip' ? 'Thank you for your support!' : `Purchase from ${sanitizeString(merchant.name)}`,
         });
 
-        return `solana:${merchant.wallet}?${params.toString()}`;
+        return `trezoa:${merchant.wallet}?${params.toString()}`;
     }, [merchant.wallet, merchant.name, amount, mode]);
 
 // Error handling
@@ -255,15 +255,15 @@ export const createPaymentError = (message: string, cause?: unknown): Error => {
 };
 
 // Amount formatting
-export const formatSolAmount = (lamports: number, decimals: number = 3): string => {
-    const solDecimals = getDecimals('SOL');
-    return (lamports / 10 ** solDecimals).toFixed(decimals);
+export const formatTrzAmount = (lamports: number, decimals: number = 3): string => {
+    const trzDecimals = getDecimals('TRZ');
+    return (lamports / 10 ** trzDecimals).toFixed(decimals);
 };
 
-export const parseSolAmount = (solAmount: string): number => {
-    const parsed = parseFloat(solAmount);
-    const solDecimals = getDecimals('SOL');
-    return isNaN(parsed) ? 0 : Math.round(parsed * 10 ** solDecimals);
+export const parseTrzAmount = (trzAmount: string): number => {
+    const parsed = parseFloat(trzAmount);
+    const trzDecimals = getDecimals('TRZ');
+    return isNaN(parsed) ? 0 : Math.round(parsed * 10 ** trzDecimals);
 };
 
 // Default profile SVG for merchants without a logo
@@ -296,40 +296,40 @@ let priceCache: { price: number; timestamp: number } | null = null;
 const PRICE_CACHE_DURATION = 60000; // 1 minute cache
 
 /**
- * Default SOL price fetching implementation using CoinGecko public API.
+ * Default TRZ price fetching implementation using CoinGecko public API.
  *
  * This function includes caching and error handling. For production applications
  * with high volume or specific requirements, consider using a custom implementation
- * via PaymentConfig.getSolPrice.
+ * via PaymentConfig.getTrzPrice.
  *
- * @returns Promise<number> SOL price in USD
+ * @returns Promise<number> TRZ price in USD
  * @throws Error when unable to fetch price and no cache available
  */
-export const fetchSolPrice = async (): Promise<number> => {
-    console.log('🔍 fetchSolPrice called');
+export const fetchTrzPrice = async (): Promise<number> => {
+    console.log('🔍 fetchTrzPrice called');
 
     // Check cache first
     if (priceCache && Date.now() - priceCache.timestamp < PRICE_CACHE_DURATION) {
-        console.log('📋 Using cached SOL price:', priceCache.price);
+        console.log('📋 Using cached TRZ price:', priceCache.price);
         return priceCache.price;
     }
 
     console.log('🌐 Making network call to CoinGecko API...');
 
     try {
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd');
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=trezoa&vs_currencies=usd');
 
         if (!response.ok) {
-            throw new Error(`Failed to fetch SOL price: HTTP ${response.status}`);
+            throw new Error(`Failed to fetch TRZ price: HTTP ${response.status}`);
         }
 
         const data = await response.json();
-        const price = data.solana?.usd;
+        const price = data.trezoa?.usd;
 
-        console.log('✅ Received SOL price from API:', price);
+        console.log('✅ Received TRZ price from API:', price);
 
         if (typeof price !== 'number' || price <= 0) {
-            throw new Error('Invalid SOL price data received from API');
+            throw new Error('Invalid TRZ price data received from API');
         }
 
         // Update cache
@@ -337,40 +337,40 @@ export const fetchSolPrice = async (): Promise<number> => {
 
         return price;
     } catch (error) {
-        console.warn('Failed to fetch SOL price from API:', error);
+        console.warn('Failed to fetch TRZ price from API:', error);
 
         // If we have cached data, use it even if expired
         if (priceCache) {
-            console.info('Using cached SOL price due to API failure');
+            console.info('Using cached TRZ price due to API failure');
             return priceCache.price;
         }
 
         // No fallback - throw error to be handled by UI
-        throw new Error('Unable to fetch SOL price. Please check your internet connection and try again.');
+        throw new Error('Unable to fetch TRZ price. Please check your internet connection and try again.');
     }
 };
 
-// Convert USD amount to SOL equivalent using real-time price
-export const convertUsdToSol = async (usdAmount: number): Promise<number> => {
-    console.log(`🔄 Converting $${usdAmount} USD to SOL`);
-    const solPriceUsd = await fetchSolPrice();
-    const solAmount = usdAmount / solPriceUsd;
-    console.log(`💰 $${usdAmount} = ${solAmount.toFixed(6)} SOL (at $${solPriceUsd}/SOL)`);
-    return solAmount;
+// Convert USD amount to TRZ equivalent using real-time price
+export const convertUsdToTrz = async (usdAmount: number): Promise<number> => {
+    console.log(`🔄 Converting $${usdAmount} USD to TRZ`);
+    const trzPriceUsd = await fetchTrzPrice();
+    const trzAmount = usdAmount / trzPriceUsd;
+    console.log(`💰 $${usdAmount} = ${trzAmount.toFixed(6)} TRZ (at $${trzPriceUsd}/TRZ)`);
+    return trzAmount;
 };
 
-// Convert USD amount to lamports for SOL payments
+// Convert USD amount to lamports for TRZ payments
 export const convertUsdToLamports = async (usdAmount: number): Promise<number> => {
-    const solAmount = await convertUsdToSol(usdAmount);
-    const solDecimals = getDecimals('SOL');
-    return Math.round(solAmount * 10 ** solDecimals); // Convert SOL to lamports
+    const trzAmount = await convertUsdToTrz(usdAmount);
+    const trzDecimals = getDecimals('TRZ');
+    return Math.round(trzAmount * 10 ** trzDecimals); // Convert TRZ to lamports
 };
 
 /**
- * Get cached SOL price (for debugging/display purposes)
- * @returns Cached SOL price if available and not expired, null otherwise
+ * Get cached TRZ price (for debugging/display purposes)
+ * @returns Cached TRZ price if available and not expired, null otherwise
  */
-export const getCachedSolPrice = (): number | null => {
+export const getCachedTrzPrice = (): number | null => {
     if (priceCache && Date.now() - priceCache.timestamp < PRICE_CACHE_DURATION) {
         return priceCache.price;
     }
@@ -378,24 +378,24 @@ export const getCachedSolPrice = (): number | null => {
 };
 
 /**
- * Creates a customizable SOL price fetching function with retry logic and custom endpoints.
+ * Creates a customizable TRZ price fetching function with retry logic and custom endpoints.
  *
  * @example
  * ```typescript
  * // Custom API endpoint with retry
- * const customPriceFetcher = createSolPriceFetcher({
- *   endpoint: 'https://api.your-service.com/sol-price',
+ * const customPriceFetcher = createTrzPriceFetcher({
+ *   endpoint: 'https://api.your-service.com/trz-price',
  *   retries: 3,
  *   timeout: 5000,
  *   parser: (data) => data.price.usd
  * });
  *
  * const paymentConfig = {
- *   getSolPrice: customPriceFetcher
+ *   getTrzPrice: customPriceFetcher
  * };
  * ```
  */
-export interface SolPriceFetcherOptions {
+export interface TrzPriceFetcherOptions {
     /** Custom API endpoint for price fetching */
     endpoint?: string;
     /** Number of retry attempts on failure */
@@ -408,12 +408,12 @@ export interface SolPriceFetcherOptions {
     headers?: Record<string, string>;
 }
 
-export const createSolPriceFetcher = (options: SolPriceFetcherOptions = {}): (() => Promise<number>) => {
+export const createTrzPriceFetcher = (options: TrzPriceFetcherOptions = {}): (() => Promise<number>) => {
     const {
-        endpoint = 'https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd',
+        endpoint = 'https://api.coingecko.com/api/v3/simple/price?ids=trezoa&vs_currencies=usd',
         retries = 2,
         timeout = 10000,
-        parser = (data: any) => data.solana?.usd,
+        parser = (data: any) => data.trezoa?.usd,
         headers = {},
     } = options;
 
@@ -446,7 +446,7 @@ export const createSolPriceFetcher = (options: SolPriceFetcherOptions = {}): (()
                 return price;
             } catch (error) {
                 if (attempt === retries) {
-                    throw new Error(`Failed to fetch SOL price after ${retries + 1} attempts: ${error}`);
+                    throw new Error(`Failed to fetch TRZ price after ${retries + 1} attempts: ${error}`);
                 }
                 // Wait before retry (exponential backoff)
                 await new Promise(resolve => setTimeout(resolve, Math.pow(2, attempt) * 1000));

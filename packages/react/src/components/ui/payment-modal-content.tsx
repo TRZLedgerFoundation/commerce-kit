@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import { DialogClose } from '../../ui-primitives/react';
-import { getBorderRadius, getModalBorderRadius, sanitizeString, formatSolAmount } from '../../utils';
+import { getBorderRadius, getModalBorderRadius, sanitizeString, formatTrzAmount } from '../../utils';
 
 import type { PaymentModalContentProps } from '../../types';
 
@@ -97,7 +97,7 @@ export const PaymentModalContent = memo<PaymentModalContentProps>(
                     }}
                     type="button"
                 >
-                    Pay {formatSolAmount(totalAmount)} SOL
+                    Pay {formatTrzAmount(totalAmount)} SOL
                 </button>
                 <DialogClose asChild>
                     <button

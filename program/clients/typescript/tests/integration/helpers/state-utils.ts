@@ -1,6 +1,6 @@
 import {
   Address,
-  SolanaClient,
+  TrezoaClient,
   KeyPairSigner,
   ProgramDerivedAddressBump,
   fetchEncodedAccount,
@@ -53,7 +53,7 @@ async function accountExists({
   client,
   address,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   address: Address;
 }): Promise<boolean> {
   try {
@@ -72,7 +72,7 @@ export async function assertGetOrCreateOperator({
   failIfExists = false,
   skipIfExists = false,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: KeyPairSigner;
   owner: KeyPairSigner;
   failIfExists?: boolean;
@@ -126,7 +126,7 @@ export async function assertGetOrCreateMerchant({
   skipIfExists = false,
   devnet = false,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: KeyPairSigner;
   authority: KeyPairSigner;
   settlementWallet: KeyPairSigner;
@@ -194,7 +194,7 @@ export async function assertGetOrCreateMerchantOperatorConfig({
   failIfExists = false,
   skipIfExists = false,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: KeyPairSigner;
   authority: KeyPairSigner;
   merchantPda: Address;
@@ -286,7 +286,7 @@ export async function assertMakePayment({
   amount,
   bump,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: KeyPairSigner;
   paymentPda: Address;
   operatorAuthority: KeyPairSigner;
@@ -377,7 +377,7 @@ export async function assertClearPayment({
   operatorFee,
   verifyBeforeStatus = true,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: KeyPairSigner;
   paymentPda: Address;
   operatorAuthority: KeyPairSigner;
@@ -499,7 +499,7 @@ export async function assertRefundPayment({
   amount,
   verifyBeforeStatus = true,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: KeyPairSigner;
   paymentPda: Address;
   operatorAuthority: KeyPairSigner;
@@ -594,7 +594,7 @@ export async function assertUpdateMerchantSettlementWallet({
   newSettlementWallet,
   devnet = false,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: KeyPairSigner;
   authority: KeyPairSigner;
   merchantPda: Address;
@@ -637,7 +637,7 @@ export async function assertUpdateMerchantAuthority({
   settlementWallet,
   newAuthority,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: KeyPairSigner;
   currentAuthority: KeyPairSigner;
   merchantPda: Address;
@@ -677,7 +677,7 @@ export async function assertUpdateOperatorAuthority({
   operatorBump,
   newAuthority,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: KeyPairSigner;
   currentAuthority: KeyPairSigner;
   operatorPda: Address;
@@ -721,7 +721,7 @@ export async function assertClosePayment({
   amount,
   verifyBeforeStatus = true,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: KeyPairSigner;
   paymentPda: Address;
   operatorAuthority: KeyPairSigner;
@@ -834,7 +834,7 @@ export async function assertCompletePaymentWorkflow({
   bump,
   workflow,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: KeyPairSigner;
   paymentPda: Address;
   operatorAuthority: KeyPairSigner;

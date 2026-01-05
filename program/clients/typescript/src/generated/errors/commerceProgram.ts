@@ -9,9 +9,9 @@
 import {
   isProgramError,
   type Address,
-  type SOLANA_ERROR__INSTRUCTION_ERROR__CUSTOM,
-  type SolanaError,
-} from '@solana/kit';
+  type trezoa_ERROR__INSTRUCTION_ERROR__CUSTOM,
+  type trezoaError,
+} from '@trezoa/kit';
 import { COMMERCE_PROGRAM_PROGRAM_ADDRESS } from '../programs';
 
 /** InvalidMint: Incorrect mint provided */
@@ -121,7 +121,7 @@ export function isCommerceProgramError<
     instructions: Record<number, { programAddress: Address }>;
   },
   code?: TProgramErrorCode
-): error is SolanaError<typeof SOLANA_ERROR__INSTRUCTION_ERROR__CUSTOM> &
+): error is trezoaError<typeof trezoa_ERROR__INSTRUCTION_ERROR__CUSTOM> &
   Readonly<{ context: Readonly<{ code: TProgramErrorCode }> }> {
   return isProgramError<TProgramErrorCode>(
     error,

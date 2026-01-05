@@ -7,11 +7,11 @@ import React, { memo } from 'react';
 import { sanitizeString } from '../../utils';
 import { useHover } from '../../hooks/use-hover';
 import { BackArrowIcon, CloseIcon } from '../icons';
-import type { ThemeConfig, SolanaCommerceConfig, PaymentMethod, TransactionState, TipModalStep } from '../../types';
+import type { ThemeConfig, TrezoaCommerceConfig, PaymentMethod, TransactionState, TipModalStep } from '../../types';
 
 interface TipModalHeaderProps {
     theme: Required<ThemeConfig>;
-    config: SolanaCommerceConfig;
+    config: TrezoaCommerceConfig;
     currentStep: TipModalStep;
     selectedPaymentMethod: PaymentMethod;
     transactionState?: TransactionState;

@@ -1,6 +1,6 @@
 'use client';
 
-import { PaymentButton } from '@solana-commerce/react';
+import { PaymentButton } from '@trezoa-commerce/react';
 // Note: OrderItem removed for tip flow MVP
 
 export function FloatingCommerceButton() {
@@ -8,13 +8,13 @@ export function FloatingCommerceButton() {
     <div className="fixed bottom-6 right-6 z-50">
       <PaymentButton
         config={{
-          rpcUrl: process.env.NEXT_PUBLIC_SOLANA_RPC_URL,
+          rpcUrl: process.env.NEXT_PUBLIC_trezoa_RPC_URL,
           mode: 'tip',
           position: 'overlay',
           merchant: {
             name: 'Hackweek Store',
             wallet: 'A7Xmq3qqt4uvw3GELHw9HHNFbwZzHDJNtmk6fe2p5b5s',
-            description: 'Experience the Solana Commerce SDK'
+            description: 'Experience the Trezoa Commerce SDK'
           },
           theme: {
             primaryColor: '#6366F1',
@@ -25,7 +25,7 @@ export function FloatingCommerceButton() {
             fontFamily: 'system-ui, -apple-system, sans-serif'
           },
 
-          allowedMints: ["USDC", "USDT", "SOL"],
+          allowedMints: ["USDC", "USDT", "TRZ"],
           network: 'mainnet',
           showQR: true,
           enableWalletConnect: true,

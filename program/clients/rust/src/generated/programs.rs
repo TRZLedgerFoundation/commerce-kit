@@ -5,7 +5,7 @@
 //! <https://github.com/codama-idl/codama>
 //!
 
-use solana_pubkey::{pubkey, Pubkey};
+use trezoa_pubkey::{pubkey, Pubkey};
 
 
   /// `commerce_program` program ID.

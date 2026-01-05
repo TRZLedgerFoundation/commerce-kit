@@ -434,7 +434,7 @@ export const WalletPaymentContent = ({
                 <div className="ck-wallet-no-wallets">
                     <div className="ck-wallet-no-wallets-title">No wallets detected</div>
                     <div className="ck-wallet-no-wallets-subtitle">
-                        Install a Solana wallet (e.g., Phantom, Backpack) and try again.
+                        Install a Trezoa wallet (e.g., Phantom, Backpack) and try again.
                     </div>
                 </div>
             ) : (

@@ -1,7 +1,7 @@
 import { describe, it } from '@jest/globals';
 import {
-    createSolanaClient,
-    SolanaClient,
+    createTrezoaClient,
+    TrezoaClient,
     KeyPairSigner,
     generateExtractableKeyPairSigner,
 } from 'gill';
@@ -11,12 +11,12 @@ import {
 import { assertGetOrCreateMerchant } from './helpers/state-utils';
 
 describe('Commerce Program Integration Tests', () => {
-    let client: SolanaClient;
+    let client: TrezoaClient;
     let payer: KeyPairSigner;
     let merchantAuthority: KeyPairSigner;
     let settlementWallet: KeyPairSigner;
     beforeEach(async () => {
-        client = createSolanaClient({ urlOrMoniker: 'http://localhost:8899' });
+        client = createTrezoaClient({ urlOrMoniker: 'http://localhost:8899' });
         payer = await generateExtractableKeyPairSigner();
         merchantAuthority = await generateExtractableKeyPairSigner();
         settlementWallet = await generateExtractableKeyPairSigner();

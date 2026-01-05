@@ -4,7 +4,7 @@ import { ArcProvider } from '../commerce-provider';
 import { useArcClient } from '../commerce-client-provider';
 
 // Mock connector dependency
-vi.mock('@solana-commerce/connector', () => ({
+vi.mock('@trezoa-commerce/connector', () => ({
     useConnectorClient: vi.fn(() => ({
         connect: vi.fn(),
         disconnect: vi.fn(),
@@ -19,7 +19,7 @@ vi.mock('@solana-commerce/connector', () => ({
 vi.mock('../arc-web-client', () => ({
     ArcWebClient: vi.fn().mockImplementation(() => ({
         network: {
-            rpcUrl: 'https://api.devnet.solana.com',
+            rpcUrl: 'https://api.devnet.trezoa.com',
             isDevnet: true,
             isMainnet: false,
             isTestnet: false,
@@ -44,7 +44,7 @@ vi.mock('../arc-web-client', () => ({
         setState: vi.fn(),
         getSnapshot: vi.fn(() => ({
             network: {
-                rpcUrl: 'https://api.devnet.solana.com',
+                rpcUrl: 'https://api.devnet.trezoa.com',
                 isDevnet: true,
                 isMainnet: false,
                 isTestnet: false,
@@ -107,7 +107,7 @@ describe('ArcProvider', () => {
             </ArcProvider>,
         );
 
-        expect(screen.getByTestId('network')).toHaveTextContent('https://api.devnet.solana.com');
+        expect(screen.getByTestId('network')).toHaveTextContent('https://api.devnet.trezoa.com');
         expect(screen.getByTestId('connected')).toHaveTextContent('false');
         expect(screen.getByTestId('commitment')).toHaveTextContent('confirmed');
     });
@@ -153,7 +153,7 @@ describe('ArcProvider', () => {
 
         // Since we're using mocked state, this test verifies the provider works
         expect(screen.getByTestId('connected')).toHaveTextContent('false');
-        expect(screen.getByTestId('network')).toHaveTextContent('https://api.devnet.solana.com');
+        expect(screen.getByTestId('network')).toHaveTextContent('https://api.devnet.trezoa.com');
     });
 
     describe('Provider Configuration', () => {
@@ -172,7 +172,7 @@ describe('ArcProvider', () => {
             );
 
             // Should use the provided configuration
-            expect(screen.getByTestId('network')).toHaveTextContent('https://api.devnet.solana.com'); // From mock
+            expect(screen.getByTestId('network')).toHaveTextContent('https://api.devnet.trezoa.com'); // From mock
         });
 
         it('should pass commitment configuration', () => {
@@ -259,7 +259,7 @@ describe('ArcProvider', () => {
         });
     });
 
-    // Transport configuration tests removed - now using @solana/kit built-in transport
+    // Transport configuration tests removed - now using @trezoa/kit built-in transport
 
     describe('Connector Integration', () => {
         it('should accept connector client', () => {
@@ -276,7 +276,7 @@ describe('ArcProvider', () => {
             );
 
             // Connector should be integrated with Arc client
-            expect(screen.getByTestId('network')).toHaveTextContent('https://api.devnet.solana.com');
+            expect(screen.getByTestId('network')).toHaveTextContent('https://api.devnet.trezoa.com');
         });
     });
 });

@@ -119,11 +119,11 @@ jobs:
         run: |
           cd program && make install
 
-      - name: Setup Solana CLI
-        uses: ./.github/actions/setup-solana
+      - name: Setup Trezoa CLI
+        uses: ./.github/actions/setup-trezoa
 
-      - name: Add Solana to PATH
-        run: echo "$HOME/.local/share/solana/install/active_release/bin" >> $GITHUB_PATH
+      - name: Add Trezoa to PATH
+        run: echo "$HOME/.local/share/trezoa/install/active_release/bin" >> $GITHUB_PATH
 
       - name: Build program and generate clients
         run: |
@@ -275,8 +275,8 @@ jobs:
         run: |
           cd program && make install
 
-      - name: Setup Solana CLI
-        uses: ./.github/actions/setup-solana
+      - name: Setup Trezoa CLI
+        uses: ./.github/actions/setup-trezoa
 
       - name: Build program and generate clients
         run: |

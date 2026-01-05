@@ -29,7 +29,7 @@ import {
   type FixedSizeEncoder,
   type MaybeAccount,
   type MaybeEncodedAccount,
-} from '@solana/kit';
+} from '@trezoa/kit';
 
 export type Operator = { discriminator: number; owner: Address; bump: number };
 

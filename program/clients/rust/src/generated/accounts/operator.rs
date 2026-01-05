@@ -5,7 +5,7 @@
 //! <https://github.com/codama-idl/codama>
 //!
 
-use solana_pubkey::Pubkey;
+use trezoa_pubkey::Pubkey;
 use borsh::BorshSerialize;
 use borsh::BorshDeserialize;
 
@@ -34,10 +34,10 @@ impl Operator {
   }
 }
 
-impl<'a> TryFrom<&solana_account_info::AccountInfo<'a>> for Operator {
+impl<'a> TryFrom<&trezoa_account_info::AccountInfo<'a>> for Operator {
   type Error = std::io::Error;
 
-  fn try_from(account_info: &solana_account_info::AccountInfo<'a>) -> Result<Self, Self::Error> {
+  fn try_from(account_info: &trezoa_account_info::AccountInfo<'a>) -> Result<Self, Self::Error> {
       let mut data: &[u8] = &(*account_info.data).borrow();
       Self::deserialize(&mut data)
   }
@@ -45,8 +45,8 @@ impl<'a> TryFrom<&solana_account_info::AccountInfo<'a>> for Operator {
 
 #[cfg(feature = "fetch")]
 pub fn fetch_operator(
-  rpc: &solana_client::rpc_client::RpcClient,
-  address: &solana_pubkey::Pubkey,
+  rpc: &trezoa_client::rpc_client::RpcClient,
+  address: &trezoa_pubkey::Pubkey,
 ) -> Result<crate::shared::DecodedAccount<Operator>, std::io::Error> {
   let accounts = fetch_all_operator(rpc, &[*address])?;
   Ok(accounts[0].clone())
@@ -54,8 +54,8 @@ pub fn fetch_operator(
 
 #[cfg(feature = "fetch")]
 pub fn fetch_all_operator(
-  rpc: &solana_client::rpc_client::RpcClient,
-  addresses: &[solana_pubkey::Pubkey],
+  rpc: &trezoa_client::rpc_client::RpcClient,
+  addresses: &[trezoa_pubkey::Pubkey],
 ) -> Result<Vec<crate::shared::DecodedAccount<Operator>>, std::io::Error> {
     let accounts = rpc.get_multiple_accounts(addresses)
       .map_err(|e| std::io::Error::new(std::io::ErrorKind::Other, e.to_string()))?;
@@ -72,8 +72,8 @@ pub fn fetch_all_operator(
 
 #[cfg(feature = "fetch")]
 pub fn fetch_maybe_operator(
-  rpc: &solana_client::rpc_client::RpcClient,
-  address: &solana_pubkey::Pubkey,
+  rpc: &trezoa_client::rpc_client::RpcClient,
+  address: &trezoa_pubkey::Pubkey,
 ) -> Result<crate::shared::MaybeAccount<Operator>, std::io::Error> {
     let accounts = fetch_all_maybe_operator(rpc, &[*address])?;
     Ok(accounts[0].clone())
@@ -81,8 +81,8 @@ pub fn fetch_maybe_operator(
 
 #[cfg(feature = "fetch")]
 pub fn fetch_all_maybe_operator(
-  rpc: &solana_client::rpc_client::RpcClient,
-  addresses: &[solana_pubkey::Pubkey],
+  rpc: &trezoa_client::rpc_client::RpcClient,
+  addresses: &[trezoa_pubkey::Pubkey],
 ) -> Result<Vec<crate::shared::MaybeAccount<Operator>>, std::io::Error> {
     let accounts = rpc.get_multiple_accounts(addresses)
       .map_err(|e| std::io::Error::new(std::io::ErrorKind::Other, e.to_string()))?;
@@ -99,28 +99,28 @@ pub fn fetch_all_maybe_operator(
   Ok(decoded_accounts)
 }
 
-  #[cfg(feature = "anchor")]
+  #[cfg(feature = "trezoaanchor")]
   impl anchor_lang::AccountDeserialize for Operator {
       fn try_deserialize_unchecked(buf: &mut &[u8]) -> anchor_lang::Result<Self> {
         Ok(Self::deserialize(buf)?)
       }
   }
 
-  #[cfg(feature = "anchor")]
+  #[cfg(feature = "trezoaanchor")]
   impl anchor_lang::AccountSerialize for Operator {}
 
-  #[cfg(feature = "anchor")]
+  #[cfg(feature = "trezoaanchor")]
   impl anchor_lang::Owner for Operator {
       fn owner() -> Pubkey {
         crate::COMMERCE_PROGRAM_ID
       }
   }
 
-  #[cfg(feature = "anchor-idl-build")]
+  #[cfg(feature = "trezoaanchor-idl-build")]
   impl anchor_lang::IdlBuild for Operator {}
 
   
-  #[cfg(feature = "anchor-idl-build")]
+  #[cfg(feature = "trezoaanchor-idl-build")]
   impl anchor_lang::Discriminator for Operator {
     const DISCRIMINATOR: &[u8] = &[0; 8];
   }

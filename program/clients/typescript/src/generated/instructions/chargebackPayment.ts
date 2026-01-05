@@ -6,7 +6,7 @@
  * @see https://github.com/codama-idl/codama
  */
 
-import { address, combineCodec, getAddressEncoder, getProgramDerivedAddress, getStructDecoder, getStructEncoder, getU8Decoder, getU8Encoder, getUtf8Encoder, transformEncoder, type AccountMeta, type AccountSignerMeta, type Address, type FixedSizeCodec, type FixedSizeDecoder, type FixedSizeEncoder, type Instruction, type InstructionWithAccounts, type InstructionWithData, type ReadonlyAccount, type ReadonlySignerAccount, type ReadonlyUint8Array, type TransactionSigner, type WritableAccount, type WritableSignerAccount } from '@solana/kit';
+import { address, combineCodec, getAddressEncoder, getProgramDerivedAddress, getStructDecoder, getStructEncoder, getU8Decoder, getU8Encoder, getUtf8Encoder, transformEncoder, type AccountMeta, type AccountSignerMeta, type Address, type FixedSizeCodec, type FixedSizeDecoder, type FixedSizeEncoder, type Instruction, type InstructionWithAccounts, type InstructionWithData, type ReadonlyAccount, type ReadonlySignerAccount, type ReadonlyUint8Array, type TransactionSigner, type WritableAccount, type WritableSignerAccount } from '@trezoa/kit';
 import { COMMERCE_PROGRAM_PROGRAM_ADDRESS } from '../programs';
 import { expectAddress, getAccountMetaFactory, type ResolvedAccount } from '../shared';
 

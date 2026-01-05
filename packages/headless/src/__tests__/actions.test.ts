@@ -4,14 +4,14 @@ import { createCartRequest } from '../actions/cart';
 import { createTipRequest } from '../actions/tip';
 import { verifyPayment, waitForConfirmation, createCommercePaymentRequest } from '../actions/payment';
 import { formatPaymentAmount, getTokenConfig } from '../utils';
-import type { SolanaClient } from 'gill';
+import type { TrezoaClient } from 'gill';
 
 // Mock gill for payment verification
 vi.mock('gill', () => ({
     signature: vi.fn(sig => ({ toString: () => sig })),
     address: vi.fn(addr => ({ toString: () => addr })),
     isAddress: vi.fn(() => true),
-    LAMPORTS_PER_SOL: 1000000000,
+    LAMPORTS_PER_TRZ: 1000000000,
 }));
 
 vi.mock('gill/programs/token', () => ({
@@ -25,7 +25,7 @@ describe('Payment Actions', () => {
         const testProduct = {
             name: 'Test Product',
             price: 1.5,
-            currency: 'SOL',
+            currency: 'TRZ',
             id: 'prod-123',
         };
 
@@ -37,7 +37,7 @@ describe('Payment Actions', () => {
 
                 expect(request.recipient).toBe(testRecipient);
                 expect(request.amount).toBe(1.5);
-                expect(request.currency).toBe('SOL');
+                expect(request.currency).toBe('TRZ');
                 expect(request.products).toEqual([testProduct]);
                 expect(request.memo).toBe('Purchase: Test Product');
                 expect(request.label).toBe('Test Product');
@@ -110,7 +110,7 @@ describe('Payment Actions', () => {
                 const specialProduct = {
                     name: 'Product & Co. (Premium!) 🎁',
                     price: 5.0,
-                    currency: 'SOL',
+                    currency: 'TRZ',
                 };
 
                 const request = createBuyNowRequest(testRecipient, specialProduct);
@@ -121,7 +121,7 @@ describe('Payment Actions', () => {
             });
 
             it('should handle zero-priced products', () => {
-                const freeProduct = { name: 'Free Sample', price: 0, currency: 'SOL' };
+                const freeProduct = { name: 'Free Sample', price: 0, currency: 'TRZ' };
                 const request = createBuyNowRequest(testRecipient, freeProduct);
 
                 expect(request.amount).toBe(0);
@@ -138,9 +138,9 @@ describe('Payment Actions', () => {
 
     describe('createCartRequest', () => {
         const testProducts = [
-            { name: 'Product 1', price: 1.0, currency: 'SOL' },
-            { name: 'Product 2', price: 2.5, currency: 'SOL' },
-            { name: 'Product 3', price: 0.5, currency: 'SOL' },
+            { name: 'Product 1', price: 1.0, currency: 'TRZ' },
+            { name: 'Product 2', price: 2.5, currency: 'TRZ' },
+            { name: 'Product 3', price: 0.5, currency: 'TRZ' },
         ];
 
         const testRecipient = '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM';
@@ -350,7 +350,7 @@ describe('Payment Actions', () => {
     });
 
     describe('verifyPayment', () => {
-        let mockRpc: SolanaClient['rpc'];
+        let mockRpc: TrezoaClient['rpc'];
 
         beforeEach(() => {
             mockRpc = {
@@ -372,7 +372,7 @@ describe('Payment Actions', () => {
                     },
                     meta: {
                         preBalances: [0],
-                        postBalances: [1000000000], // 1 SOL received
+                        postBalances: [1000000000], // 1 TRZ received
                     },
                 };
 
@@ -415,7 +415,7 @@ describe('Payment Actions', () => {
         });
 
         describe('Amount Verification', () => {
-            it('should verify SOL transfer amount', async () => {
+            it('should verify TRZ transfer amount', async () => {
                 const mockTransaction = {
                     blockTime: 1234567890,
                     transaction: {
@@ -427,7 +427,7 @@ describe('Payment Actions', () => {
                     },
                     meta: {
                         preBalances: [0],
-                        postBalances: [1500000000], // 1.5 SOL received
+                        postBalances: [1500000000], // 1.5 TRZ received
                     },
                 };
 
@@ -438,14 +438,14 @@ describe('Payment Actions', () => {
                 const result = await verifyPayment(
                     mockRpc,
                     'test-signature',
-                    1000000000, // Expected 1 SOL
+                    1000000000, // Expected 1 TRZ
                     '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
                 );
 
-                expect(result.verified).toBe(true); // 1.5 SOL >= 1 SOL expected
+                expect(result.verified).toBe(true); // 1.5 TRZ >= 1 TRZ expected
             });
 
-            it('should reject insufficient SOL transfer', async () => {
+            it('should reject insufficient TRZ transfer', async () => {
                 const mockTransaction = {
                     blockTime: 1234567890,
                     transaction: {
@@ -457,7 +457,7 @@ describe('Payment Actions', () => {
                     },
                     meta: {
                         preBalances: [0],
-                        postBalances: [500000000], // 0.5 SOL received
+                        postBalances: [500000000], // 0.5 TRZ received
                     },
                 };
 
@@ -468,16 +468,16 @@ describe('Payment Actions', () => {
                 const result = await verifyPayment(
                     mockRpc,
                     'test-signature',
-                    1000000000, // Expected 1 SOL
+                    1000000000, // Expected 1 TRZ
                     '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
                 );
 
-                expect(result.verified).toBe(false); // 0.5 SOL < 1 SOL expected
+                expect(result.verified).toBe(false); // 0.5 TRZ < 1 TRZ expected
             });
         });
 
-        describe('SPL Token Verification', () => {
-            it('should verify SPL token transfer', async () => {
+        describe('TPL Token Verification', () => {
+            it('should verify TPL token transfer', async () => {
                 const mockTransaction = {
                     blockTime: 1234567890,
                     transaction: {
@@ -511,7 +511,7 @@ describe('Payment Actions', () => {
                 expect(result.verified).toBe(true);
             });
 
-            it('should handle SPL token verification errors', async () => {
+            it('should handle TPL token verification errors', async () => {
                 const mockTransaction = {
                     blockTime: 1234567890,
                     transaction: { message: { accountKeys: [] } },
@@ -556,7 +556,7 @@ describe('Payment Actions', () => {
     });
 
     describe('waitForConfirmation', () => {
-        let mockRpc: SolanaClient['rpc'];
+        let mockRpc: TrezoaClient['rpc'];
 
         beforeEach(() => {
             mockRpc = {
@@ -661,16 +661,16 @@ describe('Payment Actions', () => {
                 const request = {
                     recipient: testRecipient,
                     amount: 1.5,
-                    currency: 'SOL',
+                    currency: 'TRZ',
                     label: 'Test Payment',
                 };
 
                 const result = createCommercePaymentRequest(request);
 
-                expect(result.url).toContain('solana:');
+                expect(result.url).toContain('trezoa:');
                 expect(result.url).toContain(testRecipient);
                 expect(result.amount).toBe(1.5);
-                expect(result.currency).toBe('SOL');
+                expect(result.currency).toBe('TRZ');
                 expect(result.recipient).toBe(testRecipient);
             });
 
@@ -703,7 +703,7 @@ describe('Payment Actions', () => {
                 const result = createCommercePaymentRequest(request);
 
                 expect(result.url).toContain('amount=2');
-                expect(result.url).toContain('spl-token=USDC');
+                expect(result.url).toContain('tpl-token=USDC');
                 expect(result.url).toContain('memo=Test+memo');
                 expect(result.url).toContain('label=Test+Label');
                 expect(result.url).toContain('message=Test+message');
@@ -712,17 +712,17 @@ describe('Payment Actions', () => {
         });
 
         describe('Currency Handling', () => {
-            it('should handle SOL currency', () => {
+            it('should handle TRZ currency', () => {
                 const request = {
                     recipient: testRecipient,
                     amount: 1.0,
-                    currency: 'SOL',
+                    currency: 'TRZ',
                 };
 
                 const result = createCommercePaymentRequest(request);
 
-                expect(result.currency).toBe('SOL');
-                expect(result.url).not.toContain('spl-token='); // SOL doesn't need spl-token param
+                expect(result.currency).toBe('TRZ');
+                expect(result.url).not.toContain('tpl-token='); // TRZ doesn't need tpl-token param
             });
 
             it('should handle stablecoin currencies', () => {
@@ -738,11 +738,11 @@ describe('Payment Actions', () => {
                     const result = createCommercePaymentRequest(request);
 
                     expect(result.currency).toBe(currency);
-                    expect(result.url).toContain(`spl-token=${currency}`);
+                    expect(result.url).toContain(`tpl-token=${currency}`);
                 });
             });
 
-            it('should default to SOL when no currency specified', () => {
+            it('should default to TRZ when no currency specified', () => {
                 const request = {
                     recipient: testRecipient,
                     amount: 1.0,
@@ -750,7 +750,7 @@ describe('Payment Actions', () => {
 
                 const result = createCommercePaymentRequest(request);
 
-                expect(result.currency).toBe('SOL');
+                expect(result.currency).toBe('TRZ');
             });
         });
 
@@ -798,7 +798,7 @@ describe('Payment Actions', () => {
             it('should return clean data object without helper methods', () => {
                 const request = {
                     recipient: testRecipient,
-                    amount: 1500000000, // 1.5 SOL in lamports
+                    amount: 1500000000, // 1.5 TRZ in lamports
                 };
 
                 const result = createCommercePaymentRequest(request);
@@ -807,7 +807,7 @@ describe('Payment Actions', () => {
                 expect(result.url).toBeDefined();
                 expect(result.recipient).toBe(testRecipient);
                 expect(result.amount).toBe(1500000000);
-                expect(result.currency).toBe('SOL');
+                expect(result.currency).toBe('TRZ');
                 expect(result.reference).toBeDefined();
                 expect(result.qrCode).toBe(result.url);
 
@@ -829,7 +829,7 @@ describe('Payment Actions', () => {
                 const result = createCommercePaymentRequest(request);
 
                 expect(result.qrCode).toBe(result.url);
-                expect(result.qrCode).toContain('solana:');
+                expect(result.qrCode).toContain('trezoa:');
             });
         });
 

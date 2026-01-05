@@ -5,7 +5,7 @@ import { WalletPaymentContent } from './iframe-wallet-payment';
 import { WalletIcon } from '../icons';
 import { useTipForm } from '../../hooks/use-tip-form';
 import { useAnimationStyles } from '../../hooks/use-animation-styles';
-import { useSolEquivalent } from '../../hooks/use-sol-equivalent';
+import { useTrzEquivalent } from '../../hooks/use-trz-equivalent';
 import { TipModalHeader, CurrencySelector, AmountSelector, PaymentMethodSelector, ActionButton } from '../tip-modal';
 import type { TipModalContentProps, Currency, TransactionState } from '../../types';
 
@@ -16,7 +16,7 @@ function formatPayLabel(currency: Currency, amount: number): string {
     const formattedAmount = amount.toString();
 
     // Always use $ prefix - users see USD amounts regardless of underlying currency
-    // Conversion to actual SOL amounts happens in payment processing
+    // Conversion to actual TRZ amounts happens in payment processing
     return `$${formattedAmount}`;
 }
 
@@ -105,18 +105,18 @@ export const IframeTipModalContent = memo<TipModalContentProps>(({ config, theme
     }, [actions, computed.finalAmount, state.selectedCurrency, state.selectedPaymentMethod, onPayment, handleCancel]);
 
     const {
-        solEquivalent,
-        isLoading: solEquivalentLoading,
-        error: solEquivalentError,
-    } = useSolEquivalent(state.selectedCurrency, computed.finalAmount);
+        trzEquivalent,
+        isLoading: trzEquivalentLoading,
+        error: trzEquivalentError,
+    } = useTrzEquivalent(state.selectedCurrency, computed.finalAmount);
 
     if (config.debug) {
-        console.log('💰 SOL Equivalent Calculation:', {
+        console.log('💰 TRZ Equivalent Calculation:', {
             selectedCurrency: state.selectedCurrency,
             finalAmount: computed.finalAmount,
-            solEquivalent,
-            isLoading: solEquivalentLoading,
-            error: solEquivalentError?.message,
+            trzEquivalent,
+            isLoading: trzEquivalentLoading,
+            error: trzEquivalentError?.message,
         });
     }
 
@@ -209,7 +209,7 @@ export const IframeTipModalContent = memo<TipModalContentProps>(({ config, theme
                             isDisabled={!computed.isFormValid || !!state.priceError}
                             isProcessing={state.isProcessing}
                             onClick={handlers.handleSubmit}
-                            solEquivalent={solEquivalent || undefined}
+                            trzEquivalent={trzEquivalent || undefined}
                         >
                             {state.isProcessing
                                 ? 'Processing...'

@@ -23,9 +23,9 @@ import {
     type Address,
     type TransactionSigner,
     type Instruction,
-} from '@solana/kit';
+} from '@trezoa/kit';
 
-import { getTransferSolInstruction, getCreateAccountInstruction } from '@solana-program/system';
+import { getTransferTrzInstruction, getCreateAccountInstruction } from '@trezoa-program/system';
 
 import {
     getTransferInstruction,
@@ -37,7 +37,7 @@ import {
     getBurnCheckedInstruction,
     findAssociatedTokenPda,
     TOKEN_PROGRAM_ADDRESS,
-} from '@solana-program/token';
+} from '@trezoa-program/token';
 
 import { getSharedRpc, getSharedWebSocket } from './rpc-manager';
 import {
@@ -58,7 +58,7 @@ export interface TransactionResult {
     slot?: number;
 }
 
-export interface SOLTransferResult extends TransactionResult {
+export interface TRZTransferResult extends TransactionResult {
     amount: bigint;
     from: Address;
     to: Address;
@@ -247,7 +247,7 @@ export class TransactionBuilder {
                             errorMessage.includes('Insufficient lamports')
                         ) {
                             throw new ArcError(
-                                'Insufficient SOL balance for transaction',
+                                'Insufficient TRZ balance for transaction',
                                 ArcErrorCode.INSUFFICIENT_FUNDS,
                                 context,
                                 error as Error,
@@ -328,27 +328,27 @@ export class TransactionBuilder {
         );
     }
 
-    // ===== SOL OPERATIONS =====
+    // ===== TRZ OPERATIONS =====
 
     /**
-     * Transfer native SOL between addresses
+     * Transfer native TRZ between addresses
      *
      * Used by:
-     * - Frontend: useTransferSOL() hook
-     * - Backend: ArcClient.transferSOL() method
+     * - Frontend: useTransferTRZ() hook
+     * - Backend: ArcClient.transferTRZ() method
      */
-    async transferSOL(to: string | Address, amount: bigint, signer: TransactionSigner): Promise<SOLTransferResult> {
+    async transferTRZ(to: string | Address, amount: bigint, signer: TransactionSigner): Promise<TRZTransferResult> {
         const fromAddress = signer.address;
 
         if (this.context.debug) {
-            console.log('💸 [Arc] Starting SOL transfer...');
+            console.log('💸 [Arc] Starting TRZ transfer...');
             console.log('📤 From:', fromAddress);
             console.log('📥 To:', to);
-            console.log('💰 Amount:', Number(amount) / 1e9, 'SOL');
+            console.log('💰 Amount:', Number(amount) / 1e9, 'TRZ');
         }
 
         // Create transfer instruction
-        const transferInstruction = getTransferSolInstruction({
+        const transferInstruction = getTransferTrzInstruction({
             source: signer,
             destination: address(to),
             amount: amount,
@@ -368,7 +368,7 @@ export class TransactionBuilder {
     // ===== TOKEN OPERATIONS =====
 
     /**
-     * Transfer SPL tokens between addresses
+     * Transfer TPL tokens between addresses
      *
      * Used by:
      * - Frontend: useTransferToken() hook
@@ -473,7 +473,7 @@ export class TransactionBuilder {
     }
 
     /**
-     * Create a new SPL token (mint account)
+     * Create a new TPL token (mint account)
      *
      * Used by:
      * - Frontend: useCreateToken() hook
@@ -507,7 +507,7 @@ export class TransactionBuilder {
         const mintRent = await this.rpc.getMinimumBalanceForRentExemption(BigInt(getMintSize())).send();
 
         if (this.context.debug) {
-            console.log('💰 [Arc] Mint rent exemption:', Number(mintRent) / 1e9, 'SOL');
+            console.log('💰 [Arc] Mint rent exemption:', Number(mintRent) / 1e9, 'TRZ');
         }
 
         // Create account instruction

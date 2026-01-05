@@ -7,9 +7,9 @@ import {
     validateWalletAddress,
     createPaymentUrl,
     validatePaymentRequest,
-    formatSolAmount,
-    parseSolAmount,
-    isValidSolanaAddress,
+    formatTrzAmount,
+    parseTrzAmount,
+    isValidTrezoaAddress,
     lamportsToDisplay,
     displayToLamports,
 } from '../utils';
@@ -35,7 +35,7 @@ vi.mock('gill', () => ({
             addr === '11111111111111111111111111111112'
         );
     }),
-    LAMPORTS_PER_SOL: 1000000000,
+    LAMPORTS_PER_TRZ: 1000000000,
 }));
 
 describe('Utils', () => {
@@ -151,8 +151,8 @@ describe('Utils', () => {
 
     describe('validatePaymentMethod', () => {
         describe('Default Allowed Mints', () => {
-            it('should allow SOL by default', () => {
-                const result = validatePaymentMethod('SOL');
+            it('should allow TRZ by default', () => {
+                const result = validatePaymentMethod('TRZ');
                 expect(result.valid).toBe(true);
                 expect(result.error).toBeUndefined();
             });
@@ -166,24 +166,24 @@ describe('Utils', () => {
 
         describe('Custom Allowed Mints', () => {
             it('should validate against custom allowed mints', () => {
-                const allowedMints = ['SOL', 'USDC', 'USDT'];
+                const allowedMints = ['TRZ', 'USDC', 'USDT'];
 
-                expect(validatePaymentMethod('SOL', allowedMints).valid).toBe(true);
+                expect(validatePaymentMethod('TRZ', allowedMints).valid).toBe(true);
                 expect(validatePaymentMethod('USDC', allowedMints).valid).toBe(true);
                 expect(validatePaymentMethod('USDT', allowedMints).valid).toBe(true);
                 expect(validatePaymentMethod('DAI', allowedMints).valid).toBe(false);
             });
 
             it('should handle empty allowed mints array', () => {
-                const result = validatePaymentMethod('SOL', []);
+                const result = validatePaymentMethod('TRZ', []);
                 expect(result.valid).toBe(false);
                 expect(result.error).toBe('SOL is not allowed');
             });
 
             it('should handle case sensitivity', () => {
-                const allowedMints = ['SOL', 'usdc'];
+                const allowedMints = ['TRZ', 'usdc'];
 
-                expect(validatePaymentMethod('SOL', allowedMints).valid).toBe(true);
+                expect(validatePaymentMethod('TRZ', allowedMints).valid).toBe(true);
                 expect(validatePaymentMethod('USDC', allowedMints).valid).toBe(false);
                 expect(validatePaymentMethod('usdc', allowedMints).valid).toBe(true);
             });
@@ -191,7 +191,7 @@ describe('Utils', () => {
 
         describe('Edge Cases', () => {
             it('should handle special mint names', () => {
-                const allowedMints = ['SOL', 'CUSTOM-TOKEN-123', 'token.with.dots'];
+                const allowedMints = ['TRZ', 'CUSTOM-TOKEN-123', 'token.with.dots'];
 
                 expect(validatePaymentMethod('CUSTOM-TOKEN-123', allowedMints).valid).toBe(true);
                 expect(validatePaymentMethod('token.with.dots', allowedMints).valid).toBe(true);
@@ -314,7 +314,7 @@ describe('Utils', () => {
     });
 
     describe('validateWalletAddress', () => {
-        it('should validate correct Solana addresses', () => {
+        it('should validate correct Trezoa addresses', () => {
             const validAddresses = [
                 '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
                 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
@@ -340,7 +340,7 @@ describe('Utils', () => {
             });
         });
 
-        it('should be consistent with isValidSolanaAddress', () => {
+        it('should be consistent with isValidTrezoaAddress', () => {
             const testAddresses = [
                 '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
                 'invalid-address',
@@ -349,7 +349,7 @@ describe('Utils', () => {
             ];
 
             testAddresses.forEach(addr => {
-                expect(validateWalletAddress(addr)).toBe(isValidSolanaAddress(addr));
+                expect(validateWalletAddress(addr)).toBe(isValidTrezoaAddress(addr));
             });
         });
     });
@@ -361,7 +361,7 @@ describe('Utils', () => {
             it('should create basic payment URL', () => {
                 const url = createPaymentUrl(validRecipient, 1.5, 'Test Merchant');
 
-                expect(url).toContain('solana:');
+                expect(url).toContain('trezoa:');
                 expect(url).toContain(validRecipient);
                 expect(url).toContain('amount=1.5');
                 expect(url).toContain('label=Test+Merchant');
@@ -371,7 +371,7 @@ describe('Utils', () => {
             it('should create tip payment URL', () => {
                 const url = createPaymentUrl(validRecipient, 0.1, 'Coffee Shop', 'tip');
 
-                expect(url).toContain('solana:');
+                expect(url).toContain('trezoa:');
                 expect(url).toContain('amount=0.1');
                 expect(url).toContain('message=Thank+you+for+your+support%21');
             });
@@ -415,10 +415,10 @@ describe('Utils', () => {
         });
 
         describe('URL Format', () => {
-            it('should follow Solana Pay spec format', () => {
+            it('should follow Trezoa Pay spec format', () => {
                 const url = createPaymentUrl(validRecipient, 1.0, 'Test');
 
-                expect(url).toMatch(/^solana:[1-9A-HJ-NP-Za-km-z]{32,44}\?/);
+                expect(url).toMatch(/^trezoa:[1-9A-HJ-NP-Za-km-z]{32,44}\?/);
                 expect(url).toContain('amount=');
                 expect(url).toContain('reference=');
             });
@@ -536,99 +536,99 @@ describe('Utils', () => {
         });
     });
 
-    describe('formatSolAmount', () => {
+    describe('formatTrzAmount', () => {
         describe('Basic Formatting', () => {
-            it('should format lamports to SOL with default decimals', () => {
-                expect(formatSolAmount(1000000000)).toBe('1.000'); // 1 SOL
-                expect(formatSolAmount(500000000)).toBe('0.500'); // 0.5 SOL
-                expect(formatSolAmount(1500000000)).toBe('1.500'); // 1.5 SOL
+            it('should format lamports to TRZ with default decimals', () => {
+                expect(formatTrzAmount(1000000000)).toBe('1.000'); // 1 TRZ
+                expect(formatTrzAmount(500000000)).toBe('0.500'); // 0.5 SOL
+                expect(formatTrzAmount(1500000000)).toBe('1.500'); // 1.5 SOL
             });
 
             it('should format with custom decimal places', () => {
-                expect(formatSolAmount(1000000000, 2)).toBe('1.00');
-                expect(formatSolAmount(1000000000, 6)).toBe('1.000000');
-                expect(formatSolAmount(1000000000, 0)).toBe('1');
+                expect(formatTrzAmount(1000000000, 2)).toBe('1.00');
+                expect(formatTrzAmount(1000000000, 6)).toBe('1.000000');
+                expect(formatTrzAmount(1000000000, 0)).toBe('1');
             });
 
             it('should handle small amounts', () => {
-                expect(formatSolAmount(1)).toBe('0.000'); // 1 lamport
-                expect(formatSolAmount(1000000)).toBe('0.001'); // 0.001 SOL
-                expect(formatSolAmount(10000000)).toBe('0.010'); // 0.01 SOL
+                expect(formatTrzAmount(1)).toBe('0.000'); // 1 lamport
+                expect(formatTrzAmount(1000000)).toBe('0.001'); // 0.001 TRZ
+                expect(formatTrzAmount(10000000)).toBe('0.010'); // 0.01 TRZ
             });
 
             it('should handle large amounts', () => {
-                expect(formatSolAmount(1000000000000000)).toBe('1000000.000'); // 1M SOL
+                expect(formatTrzAmount(1000000000000000)).toBe('1000000.000'); // 1M SOL
             });
         });
 
         describe('Edge Cases', () => {
             it('should handle zero lamports', () => {
-                expect(formatSolAmount(0)).toBe('0.000');
-                expect(formatSolAmount(0, 6)).toBe('0.000000');
+                expect(formatTrzAmount(0)).toBe('0.000');
+                expect(formatTrzAmount(0, 6)).toBe('0.000000');
             });
 
             it('should handle decimal precision edge cases', () => {
-                expect(formatSolAmount(1, 9)).toBe('0.000000001'); // 1 lamport with max precision
-                expect(formatSolAmount(999999999, 3)).toBe('1.000'); // Just under 1 SOL
+                expect(formatTrzAmount(1, 9)).toBe('0.000000001'); // 1 lamport with max precision
+                expect(formatTrzAmount(999999999, 3)).toBe('1.000'); // Just under 1 TRZ
             });
         });
     });
 
-    describe('parseSolAmount', () => {
+    describe('parseTrzAmount', () => {
         describe('Valid Parsing', () => {
-            it('should parse SOL amounts to lamports', () => {
-                expect(parseSolAmount('1')).toBe(1000000000);
-                expect(parseSolAmount('0.5')).toBe(500000000);
-                expect(parseSolAmount('1.5')).toBe(1500000000);
-                expect(parseSolAmount('0.001')).toBe(1000000);
+            it('should parse TRZ amounts to lamports', () => {
+                expect(parseTrzAmount('1')).toBe(1000000000);
+                expect(parseTrzAmount('0.5')).toBe(500000000);
+                expect(parseTrzAmount('1.5')).toBe(1500000000);
+                expect(parseTrzAmount('0.001')).toBe(1000000);
             });
 
             it('should handle string formatting variations', () => {
-                expect(parseSolAmount('1.0')).toBe(1000000000);
-                expect(parseSolAmount('01.5')).toBe(1500000000);
-                expect(parseSolAmount('0.500')).toBe(500000000);
+                expect(parseTrzAmount('1.0')).toBe(1000000000);
+                expect(parseTrzAmount('01.5')).toBe(1500000000);
+                expect(parseTrzAmount('0.500')).toBe(500000000);
             });
 
             it('should handle very small amounts', () => {
-                expect(parseSolAmount('0.000000001')).toBe(1); // 1 lamport
-                expect(parseSolAmount('0.000001')).toBe(1000); // 1000 lamports
+                expect(parseTrzAmount('0.000000001')).toBe(1); // 1 lamport
+                expect(parseTrzAmount('0.000001')).toBe(1000); // 1000 lamports
             });
 
             it('should handle large amounts', () => {
-                expect(parseSolAmount('1000000')).toBe(1000000000000000); // 1M SOL
+                expect(parseTrzAmount('1000000')).toBe(1000000000000000); // 1M SOL
             });
         });
 
         describe('Invalid Parsing', () => {
             it('should return 0 for invalid input', () => {
-                expect(parseSolAmount('invalid')).toBe(0);
-                expect(parseSolAmount('')).toBe(0);
-                expect(parseSolAmount('not-a-number')).toBe(0);
+                expect(parseTrzAmount('invalid')).toBe(0);
+                expect(parseTrzAmount('')).toBe(0);
+                expect(parseTrzAmount('not-a-number')).toBe(0);
             });
 
             it('should handle edge case strings', () => {
-                expect(parseSolAmount('NaN')).toBe(0);
-                expect(parseSolAmount('Infinity')).toBe(Infinity);
-                expect(parseSolAmount('-Infinity')).toBe(-Infinity);
+                expect(parseTrzAmount('NaN')).toBe(0);
+                expect(parseTrzAmount('Infinity')).toBe(Infinity);
+                expect(parseTrzAmount('-Infinity')).toBe(-Infinity);
             });
         });
 
         describe('Precision Handling', () => {
             it('should round to nearest lamport', () => {
-                expect(parseSolAmount('0.0000000015')).toBe(2); // Rounds 1.5 to 2
-                expect(parseSolAmount('0.0000000014')).toBe(1); // Rounds 1.4 to 1
+                expect(parseTrzAmount('0.0000000015')).toBe(2); // Rounds 1.5 to 2
+                expect(parseTrzAmount('0.0000000014')).toBe(1); // Rounds 1.4 to 1
             });
 
             it('should handle maximum precision', () => {
-                expect(parseSolAmount('0.999999999')).toBe(999999999);
+                expect(parseTrzAmount('0.999999999')).toBe(999999999);
             });
         });
 
         describe('Roundtrip Conversion', () => {
-            it('should be consistent with formatSolAmount for whole numbers', () => {
+            it('should be consistent with formatTrzAmount for whole numbers', () => {
                 const originalLamports = 1000000000;
-                const solAmount = formatSolAmount(originalLamports, 9);
-                const backToLamports = parseSolAmount(solAmount);
+                const trzAmount = formatTrzAmount(originalLamports, 9);
+                const backToLamports = parseTrzAmount(trzAmount);
 
                 expect(backToLamports).toBe(originalLamports);
             });
@@ -637,8 +637,8 @@ describe('Utils', () => {
                 const testAmounts = [500000000, 1500000000, 2000000000];
 
                 testAmounts.forEach(lamports => {
-                    const sol = formatSolAmount(lamports, 9);
-                    const backToLamports = parseSolAmount(sol);
+                    const trz = formatTrzAmount(lamports, 9);
+                    const backToLamports = parseTrzAmount(trz);
                     expect(backToLamports).toBe(lamports);
                 });
             });
@@ -647,13 +647,13 @@ describe('Utils', () => {
 
     describe('lamportsToDisplay & displayToLamports', () => {
         describe('SOL Conversion', () => {
-            it('should convert lamports to SOL display', () => {
+            it('should convert lamports to TRZ display', () => {
                 expect(lamportsToDisplay(1000000000)).toBe('1.000000000');
                 expect(lamportsToDisplay(500000000)).toBe('0.500000000');
                 expect(lamportsToDisplay(1500000000)).toBe('1.500000000');
             });
 
-            it('should convert SOL display to lamports', () => {
+            it('should convert TRZ display to lamports', () => {
                 expect(displayToLamports(1)).toBe(1000000000);
                 expect(displayToLamports(0.5)).toBe(500000000);
                 expect(displayToLamports(1.5)).toBe(1500000000);
@@ -684,8 +684,8 @@ describe('Utils', () => {
 
         describe('Precision Handling', () => {
             it('should maintain precision for different currencies', () => {
-                // SOL (9 decimals)
-                expect(lamportsToDisplay(1, 'SOL')).toBe('0.000000001');
+                // TRZ (9 decimals)
+                expect(lamportsToDisplay(1, 'TRZ')).toBe('0.000000001');
 
                 // USDC (6 decimals)
                 expect(lamportsToDisplay(1, 'USDC')).toBe('0.000001');
@@ -707,7 +707,7 @@ describe('Utils', () => {
             });
 
             it('should handle very large amounts', () => {
-                const largeLamports = 1000000000000000; // 1M SOL in lamports
+                const largeLamports = 1000000000000000; // 1M TRZ in lamports
                 expect(lamportsToDisplay(largeLamports)).toBe('1000000.000000000');
 
                 const largeSol = 1000000;
@@ -730,7 +730,7 @@ describe('Utils', () => {
                 expect(customerValidation.valid).toBe(true);
 
                 // Valid payment method
-                const methodValidation = validatePaymentMethod('SOL', ['SOL', 'USDC']);
+                const methodValidation = validatePaymentMethod('TRZ', ['TRZ', 'USDC']);
                 expect(methodValidation.valid).toBe(true);
 
                 // Valid payment URL creation
@@ -752,7 +752,7 @@ describe('Utils', () => {
                 expect(customerValidation.valid).toBe(false);
 
                 // Invalid payment method
-                const methodValidation = validatePaymentMethod('UNKNOWN', ['SOL']);
+                const methodValidation = validatePaymentMethod('UNKNOWN', ['TRZ']);
                 expect(methodValidation.valid).toBe(false);
 
                 // Invalid payment URL
@@ -771,8 +771,8 @@ describe('Utils', () => {
                 const testAmounts = [1000000000, 500000000, 1, 999999999];
 
                 testAmounts.forEach(lamports => {
-                    const formatted = formatSolAmount(lamports, 9);
-                    const parsed = parseSolAmount(formatted);
+                    const formatted = formatTrzAmount(lamports, 9);
+                    const parsed = parseTrzAmount(formatted);
                     expect(parsed).toBe(lamports);
                 });
             });
@@ -780,11 +780,11 @@ describe('Utils', () => {
             it('should work with display conversion functions', () => {
                 const testAmounts = [1, 0.5, 1.5, 0.001];
 
-                testAmounts.forEach(sol => {
-                    const lamports = displayToLamports(sol);
+                testAmounts.forEach(trz => {
+                    const lamports = displayToLamports(trz);
                     const backToDisplay = lamportsToDisplay(lamports);
-                    const backToSol = parseFloat(backToDisplay);
-                    expect(Math.abs(backToSol - sol)).toBeLessThan(0.000000001);
+                    const backToTrz = parseFloat(backToDisplay);
+                    expect(Math.abs(backToTrz - trz)).toBeLessThan(0.000000001);
                 });
             });
         });
@@ -816,7 +816,7 @@ describe('Utils', () => {
             const amounts = Array(1000).fill(1000000000);
 
             const startTime = Date.now();
-            amounts.forEach(amount => formatSolAmount(amount));
+            amounts.forEach(amount => formatTrzAmount(amount));
             const endTime = Date.now();
 
             expect(endTime - startTime).toBeLessThan(50);

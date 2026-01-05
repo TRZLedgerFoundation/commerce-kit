@@ -1,9 +1,9 @@
 use commerce_program_client::{
     types::Status, Merchant, MerchantOperatorConfig, Operator, Payment, COMMERCE_PROGRAM_ID,
 };
-use solana_program_pack::Pack;
-use solana_sdk::pubkey::Pubkey;
-use spl_token::state::Account as TokenAccount;
+use trezoa_program_pack::Pack;
+use trezoa_sdk::pubkey::Pubkey;
+use tpl_token::state::Account as TokenAccount;
 
 use crate::utils::{get_token_balance, TestContext};
 

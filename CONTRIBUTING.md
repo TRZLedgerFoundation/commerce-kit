@@ -1,6 +1,6 @@
-# Contributing to Solana Commerce Kit
+# Contributing to Trezoa Commerce Kit
 
-Thank you for your interest in contributing to Solana Commerce Kit. This document provides guidelines for contributing to the project.
+Thank you for your interest in contributing to Trezoa Commerce Kit. This document provides guidelines for contributing to the project.
 
 ## Development Setup
 
@@ -36,12 +36,12 @@ pnpm test
 ```
 commerce-kit/
 ├── packages/
-│   ├── solana-commerce/    # Meta-package
+│   ├── trezoa-commerce/    # Meta-package
 │   ├── react/              # React components
 │   ├── sdk/                # React hooks
 │   ├── headless/           # Core logic
 │   ├── connector/          # Wallet connection
-│   └── solana-pay/         # Solana Pay protocol
+│   └── trezoa-pay/         # Trezoa Pay protocol
 └── ...
 ```
 

@@ -1,5 +1,5 @@
 import * as codama from "codama";
-import { AnchorIdl, rootNodeFromAnchor } from "@codama/nodes-from-anchor";
+import { TrezoaAnchorIdl, rootNodeFromTrezoaAnchor } from "@codama/nodes-from-trezoaanchor";
 import {
   appendAccountDiscriminator,
   setDefaultAccountValues,
@@ -11,8 +11,8 @@ import {
 export class CommerceCodamaBuilder {
   private codama: codama.Codama;
 
-  constructor(commerceIdl: AnchorIdl) {
-    this.codama = codama.createFromRoot(rootNodeFromAnchor(commerceIdl));
+  constructor(commerceIdl: TrezoaAnchorIdl) {
+    this.codama = codama.createFromRoot(rootNodeFromTrezoaAnchor(commerceIdl));
   }
 
   appendAccountDiscriminator(): this {
@@ -45,6 +45,6 @@ export class CommerceCodamaBuilder {
   }
 }
 
-export function createCommerceCodamaBuilder(commerceIdl: AnchorIdl): CommerceCodamaBuilder {
+export function createCommerceCodamaBuilder(commerceIdl: TrezoaAnchorIdl): CommerceCodamaBuilder {
   return new CommerceCodamaBuilder(commerceIdl);
 }

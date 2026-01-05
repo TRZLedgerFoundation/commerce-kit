@@ -1,7 +1,7 @@
 import { loadKeypairSignerFromFile } from "gill/node";
 import {
-    createSolanaClient,
-    SolanaClient,
+    createTrezoaClient,
+    TrezoaClient,
     KeyPairSigner,
     Address,
     createTransaction,
@@ -9,7 +9,7 @@ import {
     Instruction,
     TransactionSigner,
     Blockhash,
-    SolanaError
+    TrezoaError
 } from 'gill';
 import {
     findOperatorPda,
@@ -23,7 +23,7 @@ import {
     getClearPaymentInstruction,
     getClosePaymentInstruction,
     FeeType,
-} from '@solana-commerce/program-client';
+} from '@trezoa-commerce/program-client';
 import {
     TOKEN_PROGRAM_ADDRESS,
     estimateComputeUnitLimitFactory,
@@ -56,7 +56,7 @@ async function sendAndConfirmInstructions({
     instructions,
     description
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     payer: TransactionSigner,
     instructions: Instruction[],
     description: string
@@ -89,7 +89,7 @@ async function sendAndConfirmInstructions({
         console.log(`    - ${description} - Signature: ${signature}`);
         return signature;
     } catch (error) {
-        if (error instanceof SolanaError) {
+        if (error instanceof TrezoaError) {
             error.name && console.error(`Error Code: ${error.name}`);
             error.context && console.error(`Error Context: ${JSON.stringify(error.context)}`);
             error.message && console.error(`Error Message: ${error.message}`);
@@ -106,7 +106,7 @@ async function generateManyTokenAccounts({
     mint,
     owners,
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     payer: KeyPairSigner,
     mint: Address,
     owners: Address[],
@@ -143,7 +143,7 @@ async function generateManyTokenAccounts({
     return atas;
 }
 
-async function setupWallets({ client }: { client: SolanaClient }) {
+async function setupWallets({ client }: { client: TrezoaClient }) {
     const payer = await loadKeypairSignerFromFile('./keys/payer.json');
     const merchant = await loadKeypairSignerFromFile('./keys/merchant.json');
     const operator = await loadKeypairSignerFromFile('./keys/operator.json');
@@ -162,7 +162,7 @@ async function setupWallets({ client }: { client: SolanaClient }) {
 async function main() {
     try {
         console.log('Starting Commerce Demo...');
-        const client = createSolanaClient({ urlOrMoniker: CONFIG.CLUSTER_URL });
+        const client = createTrezoaClient({ urlOrMoniker: CONFIG.CLUSTER_URL });
         console.log("\n1. Setting up wallets and token accounts...");
         const { payer, merchant, operator, customer, settlementWallet } = await setupWallets({ client });
 

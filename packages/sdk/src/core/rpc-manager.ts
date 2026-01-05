@@ -4,11 +4,11 @@
  * Simplified from over-engineered pooling system to basic RPC client creation
  */
 
-import { createSolanaRpc, createSolanaRpcSubscriptions } from '@solana/kit';
+import { createTrezoaRpc, createTrezoaRpcSubscriptions } from '@trezoa/kit';
 
 // Type aliases for RPC clients
-type SolanaRpc = ReturnType<typeof createSolanaRpc>;
-type SolanaRpcSubscriptions = ReturnType<typeof createSolanaRpcSubscriptions>;
+type TrezoaRpc = ReturnType<typeof createTrezoaRpc>;
+type TrezoaRpcSubscriptions = ReturnType<typeof createTrezoaRpcSubscriptions>;
 
 /**
  * Create RPC connection for wallet operations
@@ -17,8 +17,8 @@ type SolanaRpcSubscriptions = ReturnType<typeof createSolanaRpcSubscriptions>;
  * @param commitment - Transaction confirmation level
  * @returns RPC client
  */
-export function createRpc(rpcUrl: string, _commitment?: 'processed' | 'confirmed' | 'finalized'): SolanaRpc {
-    return createSolanaRpc(rpcUrl);
+export function createRpc(rpcUrl: string, _commitment?: 'processed' | 'confirmed' | 'finalized'): TrezoaRpc {
+    return createTrezoaRpc(rpcUrl);
 }
 
 /**
@@ -31,9 +31,9 @@ export function createRpc(rpcUrl: string, _commitment?: 'processed' | 'confirmed
 export function createWebSocket(
     rpcUrl: string,
     _commitment?: 'processed' | 'confirmed' | 'finalized',
-): SolanaRpcSubscriptions {
+): TrezoaRpcSubscriptions {
     const wsUrl = rpcUrl.replace('https://', 'wss://').replace('http://', 'ws://');
-    return createSolanaRpcSubscriptions(wsUrl);
+    return createTrezoaRpcSubscriptions(wsUrl);
 }
 
 // Backward compatibility aliases (to avoid breaking changes during migration)

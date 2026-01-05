@@ -5,7 +5,7 @@ edition = { workspace = true }
 
 [lints.rust]
 unexpected_cfgs = { level = "warn", check-cfg = [
-    'cfg(target_os, values("solana"))',
+    'cfg(target_os, values("trezoa"))',
 ] }
 
 [lib]

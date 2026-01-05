@@ -6,7 +6,7 @@ import {
   getUtf8Encoder,
   type Address,
   type ProgramDerivedAddress,
-} from '@solana/kit';
+} from '@trezoa/kit';
 
 // PDA seed constants
 const MERCHANT_PDA_SEED = 'merchant';

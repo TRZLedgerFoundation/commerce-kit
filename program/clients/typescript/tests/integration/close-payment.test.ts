@@ -1,7 +1,7 @@
 import { describe, it, expect, beforeEach } from "@jest/globals";
 import {
-  createSolanaClient,
-  SolanaClient,
+  createTrezoaClient,
+  TrezoaClient,
   KeyPairSigner,
   Address,
   lamports,
@@ -36,7 +36,7 @@ import { assertPaymentAccount } from "./helpers/assertions";
 const DAYS_TO_CLOSE = 0;
 
 describe("Close Payment", () => {
-  let client: SolanaClient;
+  let client: TrezoaClient;
   let payer: KeyPairSigner;
   let operatorAuthority: KeyPairSigner;
   let merchantAuthority: KeyPairSigner;
@@ -56,13 +56,13 @@ describe("Close Payment", () => {
   let merchantOperatorConfigPda: Address;
 
   let version = 1; // incremented after each test
-  const operatorFee = lamports(100000n); // 0.0001 SOL
+  const operatorFee = lamports(100000n); // 0.0001 TRZ
   const feeType = FeeType.Fixed;
   let currentOrderId = 1;
   const paymentAmount = 1_000_000;
 
   beforeEach(async () => {
-    client = createSolanaClient({ urlOrMoniker: "http://localhost:8899" });
+    client = createTrezoaClient({ urlOrMoniker: "http://localhost:8899" });
 
     payer = await generateExtractableKeyPairSigner();
     operatorAuthority = await generateExtractableKeyPairSigner();

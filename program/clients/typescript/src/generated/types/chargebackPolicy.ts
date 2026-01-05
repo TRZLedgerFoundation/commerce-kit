@@ -6,7 +6,7 @@
  * @see https://github.com/codama-idl/codama
  */
 
-import { combineCodec, getStructDecoder, getStructEncoder, getU64Decoder, getU64Encoder, type FixedSizeCodec, type FixedSizeDecoder, type FixedSizeEncoder } from '@solana/kit';
+import { combineCodec, getStructDecoder, getStructEncoder, getU64Decoder, getU64Encoder, type FixedSizeCodec, type FixedSizeDecoder, type FixedSizeEncoder } from '@trezoa/kit';
 
 
 

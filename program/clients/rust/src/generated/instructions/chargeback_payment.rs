@@ -13,95 +13,95 @@ pub const CHARGEBACK_PAYMENT_DISCRIMINATOR: u8 = 6;
 /// Accounts.
 #[derive(Debug)]
 pub struct ChargebackPayment {
-    pub payer: solana_pubkey::Pubkey,
+    pub payer: trezoa_pubkey::Pubkey,
     /// Payment PDA being updated
-    pub payment: solana_pubkey::Pubkey,
+    pub payment: trezoa_pubkey::Pubkey,
 
-    pub operator_authority: solana_pubkey::Pubkey,
+    pub operator_authority: trezoa_pubkey::Pubkey,
     /// Chargeback destination owner
-    pub buyer: solana_pubkey::Pubkey,
+    pub buyer: trezoa_pubkey::Pubkey,
     /// Merchant PDA
-    pub merchant: solana_pubkey::Pubkey,
+    pub merchant: trezoa_pubkey::Pubkey,
     /// Operator PDA
-    pub operator: solana_pubkey::Pubkey,
+    pub operator: trezoa_pubkey::Pubkey,
     /// Merchant Operator Config PDA
-    pub merchant_operator_config: solana_pubkey::Pubkey,
+    pub merchant_operator_config: trezoa_pubkey::Pubkey,
 
-    pub mint: solana_pubkey::Pubkey,
+    pub mint: trezoa_pubkey::Pubkey,
     /// Merchant Escrow ATA (Merchant PDA is owner)
-    pub merchant_escrow_ata: solana_pubkey::Pubkey,
+    pub merchant_escrow_ata: trezoa_pubkey::Pubkey,
 
-    pub buyer_ata: solana_pubkey::Pubkey,
+    pub buyer_ata: trezoa_pubkey::Pubkey,
 
-    pub token_program: solana_pubkey::Pubkey,
+    pub token_program: trezoa_pubkey::Pubkey,
 
-    pub system_program: solana_pubkey::Pubkey,
+    pub system_program: trezoa_pubkey::Pubkey,
     /// Event authority PDA
-    pub event_authority: solana_pubkey::Pubkey,
+    pub event_authority: trezoa_pubkey::Pubkey,
     /// Commerce Program ID
-    pub commerce_program: solana_pubkey::Pubkey,
+    pub commerce_program: trezoa_pubkey::Pubkey,
 }
 
 impl ChargebackPayment {
-    pub fn instruction(&self) -> solana_instruction::Instruction {
+    pub fn instruction(&self) -> trezoa_instruction::Instruction {
         self.instruction_with_remaining_accounts(&[])
     }
     #[allow(clippy::arithmetic_side_effects)]
     #[allow(clippy::vec_init_then_push)]
     pub fn instruction_with_remaining_accounts(
         &self,
-        remaining_accounts: &[solana_instruction::AccountMeta],
-    ) -> solana_instruction::Instruction {
+        remaining_accounts: &[trezoa_instruction::AccountMeta],
+    ) -> trezoa_instruction::Instruction {
         let mut accounts = Vec::with_capacity(14 + remaining_accounts.len());
-        accounts.push(solana_instruction::AccountMeta::new(self.payer, true));
-        accounts.push(solana_instruction::AccountMeta::new(self.payment, false));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new(self.payer, true));
+        accounts.push(trezoa_instruction::AccountMeta::new(self.payment, false));
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.operator_authority,
             true,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.buyer, false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.merchant,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.operator,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.merchant_operator_config,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.mint, false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new(
+        accounts.push(trezoa_instruction::AccountMeta::new(
             self.merchant_escrow_ata,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new(self.buyer_ata, false));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new(self.buyer_ata, false));
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.token_program,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.system_program,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.event_authority,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.commerce_program,
             false,
         ));
         accounts.extend_from_slice(remaining_accounts);
         let data = borsh::to_vec(&ChargebackPaymentInstructionData::new()).unwrap();
 
-        solana_instruction::Instruction {
+        trezoa_instruction::Instruction {
             program_id: crate::COMMERCE_PROGRAM_ID,
             accounts,
             data,
@@ -147,21 +147,21 @@ impl Default for ChargebackPaymentInstructionData {
 ///   13. `[optional]` commerce_program (default to `commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT`)
 #[derive(Clone, Debug, Default)]
 pub struct ChargebackPaymentBuilder {
-    payer: Option<solana_pubkey::Pubkey>,
-    payment: Option<solana_pubkey::Pubkey>,
-    operator_authority: Option<solana_pubkey::Pubkey>,
-    buyer: Option<solana_pubkey::Pubkey>,
-    merchant: Option<solana_pubkey::Pubkey>,
-    operator: Option<solana_pubkey::Pubkey>,
-    merchant_operator_config: Option<solana_pubkey::Pubkey>,
-    mint: Option<solana_pubkey::Pubkey>,
-    merchant_escrow_ata: Option<solana_pubkey::Pubkey>,
-    buyer_ata: Option<solana_pubkey::Pubkey>,
-    token_program: Option<solana_pubkey::Pubkey>,
-    system_program: Option<solana_pubkey::Pubkey>,
-    event_authority: Option<solana_pubkey::Pubkey>,
-    commerce_program: Option<solana_pubkey::Pubkey>,
-    __remaining_accounts: Vec<solana_instruction::AccountMeta>,
+    payer: Option<trezoa_pubkey::Pubkey>,
+    payment: Option<trezoa_pubkey::Pubkey>,
+    operator_authority: Option<trezoa_pubkey::Pubkey>,
+    buyer: Option<trezoa_pubkey::Pubkey>,
+    merchant: Option<trezoa_pubkey::Pubkey>,
+    operator: Option<trezoa_pubkey::Pubkey>,
+    merchant_operator_config: Option<trezoa_pubkey::Pubkey>,
+    mint: Option<trezoa_pubkey::Pubkey>,
+    merchant_escrow_ata: Option<trezoa_pubkey::Pubkey>,
+    buyer_ata: Option<trezoa_pubkey::Pubkey>,
+    token_program: Option<trezoa_pubkey::Pubkey>,
+    system_program: Option<trezoa_pubkey::Pubkey>,
+    event_authority: Option<trezoa_pubkey::Pubkey>,
+    commerce_program: Option<trezoa_pubkey::Pubkey>,
+    __remaining_accounts: Vec<trezoa_instruction::AccountMeta>,
 }
 
 impl ChargebackPaymentBuilder {
@@ -169,36 +169,36 @@ impl ChargebackPaymentBuilder {
         Self::default()
     }
     #[inline(always)]
-    pub fn payer(&mut self, payer: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn payer(&mut self, payer: trezoa_pubkey::Pubkey) -> &mut Self {
         self.payer = Some(payer);
         self
     }
     /// Payment PDA being updated
     #[inline(always)]
-    pub fn payment(&mut self, payment: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn payment(&mut self, payment: trezoa_pubkey::Pubkey) -> &mut Self {
         self.payment = Some(payment);
         self
     }
     #[inline(always)]
-    pub fn operator_authority(&mut self, operator_authority: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn operator_authority(&mut self, operator_authority: trezoa_pubkey::Pubkey) -> &mut Self {
         self.operator_authority = Some(operator_authority);
         self
     }
     /// Chargeback destination owner
     #[inline(always)]
-    pub fn buyer(&mut self, buyer: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn buyer(&mut self, buyer: trezoa_pubkey::Pubkey) -> &mut Self {
         self.buyer = Some(buyer);
         self
     }
     /// Merchant PDA
     #[inline(always)]
-    pub fn merchant(&mut self, merchant: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn merchant(&mut self, merchant: trezoa_pubkey::Pubkey) -> &mut Self {
         self.merchant = Some(merchant);
         self
     }
     /// Operator PDA
     #[inline(always)]
-    pub fn operator(&mut self, operator: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn operator(&mut self, operator: trezoa_pubkey::Pubkey) -> &mut Self {
         self.operator = Some(operator);
         self
     }
@@ -206,56 +206,56 @@ impl ChargebackPaymentBuilder {
     #[inline(always)]
     pub fn merchant_operator_config(
         &mut self,
-        merchant_operator_config: solana_pubkey::Pubkey,
+        merchant_operator_config: trezoa_pubkey::Pubkey,
     ) -> &mut Self {
         self.merchant_operator_config = Some(merchant_operator_config);
         self
     }
     #[inline(always)]
-    pub fn mint(&mut self, mint: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn mint(&mut self, mint: trezoa_pubkey::Pubkey) -> &mut Self {
         self.mint = Some(mint);
         self
     }
     /// Merchant Escrow ATA (Merchant PDA is owner)
     #[inline(always)]
-    pub fn merchant_escrow_ata(&mut self, merchant_escrow_ata: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn merchant_escrow_ata(&mut self, merchant_escrow_ata: trezoa_pubkey::Pubkey) -> &mut Self {
         self.merchant_escrow_ata = Some(merchant_escrow_ata);
         self
     }
     #[inline(always)]
-    pub fn buyer_ata(&mut self, buyer_ata: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn buyer_ata(&mut self, buyer_ata: trezoa_pubkey::Pubkey) -> &mut Self {
         self.buyer_ata = Some(buyer_ata);
         self
     }
     /// `[optional account, default to 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA']`
     #[inline(always)]
-    pub fn token_program(&mut self, token_program: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn token_program(&mut self, token_program: trezoa_pubkey::Pubkey) -> &mut Self {
         self.token_program = Some(token_program);
         self
     }
     /// `[optional account, default to '11111111111111111111111111111111']`
     #[inline(always)]
-    pub fn system_program(&mut self, system_program: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn system_program(&mut self, system_program: trezoa_pubkey::Pubkey) -> &mut Self {
         self.system_program = Some(system_program);
         self
     }
     /// `[optional account, default to '3VSJP7faqLk6MbCaNtMYc2Y8S8hMXRsZ5cBcwh1fjMH1']`
     /// Event authority PDA
     #[inline(always)]
-    pub fn event_authority(&mut self, event_authority: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn event_authority(&mut self, event_authority: trezoa_pubkey::Pubkey) -> &mut Self {
         self.event_authority = Some(event_authority);
         self
     }
     /// `[optional account, default to 'commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT']`
     /// Commerce Program ID
     #[inline(always)]
-    pub fn commerce_program(&mut self, commerce_program: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn commerce_program(&mut self, commerce_program: trezoa_pubkey::Pubkey) -> &mut Self {
         self.commerce_program = Some(commerce_program);
         self
     }
     /// Add an additional account to the instruction.
     #[inline(always)]
-    pub fn add_remaining_account(&mut self, account: solana_instruction::AccountMeta) -> &mut Self {
+    pub fn add_remaining_account(&mut self, account: trezoa_instruction::AccountMeta) -> &mut Self {
         self.__remaining_accounts.push(account);
         self
     }
@@ -263,13 +263,13 @@ impl ChargebackPaymentBuilder {
     #[inline(always)]
     pub fn add_remaining_accounts(
         &mut self,
-        accounts: &[solana_instruction::AccountMeta],
+        accounts: &[trezoa_instruction::AccountMeta],
     ) -> &mut Self {
         self.__remaining_accounts.extend_from_slice(accounts);
         self
     }
     #[allow(clippy::clone_on_copy)]
-    pub fn instruction(&self) -> solana_instruction::Instruction {
+    pub fn instruction(&self) -> trezoa_instruction::Instruction {
         let accounts = ChargebackPayment {
             payer: self.payer.expect("payer is not set"),
             payment: self.payment.expect("payment is not set"),
@@ -287,16 +287,16 @@ impl ChargebackPaymentBuilder {
                 .merchant_escrow_ata
                 .expect("merchant_escrow_ata is not set"),
             buyer_ata: self.buyer_ata.expect("buyer_ata is not set"),
-            token_program: self.token_program.unwrap_or(solana_pubkey::pubkey!(
+            token_program: self.token_program.unwrap_or(trezoa_pubkey::pubkey!(
                 "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA"
             )),
             system_program: self
                 .system_program
-                .unwrap_or(solana_pubkey::pubkey!("11111111111111111111111111111111")),
-            event_authority: self.event_authority.unwrap_or(solana_pubkey::pubkey!(
+                .unwrap_or(trezoa_pubkey::pubkey!("11111111111111111111111111111111")),
+            event_authority: self.event_authority.unwrap_or(trezoa_pubkey::pubkey!(
                 "3VSJP7faqLk6MbCaNtMYc2Y8S8hMXRsZ5cBcwh1fjMH1"
             )),
-            commerce_program: self.commerce_program.unwrap_or(solana_pubkey::pubkey!(
+            commerce_program: self.commerce_program.unwrap_or(trezoa_pubkey::pubkey!(
                 "commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT"
             )),
         };
@@ -307,72 +307,72 @@ impl ChargebackPaymentBuilder {
 
 /// `chargeback_payment` CPI accounts.
 pub struct ChargebackPaymentCpiAccounts<'a, 'b> {
-    pub payer: &'b solana_account_info::AccountInfo<'a>,
+    pub payer: &'b trezoa_account_info::AccountInfo<'a>,
     /// Payment PDA being updated
-    pub payment: &'b solana_account_info::AccountInfo<'a>,
+    pub payment: &'b trezoa_account_info::AccountInfo<'a>,
 
-    pub operator_authority: &'b solana_account_info::AccountInfo<'a>,
+    pub operator_authority: &'b trezoa_account_info::AccountInfo<'a>,
     /// Chargeback destination owner
-    pub buyer: &'b solana_account_info::AccountInfo<'a>,
+    pub buyer: &'b trezoa_account_info::AccountInfo<'a>,
     /// Merchant PDA
-    pub merchant: &'b solana_account_info::AccountInfo<'a>,
+    pub merchant: &'b trezoa_account_info::AccountInfo<'a>,
     /// Operator PDA
-    pub operator: &'b solana_account_info::AccountInfo<'a>,
+    pub operator: &'b trezoa_account_info::AccountInfo<'a>,
     /// Merchant Operator Config PDA
-    pub merchant_operator_config: &'b solana_account_info::AccountInfo<'a>,
+    pub merchant_operator_config: &'b trezoa_account_info::AccountInfo<'a>,
 
-    pub mint: &'b solana_account_info::AccountInfo<'a>,
+    pub mint: &'b trezoa_account_info::AccountInfo<'a>,
     /// Merchant Escrow ATA (Merchant PDA is owner)
-    pub merchant_escrow_ata: &'b solana_account_info::AccountInfo<'a>,
+    pub merchant_escrow_ata: &'b trezoa_account_info::AccountInfo<'a>,
 
-    pub buyer_ata: &'b solana_account_info::AccountInfo<'a>,
+    pub buyer_ata: &'b trezoa_account_info::AccountInfo<'a>,
 
-    pub token_program: &'b solana_account_info::AccountInfo<'a>,
+    pub token_program: &'b trezoa_account_info::AccountInfo<'a>,
 
-    pub system_program: &'b solana_account_info::AccountInfo<'a>,
+    pub system_program: &'b trezoa_account_info::AccountInfo<'a>,
     /// Event authority PDA
-    pub event_authority: &'b solana_account_info::AccountInfo<'a>,
+    pub event_authority: &'b trezoa_account_info::AccountInfo<'a>,
     /// Commerce Program ID
-    pub commerce_program: &'b solana_account_info::AccountInfo<'a>,
+    pub commerce_program: &'b trezoa_account_info::AccountInfo<'a>,
 }
 
 /// `chargeback_payment` CPI instruction.
 pub struct ChargebackPaymentCpi<'a, 'b> {
     /// The program to invoke.
-    pub __program: &'b solana_account_info::AccountInfo<'a>,
+    pub __program: &'b trezoa_account_info::AccountInfo<'a>,
 
-    pub payer: &'b solana_account_info::AccountInfo<'a>,
+    pub payer: &'b trezoa_account_info::AccountInfo<'a>,
     /// Payment PDA being updated
-    pub payment: &'b solana_account_info::AccountInfo<'a>,
+    pub payment: &'b trezoa_account_info::AccountInfo<'a>,
 
-    pub operator_authority: &'b solana_account_info::AccountInfo<'a>,
+    pub operator_authority: &'b trezoa_account_info::AccountInfo<'a>,
     /// Chargeback destination owner
-    pub buyer: &'b solana_account_info::AccountInfo<'a>,
+    pub buyer: &'b trezoa_account_info::AccountInfo<'a>,
     /// Merchant PDA
-    pub merchant: &'b solana_account_info::AccountInfo<'a>,
+    pub merchant: &'b trezoa_account_info::AccountInfo<'a>,
     /// Operator PDA
-    pub operator: &'b solana_account_info::AccountInfo<'a>,
+    pub operator: &'b trezoa_account_info::AccountInfo<'a>,
     /// Merchant Operator Config PDA
-    pub merchant_operator_config: &'b solana_account_info::AccountInfo<'a>,
+    pub merchant_operator_config: &'b trezoa_account_info::AccountInfo<'a>,
 
-    pub mint: &'b solana_account_info::AccountInfo<'a>,
+    pub mint: &'b trezoa_account_info::AccountInfo<'a>,
     /// Merchant Escrow ATA (Merchant PDA is owner)
-    pub merchant_escrow_ata: &'b solana_account_info::AccountInfo<'a>,
+    pub merchant_escrow_ata: &'b trezoa_account_info::AccountInfo<'a>,
 
-    pub buyer_ata: &'b solana_account_info::AccountInfo<'a>,
+    pub buyer_ata: &'b trezoa_account_info::AccountInfo<'a>,
 
-    pub token_program: &'b solana_account_info::AccountInfo<'a>,
+    pub token_program: &'b trezoa_account_info::AccountInfo<'a>,
 
-    pub system_program: &'b solana_account_info::AccountInfo<'a>,
+    pub system_program: &'b trezoa_account_info::AccountInfo<'a>,
     /// Event authority PDA
-    pub event_authority: &'b solana_account_info::AccountInfo<'a>,
+    pub event_authority: &'b trezoa_account_info::AccountInfo<'a>,
     /// Commerce Program ID
-    pub commerce_program: &'b solana_account_info::AccountInfo<'a>,
+    pub commerce_program: &'b trezoa_account_info::AccountInfo<'a>,
 }
 
 impl<'a, 'b> ChargebackPaymentCpi<'a, 'b> {
     pub fn new(
-        program: &'b solana_account_info::AccountInfo<'a>,
+        program: &'b trezoa_account_info::AccountInfo<'a>,
         accounts: ChargebackPaymentCpiAccounts<'a, 'b>,
     ) -> Self {
         Self {
@@ -394,21 +394,21 @@ impl<'a, 'b> ChargebackPaymentCpi<'a, 'b> {
         }
     }
     #[inline(always)]
-    pub fn invoke(&self) -> solana_program_entrypoint::ProgramResult {
+    pub fn invoke(&self) -> trezoa_program_entrypoint::ProgramResult {
         self.invoke_signed_with_remaining_accounts(&[], &[])
     }
     #[inline(always)]
     pub fn invoke_with_remaining_accounts(
         &self,
-        remaining_accounts: &[(&'b solana_account_info::AccountInfo<'a>, bool, bool)],
-    ) -> solana_program_entrypoint::ProgramResult {
+        remaining_accounts: &[(&'b trezoa_account_info::AccountInfo<'a>, bool, bool)],
+    ) -> trezoa_program_entrypoint::ProgramResult {
         self.invoke_signed_with_remaining_accounts(&[], remaining_accounts)
     }
     #[inline(always)]
     pub fn invoke_signed(
         &self,
         signers_seeds: &[&[&[u8]]],
-    ) -> solana_program_entrypoint::ProgramResult {
+    ) -> trezoa_program_entrypoint::ProgramResult {
         self.invoke_signed_with_remaining_accounts(signers_seeds, &[])
     }
     #[allow(clippy::arithmetic_side_effects)]
@@ -417,64 +417,64 @@ impl<'a, 'b> ChargebackPaymentCpi<'a, 'b> {
     pub fn invoke_signed_with_remaining_accounts(
         &self,
         signers_seeds: &[&[&[u8]]],
-        remaining_accounts: &[(&'b solana_account_info::AccountInfo<'a>, bool, bool)],
-    ) -> solana_program_entrypoint::ProgramResult {
+        remaining_accounts: &[(&'b trezoa_account_info::AccountInfo<'a>, bool, bool)],
+    ) -> trezoa_program_entrypoint::ProgramResult {
         let mut accounts = Vec::with_capacity(14 + remaining_accounts.len());
-        accounts.push(solana_instruction::AccountMeta::new(*self.payer.key, true));
-        accounts.push(solana_instruction::AccountMeta::new(
+        accounts.push(trezoa_instruction::AccountMeta::new(*self.payer.key, true));
+        accounts.push(trezoa_instruction::AccountMeta::new(
             *self.payment.key,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.operator_authority.key,
             true,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.buyer.key,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.merchant.key,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.operator.key,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.merchant_operator_config.key,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.mint.key,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new(
+        accounts.push(trezoa_instruction::AccountMeta::new(
             *self.merchant_escrow_ata.key,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new(
+        accounts.push(trezoa_instruction::AccountMeta::new(
             *self.buyer_ata.key,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.token_program.key,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.system_program.key,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.event_authority.key,
             false,
         ));
-        accounts.push(solana_instruction::AccountMeta::new_readonly(
+        accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.commerce_program.key,
             false,
         ));
         remaining_accounts.iter().for_each(|remaining_account| {
-            accounts.push(solana_instruction::AccountMeta {
+            accounts.push(trezoa_instruction::AccountMeta {
                 pubkey: *remaining_account.0.key,
                 is_signer: remaining_account.1,
                 is_writable: remaining_account.2,
@@ -482,7 +482,7 @@ impl<'a, 'b> ChargebackPaymentCpi<'a, 'b> {
         });
         let data = borsh::to_vec(&ChargebackPaymentInstructionData::new()).unwrap();
 
-        let instruction = solana_instruction::Instruction {
+        let instruction = trezoa_instruction::Instruction {
             program_id: crate::COMMERCE_PROGRAM_ID,
             accounts,
             data,
@@ -508,9 +508,9 @@ impl<'a, 'b> ChargebackPaymentCpi<'a, 'b> {
             .for_each(|remaining_account| account_infos.push(remaining_account.0.clone()));
 
         if signers_seeds.is_empty() {
-            solana_cpi::invoke(&instruction, &account_infos)
+            trezoa_cpi::invoke(&instruction, &account_infos)
         } else {
-            solana_cpi::invoke_signed(&instruction, &account_infos, signers_seeds)
+            trezoa_cpi::invoke_signed(&instruction, &account_infos, signers_seeds)
         }
     }
 }
@@ -539,7 +539,7 @@ pub struct ChargebackPaymentCpiBuilder<'a, 'b> {
 }
 
 impl<'a, 'b> ChargebackPaymentCpiBuilder<'a, 'b> {
-    pub fn new(program: &'b solana_account_info::AccountInfo<'a>) -> Self {
+    pub fn new(program: &'b trezoa_account_info::AccountInfo<'a>) -> Self {
         let instruction = Box::new(ChargebackPaymentCpiBuilderInstruction {
             __program: program,
             payer: None,
@@ -561,39 +561,39 @@ impl<'a, 'b> ChargebackPaymentCpiBuilder<'a, 'b> {
         Self { instruction }
     }
     #[inline(always)]
-    pub fn payer(&mut self, payer: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn payer(&mut self, payer: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
         self.instruction.payer = Some(payer);
         self
     }
     /// Payment PDA being updated
     #[inline(always)]
-    pub fn payment(&mut self, payment: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn payment(&mut self, payment: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
         self.instruction.payment = Some(payment);
         self
     }
     #[inline(always)]
     pub fn operator_authority(
         &mut self,
-        operator_authority: &'b solana_account_info::AccountInfo<'a>,
+        operator_authority: &'b trezoa_account_info::AccountInfo<'a>,
     ) -> &mut Self {
         self.instruction.operator_authority = Some(operator_authority);
         self
     }
     /// Chargeback destination owner
     #[inline(always)]
-    pub fn buyer(&mut self, buyer: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn buyer(&mut self, buyer: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
         self.instruction.buyer = Some(buyer);
         self
     }
     /// Merchant PDA
     #[inline(always)]
-    pub fn merchant(&mut self, merchant: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn merchant(&mut self, merchant: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
         self.instruction.merchant = Some(merchant);
         self
     }
     /// Operator PDA
     #[inline(always)]
-    pub fn operator(&mut self, operator: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn operator(&mut self, operator: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
         self.instruction.operator = Some(operator);
         self
     }
@@ -601,13 +601,13 @@ impl<'a, 'b> ChargebackPaymentCpiBuilder<'a, 'b> {
     #[inline(always)]
     pub fn merchant_operator_config(
         &mut self,
-        merchant_operator_config: &'b solana_account_info::AccountInfo<'a>,
+        merchant_operator_config: &'b trezoa_account_info::AccountInfo<'a>,
     ) -> &mut Self {
         self.instruction.merchant_operator_config = Some(merchant_operator_config);
         self
     }
     #[inline(always)]
-    pub fn mint(&mut self, mint: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn mint(&mut self, mint: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
         self.instruction.mint = Some(mint);
         self
     }
@@ -615,20 +615,20 @@ impl<'a, 'b> ChargebackPaymentCpiBuilder<'a, 'b> {
     #[inline(always)]
     pub fn merchant_escrow_ata(
         &mut self,
-        merchant_escrow_ata: &'b solana_account_info::AccountInfo<'a>,
+        merchant_escrow_ata: &'b trezoa_account_info::AccountInfo<'a>,
     ) -> &mut Self {
         self.instruction.merchant_escrow_ata = Some(merchant_escrow_ata);
         self
     }
     #[inline(always)]
-    pub fn buyer_ata(&mut self, buyer_ata: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn buyer_ata(&mut self, buyer_ata: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
         self.instruction.buyer_ata = Some(buyer_ata);
         self
     }
     #[inline(always)]
     pub fn token_program(
         &mut self,
-        token_program: &'b solana_account_info::AccountInfo<'a>,
+        token_program: &'b trezoa_account_info::AccountInfo<'a>,
     ) -> &mut Self {
         self.instruction.token_program = Some(token_program);
         self
@@ -636,7 +636,7 @@ impl<'a, 'b> ChargebackPaymentCpiBuilder<'a, 'b> {
     #[inline(always)]
     pub fn system_program(
         &mut self,
-        system_program: &'b solana_account_info::AccountInfo<'a>,
+        system_program: &'b trezoa_account_info::AccountInfo<'a>,
     ) -> &mut Self {
         self.instruction.system_program = Some(system_program);
         self
@@ -645,7 +645,7 @@ impl<'a, 'b> ChargebackPaymentCpiBuilder<'a, 'b> {
     #[inline(always)]
     pub fn event_authority(
         &mut self,
-        event_authority: &'b solana_account_info::AccountInfo<'a>,
+        event_authority: &'b trezoa_account_info::AccountInfo<'a>,
     ) -> &mut Self {
         self.instruction.event_authority = Some(event_authority);
         self
@@ -654,7 +654,7 @@ impl<'a, 'b> ChargebackPaymentCpiBuilder<'a, 'b> {
     #[inline(always)]
     pub fn commerce_program(
         &mut self,
-        commerce_program: &'b solana_account_info::AccountInfo<'a>,
+        commerce_program: &'b trezoa_account_info::AccountInfo<'a>,
     ) -> &mut Self {
         self.instruction.commerce_program = Some(commerce_program);
         self
@@ -663,7 +663,7 @@ impl<'a, 'b> ChargebackPaymentCpiBuilder<'a, 'b> {
     #[inline(always)]
     pub fn add_remaining_account(
         &mut self,
-        account: &'b solana_account_info::AccountInfo<'a>,
+        account: &'b trezoa_account_info::AccountInfo<'a>,
         is_writable: bool,
         is_signer: bool,
     ) -> &mut Self {
@@ -679,7 +679,7 @@ impl<'a, 'b> ChargebackPaymentCpiBuilder<'a, 'b> {
     #[inline(always)]
     pub fn add_remaining_accounts(
         &mut self,
-        accounts: &[(&'b solana_account_info::AccountInfo<'a>, bool, bool)],
+        accounts: &[(&'b trezoa_account_info::AccountInfo<'a>, bool, bool)],
     ) -> &mut Self {
         self.instruction
             .__remaining_accounts
@@ -687,7 +687,7 @@ impl<'a, 'b> ChargebackPaymentCpiBuilder<'a, 'b> {
         self
     }
     #[inline(always)]
-    pub fn invoke(&self) -> solana_program_entrypoint::ProgramResult {
+    pub fn invoke(&self) -> trezoa_program_entrypoint::ProgramResult {
         self.invoke_signed(&[])
     }
     #[allow(clippy::clone_on_copy)]
@@ -695,7 +695,7 @@ impl<'a, 'b> ChargebackPaymentCpiBuilder<'a, 'b> {
     pub fn invoke_signed(
         &self,
         signers_seeds: &[&[&[u8]]],
-    ) -> solana_program_entrypoint::ProgramResult {
+    ) -> trezoa_program_entrypoint::ProgramResult {
         let instruction = ChargebackPaymentCpi {
             __program: self.instruction.__program,
 
@@ -757,21 +757,21 @@ impl<'a, 'b> ChargebackPaymentCpiBuilder<'a, 'b> {
 
 #[derive(Clone, Debug)]
 struct ChargebackPaymentCpiBuilderInstruction<'a, 'b> {
-    __program: &'b solana_account_info::AccountInfo<'a>,
-    payer: Option<&'b solana_account_info::AccountInfo<'a>>,
-    payment: Option<&'b solana_account_info::AccountInfo<'a>>,
-    operator_authority: Option<&'b solana_account_info::AccountInfo<'a>>,
-    buyer: Option<&'b solana_account_info::AccountInfo<'a>>,
-    merchant: Option<&'b solana_account_info::AccountInfo<'a>>,
-    operator: Option<&'b solana_account_info::AccountInfo<'a>>,
-    merchant_operator_config: Option<&'b solana_account_info::AccountInfo<'a>>,
-    mint: Option<&'b solana_account_info::AccountInfo<'a>>,
-    merchant_escrow_ata: Option<&'b solana_account_info::AccountInfo<'a>>,
-    buyer_ata: Option<&'b solana_account_info::AccountInfo<'a>>,
-    token_program: Option<&'b solana_account_info::AccountInfo<'a>>,
-    system_program: Option<&'b solana_account_info::AccountInfo<'a>>,
-    event_authority: Option<&'b solana_account_info::AccountInfo<'a>>,
-    commerce_program: Option<&'b solana_account_info::AccountInfo<'a>>,
+    __program: &'b trezoa_account_info::AccountInfo<'a>,
+    payer: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+    payment: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+    operator_authority: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+    buyer: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+    merchant: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+    operator: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+    merchant_operator_config: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+    mint: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+    merchant_escrow_ata: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+    buyer_ata: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+    token_program: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+    system_program: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+    event_authority: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+    commerce_program: Option<&'b trezoa_account_info::AccountInfo<'a>>,
     /// Additional instruction accounts `(AccountInfo, is_writable, is_signer)`.
-    __remaining_accounts: Vec<(&'b solana_account_info::AccountInfo<'a>, bool, bool)>,
+    __remaining_accounts: Vec<(&'b trezoa_account_info::AccountInfo<'a>, bool, bool)>,
 }

@@ -1,13 +1,13 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { useTipForm } from '../../hooks/use-tip-form';
-import type { SolanaCommerceConfig, Currency, PaymentMethod } from '../../types';
+import type { TrezoaCommerceConfig, Currency, PaymentMethod } from '../../types';
 
 // Mock the constants and utils
 vi.mock('../../constants/tip-modal', () => ({
     ALL_CURRENCIES: [
         { value: 'USDC', label: 'USD Coin', symbol: 'USDC' },
-        { value: 'SOL', label: 'Solana', symbol: 'SOL' },
+        { value: 'TRZ', label: 'Trezoa', symbol: 'TRZ' },
         { value: 'USDT', label: 'Tether USD', symbol: 'USDT' },
     ],
 }));
@@ -22,18 +22,18 @@ import * as tipConstants from '../../constants/tip-modal';
 import * as utils from '../../utils';
 
 describe('useTipForm', () => {
-    const baseConfig: SolanaCommerceConfig = {
+    const baseConfig: TrezoaCommerceConfig = {
         mode: 'tip',
         merchant: {
             name: 'Test Merchant',
             wallet: '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM',
         },
-        allowedMints: ['USDC', 'SOL', 'USDT'],
+        allowedMints: ['USDC', 'TRZ', 'USDT'],
     };
 
     beforeEach(() => {
         vi.clearAllMocks();
-        vi.mocked(utils.convertUsdToLamports).mockResolvedValue(1000000000); // 1 SOL in lamports
+        vi.mocked(utils.convertUsdToLamports).mockResolvedValue(1000000000); // 1 TRZ in lamports
         vi.mocked(utils.getDecimals).mockReturnValue(6); // USDC decimals
     });
 
@@ -55,14 +55,14 @@ describe('useTipForm', () => {
         });
 
         it('should initialize with first allowed mint as currency', () => {
-            const configWithSolFirst = {
+            const configWithTrzFirst = {
                 ...baseConfig,
-                allowedMints: ['SOL', 'USDC', 'USDT'],
+                allowedMints: ['TRZ', 'USDC', 'USDT'],
             };
 
-            const { result } = renderHook(() => useTipForm(configWithSolFirst));
+            const { result } = renderHook(() => useTipForm(configWithTrzFirst));
 
-            expect(result.current.state.selectedCurrency).toBe('SOL');
+            expect(result.current.state.selectedCurrency).toBe('TRZ');
         });
 
         it('should handle empty allowedMints gracefully', () => {
@@ -83,7 +83,7 @@ describe('useTipForm', () => {
             const { result } = renderHook(() => useTipForm(baseConfig));
 
             expect(result.current.availableCurrencies).toHaveLength(3);
-            expect(result.current.availableCurrencies.map(c => c.value)).toEqual(['USDC', 'SOL', 'USDT']);
+            expect(result.current.availableCurrencies.map(c => c.value)).toEqual(['USDC', 'TRZ', 'USDT']);
         });
 
         it('should update when allowedMints change', () => {
@@ -126,10 +126,10 @@ describe('useTipForm', () => {
             const { result } = renderHook(() => useTipForm(baseConfig));
 
             act(() => {
-                result.current.actions.setCurrency('SOL');
+                result.current.actions.setCurrency('TRZ');
             });
 
-            expect(result.current.state.selectedCurrency).toBe('SOL');
+            expect(result.current.state.selectedCurrency).toBe('TRZ');
         });
 
         it('should set payment method', () => {
@@ -292,13 +292,13 @@ describe('useTipForm', () => {
             });
 
             act(() => {
-                result.current.actions.setCurrency('SOL');
+                result.current.actions.setCurrency('TRZ');
             });
 
             expect(result.current.computed.selectedCurrencyInfo).toEqual({
-                value: 'SOL',
-                label: 'Solana',
-                symbol: 'SOL',
+                value: 'TRZ',
+                label: 'Trezoa',
+                symbol: 'TRZ',
             });
         });
     });
@@ -333,17 +333,17 @@ describe('useTipForm', () => {
         });
 
         describe('Payment Complete Handler', () => {
-            it('should handle SOL payment completion', async () => {
+            it('should handle TRZ payment completion', async () => {
                 const mockOnPayment = vi.fn();
                 const { result } = renderHook(() => useTipForm(baseConfig));
 
-                // Set SOL currency and amount
+                // Set TRZ currency and amount
                 act(() => {
-                    result.current.actions.setCurrency('SOL');
+                    result.current.actions.setCurrency('TRZ');
                     result.current.actions.setAmount(10);
                 });
 
-                vi.mocked(utils.convertUsdToLamports).mockResolvedValue(500000000); // 0.5 SOL in lamports
+                vi.mocked(utils.convertUsdToLamports).mockResolvedValue(500000000); // 0.5 TRZ in lamports
 
                 const paymentHandler = result.current.handlers.handlePaymentComplete(mockOnPayment);
 
@@ -352,7 +352,7 @@ describe('useTipForm', () => {
                 });
 
                 expect(vi.mocked(utils.convertUsdToLamports)).toHaveBeenCalledWith(10);
-                expect(mockOnPayment).toHaveBeenCalledWith(500000000, 'SOL', 'qr');
+                expect(mockOnPayment).toHaveBeenCalledWith(500000000, 'TRZ', 'qr');
             });
 
             it('should handle stablecoin payment completion', async () => {
@@ -419,18 +419,18 @@ describe('useTipForm', () => {
                 expect(mockOnPayment).not.toHaveBeenCalled();
             });
 
-            it('should handle SOL price API errors', async () => {
+            it('should handle TRZ price API errors', async () => {
                 const mockOnPayment = vi.fn();
                 const { result } = renderHook(() => useTipForm(baseConfig));
 
-                // Set SOL currency
+                // Set TRZ currency
                 act(() => {
-                    result.current.actions.setCurrency('SOL');
+                    result.current.actions.setCurrency('TRZ');
                     result.current.actions.setAmount(10);
                 });
 
                 // Mock price API error
-                vi.mocked(utils.convertUsdToLamports).mockRejectedValue(new Error('SOL price fetch failed'));
+                vi.mocked(utils.convertUsdToLamports).mockRejectedValue(new Error('TRZ price fetch failed'));
 
                 const paymentHandler = result.current.handlers.handlePaymentComplete(mockOnPayment);
 
@@ -438,7 +438,7 @@ describe('useTipForm', () => {
                     await paymentHandler();
                 });
 
-                expect(result.current.state.priceError).toBe('SOL price fetch failed');
+                expect(result.current.state.priceError).toBe('TRZ price fetch failed');
                 expect(result.current.state.isProcessing).toBe(false);
                 expect(result.current.state.currentStep).toBe('form');
                 expect(mockOnPayment).not.toHaveBeenCalled();
@@ -541,7 +541,7 @@ describe('useTipForm', () => {
 
             act(() => {
                 result.current.actions.setAmount(10);
-                result.current.actions.setCurrency('SOL');
+                result.current.actions.setCurrency('TRZ');
                 result.current.actions.setPaymentMethod('wallet');
                 result.current.actions.toggleCustomInput(true);
                 result.current.actions.setCustomAmount('25');
@@ -551,7 +551,7 @@ describe('useTipForm', () => {
 
             expect(result.current.state).toEqual({
                 selectedAmount: 10,
-                selectedCurrency: 'SOL',
+                selectedCurrency: 'TRZ',
                 selectedPaymentMethod: 'wallet',
                 customAmount: '25',
                 showCustomInput: true,

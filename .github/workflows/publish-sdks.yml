@@ -66,10 +66,10 @@ jobs:
       - name: Install dependencies
         run: cd program && make install
 
-      - name: Setup Solana CLI
-        uses: ./.github/actions/setup-solana
+      - name: Setup Trezoa CLI
+        uses: ./.github/actions/setup-trezoa
 
-      - name: Build Solana program and generate clients
+      - name: Build Trezoa program and generate clients
         run: cd program && make build
 
       - name: Install TypeScript dependencies
@@ -129,10 +129,10 @@ jobs:
       - name: Install dependencies
         run: cd program && make install
 
-      - name: Setup Solana CLI
-        uses: ./.github/actions/setup-solana
+      - name: Setup Trezoa CLI
+        uses: ./.github/actions/setup-trezoa
 
-      - name: Build Solana program and generate clients
+      - name: Build Trezoa program and generate clients
         run: cd program && make build
 
       - name: Build Rust client
@@ -177,50 +177,50 @@ jobs:
       - name: Build all packages in dependency order
         run: |
           echo "📦 Building SDK packages in dependency order..."
-          pnpm --filter @solana-commerce/connector build
-          pnpm --filter @solana-commerce/solana-pay build
-          pnpm --filter @solana-commerce/headless build
-          pnpm --filter @solana-commerce/sdk build
-          pnpm --filter @solana-commerce/react build
-          pnpm --filter @solana-commerce/kit build
+          pnpm --filter @trezoa-commerce/connector build
+          pnpm --filter @trezoa-commerce/trezoa-pay build
+          pnpm --filter @trezoa-commerce/headless build
+          pnpm --filter @trezoa-commerce/sdk build
+          pnpm --filter @trezoa-commerce/react build
+          pnpm --filter @trezoa-commerce/kit build
 
-      - name: Publish @solana-commerce/connector
+      - name: Publish @trezoa-commerce/connector
         working-directory: packages/connector
         run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         continue-on-error: true
 
-      - name: Publish @solana-commerce/solana-pay
-        working-directory: packages/solana-pay
+      - name: Publish @trezoa-commerce/trezoa-pay
+        working-directory: packages/trezoa-pay
         run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         continue-on-error: true
 
-      - name: Publish @solana-commerce/headless
+      - name: Publish @trezoa-commerce/headless
         working-directory: packages/headless
         run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         continue-on-error: true
 
-      - name: Publish @solana-commerce/sdk
+      - name: Publish @trezoa-commerce/sdk
         working-directory: packages/sdk
         run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         continue-on-error: true
 
-      - name: Publish @solana-commerce/react
+      - name: Publish @trezoa-commerce/react
         working-directory: packages/react
         run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         continue-on-error: true
 
-      - name: Publish @solana-commerce/kit (meta-package)
-        working-directory: packages/solana-commerce
+      - name: Publish @trezoa-commerce/kit (meta-package)
+        working-directory: packages/trezoa-commerce
         run: pnpm publish --access public --no-git-checks
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
@@ -246,10 +246,10 @@ jobs:
             ## Packages Published
 
             ### Program Client (TypeScript)
-            - **Package:** `@solana-commerce/program-client`
+            - **Package:** `@trezoa-commerce/program-client`
             - **Version:** ${{ github.ref_name }}
             - **Registry:** npm
-            - **Install:** `npm install @solana-commerce/program-client@${{ github.ref_name }}`
+            - **Install:** `npm install @trezoa-commerce/program-client@${{ github.ref_name }}`
 
             ### Program Client (Rust)
             - **Package:** `commerce-program-client`
@@ -260,32 +260,32 @@ jobs:
             ### SDK Packages (TypeScript)
 
             **Core SDK:**
-            - `@solana-commerce/connector` - Wallet connector client
-            - `@solana-commerce/sdk` - React hooks and utilities
-            - `@solana-commerce/headless` - Headless SDK
-            - `@solana-commerce/solana-pay` - Solana Pay implementation
-            - `@solana-commerce/react` - React components and hooks
-            - `@solana-commerce/kit` - All-in-one meta-package
+            - `@trezoa-commerce/connector` - Wallet connector client
+            - `@trezoa-commerce/sdk` - React hooks and utilities
+            - `@trezoa-commerce/headless` - Headless SDK
+            - `@trezoa-commerce/trezoa-pay` - Trezoa Pay implementation
+            - `@trezoa-commerce/react` - React components and hooks
+            - `@trezoa-commerce/kit` - All-in-one meta-package
 
             ## Installation
 
             **All-in-one package (recommended):**
             ```bash
-            npm install @solana-commerce/kit
+            npm install @trezoa-commerce/kit
             ```
 
             **Individual packages:**
             ```bash
-            npm install @solana-commerce/react
-            npm install @solana-commerce/sdk
-            npm install @solana-commerce/connector
-            npm install @solana-commerce/headless
-            npm install @solana-commerce/solana-pay
+            npm install @trezoa-commerce/react
+            npm install @trezoa-commerce/sdk
+            npm install @trezoa-commerce/connector
+            npm install @trezoa-commerce/headless
+            npm install @trezoa-commerce/trezoa-pay
             ```
 
             **Program client:**
             ```bash
-            npm install @solana-commerce/program-client
+            npm install @trezoa-commerce/program-client
             ```
 
             **Rust client:**
@@ -295,12 +295,12 @@ jobs:
             ```
 
             ## NPM Package Links
-            - [@solana-commerce/kit](https://www.npmjs.com/package/@solana-commerce/kit) - All-in-one package
-            - [@solana-commerce/react](https://www.npmjs.com/package/@solana-commerce/react)
-            - [@solana-commerce/sdk](https://www.npmjs.com/package/@solana-commerce/sdk)
-            - [@solana-commerce/connector](https://www.npmjs.com/package/@solana-commerce/connector)
-            - [@solana-commerce/headless](https://www.npmjs.com/package/@solana-commerce/headless)
-            - [@solana-commerce/solana-pay](https://www.npmjs.com/package/@solana-commerce/solana-pay)
-            - [@solana-commerce/program-client](https://www.npmjs.com/package/@solana-commerce/program-client)
+            - [@trezoa-commerce/kit](https://www.npmjs.com/package/@trezoa-commerce/kit) - All-in-one package
+            - [@trezoa-commerce/react](https://www.npmjs.com/package/@trezoa-commerce/react)
+            - [@trezoa-commerce/sdk](https://www.npmjs.com/package/@trezoa-commerce/sdk)
+            - [@trezoa-commerce/connector](https://www.npmjs.com/package/@trezoa-commerce/connector)
+            - [@trezoa-commerce/headless](https://www.npmjs.com/package/@trezoa-commerce/headless)
+            - [@trezoa-commerce/trezoa-pay](https://www.npmjs.com/package/@trezoa-commerce/trezoa-pay)
+            - [@trezoa-commerce/program-client](https://www.npmjs.com/package/@trezoa-commerce/program-client)
           draft: false
           prerelease: ${{ contains(github.ref_name, '-') }}

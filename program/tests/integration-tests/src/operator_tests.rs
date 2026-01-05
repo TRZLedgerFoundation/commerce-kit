@@ -1,6 +1,6 @@
 use crate::{state_utils::assert_get_or_create_operator, utils::TestContext};
 
-use solana_sdk::signature::Keypair;
+use trezoa_sdk::signature::Keypair;
 
 #[tokio::test]
 async fn test_create_operator_success() {

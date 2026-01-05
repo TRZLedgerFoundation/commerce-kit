@@ -1,8 +1,8 @@
 use commerce_program_client::{CommerceProgramError, COMMERCE_PROGRAM_ID as PROGRAM_ID};
 use litesvm::{types::TransactionMetadata, LiteSVM};
-use solana_program::pubkey;
-use solana_program_pack::Pack;
-use solana_sdk::{
+use trezoa_program::pubkey;
+use trezoa_program_pack::Pack;
+use trezoa_sdk::{
     account::Account,
     instruction::Instruction,
     program_option::COption,
@@ -10,13 +10,13 @@ use solana_sdk::{
     signature::{Keypair, Signer},
     transaction::Transaction,
 };
-use spl_token::{
+use tpl_token::{
     state::{Account as TokenAccount, Mint},
     ID as TOKEN_PROGRAM_ID,
 };
 
-use solana_program::clock::Clock;
-use spl_associated_token_account::{
+use trezoa_program::clock::Clock;
+use tpl_associated_token_account::{
     get_associated_token_address, instruction::create_associated_token_account_idempotent,
 };
 
@@ -54,7 +54,7 @@ pub const ACCEPTED_CURRENCIES_EMPTY_ERROR: u32 =
     CommerceProgramError::AcceptedCurrenciesEmpty as u32;
 pub const DUPLICATE_MINT_ERROR: u32 = CommerceProgramError::DuplicateMint as u32;
 
-// Standard Solana Program Error Codes
+// Standard Trezoa Program Error Codes
 pub const INVALID_ARGUMENT_ERROR: u32 = 5; // ProgramError::InvalidArgument
 pub const INVALID_ACCOUNT_DATA_ERROR: u32 = 6; // ProgramError::InvalidAccountData
 pub const NOT_ENOUGH_ACCOUNT_KEYS_ERROR: u32 = 2; // ProgramError::NotEnoughAccountKeys
@@ -66,7 +66,7 @@ pub const MISSING_REQUIRED_SIGNATURE_ERROR: u32 = 0; // ProgramError::MissingReq
 // Token Program Error Codes
 pub const TOKEN_INSUFFICIENT_FUNDS_ERROR: u32 = 1; // Token program insufficient funds
 
-// fetched account data using `solana account`
+// fetched account data using `trezoa account`
 const USDC_MINT_DATA: &[u8] = &[
     1, 0, 0, 0, 152, 254, 134, 232, 141, 155, 226, 234, 139, 193, 204, 164, 135, 139, 41, 136, 194,
     64, 245, 43, 132, 36, 191, 180, 14, 209, 162, 221, 203, 94, 25, 155, 81, 11, 239, 189, 73, 56,
@@ -74,7 +74,7 @@ const USDC_MINT_DATA: &[u8] = &[
     205, 18, 110, 155, 138, 93, 58, 56, 83, 109, 55, 247, 180, 20, 232, 182, 103,
 ];
 
-// fetched account data using `solana account`
+// fetched account data using `trezoa account`
 const USDT_MINT_DATA: &[u8] = &[
     1, 0, 0, 0, 5, 234, 156, 241, 108, 228, 17, 152, 241, 164, 153, 55, 200, 140, 55, 10, 148, 212,
     175, 255, 137, 181, 186, 203, 142, 244, 94, 99, 36, 187, 120, 247, 198, 70, 162, 45, 160, 125,
@@ -109,10 +109,10 @@ impl TestContext {
         svm.add_program(PROGRAM_ID, program_data);
 
         let token_program_data =
-            std::fs::read("deps/spl_token.so").expect("Failed to read token program");
+            std::fs::read("deps/tpl_token.so").expect("Failed to read token program");
         svm.add_program(TOKEN_PROGRAM_ID, &token_program_data);
 
-        let ata_program_data = std::fs::read("deps/spl_associated_token_account.so")
+        let ata_program_data = std::fs::read("deps/tpl_associated_token_account.so")
             .expect("Failed to read associated token program");
         svm.add_program(ATA_PROGRAM_ID, &ata_program_data);
 
@@ -365,7 +365,7 @@ pub fn set_token_balance(
         owner: *owner,
         amount,
         delegate: COption::None,
-        state: spl_token::state::AccountState::Initialized,
+        state: tpl_token::state::AccountState::Initialized,
         is_native: COption::None,
         delegated_amount: 0,
         close_authority: COption::None,
@@ -428,7 +428,7 @@ pub fn assert_program_error(
             // Check for custom program errors (Custom(N))
             let expected_custom_error = format!("Custom({})", expected_error_code);
 
-            // Check for standard Solana program errors based on error code mapping
+            // Check for standard Trezoa program errors based on error code mapping
             let standard_error_patterns = match expected_error_code {
                 0 => vec!["MissingRequiredSignature"],
                 1 => vec!["insufficient funds"], // Token program error

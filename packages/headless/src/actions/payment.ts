@@ -1,4 +1,4 @@
-import type { SolanaClient } from 'gill';
+import type { TrezoaClient } from 'gill';
 import { OrderRequest, PaymentVerificationResult } from '../types';
 import { STABLECOINS } from '../types/tokens';
 import { signature, type Signature, address } from 'gill';
@@ -9,7 +9,7 @@ import {
 } from 'gill/programs/token';
 
 export async function verifyPayment(
-    rpc: SolanaClient['rpc'],
+    rpc: TrezoaClient['rpc'],
     signatureString: string,
     expectedAmount?: number,
     expectedRecipient?: string,
@@ -44,7 +44,7 @@ export async function verifyPayment(
         if (verified && expectedRecipient && expectedAmount != null) {
             const recipientAddr = address(expectedRecipient);
 
-            // If SOL transfer (no mint), check lamports delta at recipient index
+            // If TRZ transfer (no mint), check lamports delta at recipient index
             const acctIndex = txData.transaction.message.accountKeys.findIndex(
                 k => k.pubkey.toString() === recipientAddr.toString(),
             );
@@ -55,7 +55,7 @@ export async function verifyPayment(
                 verified = delta >= expectedAmount;
             }
 
-            // If SPL transfer, check postTokenBalances for recipient ATA across Token and Token-2022
+            // If TPL transfer, check postTokenBalances for recipient ATA across Token and Token-2022
             if (!verified && expectedMint) {
                 try {
                     const mintAddr = address(expectedMint);
@@ -102,7 +102,7 @@ export async function verifyPayment(
 }
 
 export async function waitForConfirmation(
-    rpc: SolanaClient['rpc'],
+    rpc: TrezoaClient['rpc'],
     signatureStr: string,
     timeoutMs: number = 30000,
 ): Promise<boolean> {
@@ -142,14 +142,14 @@ export function createCommercePaymentRequest(request: OrderRequest) {
     // Use provided reference or create a simple one without timestamps for SSR safety
     const paymentReference = reference || `commerce-${Math.floor(Math.random() * 1000000)}`;
 
-    // Create Solana Pay URL
-    const baseUrl = 'solana:';
+    // Create Trezoa Pay URL
+    const baseUrl = 'trezoa:';
     const params = new URLSearchParams();
 
     params.append('amount', totalAmount.toString());
 
-    if (currency && currency !== 'SOL') {
-        params.append('spl-token', currency);
+    if (currency && currency !== 'TRZ') {
+        params.append('tpl-token', currency);
     }
 
     if (memo) {
@@ -172,7 +172,7 @@ export function createCommercePaymentRequest(request: OrderRequest) {
         url,
         recipient,
         amount: totalAmount,
-        currency: currency || 'SOL',
+        currency: currency || 'TRZ',
         reference: paymentReference,
         items,
         label,

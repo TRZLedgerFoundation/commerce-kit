@@ -11,7 +11,7 @@ import {
   getU8Encoder,
   type Address,
   type ReadonlyUint8Array,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import {
   type ParsedClearPaymentInstruction,
   type ParsedClosePaymentInstruction,

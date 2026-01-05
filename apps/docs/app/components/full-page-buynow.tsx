@@ -1,6 +1,6 @@
 'use client';
 
-import { PaymentButton } from '@solana-commerce/react';
+import { PaymentButton } from '@trezoa-commerce/react';
 
 interface FullPageBuyNowProps {
   rpcUrl?: string;
@@ -10,13 +10,13 @@ export function FullPageBuyNow({ rpcUrl }: FullPageBuyNowProps = {}) {
   return (
     <PaymentButton
     config={{
-      rpcUrl: rpcUrl || process.env.NEXT_PUBLIC_SOLANA_RPC_URL,
+      rpcUrl: rpcUrl || process.env.NEXT_PUBLIC_trezoa_RPC_URL,
       mode: 'buyNow',
       position: 'inline',
       merchant: {
         name: 'Demo Store',
         wallet: 'BQWWFhzBdw2vKKBUX17NHeFbCoFQHfRARpdztPE2tDJ',
-        description: 'Experience Solana Commerce SDK'
+        description: 'Experience Trezoa Commerce SDK'
       },
       theme: {
         primaryColor: '#9945FF',
@@ -27,7 +27,7 @@ export function FullPageBuyNow({ rpcUrl }: FullPageBuyNowProps = {}) {
         fontFamily: 'system-ui, -apple-system, sans-serif'
       },
 
-      allowedMints: ["SOL","USDC","USDT","USDC_DEVNET","SOL_DEVNET","USDT_DEVNET"],
+      allowedMints: ["TRZ","USDC","USDT","USDC_DEVNET","SOL_DEVNET","USDT_DEVNET"],
       network: 'mainnet',
       showQR: true,
       enableWalletConnect: true,
@@ -59,7 +59,7 @@ export function FullPageBuyNow2() {
       merchant: {
         name: 'Demo Store',
         wallet: 'BQWWFhzBdw2vKKBUX17NHeFbCoFQHfRARpdztPE2tDJ',
-        description: 'Experience Solana Commerce SDK'
+        description: 'Experience Trezoa Commerce SDK'
       },
       theme: {
         primaryColor: '#9945FF',
@@ -70,7 +70,7 @@ export function FullPageBuyNow2() {
         fontFamily: 'system-ui, -apple-system, sans-serif'
       },
 
-      allowedMints: ["SOL","USDC","USDT","USDC_DEVNET","SOL_DEVNET","USDT_DEVNET"],
+      allowedMints: ["TRZ","USDC","USDT","USDC_DEVNET","SOL_DEVNET","USDT_DEVNET"],
       network: 'mainnet',
       showQR: true,
       enableWalletConnect: true,

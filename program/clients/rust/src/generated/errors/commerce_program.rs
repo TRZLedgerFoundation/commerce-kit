@@ -69,9 +69,9 @@ pub enum CommerceProgramError {
     DuplicateMint = 0x12,
 }
 
-impl From<CommerceProgramError> for solana_program_error::ProgramError {
+impl From<CommerceProgramError> for trezoa_program_error::ProgramError {
     fn from(e: CommerceProgramError) -> Self {
-        solana_program_error::ProgramError::Custom(e as u32)
+        trezoa_program_error::ProgramError::Custom(e as u32)
     }
 }
 

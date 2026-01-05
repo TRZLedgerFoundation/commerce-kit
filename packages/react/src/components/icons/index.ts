@@ -1,11 +1,11 @@
-export { SolanaIcon } from './solana-icon';
+export { TrezoaIcon } from './trezoa-icon';
 export { USDCIcon } from './usdc-icon';
 export { USDTIcon } from './usdt-icon';
 export { TokenIcon } from './token-icon';
 export { SuccessIcon } from './success-icon';
 export { ErrorIcon } from './error-icon';
 export { WalletIcon } from './wallet-icon';
-export { SolanaPayIcon } from './solana-pay-icon';
+export { TrezoaPayIcon } from './trezoa-pay-icon';
 export { BackArrowIcon } from './back-arrow-icon';
 export { CloseIcon } from './close-icon';
 export { ChevronDownIcon } from './chevron-down-icon';

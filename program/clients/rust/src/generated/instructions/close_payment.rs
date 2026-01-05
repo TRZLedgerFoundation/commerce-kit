@@ -15,93 +15,93 @@ pub const CLOSE_PAYMENT_DISCRIMINATOR: u8 = 9;
 pub struct ClosePayment {
       
               
-          pub payer: solana_pubkey::Pubkey,
+          pub payer: trezoa_pubkey::Pubkey,
                 /// Payment PDA to close
 
     
               
-          pub payment: solana_pubkey::Pubkey,
+          pub payment: trezoa_pubkey::Pubkey,
           
               
-          pub operator_authority: solana_pubkey::Pubkey,
+          pub operator_authority: trezoa_pubkey::Pubkey,
                 /// Operator PDA
 
     
               
-          pub operator: solana_pubkey::Pubkey,
+          pub operator: trezoa_pubkey::Pubkey,
                 /// Merchant PDA
 
     
               
-          pub merchant: solana_pubkey::Pubkey,
+          pub merchant: trezoa_pubkey::Pubkey,
                 /// Buyer account
 
     
               
-          pub buyer: solana_pubkey::Pubkey,
+          pub buyer: trezoa_pubkey::Pubkey,
                 /// Merchant Operator Config PDA
 
     
               
-          pub merchant_operator_config: solana_pubkey::Pubkey,
+          pub merchant_operator_config: trezoa_pubkey::Pubkey,
                 /// Token mint
 
     
               
-          pub mint: solana_pubkey::Pubkey,
+          pub mint: trezoa_pubkey::Pubkey,
           
               
-          pub system_program: solana_pubkey::Pubkey,
+          pub system_program: trezoa_pubkey::Pubkey,
       }
 
 impl ClosePayment {
-  pub fn instruction(&self) -> solana_instruction::Instruction {
+  pub fn instruction(&self) -> trezoa_instruction::Instruction {
     self.instruction_with_remaining_accounts(&[])
   }
   #[allow(clippy::arithmetic_side_effects)]
   #[allow(clippy::vec_init_then_push)]
-  pub fn instruction_with_remaining_accounts(&self, remaining_accounts: &[solana_instruction::AccountMeta]) -> solana_instruction::Instruction {
+  pub fn instruction_with_remaining_accounts(&self, remaining_accounts: &[trezoa_instruction::AccountMeta]) -> trezoa_instruction::Instruction {
     let mut accounts = Vec::with_capacity(9+ remaining_accounts.len());
-                            accounts.push(solana_instruction::AccountMeta::new(
+                            accounts.push(trezoa_instruction::AccountMeta::new(
             self.payer,
             true
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new(
+                                          accounts.push(trezoa_instruction::AccountMeta::new(
             self.payment,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.operator_authority,
             true
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.operator,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.merchant,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.buyer,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.merchant_operator_config,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.mint,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.system_program,
             false
           ));
                       accounts.extend_from_slice(remaining_accounts);
     let data = borsh::to_vec(&ClosePaymentInstructionData::new()).unwrap();
     
-    solana_instruction::Instruction {
+    trezoa_instruction::Instruction {
       program_id: crate::COMMERCE_PROGRAM_ID,
       accounts,
       data,
@@ -146,16 +146,16 @@ impl Default for ClosePaymentInstructionData {
                 ///   8. `[optional]` system_program (default to `11111111111111111111111111111111`)
 #[derive(Clone, Debug, Default)]
 pub struct ClosePaymentBuilder {
-            payer: Option<solana_pubkey::Pubkey>,
-                payment: Option<solana_pubkey::Pubkey>,
-                operator_authority: Option<solana_pubkey::Pubkey>,
-                operator: Option<solana_pubkey::Pubkey>,
-                merchant: Option<solana_pubkey::Pubkey>,
-                buyer: Option<solana_pubkey::Pubkey>,
-                merchant_operator_config: Option<solana_pubkey::Pubkey>,
-                mint: Option<solana_pubkey::Pubkey>,
-                system_program: Option<solana_pubkey::Pubkey>,
-                __remaining_accounts: Vec<solana_instruction::AccountMeta>,
+            payer: Option<trezoa_pubkey::Pubkey>,
+                payment: Option<trezoa_pubkey::Pubkey>,
+                operator_authority: Option<trezoa_pubkey::Pubkey>,
+                operator: Option<trezoa_pubkey::Pubkey>,
+                merchant: Option<trezoa_pubkey::Pubkey>,
+                buyer: Option<trezoa_pubkey::Pubkey>,
+                merchant_operator_config: Option<trezoa_pubkey::Pubkey>,
+                mint: Option<trezoa_pubkey::Pubkey>,
+                system_program: Option<trezoa_pubkey::Pubkey>,
+                __remaining_accounts: Vec<trezoa_instruction::AccountMeta>,
 }
 
 impl ClosePaymentBuilder {
@@ -163,71 +163,71 @@ impl ClosePaymentBuilder {
     Self::default()
   }
             #[inline(always)]
-    pub fn payer(&mut self, payer: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn payer(&mut self, payer: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.payer = Some(payer);
                     self
     }
             /// Payment PDA to close
 #[inline(always)]
-    pub fn payment(&mut self, payment: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn payment(&mut self, payment: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.payment = Some(payment);
                     self
     }
             #[inline(always)]
-    pub fn operator_authority(&mut self, operator_authority: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn operator_authority(&mut self, operator_authority: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.operator_authority = Some(operator_authority);
                     self
     }
             /// Operator PDA
 #[inline(always)]
-    pub fn operator(&mut self, operator: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn operator(&mut self, operator: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.operator = Some(operator);
                     self
     }
             /// Merchant PDA
 #[inline(always)]
-    pub fn merchant(&mut self, merchant: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn merchant(&mut self, merchant: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.merchant = Some(merchant);
                     self
     }
             /// Buyer account
 #[inline(always)]
-    pub fn buyer(&mut self, buyer: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn buyer(&mut self, buyer: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.buyer = Some(buyer);
                     self
     }
             /// Merchant Operator Config PDA
 #[inline(always)]
-    pub fn merchant_operator_config(&mut self, merchant_operator_config: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn merchant_operator_config(&mut self, merchant_operator_config: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.merchant_operator_config = Some(merchant_operator_config);
                     self
     }
             /// Token mint
 #[inline(always)]
-    pub fn mint(&mut self, mint: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn mint(&mut self, mint: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.mint = Some(mint);
                     self
     }
             /// `[optional account, default to '11111111111111111111111111111111']`
 #[inline(always)]
-    pub fn system_program(&mut self, system_program: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn system_program(&mut self, system_program: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.system_program = Some(system_program);
                     self
     }
             /// Add an additional account to the instruction.
   #[inline(always)]
-  pub fn add_remaining_account(&mut self, account: solana_instruction::AccountMeta) -> &mut Self {
+  pub fn add_remaining_account(&mut self, account: trezoa_instruction::AccountMeta) -> &mut Self {
     self.__remaining_accounts.push(account);
     self
   }
   /// Add additional accounts to the instruction.
   #[inline(always)]
-  pub fn add_remaining_accounts(&mut self, accounts: &[solana_instruction::AccountMeta]) -> &mut Self {
+  pub fn add_remaining_accounts(&mut self, accounts: &[trezoa_instruction::AccountMeta]) -> &mut Self {
     self.__remaining_accounts.extend_from_slice(accounts);
     self
   }
   #[allow(clippy::clone_on_copy)]
-  pub fn instruction(&self) -> solana_instruction::Instruction {
+  pub fn instruction(&self) -> trezoa_instruction::Instruction {
     let accounts = ClosePayment {
                               payer: self.payer.expect("payer is not set"),
                                         payment: self.payment.expect("payment is not set"),
@@ -237,7 +237,7 @@ impl ClosePaymentBuilder {
                                         buyer: self.buyer.expect("buyer is not set"),
                                         merchant_operator_config: self.merchant_operator_config.expect("merchant_operator_config is not set"),
                                         mint: self.mint.expect("mint is not set"),
-                                        system_program: self.system_program.unwrap_or(solana_pubkey::pubkey!("11111111111111111111111111111111")),
+                                        system_program: self.system_program.unwrap_or(trezoa_pubkey::pubkey!("11111111111111111111111111111111")),
                       };
     
     accounts.instruction_with_remaining_accounts(&self.__remaining_accounts)
@@ -248,93 +248,93 @@ impl ClosePaymentBuilder {
   pub struct ClosePaymentCpiAccounts<'a, 'b> {
           
                     
-              pub payer: &'b solana_account_info::AccountInfo<'a>,
+              pub payer: &'b trezoa_account_info::AccountInfo<'a>,
                         /// Payment PDA to close
 
       
                     
-              pub payment: &'b solana_account_info::AccountInfo<'a>,
+              pub payment: &'b trezoa_account_info::AccountInfo<'a>,
                 
                     
-              pub operator_authority: &'b solana_account_info::AccountInfo<'a>,
+              pub operator_authority: &'b trezoa_account_info::AccountInfo<'a>,
                         /// Operator PDA
 
       
                     
-              pub operator: &'b solana_account_info::AccountInfo<'a>,
+              pub operator: &'b trezoa_account_info::AccountInfo<'a>,
                         /// Merchant PDA
 
       
                     
-              pub merchant: &'b solana_account_info::AccountInfo<'a>,
+              pub merchant: &'b trezoa_account_info::AccountInfo<'a>,
                         /// Buyer account
 
       
                     
-              pub buyer: &'b solana_account_info::AccountInfo<'a>,
+              pub buyer: &'b trezoa_account_info::AccountInfo<'a>,
                         /// Merchant Operator Config PDA
 
       
                     
-              pub merchant_operator_config: &'b solana_account_info::AccountInfo<'a>,
+              pub merchant_operator_config: &'b trezoa_account_info::AccountInfo<'a>,
                         /// Token mint
 
       
                     
-              pub mint: &'b solana_account_info::AccountInfo<'a>,
+              pub mint: &'b trezoa_account_info::AccountInfo<'a>,
                 
                     
-              pub system_program: &'b solana_account_info::AccountInfo<'a>,
+              pub system_program: &'b trezoa_account_info::AccountInfo<'a>,
             }
 
 /// `close_payment` CPI instruction.
 pub struct ClosePaymentCpi<'a, 'b> {
   /// The program to invoke.
-  pub __program: &'b solana_account_info::AccountInfo<'a>,
+  pub __program: &'b trezoa_account_info::AccountInfo<'a>,
       
               
-          pub payer: &'b solana_account_info::AccountInfo<'a>,
+          pub payer: &'b trezoa_account_info::AccountInfo<'a>,
                 /// Payment PDA to close
 
     
               
-          pub payment: &'b solana_account_info::AccountInfo<'a>,
+          pub payment: &'b trezoa_account_info::AccountInfo<'a>,
           
               
-          pub operator_authority: &'b solana_account_info::AccountInfo<'a>,
+          pub operator_authority: &'b trezoa_account_info::AccountInfo<'a>,
                 /// Operator PDA
 
     
               
-          pub operator: &'b solana_account_info::AccountInfo<'a>,
+          pub operator: &'b trezoa_account_info::AccountInfo<'a>,
                 /// Merchant PDA
 
     
               
-          pub merchant: &'b solana_account_info::AccountInfo<'a>,
+          pub merchant: &'b trezoa_account_info::AccountInfo<'a>,
                 /// Buyer account
 
     
               
-          pub buyer: &'b solana_account_info::AccountInfo<'a>,
+          pub buyer: &'b trezoa_account_info::AccountInfo<'a>,
                 /// Merchant Operator Config PDA
 
     
               
-          pub merchant_operator_config: &'b solana_account_info::AccountInfo<'a>,
+          pub merchant_operator_config: &'b trezoa_account_info::AccountInfo<'a>,
                 /// Token mint
 
     
               
-          pub mint: &'b solana_account_info::AccountInfo<'a>,
+          pub mint: &'b trezoa_account_info::AccountInfo<'a>,
           
               
-          pub system_program: &'b solana_account_info::AccountInfo<'a>,
+          pub system_program: &'b trezoa_account_info::AccountInfo<'a>,
         }
 
 impl<'a, 'b> ClosePaymentCpi<'a, 'b> {
   pub fn new(
-    program: &'b solana_account_info::AccountInfo<'a>,
+    program: &'b trezoa_account_info::AccountInfo<'a>,
           accounts: ClosePaymentCpiAccounts<'a, 'b>,
           ) -> Self {
     Self {
@@ -351,15 +351,15 @@ impl<'a, 'b> ClosePaymentCpi<'a, 'b> {
                 }
   }
   #[inline(always)]
-  pub fn invoke(&self) -> solana_program_error::ProgramResult {
+  pub fn invoke(&self) -> trezoa_program_error::ProgramResult {
     self.invoke_signed_with_remaining_accounts(&[], &[])
   }
   #[inline(always)]
-  pub fn invoke_with_remaining_accounts(&self, remaining_accounts: &[(&'b solana_account_info::AccountInfo<'a>, bool, bool)]) -> solana_program_error::ProgramResult {
+  pub fn invoke_with_remaining_accounts(&self, remaining_accounts: &[(&'b trezoa_account_info::AccountInfo<'a>, bool, bool)]) -> trezoa_program_error::ProgramResult {
     self.invoke_signed_with_remaining_accounts(&[], remaining_accounts)
   }
   #[inline(always)]
-  pub fn invoke_signed(&self, signers_seeds: &[&[&[u8]]]) -> solana_program_error::ProgramResult {
+  pub fn invoke_signed(&self, signers_seeds: &[&[&[u8]]]) -> trezoa_program_error::ProgramResult {
     self.invoke_signed_with_remaining_accounts(signers_seeds, &[])
   }
   #[allow(clippy::arithmetic_side_effects)]
@@ -368,47 +368,47 @@ impl<'a, 'b> ClosePaymentCpi<'a, 'b> {
   pub fn invoke_signed_with_remaining_accounts(
     &self,
     signers_seeds: &[&[&[u8]]],
-    remaining_accounts: &[(&'b solana_account_info::AccountInfo<'a>, bool, bool)]
-  ) -> solana_program_error::ProgramResult {
+    remaining_accounts: &[(&'b trezoa_account_info::AccountInfo<'a>, bool, bool)]
+  ) -> trezoa_program_error::ProgramResult {
     let mut accounts = Vec::with_capacity(9+ remaining_accounts.len());
-                            accounts.push(solana_instruction::AccountMeta::new(
+                            accounts.push(trezoa_instruction::AccountMeta::new(
             *self.payer.key,
             true
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new(
+                                          accounts.push(trezoa_instruction::AccountMeta::new(
             *self.payment.key,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.operator_authority.key,
             true
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.operator.key,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.merchant.key,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.buyer.key,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.merchant_operator_config.key,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.mint.key,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.system_program.key,
             false
           ));
                       remaining_accounts.iter().for_each(|remaining_account| {
-      accounts.push(solana_instruction::AccountMeta {
+      accounts.push(trezoa_instruction::AccountMeta {
           pubkey: *remaining_account.0.key,
           is_signer: remaining_account.1,
           is_writable: remaining_account.2,
@@ -416,7 +416,7 @@ impl<'a, 'b> ClosePaymentCpi<'a, 'b> {
     });
     let data = borsh::to_vec(&ClosePaymentInstructionData::new()).unwrap();
     
-    let instruction = solana_instruction::Instruction {
+    let instruction = trezoa_instruction::Instruction {
       program_id: crate::COMMERCE_PROGRAM_ID,
       accounts,
       data,
@@ -435,9 +435,9 @@ impl<'a, 'b> ClosePaymentCpi<'a, 'b> {
               remaining_accounts.iter().for_each(|remaining_account| account_infos.push(remaining_account.0.clone()));
 
     if signers_seeds.is_empty() {
-      solana_cpi::invoke(&instruction, &account_infos)
+      trezoa_cpi::invoke(&instruction, &account_infos)
     } else {
-      solana_cpi::invoke_signed(&instruction, &account_infos, signers_seeds)
+      trezoa_cpi::invoke_signed(&instruction, &account_infos, signers_seeds)
     }
   }
 }
@@ -461,7 +461,7 @@ pub struct ClosePaymentCpiBuilder<'a, 'b> {
 }
 
 impl<'a, 'b> ClosePaymentCpiBuilder<'a, 'b> {
-  pub fn new(program: &'b solana_account_info::AccountInfo<'a>) -> Self {
+  pub fn new(program: &'b trezoa_account_info::AccountInfo<'a>) -> Self {
     let instruction = Box::new(ClosePaymentCpiBuilderInstruction {
       __program: program,
               payer: None,
@@ -478,59 +478,59 @@ impl<'a, 'b> ClosePaymentCpiBuilder<'a, 'b> {
     Self { instruction }
   }
       #[inline(always)]
-    pub fn payer(&mut self, payer: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn payer(&mut self, payer: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
                         self.instruction.payer = Some(payer);
                     self
     }
       /// Payment PDA to close
 #[inline(always)]
-    pub fn payment(&mut self, payment: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn payment(&mut self, payment: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
                         self.instruction.payment = Some(payment);
                     self
     }
       #[inline(always)]
-    pub fn operator_authority(&mut self, operator_authority: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn operator_authority(&mut self, operator_authority: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
                         self.instruction.operator_authority = Some(operator_authority);
                     self
     }
       /// Operator PDA
 #[inline(always)]
-    pub fn operator(&mut self, operator: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn operator(&mut self, operator: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
                         self.instruction.operator = Some(operator);
                     self
     }
       /// Merchant PDA
 #[inline(always)]
-    pub fn merchant(&mut self, merchant: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn merchant(&mut self, merchant: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
                         self.instruction.merchant = Some(merchant);
                     self
     }
       /// Buyer account
 #[inline(always)]
-    pub fn buyer(&mut self, buyer: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn buyer(&mut self, buyer: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
                         self.instruction.buyer = Some(buyer);
                     self
     }
       /// Merchant Operator Config PDA
 #[inline(always)]
-    pub fn merchant_operator_config(&mut self, merchant_operator_config: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn merchant_operator_config(&mut self, merchant_operator_config: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
                         self.instruction.merchant_operator_config = Some(merchant_operator_config);
                     self
     }
       /// Token mint
 #[inline(always)]
-    pub fn mint(&mut self, mint: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn mint(&mut self, mint: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
                         self.instruction.mint = Some(mint);
                     self
     }
       #[inline(always)]
-    pub fn system_program(&mut self, system_program: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn system_program(&mut self, system_program: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
                         self.instruction.system_program = Some(system_program);
                     self
     }
             /// Add an additional account to the instruction.
   #[inline(always)]
-  pub fn add_remaining_account(&mut self, account: &'b solana_account_info::AccountInfo<'a>, is_writable: bool, is_signer: bool) -> &mut Self {
+  pub fn add_remaining_account(&mut self, account: &'b trezoa_account_info::AccountInfo<'a>, is_writable: bool, is_signer: bool) -> &mut Self {
     self.instruction.__remaining_accounts.push((account, is_writable, is_signer));
     self
   }
@@ -539,17 +539,17 @@ impl<'a, 'b> ClosePaymentCpiBuilder<'a, 'b> {
   /// Each account is represented by a tuple of the `AccountInfo`, a `bool` indicating whether the account is writable or not,
   /// and a `bool` indicating whether the account is a signer or not.
   #[inline(always)]
-  pub fn add_remaining_accounts(&mut self, accounts: &[(&'b solana_account_info::AccountInfo<'a>, bool, bool)]) -> &mut Self {
+  pub fn add_remaining_accounts(&mut self, accounts: &[(&'b trezoa_account_info::AccountInfo<'a>, bool, bool)]) -> &mut Self {
     self.instruction.__remaining_accounts.extend_from_slice(accounts);
     self
   }
   #[inline(always)]
-  pub fn invoke(&self) -> solana_program_error::ProgramResult {
+  pub fn invoke(&self) -> trezoa_program_error::ProgramResult {
     self.invoke_signed(&[])
   }
   #[allow(clippy::clone_on_copy)]
   #[allow(clippy::vec_init_then_push)]
-  pub fn invoke_signed(&self, signers_seeds: &[&[&[u8]]]) -> solana_program_error::ProgramResult {
+  pub fn invoke_signed(&self, signers_seeds: &[&[&[u8]]]) -> trezoa_program_error::ProgramResult {
         let instruction = ClosePaymentCpi {
         __program: self.instruction.__program,
                   
@@ -577,17 +577,17 @@ impl<'a, 'b> ClosePaymentCpiBuilder<'a, 'b> {
 
 #[derive(Clone, Debug)]
 struct ClosePaymentCpiBuilderInstruction<'a, 'b> {
-  __program: &'b solana_account_info::AccountInfo<'a>,
-            payer: Option<&'b solana_account_info::AccountInfo<'a>>,
-                payment: Option<&'b solana_account_info::AccountInfo<'a>>,
-                operator_authority: Option<&'b solana_account_info::AccountInfo<'a>>,
-                operator: Option<&'b solana_account_info::AccountInfo<'a>>,
-                merchant: Option<&'b solana_account_info::AccountInfo<'a>>,
-                buyer: Option<&'b solana_account_info::AccountInfo<'a>>,
-                merchant_operator_config: Option<&'b solana_account_info::AccountInfo<'a>>,
-                mint: Option<&'b solana_account_info::AccountInfo<'a>>,
-                system_program: Option<&'b solana_account_info::AccountInfo<'a>>,
+  __program: &'b trezoa_account_info::AccountInfo<'a>,
+            payer: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+                payment: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+                operator_authority: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+                operator: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+                merchant: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+                buyer: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+                merchant_operator_config: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+                mint: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+                system_program: Option<&'b trezoa_account_info::AccountInfo<'a>>,
                 /// Additional instruction accounts `(AccountInfo, is_writable, is_signer)`.
-  __remaining_accounts: Vec<(&'b solana_account_info::AccountInfo<'a>, bool, bool)>,
+  __remaining_accounts: Vec<(&'b trezoa_account_info::AccountInfo<'a>, bool, bool)>,
 }
 

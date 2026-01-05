@@ -65,9 +65,9 @@ describe('ActionButton', () => {
         expect(mockOnClick).not.toHaveBeenCalled();
     });
 
-    it('should show SOL equivalent when provided', () => {
+    it('should show TRZ equivalent when provided', () => {
         render(
-            <ActionButton theme={mockTheme} solEquivalent="0.05 SOL">
+            <ActionButton theme={mockTheme} trzEquivalent="0.05 SOL">
                 Pay $10
             </ActionButton>,
         );
@@ -76,7 +76,7 @@ describe('ActionButton', () => {
         expect(screen.getByText('(0.05 SOL)')).toBeInTheDocument();
     });
 
-    it('should not show SOL equivalent when not provided', () => {
+    it('should not show TRZ equivalent when not provided', () => {
         render(<ActionButton theme={mockTheme}>Pay $10</ActionButton>);
 
         expect(screen.getByText('Pay $10')).toBeInTheDocument();
@@ -119,9 +119,9 @@ describe('ActionButton', () => {
         expect(screen.getByText('$10')).toBeInTheDocument();
     });
 
-    it('should handle empty solEquivalent', () => {
+    it('should handle empty trzEquivalent', () => {
         render(
-            <ActionButton theme={mockTheme} solEquivalent="">
+            <ActionButton theme={mockTheme} trzEquivalent="">
                 Pay $10 Empty
             </ActionButton>,
         );

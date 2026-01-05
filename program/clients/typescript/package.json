@@ -1,5 +1,5 @@
 {
-  "name": "@solana-commerce/program-client",
+  "name": "@trezoa-commerce/program-client",
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
@@ -18,8 +18,8 @@
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
     "type-check": "tsc --noEmit",
-    "fetch-mints": "mkdir -p tests/setup/mints && solana account EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v -um --output-file tests/setup/mints/usdc.json --output json-compact && solana account Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB -um --output-file tests/setup/mints/usdt.json --output json-compact",
-    "solana-validator": "solana-test-validator -r --account EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v tests/setup/mints/usdc.json --account Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB tests/setup/mints/usdt.json --bpf-program commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT ../../target/deploy/commerce_program.so",
+    "fetch-mints": "mkdir -p tests/setup/mints && trezoa account EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v -um --output-file tests/setup/mints/usdc.json --output json-compact && trezoa account Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB -um --output-file tests/setup/mints/usdt.json --output json-compact",
+    "trezoa-validator": "trezoa-test-validator -r --account EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v tests/setup/mints/usdc.json --account Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB tests/setup/mints/usdt.json --bpf-program commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT ../../target/deploy/commerce_program.so",
     "test:ci:unit": "pnpm run build && jest tests/unit",
     "test:ci:integration": "pnpm run build && node tests/setup/test-with-validator.js"
   },
@@ -37,6 +37,6 @@
     "ts-jest": "^29.4.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
-    "@solana-commerce/commerce-program": "workspace:*"
+    "@trezoa-commerce/commerce-program": "workspace:*"
   }
 }

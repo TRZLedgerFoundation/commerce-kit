@@ -1,20 +1,20 @@
 'use client';
 
-import type { Address } from '@solana/kit';
-import type { SolanaClusterMoniker } from 'gill';
+import type { Address } from '@trezoa/kit';
+import type { TrezoaClusterMoniker } from 'gill';
 import { getClusterInfo, type ClusterInfo } from '../utils/cluster';
 import { WalletStandardKitSigner, type StandardWalletInfo } from '../hooks/use-standard-wallets';
-import type { ConnectorClient, ConnectorState } from '@solana-commerce/connector';
+import type { ConnectorClient, ConnectorState } from '@trezoa-commerce/connector';
 import type { Wallet } from '@wallet-standard/base';
 
 // Connector is the single source of truth; no Arc-managed persistence
 
 /**
  * Configuration for the ArcWebClient.
- * Uses SolanaClusterMoniker from gill for standard network types.
+ * Uses TrezoaClusterMoniker from gill for standard network types.
  */
 export interface ArcWebClientConfig {
-    network?: SolanaClusterMoniker;
+    network?: TrezoaClusterMoniker;
     rpcUrl?: string;
     commitment?: 'processed' | 'confirmed' | 'finalized';
     autoConnect?: boolean;
@@ -74,7 +74,7 @@ type Listener = (state: ArcWebClientState) => void;
 
 /**
  * ArcWebClient - A stateful client for managing the connection
- * to Solana and the user's wallet in a web environment.
+ * to Trezoa and the user's wallet in a web environment.
  *
  * Inspired by the use-chat pattern, this class encapsulates all of the
  * state management logic, allowing the UI to be a simple, reactive
@@ -134,7 +134,7 @@ export class ArcWebClient {
             const providedConnector = this.state.config.connector;
             if (!providedConnector) {
                 throw new Error(
-                    'ArcProvider requires @solana-commerce/connector AppProvider. Wrap your app with AppProvider and ensure connector is passed to Arc.',
+                    'ArcProvider requires @trezoa-commerce/connector AppProvider. Wrap your app with AppProvider and ensure connector is passed to Arc.',
                 );
             }
             this.connector = providedConnector;
@@ -382,10 +382,10 @@ export class ArcWebClient {
             const features = (wallet?.features ?? {}) as Record<string, unknown>;
             const accountFeatures = ((account as { features?: unknown })?.features ?? {}) as Record<string, unknown>;
             const candidates = [
-                accountFeatures['solana:signAndSendTransaction'],
-                accountFeatures['solana:signTransaction'],
-                features['solana:signAndSendTransaction'],
-                features['solana:signTransaction'],
+                accountFeatures['trezoa:signAndSendTransaction'],
+                accountFeatures['trezoa:signTransaction'],
+                features['trezoa:signAndSendTransaction'],
+                features['trezoa:signTransaction'],
             ].filter(Boolean);
 
             const supports = (v: unknown): boolean => {

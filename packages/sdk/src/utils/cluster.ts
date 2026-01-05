@@ -2,7 +2,7 @@
  * Cluster utilities using gill's built-in functions
  */
 
-import { getPublicSolanaRpcUrl, type SolanaClusterMoniker } from 'gill';
+import { getPublicTrezoaRpcUrl, type TrezoaClusterMoniker } from 'gill';
 
 export type ClusterInfo = {
     name: string;
@@ -40,12 +40,12 @@ function deriveWebSocketUrl(rpcUrl: string): string {
 
 /**
  * Get cluster information from a network identifier
- * Leverages gill's getPublicSolanaRpcUrl for standard networks
+ * Leverages gill's getPublicTrezoaRpcUrl for standard networks
  */
 export function getClusterInfo(network: string): ClusterInfo {
-    // Handle standard Solana cluster monikers
+    // Handle standard Trezoa cluster monikers
     if (isStandardCluster(network)) {
-        const rpcUrl = getPublicSolanaRpcUrl(network);
+        const rpcUrl = getPublicTrezoaRpcUrl(network);
         const wsUrl = deriveWebSocketUrl(rpcUrl);
 
         return {
@@ -71,8 +71,8 @@ export function getClusterInfo(network: string): ClusterInfo {
 }
 
 /**
- * Type guard to check if network is a standard Solana cluster
+ * Type guard to check if network is a standard Trezoa cluster
  */
-function isStandardCluster(network: string): network is SolanaClusterMoniker | 'mainnet-beta' | 'localhost' {
+function isStandardCluster(network: string): network is TrezoaClusterMoniker | 'mainnet-beta' | 'localhost' {
     return ['mainnet', 'mainnet-beta', 'devnet', 'testnet', 'localnet', 'localhost'].includes(network);
 }

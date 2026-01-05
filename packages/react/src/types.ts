@@ -1,10 +1,10 @@
 /**
- * Solana Commerce SDK - Type Definitions
+ * Trezoa Commerce SDK - Type Definitions
  * Production-ready type system for commerce components
  */
 
-import { SPLToken } from '@solana-commerce/solana-pay';
-import { address, SolanaClusterMoniker } from 'gill';
+import { TPLToken } from '@trezoa-commerce/trezoa-pay';
+import { address, TrezoaClusterMoniker } from 'gill';
 import { TOKEN_PROGRAM_ADDRESS, TOKEN_2022_PROGRAM_ADDRESS } from 'gill/programs/token';
 import type React from 'react';
 
@@ -12,9 +12,9 @@ import type React from 'react';
 export type CommerceMode = 'cart' | 'tip' | 'buyNow';
 export type Position = 'inline' | 'overlay';
 export type BorderRadius = 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
-// Use SolanaClusterMoniker from gill instead of custom Network type
-// Note: SolanaClusterMoniker uses "mainnet" (not "mainnet-beta") and includes "testnet"
-export type Network = SolanaClusterMoniker;
+// Use TrezoaClusterMoniker from gill instead of custom Network type
+// Note: TrezoaClusterMoniker uses "mainnet" (not "mainnet-beta") and includes "testnet"
+export type Network = TrezoaClusterMoniker;
 
 // State union types
 export type TransactionState = 'idle' | 'success' | 'error';
@@ -47,7 +47,7 @@ export interface ThemeConfig {
 }
 
 // Main SDK configuration
-export interface SolanaCommerceConfig {
+export interface TrezoaCommerceConfig {
     readonly rpcUrl?: string;
     readonly mode: CommerceMode;
     readonly position?: Position;
@@ -72,7 +72,7 @@ export interface PaymentCallbacks {
 
 // Main SDK props
 export interface PaymentButtonProps {
-    readonly config: SolanaCommerceConfig;
+    readonly config: TrezoaCommerceConfig;
     readonly children?: React.ReactNode;
     readonly className?: string;
     readonly style?: React.CSSProperties;
@@ -98,7 +98,7 @@ export interface TriggerButtonProps {
 
 // Internal component props for iframe components
 export interface PaymentModalContentProps {
-    readonly config: SolanaCommerceConfig;
+    readonly config: TrezoaCommerceConfig;
     readonly theme: Required<ThemeConfig>;
     readonly totalAmount: number;
     readonly paymentUrl: string;
@@ -107,31 +107,31 @@ export interface PaymentModalContentProps {
 }
 
 export interface TipModalContentProps {
-    readonly config: SolanaCommerceConfig;
+    readonly config: TrezoaCommerceConfig;
     readonly theme: Required<ThemeConfig>;
     readonly onPayment: (amount: number, currency: string, paymentMethod: PaymentMethod) => void;
     readonly onCancel: () => void;
 }
 
 export type PaymentMethod = 'wallet' | 'qr';
-export type Currency = 'USDC' | 'SOL' | 'USDT' | 'USDC_DEVNET' | 'SOL_DEVNET' | 'USDT_DEVNET';
+export type Currency = 'USDC' | 'TRZ' | 'USDT' | 'USDC_DEVNET' | 'TRZ_DEVNET' | 'USDT_DEVNET';
 
 // Enhanced token information including program and metadata
-export interface SPLTokenInfo {
-    mint: SPLToken;
-    tokenProgram: SPLToken;
+export interface TPLTokenInfo {
+    mint: TPLToken;
+    tokenProgram: TPLToken;
     decimals: number;
     symbol: string;
     name: string;
 }
 
 // Enhanced currency mapping with complete token information
-export const CurrencyMap: Record<Currency, SPLTokenInfo | 'SOL'> = {
-    // Native SOL (no mint address, handled specially)
-    SOL: 'SOL',
-    SOL_DEVNET: 'SOL',
+export const CurrencyMap: Record<Currency, TPLTokenInfo | 'TRZ'> = {
+    // Native TRZ (no mint address, handled specially)
+    TRZ: 'TRZ',
+    TRZ_DEVNET: 'TRZ',
 
-    // Mainnet SPL tokens
+    // Mainnet TPL tokens
     USDC: {
         mint: address('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'),
         tokenProgram: TOKEN_PROGRAM_ADDRESS,
@@ -147,7 +147,7 @@ export const CurrencyMap: Record<Currency, SPLTokenInfo | 'SOL'> = {
         name: 'Tether USD',
     },
 
-    // Devnet SPL tokens (for testing)
+    // Devnet TPL tokens (for testing)
     USDC_DEVNET: {
         mint: address('4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU'),
         tokenProgram: TOKEN_PROGRAM_ADDRESS,

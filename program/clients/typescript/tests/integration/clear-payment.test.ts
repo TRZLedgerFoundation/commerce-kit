@@ -1,7 +1,7 @@
 import { describe, it, beforeEach } from '@jest/globals';
 import {
-    createSolanaClient,
-    SolanaClient,
+    createTrezoaClient,
+    TrezoaClient,
     KeyPairSigner,
     Address,
     lamports,
@@ -25,7 +25,7 @@ import { generateManyTokenAccounts, generateMint, mintToOwner } from './helpers/
 import { findAssociatedTokenPda, TOKEN_PROGRAM_ADDRESS } from 'gill/programs';
 
 describe('Clear Payment', () => {
-    let client: SolanaClient;
+    let client: TrezoaClient;
     let payer: KeyPairSigner;
     let operatorAuthority: KeyPairSigner;
     let merchantAuthority: KeyPairSigner;
@@ -46,12 +46,12 @@ describe('Clear Payment', () => {
     let merchantOperatorConfigPda: Address;
 
     let version = 1; // incremented after each test
-    const operatorFee = lamports(100000n); // 0.0001 SOL
+    const operatorFee = lamports(100000n); // 0.0001 TRZ
     const feeType = FeeType.Fixed;
     let currentOrderId = 1;
 
     beforeEach(async () => {
-        client = createSolanaClient({ urlOrMoniker: 'http://localhost:8899' });
+        client = createTrezoaClient({ urlOrMoniker: 'http://localhost:8899' });
 
         // Generate keypairs
         payer = await generateExtractableKeyPairSigner();

@@ -26,14 +26,14 @@ build-devnet:
 	make generate-idl
 	make generate-clients
 
-# Setup test dependencies using solana program download
+# Setup test dependencies using trezoa program download
 setup-deps:
 	@echo "Setting up test dependencies..."
 	@mkdir -p tests/integration-tests/deps
-	@echo "Downloading SPL Token program..."
-	solana program dump TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA tests/integration-tests/deps/spl_token.so -u mainnet-beta
-	@echo "Downloading SPL Associated Token Account program..."
-	solana program dump ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL tests/integration-tests/deps/spl_associated_token_account.so -u mainnet-beta
+	@echo "Downloading TPL Token program..."
+	trezoa program dump TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA tests/integration-tests/deps/tpl_token.so -u mainnet-beta
+	@echo "Downloading TPL Associated Token Account program..."
+	trezoa program dump ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL tests/integration-tests/deps/tpl_associated_token_account.so -u mainnet-beta
 	@echo "Dependencies downloaded successfully!"
 
 # Run unit tests in program/
@@ -93,7 +93,7 @@ deploy-devnet: build-devnet
 		echo "Error: DEPLOYER_KEY parameter is required. Usage: make deploy-devnet DEPLOYER_KEY=/path/to/deployer-keypair.json"; \
 		exit 1; \
 	fi
-	solana program deploy target/deploy/commerce_program.so \
+	trezoa program deploy target/deploy/commerce_program.so \
 		--program-id target/deploy/commerce_program-keypair.json \
 		--keypair $(DEPLOYER_KEY) \
 		--url devnet

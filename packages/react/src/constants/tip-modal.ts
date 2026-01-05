@@ -5,7 +5,7 @@
 
 import React from 'react';
 import type { PaymentMethod } from '../types';
-import { WalletIcon, SolanaPayIcon } from '../components/icons';
+import { WalletIcon, TrezoaPayIcon } from '../components/icons';
 
 // Currency Decimal Constants
 export const CURRENCY_DECIMALS = {
@@ -13,8 +13,8 @@ export const CURRENCY_DECIMALS = {
     USDC_DEVNET: 6,
     USDT: 6,
     USDT_DEVNET: 6,
-    SOL: 9,
-    SOL_DEVNET: 9,
+    TRZ: 9,
+    TRZ_DEVNET: 9,
 } as const;
 
 // Static Data
@@ -22,10 +22,10 @@ export const PRESET_AMOUNTS = [5, 10, 20, 50] as const;
 
 export const ALL_CURRENCIES = [
     { value: 'USDC', label: 'USD Coin', symbol: 'USDC' },
-    { value: 'SOL', label: 'Solana', symbol: 'SOL' },
+    { value: 'TRZ', label: 'Trezoa', symbol: 'TRZ' },
     { value: 'USDT', label: 'Tether USD', symbol: 'USDT' },
     { value: 'USDC_DEVNET', label: 'USD Coin Devnet', symbol: 'USDC_DEVNET' },
-    { value: 'SOL_DEVNET', label: 'Solana Devnet', symbol: 'SOL_DEVNET' },
+    { value: 'TRZ_DEVNET', label: 'Trezoa Devnet', symbol: 'TRZ_DEVNET' },
     { value: 'USDT_DEVNET', label: 'Tether USD Devnet', symbol: 'USDT_DEVNET' },
 ] as const;
 
@@ -36,7 +36,7 @@ export const PAYMENT_METHODS: Array<{
     description: string;
     icon: React.ReactNode;
 }> = [
-    { value: 'qr', label: 'Pay', description: 'Scan a QR code', icon: React.createElement(SolanaPayIcon) },
+    { value: 'qr', label: 'Pay', description: 'Scan a QR code', icon: React.createElement(TrezoaPayIcon) },
     { value: 'wallet', label: 'Wallet', description: 'Connect your wallet', icon: React.createElement(WalletIcon) },
 ];
 

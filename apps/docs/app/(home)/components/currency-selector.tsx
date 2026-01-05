@@ -9,10 +9,10 @@ interface SupportedCurrenciesProps {
 
 const availableCurrencies = [
   { 
-    name: 'SOL', 
-    value: 'SOL',
+    name: 'TRZ', 
+    value: 'TRZ',
     symbol: '◎',
-    description: 'Solana native token',
+    description: 'trezoa native token',
     color: '#9945FF'
   },
   { 
@@ -40,7 +40,7 @@ const availableCurrencies = [
     name: 'SOL_DEVNET', 
     value: 'SOL_DEVNET',
     symbol: '◎',
-    description: 'Solana (Devnet)',
+    description: 'trezoa (Devnet)',
     color: '#9945FF'
   },
   { 

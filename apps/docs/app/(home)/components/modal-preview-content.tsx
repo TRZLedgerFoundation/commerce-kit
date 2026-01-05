@@ -12,7 +12,7 @@ import {
   DropdownTrigger,
   DropdownContent,
   DropdownItem
-} from '@solana-commerce/react';
+} from '@trezoa-commerce/react';
 
 // Local border radius utilities to match the React SDK
 const BORDER_RADIUS_MAP = {
@@ -43,7 +43,7 @@ interface ModalPreviewContentProps {
   selectedMode: Mode;
 }
 
-type Currency = 'USDC' | 'SOL' | 'USDT';
+type Currency = 'USDC' | 'TRZ' | 'USDT';
 type PaymentMethod = 'qr' | 'wallet';
 
 export function ModalPreviewContent({ config, selectedMode }: ModalPreviewContentProps) {
@@ -96,7 +96,7 @@ export function ModalPreviewContent({ config, selectedMode }: ModalPreviewConten
 
   const allCurrencies = [
     { value: 'USDC' as Currency, label: 'USD Coin', symbol: 'USDC' },
-    { value: 'SOL' as Currency, label: 'Solana', symbol: 'SOL' },
+    { value: 'TRZ' as Currency, label: 'trezoa', symbol: 'TRZ' },
     { value: 'USDT' as Currency, label: 'Tether USD', symbol: 'USDT' }
   ];
   
@@ -110,7 +110,7 @@ export function ModalPreviewContent({ config, selectedMode }: ModalPreviewConten
     </svg>
   );
 
-  const solanaPayIcon = (
+  const trezoaPayIcon = (
     <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path d="M3.98967 11.7879C4.10222 11.6755 4.25481 11.6123 4.41392 11.6123H19.0941C19.3615 11.6123 19.4954 11.9357 19.3062 12.1247L16.4054 15.0232C16.2929 15.1356 16.1403 15.1988 15.9812 15.1988H1.30102C1.03359 15.1988 0.899716 14.8754 1.08889 14.6864L3.98967 11.7879Z" fill="currentColor"/>
       <path d="M3.98937 0.959506C4.10191 0.847047 4.25451 0.783875 4.41361 0.783875H19.0938C19.3612 0.783875 19.4951 1.10726 19.3059 1.29628L16.4051 4.19475C16.2926 4.30721 16.14 4.37038 15.9809 4.37038H1.30071C1.03329 4.37038 0.899411 4.047 1.08859 3.85797L3.98937 0.959506Z" fill="currentColor"/>
@@ -119,7 +119,7 @@ export function ModalPreviewContent({ config, selectedMode }: ModalPreviewConten
   );
 
   const paymentMethods: Array<{ value: PaymentMethod; label: string; description: string; icon: React.ReactNode }> = [
-    { value: 'qr', label: 'Pay', description: 'Scan a QR code', icon: solanaPayIcon },
+    { value: 'qr', label: 'Pay', description: 'Scan a QR code', icon: trezoaPayIcon },
     { value: 'wallet', label: 'Wallet', description: 'Connect your wallet', icon: walletIcon }
   ];
 

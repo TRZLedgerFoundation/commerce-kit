@@ -7,11 +7,11 @@
  */
 
 // For App Router (Next.js 13+)
-export { POST } from '@solana-commerce/react/api/rpc-endpoints';
+export { POST } from '@trezoa-commerce/react/api/rpc-endpoints';
 
 // For Pages Router (Next.js 12 and below)
 /*
-import { POST } from '@solana-commerce/react/api/rpc-endpoints';
+import { POST } from '@trezoa-commerce/react/api/rpc-endpoints';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     if (req.method === 'POST') {

@@ -4,7 +4,7 @@
         "outDir": "dist",
         "jsx": "react-jsx",
         "paths": {
-            "@solana-commerce/sdk": ["./src/types/solana-hooks.d.ts"]
+            "@trezoa-commerce/sdk": ["./src/types/trezoa-hooks.d.ts"]
         }
     },
     "include": ["src"],

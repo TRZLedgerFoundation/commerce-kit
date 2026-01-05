@@ -20,7 +20,7 @@ interface WalletFeatures {
     'standard:connect'?: {
         connect: () => Promise<{ accounts: WalletAccount[] }>;
     };
-    'solana:signTransaction'?: {
+    'trezoa:signTransaction'?: {
         signTransaction: (input: {
             transaction: Uint8Array;
             account: WalletAccount;
@@ -37,7 +37,7 @@ import {
     type SignatureBytes,
     type Transaction,
     type TransactionMessageBytes,
-} from '@solana/kit';
+} from '@trezoa/kit';
 
 export class WalletStandardKitSigner {
     readonly address: Address;
@@ -53,7 +53,7 @@ export class WalletStandardKitSigner {
         transactions: readonly T[],
         config?: unknown,
     ): Promise<readonly T[]> {
-        const signTransactionFeature = (this.wallet.features as WalletFeatures)['solana:signTransaction'];
+        const signTransactionFeature = (this.wallet.features as WalletFeatures)['trezoa:signTransaction'];
         if (!signTransactionFeature) {
             throw new Error(`Wallet ${this.wallet.name} does not support transaction signing`);
         }
@@ -221,19 +221,19 @@ export function useStandardWallets(options: UseStandardWalletsOptions = {}): Use
                 return acc;
             }, [] as Wallet[]);
 
-            const solanaCompatibleWallets = uniqueWallets.filter(wallet => {
+            const trezoaCompatibleWallets = uniqueWallets.filter(wallet => {
                 const features = Object.keys(wallet.features);
-                const hasSolanaFeatures = features.some(
+                const hasTrezoaFeatures = features.some(
                     feature =>
-                        feature.includes('solana') ||
+                        feature.includes('trezoa') ||
                         feature.includes('connect') ||
                         feature.includes('sign') ||
                         feature.includes('standard'),
                 );
-                return hasSolanaFeatures;
+                return hasTrezoaFeatures;
             });
 
-            const walletInfos: StandardWalletInfo[] = solanaCompatibleWallets.map(wallet => ({
+            const walletInfos: StandardWalletInfo[] = trezoaCompatibleWallets.map(wallet => ({
                 wallet,
                 name: wallet.name,
                 icon: wallet.icon || '',

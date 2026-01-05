@@ -1,9 +1,9 @@
 'use client';
 
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { ConnectorClient, useConnectorClient } from '@solana-commerce/connector';
-import { useTransferSOL, useTransferToken, useArcClient, address } from '@solana-commerce/sdk';
-import type { SolanaCommerceConfig, ThemeConfig } from '../../types';
+import { ConnectorClient, useConnectorClient } from '@trezoa-commerce/connector';
+import { useTransferTRZ, useTransferToken, useArcClient, address } from '@trezoa-commerce/sdk';
+import type { TrezoaCommerceConfig, ThemeConfig } from '../../types';
 import { CurrencyMap } from '../../types';
 import { IFRAME_BUNDLE } from '../../iframe-app/bundle';
 import { IFRAME_STYLES } from '../../iframe-app/bundle';
@@ -33,7 +33,7 @@ export interface Product {
  * @example
  * ```typescript
  * const paymentConfig: PaymentConfig = {
- *   // Fixed SOL price for testing or special environments
+ *   // Fixed TRZ price for testing or special environments
  *   solPriceUsd: 150.50,
  *
  *   // Custom token decimals for non-standard tokens
@@ -54,24 +54,24 @@ export interface Product {
  * ```
  */
 export interface PaymentConfig {
-    /** Fixed SOL price override (USD). If not provided, fetches from price oracle */
+    /** Fixed TRZ price override (USD). If not provided, fetches from price oracle */
     solPriceUsd?: number;
     /**
-     * Custom SOL price fetching function. Use this for enterprise applications,
+     * Custom TRZ price fetching function. Use this for enterprise applications,
      * private price oracles, or when you need to avoid public API rate limits.
      * If not provided, defaults to CoinGecko public API.
      */
     getSolPrice?: () => Promise<number>;
     /** Token decimals override. If not provided, uses known token configurations */
     tokenDecimals?: { [currency: string]: number };
-    /** Fallback SOL price if API fails and no cache available */
+    /** Fallback TRZ price if API fails and no cache available */
     fallbackSolPriceUsd?: number;
     /** Products array for cart and buyNow modes */
     products?: Product[];
 }
 
 interface SecureIframeShellProps {
-    config: SolanaCommerceConfig;
+    config: TrezoaCommerceConfig;
     theme: Required<ThemeConfig>;
     onPayment: (amount: number, currency: string) => void;
     onCancel: () => void;
@@ -89,7 +89,7 @@ export function SecureIframeShell({ config, theme, onPayment, onCancel, paymentC
     const isLocalhost = typeof window !== 'undefined' && window.location.hostname === 'localhost';
 
     // Use RPC URL from parent (already resolved server-side)
-    const rpcUrl = config.rpcUrl || 'https://api.mainnet-beta.solana.com';
+    const rpcUrl = config.rpcUrl || 'https://api.mainnet-beta.trezoa.com';
     const network = 'mainnet';
 
     if (config.debug) {
@@ -162,7 +162,7 @@ function SecureIframeShellInner({ config, theme, onPayment, onCancel, paymentCon
     const [ready, setReady] = useState(false);
 
     // Use the standard transfer hooks at component level (not in async functions)
-    const { transferSOL, isLoading: transferSOLLoading, error: transferSOLError } = useTransferSOL();
+    const { transferTRZ, isLoading: transferTRZLoading, error: transferTRZError } = useTransferTRZ();
     const { transferToken, isLoading: transferTokenLoading, error: transferTokenError } = useTransferToken();
 
     // Get ArcClient for wallet state
@@ -215,7 +215,7 @@ function SecureIframeShellInner({ config, theme, onPayment, onCancel, paymentCon
 
     // No need to create ConnectorClient here - it's passed as prop
 
-    // Helper function to get SOL price with validation and fallbacks
+    // Helper function to get TRZ price with validation and fallbacks
     const getSolPrice = async (): Promise<number> => {
         // If explicit price override is provided, validate and use it
         if (paymentConfig?.solPriceUsd !== undefined) {
@@ -250,7 +250,7 @@ function SecureIframeShellInner({ config, theme, onPayment, onCancel, paymentCon
             return price;
         } catch (error) {
             if (config.debug) {
-                console.warn('[Payment] Failed to fetch SOL price:', error);
+                console.warn('[Payment] Failed to fetch TRZ price:', error);
             }
 
             // Use fallback if provided
@@ -258,16 +258,16 @@ function SecureIframeShellInner({ config, theme, onPayment, onCancel, paymentCon
                 const fallback = paymentConfig.fallbackSolPriceUsd;
                 if (typeof fallback === 'number' && fallback > 0 && isFinite(fallback)) {
                     if (config.debug) {
-                        console.info('[Payment] Using fallback SOL price:', fallback);
+                        console.info('[Payment] Using fallback TRZ price:', fallback);
                     }
                     return fallback;
                 }
             }
 
-            // Final fallback with a reasonable recent SOL price
+            // Final fallback with a reasonable recent TRZ price
             const defaultFallback = 100;
             if (config.debug) {
-                console.info('[Payment] Using default fallback SOL price:', defaultFallback);
+                console.info('[Payment] Using default fallback TRZ price:', defaultFallback);
             }
             return defaultFallback;
         }
@@ -339,26 +339,26 @@ function SecureIframeShellInner({ config, theme, onPayment, onCancel, paymentCon
             }
 
             const { amount, currency } = paymentInfo;
-            const isSOL = currency === 'SOL' || currency === 'SOL_DEVNET';
+            const isSOL = currency === 'TRZ' || currency === 'SOL_DEVNET';
 
             let result;
 
             if (isSOL) {
-                // SOL transfer - convert USD to SOL using current price or configured override
+                // TRZ transfer - convert USD to TRZ using current price or configured override
                 const solPriceUsd = await getSolPrice();
-                const solAmountFloat = amount / solPriceUsd;
-                const lamports = BigInt(Math.floor(solAmountFloat * 1_000_000_000)); // Convert to lamports
+                const trzAmountFloat = amount / solPriceUsd;
+                const lamports = BigInt(Math.floor(trzAmountFloat * 1_000_000_000)); // Convert to lamports
 
-                result = await transferSOL({
+                result = await transferTRZ({
                     to: config.merchant.wallet,
                     amount: lamports,
                     from: connectedAccount.address,
                 });
             } else {
-                // SPL Token transfer
+                // TPL Token transfer
                 const tokenInfo = CurrencyMap[currency as keyof typeof CurrencyMap];
-                if (tokenInfo === 'SOL' || !tokenInfo) {
-                    throw new Error(`Invalid SPL token: ${currency}`);
+                if (tokenInfo === 'TRZ' || !tokenInfo) {
+                    throw new Error(`Invalid TPL token: ${currency}`);
                 }
 
                 // Use decimals from token info instead of separate function
@@ -628,7 +628,7 @@ function SecureIframeShellInner({ config, theme, onPayment, onCancel, paymentCon
         if (ready && iframeRef.current?.contentWindow) {
             const totalAmount = inferTotalAmount(config, paymentConfig);
             const paymentUrl =
-                config.mode === 'tip' ? '' : `solana:?recipient=${config.merchant.wallet}&amount=${totalAmount}`;
+                config.mode === 'tip' ? '' : `trezoa:?recipient=${config.merchant.wallet}&amount=${totalAmount}`;
 
             if (config.debug) {
                 console.log('[SecureIframeShell] Sending init message', { config, theme });
@@ -695,7 +695,7 @@ function SecureIframeShellInner({ config, theme, onPayment, onCancel, paymentCon
     );
 }
 
-function inferTotalAmount(config: SolanaCommerceConfig, paymentConfig?: PaymentConfig): number {
+function inferTotalAmount(config: TrezoaCommerceConfig, paymentConfig?: PaymentConfig): number {
     // For tip mode, amount is determined by user input
     if (config.mode === 'tip') {
         return 0;

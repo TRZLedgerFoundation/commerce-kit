@@ -3,7 +3,7 @@
 Commerce Program - CU Analysis Report Generator
 
 Analyzes compute unit usage from litesvm integration tests to create
-CU usage reports for Solana programs.
+CU usage reports for Trezoa programs.
 """
 
 import json
@@ -24,8 +24,8 @@ DEFAULT_OUTPUT_FILE = "profiling_report.md"
 INTEGRATION_TESTS_DIR = "."
 INSTRUCTIONS_FILE = "program/src/instructions.rs"
 
-# Solana Transaction Structure (Max 1232 bytes total)
-# Based on Solana documentation and IPv6 MTU minus headers
+# Trezoa Transaction Structure (Max 1232 bytes total)
+# Based on Trezoa documentation and IPv6 MTU minus headers
 
 # Message Header (3 bytes)
 MESSAGE_HEADER_SIZE = 3          # num_required_signatures + num_readonly_signed + num_readonly_unsigned
@@ -49,7 +49,7 @@ INSTRUCTION_DATA_LENGTH = 1     # Compact-u16 for instruction data length
 SIGNATURE_SIZE = 64             # Ed25519 signature
 
 # Transaction size limit
-MAX_TRANSACTION_SIZE = 1232     # Solana's hard limit
+MAX_TRANSACTION_SIZE = 1232     # Trezoa's hard limit
 
 # Data type sizes
 PUBKEY_SIZE = 32                 # Pubkey size

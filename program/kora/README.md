@@ -4,10 +4,10 @@ This directory contains testing utilities for integrating the Kora gasless relay
 
 ## Overview
 
-[Kora](https://github.com/solana-foundation/kora) is an open source Solana paymaster node that provides a JSON-RPC interface for handling gasless transactions and fee abstractions. This implementation of Kora enables the Commerce Program Operator to act as a gasless relayer that sponsors transaction fees for users interacting with the Commerce Program. This allows users to perform commerce operations (payments, refunds, etc.) without needing SOL for transaction fees.
+[Kora](https://github.com/trzledgerfoundation/kora) is an open source Trezoa paymaster node that provides a JSON-RPC interface for handling gasless transactions and fee abstractions. This implementation of Kora enables the Commerce Program Operator to act as a gasless relayer that sponsors transaction fees for users interacting with the Commerce Program. This allows users to perform commerce operations (payments, refunds, etc.) without needing TRZ for transaction fees.
 
 The test demonstrates a complete gasless payment flow where:
-1. A buyer without SOL can make payments using tokens
+1. A buyer without TRZ can make payments using tokens
 2. Kora sponsors the transaction fees (SOL) for the user
 3. The Commerce Program processes the payment normally
 
@@ -45,7 +45,7 @@ The test demonstrates a complete gasless payment flow where:
 
 This will:
 - Build Kora Docker image
-- Start Solana test validator
+- Start Trezoa test validator
 - Deploy Commerce Program
 - Start Kora server with test configuration
 - Run gasless transaction tests
@@ -123,9 +123,9 @@ This allows Kora to sponsor fees for any Commerce Program transactions.
 
 ## Kora Resources
 
-- [Kora Documentation](https://github.com/solana-foundation/kora/blob/main/docs/README.md)
-- [Kora GitHub](https://github.com/solana-foundation/kora)
-- [Kora Node Operator Guide](https://github.com/solana-foundation/kora/tree/main/docs/operators)
+- [Kora Documentation](https://github.com/trzledgerfoundation/kora/blob/main/docs/README.md)
+- [Kora GitHub](https://github.com/trzledgerfoundation/kora)
+- [Kora Node Operator Guide](https://github.com/trzledgerfoundation/kora/tree/main/docs/operators)
 
 ## Troubleshooting
 

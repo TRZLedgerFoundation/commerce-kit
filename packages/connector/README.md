@@ -1,4 +1,4 @@
-# @solana-commerce/connector
+# @trezoa-commerce/connector
 
 Headless wallet connector built on Wallet Standard
 
@@ -7,13 +7,13 @@ Headless wallet connector built on Wallet Standard
 ## Installation
 
 ```bash
-pnpm add @solana-commerce/connector
+pnpm add @trezoa-commerce/connector
 ```
 
 ## Features
 
 - Wallet Standard integration
-- Solana Kit and Commerce Kit integration
+- Trezoa Kit and Commerce Kit integration
 - Multi-wallet support and detection
 - React provider and hooks
 - Framework-agnostic core client
@@ -26,7 +26,7 @@ pnpm add @solana-commerce/connector
 ### Headless Usage
 
 ```typescript
-import { ConnectorClient } from '@solana-commerce/connector';
+import { ConnectorClient } from '@trezoa-commerce/connector';
 
 const connector = new ConnectorClient();
 
@@ -46,7 +46,7 @@ console.log('Accounts:', newState.accounts);
 ### React Usage
 
 ```typescript
-import { ConnectorProvider, useConnector } from '@solana-commerce/connector';
+import { ConnectorProvider, useConnector } from '@trezoa-commerce/connector';
 
 function App() {
   return (
@@ -89,7 +89,7 @@ Core headless client for wallet management.
 #### Constructor
 
 ```typescript
-import { ConnectorClient } from '@solana-commerce/connector';
+import { ConnectorClient } from '@trezoa-commerce/connector';
 
 const client = new ConnectorClient({
     autoConnect: true, // Auto-connect to last wallet
@@ -203,7 +203,7 @@ client.destroy();
 Main hook for wallet interaction. Returns state plus action methods.
 
 ```typescript
-import { useConnector } from '@solana-commerce/connector';
+import { useConnector } from '@trezoa-commerce/connector';
 
 function Component() {
   const {
@@ -262,7 +262,7 @@ function Component() {
 Access the underlying ConnectorClient instance.
 
 ```typescript
-import { useConnectorClient } from '@solana-commerce/connector';
+import { useConnectorClient } from '@trezoa-commerce/connector';
 
 function Component() {
   const client = useConnectorClient();
@@ -283,7 +283,7 @@ function Component() {
 Wrap your app with the connector provider.
 
 ```typescript
-import { ConnectorProvider } from '@solana-commerce/connector';
+import { ConnectorProvider } from '@trezoa-commerce/connector';
 
 function App() {
   return (
@@ -306,7 +306,7 @@ function App() {
 Pre-built wallet selection UI.
 
 ```typescript
-import { WalletList, useConnector } from '@solana-commerce/connector';
+import { WalletList, useConnector } from '@trezoa-commerce/connector';
 
 function WalletModal() {
   const { wallets } = useConnector();
@@ -327,7 +327,7 @@ function WalletModal() {
 Pre-built account dropdown UI.
 
 ```typescript
-import { AccountDropdown } from '@solana-commerce/connector';
+import { AccountDropdown } from '@trezoa-commerce/connector';
 
 function MyComponent() {
   return <div><AccountDropdown /></div>;

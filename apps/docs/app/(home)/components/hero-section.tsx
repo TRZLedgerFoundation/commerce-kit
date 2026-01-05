@@ -2,7 +2,7 @@ import { CopyButton } from '../../../components/ui/copy-button';
 import { Button } from '../../../components/ui/button';
 
 export function HeroSection() {
-  const installCommand = 'pnpm add @solana-commerce/react';
+  const installCommand = 'pnpm add @trezoa-commerce/react';
 
   return (
     <section 
@@ -19,7 +19,7 @@ export function HeroSection() {
     >
       <div className="w-full space-y-2 bg-zinc-100 p-4 rounded-lg border border-gray-200 ">
         <h1 className="text-2xl md:text-2xl font-bold text-gray-900 dark:text-gray-100">
-          Solana Development Kit
+          trezoa Development Kit
         </h1>
         <p className="text-md text-gray-600 dark:text-gray-400 max-w-2xl mb-8">
           CommerceKit is a robust set of tooling examples for utilzing payments in your applications.

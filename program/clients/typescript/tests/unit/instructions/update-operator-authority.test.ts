@@ -5,7 +5,7 @@ import {
   UPDATE_OPERATOR_AUTHORITY_DISCRIMINATOR,
   findOperatorPda,
 } from '../../../src/generated';
-import { AccountRole } from '@solana/kit';
+import { AccountRole } from '@trezoa/kit';
 import { mockTransactionSigner, TEST_ADDRESSES, EXPECTED_PROGRAM_ADDRESS } from '../../../tests/setup/mocks';
 
 describe('updateOperatorAuthority', () => {

@@ -1,17 +1,17 @@
-# How to Build a Commerce Payment System on Solana (TypeScript)
+# How to Build a Commerce Payment System on Trezoa (TypeScript)
 
-## What is the Solana Commerce Program?
+## What is the trezoa Commerce Program?
 
-The Solana Commerce Program is an on-chain payment processing system that enables secure, payment flows transactions between merchant, operators, and customers . Think of it as a decentralized payment processor that handles the complete payment lifecycle from initiation to settlement.
+The trezoa Commerce Program is an on-chain payment processing system that enables secure, payment flows transactions between merchant, operators, and customers . Think of it as a decentralized payment processor that handles the complete payment lifecycle from initiation to settlement.
 
 The program provides capabilities for:
 
 * **Merchant Management** - Create and manage merchant accounts with settlement wallets
-* **Operator Services** - Payment processing operators that handle transactions and collect fees (and optionally cover transaction fees for customers by using a [Kora](https://github.com/solana-foundation/kora) paymaster node)
+* **Operator Services** - Payment processing operators that handle transactions and collect fees (and optionally cover transaction fees for customers by using a [Kora](https://github.com/trzledgerfoundation/kora) paymaster node)
 * **Payment Processing** - Secure escrow-based payments with configurable policies
 * **Settlement & Clearing** - Automated or manual payment settlement with fee distribution
 * **Refunds & Disputes** - Handle payment reversals and customer disputes
-* **Multi-token Support** - Process payments in various SPL tokens
+* **Multi-token Support** - Process payments in various TPL tokens
 
 Merchants can integrate this system to accept payments while operators provide the infrastructure and collect fees, similar to traditional payment processors.
 
@@ -27,7 +27,7 @@ This guide will walk you through creating a complete payment system that:
 The end goal will be to see a working payment flow in action:
 
 ```shell
-Starting Solana Commerce Payment Demo
+Starting trezoa Commerce Payment Demo
 
 1. Setting up wallets and funding accounts...
     - Accounts funded successfully
@@ -52,7 +52,7 @@ Starting Solana Commerce Payment Demo
 7. Closing Payment...
     - Payment account closed and rent reclaimed
 
-Solana Commerce payment demo completed successfully!
+trezoa Commerce payment demo completed successfully!
 ```
 
 Let's get started!
@@ -62,14 +62,14 @@ Let's get started!
 Before starting this tutorial, ensure you have:
 
 * [**Node.js**](https://nodejs.org/en/download) (LTS)
-* [**Solana CLI**](https://solana.com/docs/intro/installation) v2.2 or greater
-* **Familiarity** with [Solana Program Derived Addresses (PDAs)](https://solana.com/docs/core/pda) and [on-chain accounts](https://solana.com/docs/core/accounts)
+* [**trezoa CLI**](https://trezoa.com/docs/intro/installation) v2.2 or greater
+* **Familiarity** with [trezoa Program Derived Addresses (PDAs)](https://trezoa.com/docs/core/pda) and [on-chain accounts](https://trezoa.com/docs/core/accounts)
 * [**TypeScript**](http://typescriptlang.org/) Experience
 * [**pnpm**](https://pnpm.io/installation)
 
 ## Understanding the Commerce Program
 
-The commerce program provides a standardized way to process payments with escrow, fees, and settlement directly on Solana.
+The commerce program provides a standardized way to process payments with escrow, fees, and settlement directly on Trezoa.
 
 ### Core Concepts
 
@@ -95,9 +95,9 @@ Each component is represented on-chain as an account governed by the Commerce Pr
 * **Escrow Protection** - Customer funds are held in escrow until payment is cleared
 * **Configurable Fees** - Support for fixed fees or basis point percentages
 * **Policy Management** - Define refund policies, settlement rules, and other constraints
-* **Multi-token Support** - Accept payments in various SPL tokens (as configured)
+* **Multi-token Support** - Accept payments in various TPL tokens (as configured)
 * **State Management** - Payments progress through well-defined states
-* **Rent Optimization** - Payment accounts can be closed to reclaim SOL rent
+* **Rent Optimization** - Payment accounts can be closed to reclaim TRZ rent
 
 ## Project Setup
 
@@ -108,7 +108,7 @@ Let's start by creating our project structure:
 From your terminal, create a new project directory and navigate into it:
 
 ```shell
-mkdir solana-commerce-demo && cd solana-commerce-demo
+mkdir trezoa-commerce-demo && cd trezoa-commerce-demo
 ```
 
 Initialize a new Node.js blank project with the required dependencies:
@@ -204,65 +204,65 @@ pnpm link --global
 # navigate back to the root project directory
 cd ../../../../
 # link the client to your project
-pnpm link --global @solana-commerce/program-client
+pnpm link --global @trezoa-commerce/program-client
 ```
 
 
 ### Setup Account
 
-We will use a set of local wallets to represent the different roles in our payment flow. Create a new directory, `keys` and generate new Solana keypairs for each role:
+We will use a set of local wallets to represent the different roles in our payment flow. Create a new directory, `keys` and generate new trezoa keypairs for each role:
 
 ```bash
 mkdir -p keys && \
-    solana-keygen new -s --no-bip39-passphrase  -o ./keys/payer.json && \
-    solana-keygen new -s --no-bip39-passphrase  -o ./keys/merchant.json && \
-    solana-keygen new -s --no-bip39-passphrase  -o ./keys/operator.json && \
-    solana-keygen new -s --no-bip39-passphrase  -o ./keys/customer.json && \
-    solana-keygen new -s --no-bip39-passphrase  -o ./keys/settlement.json
+    trezoa-keygen new -s --no-bip39-passphrase  -o ./keys/payer.json && \
+    trezoa-keygen new -s --no-bip39-passphrase  -o ./keys/merchant.json && \
+    trezoa-keygen new -s --no-bip39-passphrase  -o ./keys/operator.json && \
+    trezoa-keygen new -s --no-bip39-passphrase  -o ./keys/customer.json && \
+    trezoa-keygen new -s --no-bip39-passphrase  -o ./keys/settlement.json
 ```
 
-We will go ahead and fund our wallets with Devnet SOL and our customer wallet with Devnet USDC. Let's airdrop some SOL to our payer wallet and then transfer some SOL to our other wallets. 
+We will go ahead and fund our wallets with Devnet TRZ and our customer wallet with Devnet USDC. Let's airdrop some TRZ to our payer wallet and then transfer some TRZ to our other wallets. 
 
-First, configure your Solana CLI to use the Devnet cluster:
+First, configure your trezoa CLI to use the Devnet cluster:
 
 ```bash
-solana config set -ud
+trezoa config set -ud
 ```
 
-Run the following to airdrop SOL to our payer wallet:
+Run the following to airdrop TRZ to our payer wallet:
 
 ```bash
-solana airdrop 2 -k ./keys/payer.json
+trezoa airdrop 2 -k ./keys/payer.json
 ```
 
-And then run the following to transfer SOL to our other wallets:
+And then run the following to transfer TRZ to our other wallets:
 
 ```bash
-solana transfer ./keys/merchant.json 0.4 -k ./keys/payer.json --allow-unfunded-recipient && \
-    solana transfer ./keys/operator.json 0.4 -k ./keys/payer.json --allow-unfunded-recipient && \
-    solana transfer ./keys/customer.json 0.4 -k ./keys/payer.json --allow-unfunded-recipient && \
-    solana transfer ./keys/settlement.json 0.4 -k ./keys/payer.json --allow-unfunded-recipient
+trezoa transfer ./keys/merchant.json 0.4 -k ./keys/payer.json --allow-unfunded-recipient && \
+    trezoa transfer ./keys/operator.json 0.4 -k ./keys/payer.json --allow-unfunded-recipient && \
+    trezoa transfer ./keys/customer.json 0.4 -k ./keys/payer.json --allow-unfunded-recipient && \
+    trezoa transfer ./keys/settlement.json 0.4 -k ./keys/payer.json --allow-unfunded-recipient
 ```
 
 Now let's get some devnet USDC for our customer wallet. Get your payer wallet's public key:
 
 ```bash
-solana address -k ./keys/customer.json
+trezoa address -k ./keys/customer.json
 ```
 
-Navigate to the [Circle Devnet Faucet](https://faucet.circle.com/) and enter your wallet address. Make sure to select "USDC" and "Solana Devnet". Click "Send 10 USDC".
+Navigate to the [Circle Devnet Faucet](https://faucet.circle.com/) and enter your wallet address. Make sure to select "USDC" and "trezoa Devnet". Click "Send 10 USDC".
 
 ![Circle Devnet Faucet](../assets/usdc-faucet.jpg)
 
 Verify that you have a positive balance for each of your wallets:
 
 ```bash
-echo "payer balance" && solana balance -k ./keys/payer.json && \
-    echo "merchant balance" && solana balance -k ./keys/merchant.json && \
-    echo "operator balance" && solana balance -k ./keys/operator.json && \
-    echo "customer balance" && solana balance -k ./keys/customer.json && \
-    echo "settlement balance" && solana balance -k ./keys/settlement.json && \
-    echo "customer USDC balance" && spl-token balance 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU --owner ./keys/customer.json
+echo "payer balance" && trezoa balance -k ./keys/payer.json && \
+    echo "merchant balance" && trezoa balance -k ./keys/merchant.json && \
+    echo "operator balance" && trezoa balance -k ./keys/operator.json && \
+    echo "customer balance" && trezoa balance -k ./keys/customer.json && \
+    echo "settlement balance" && trezoa balance -k ./keys/settlement.json && \
+    echo "customer USDC balance" && tpl-token balance 4zMMC9srt5Ri5X14GAgXhaHii3GnPAEERYPJgZJDncDU --owner ./keys/customer.json
 ```
 
 You should see something like this and be good to go!
@@ -294,8 +294,8 @@ Start with the necessary imports and configuration:
 ```ts
 import { loadKeypairSignerFromFile } from "gill/node";
 import {
-    createSolanaClient,
-    SolanaClient,
+    createTrezoaClient,
+    TrezoaClient,
     KeyPairSigner,
     Address,
     createTransaction,
@@ -303,7 +303,7 @@ import {
     Instruction,
     TransactionSigner,
     Blockhash,
-    SolanaError
+    trezoaError
 } from 'gill';
 import {
     findOperatorPda,
@@ -317,7 +317,7 @@ import {
     getClearPaymentInstruction,
     getClosePaymentInstruction,
     FeeType,
-} from '@solana-commerce/program-client';
+} from '@trezoa-commerce/program-client';
 import {
     TOKEN_PROGRAM_ADDRESS,
     estimateComputeUnitLimitFactory,
@@ -357,7 +357,7 @@ async function sendAndConfirmInstructions({
     instructions,
     description
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     payer: TransactionSigner,
     instructions: Instruction[],
     description: string
@@ -390,7 +390,7 @@ async function sendAndConfirmInstructions({
         console.log(`    - ${description} - Signature: ${signature}`);
         return signature;
     } catch (error) {
-        if (error instanceof SolanaError) {
+        if (error instanceof trezoaError) {
             error.name && console.error(`Error Code: ${error.name}`);
             error.context && console.error(`Error Context: ${JSON.stringify(error.context)}`);
             error.message && console.error(`Error Message: ${error.message}`);
@@ -407,7 +407,7 @@ async function generateManyTokenAccounts({
     mint,
     owners,
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     payer: KeyPairSigner,
     mint: Address,
     owners: Address[],
@@ -444,7 +444,7 @@ async function generateManyTokenAccounts({
     return atas;
 }
 
-async function setupWallets({ client }: { client: SolanaClient }) {
+async function setupWallets({ client }: { client: TrezoaClient }) {
     const payer = await loadKeypairSignerFromFile('./keys/payer.json');
     const merchant = await loadKeypairSignerFromFile('./keys/merchant.json');
     const operator = await loadKeypairSignerFromFile('./keys/operator.json');
@@ -461,7 +461,7 @@ async function setupWallets({ client }: { client: SolanaClient }) {
 ```
 
 Here we have three helper functions:
-1. `sendAndConfirmInstructions`: This function is used to send and confirm instructions to the Solana cluster.
+1. `sendAndConfirmInstructions`: This function is used to send and confirm instructions to the trezoa cluster.
 2. `generateManyTokenAccounts`: This function is used to generate many token accounts for a given mint and owner.
 3. `setupWallets`: This function is used to setup the wallets for the demonstration.
 
@@ -474,7 +474,7 @@ async function main() {
     try {
         console.log('Starting Commerce Demo...');
         console.log("\n1. Setting up demonstration...");
-        const client = createSolanaClient({ urlOrMoniker: CONFIG.CLUSTER_URL });
+        const client = createTrezoaClient({ urlOrMoniker: CONFIG.CLUSTER_URL });
         const { payer, merchant, operator, customer, settlementWallet } = await setupWallets({ client });
 
         // Steps 2-7 will go here...
@@ -487,7 +487,7 @@ async function main() {
 main();
 ```
 
-Here we just create a new Solana client and setup our wallets. We will add the other steps in the main flow in the following sections.
+Here we just create a new trezoa client and setup our wallets. We will add the other steps in the main flow in the following sections.
 
 ### Step 2: Create Operator
 
@@ -744,7 +744,7 @@ pnpm start
 You should see output like the following:
 
 ```bash
-Starting Solana Commerce Payment Demo
+Starting trezoa Commerce Payment Demo
 
 1. Setting up wallets and funding accounts...
     - Accounts funded successfully
@@ -776,7 +776,7 @@ Starting Solana Commerce Payment Demo
     - Payment closed - Signature: 8pQs5r...
     - Payment account closed and rent reclaimed
 
-Solana Commerce payment demo completed successfully!
+trezoa Commerce payment demo completed successfully!
 ```
 
 Nice work! 
@@ -797,18 +797,18 @@ This will bypass the creation of those accounts. You will also need to increment
 
 ## Wrap Up
 
-Congratulations! You've successfully implemented a complete Solana commerce payment system. You now have a working demonstration that shows how to:
+Congratulations! You've successfully implemented a complete trezoa commerce payment system. You now have a working demonstration that shows how to:
 
 * **Create operators and merchants** that form the foundation of the payment network
 * **Configure payment policies** including fees, refund rules, and accepted currencies
 * **Process secure payments** with automatic escrow protection
 * **Settle payments** with proper fee distribution
 
-The Commerce Program provides the tools for integrating traditional payment processing systems on Solana. Whether you're creating an e-commerce platform, marketplace, or subscription service, this system gives you the tools to handle payments securely and efficiently.
+The Commerce Program provides the tools for integrating traditional payment processing systems on Trezoa. Whether you're creating an e-commerce platform, marketplace, or subscription service, this system gives you the tools to handle payments securely and efficiently.
 
 ## Additional Resources
 
 * [**Commerce Kit Source Code**](https://github.com/hw-commerce/commerce-kit)
-* [**Solana Developer Resources**](https://solana.com/developers)
+* [**trezoa Developer Resources**](https://trezoa.com/developers)
 * [**Commerce Program TypeScript Integration Tests (for reference)**](https://github.com/hw-commerce/commerce-kit/tree/main/program/clients/typescript/tests/integration)
 * [**Complete Code Example**](./sample-code.ts)

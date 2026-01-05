@@ -13,7 +13,7 @@ import {
   getUtf8Encoder,
   type Address,
   type ProgramDerivedAddress,
-} from '@solana/kit';
+} from '@trezoa/kit';
 
 export type PaymentSeeds = {
   merchantOperatorConfig: Address;

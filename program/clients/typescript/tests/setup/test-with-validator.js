@@ -3,16 +3,16 @@ import { setTimeout } from 'timers/promises';
 import { platform } from 'os';
 
 const config = {
-  validatorStartupTime: parseInt(process.env.SOLANA_VALIDATOR_STARTUP_TIME) || 10_000,
-  validatorArgs: (process.env.SOLANA_VALIDATOR_ARGS || '-r --account EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v tests/setup/mints/usdc.json --account Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB tests/setup/mints/usdt.json --bpf-program commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT ../../target/deploy/commerce_program.so').split(' '),
+  validatorStartupTime: parseInt(process.env.TREZOA_VALIDATOR_STARTUP_TIME) || 10_000,
+  validatorArgs: (process.env.TREZOA_VALIDATOR_ARGS || '-r --account EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v tests/setup/mints/usdc.json --account Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB tests/setup/mints/usdt.json --bpf-program commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT ../../target/deploy/commerce_program.so').split(' '),
   maxHealthCheckRetries: 10
 };
 
 let validatorProcess = null;
 
-async function checkSolanaCLI() {
+async function checkTrezoaCLI() {
   try {
-    const checkProcess = spawn('solana', ['--version'], { stdio: 'pipe' });
+    const checkProcess = spawn('trezoa', ['--version'], { stdio: 'pipe' });
     const exitCode = await new Promise((resolve) => {
       checkProcess.on('close', resolve);
     });
@@ -21,7 +21,7 @@ async function checkSolanaCLI() {
       throw new Error();
     }
   } catch (error) {
-    console.error('Solana CLI not found. Please install: https://docs.solana.com/cli/install-solana-cli-tools');
+    console.error('Trezoa CLI not found. Please install: https://docs.trezoa.com/cli/install-trezoa-cli-tools');
     process.exit(1);
   }
 }
@@ -31,7 +31,7 @@ async function waitForValidator() {
   await setTimeout(config.validatorStartupTime);
   for (let i = 0; i < config.maxHealthCheckRetries; i++) {
     try {
-      const checkProcess = spawn('solana', ['cluster-version'], { stdio: 'pipe' });
+      const checkProcess = spawn('trezoa', ['cluster-version'], { stdio: 'pipe' });
       const exitCode = await new Promise((resolve) => {
         checkProcess.on('close', resolve);
       });
@@ -52,10 +52,10 @@ async function waitForValidator() {
 
 async function runTestsWithValidator() {
   try {
-    await checkSolanaCLI();
+    await checkTrezoaCLI();
     
-    console.log('Starting Solana test validator...');
-    validatorProcess = spawn('solana-test-validator', config.validatorArgs, {
+    console.log('Starting Trezoa test validator...');
+    validatorProcess = spawn('trezoa-test-validator', config.validatorArgs, {
       stdio: ['ignore', 'pipe', 'pipe'],
       detached: false
     });
@@ -107,7 +107,7 @@ async function runTestsWithValidator() {
 
 function cleanup() {
   if (validatorProcess && !validatorProcess.killed) {
-    console.log('Shutting down Solana test validator...');
+    console.log('Shutting down Trezoa test validator...');
     
     // Graceful shutdown
     validatorProcess.kill('SIGTERM');

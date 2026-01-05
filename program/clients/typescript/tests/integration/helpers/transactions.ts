@@ -1,7 +1,7 @@
 import {
   type Instruction,
   type TransactionSigner,
-  type SolanaClient,
+  type TrezoaClient,
   type CompilableTransactionMessage,
   type TransactionMessageWithFeePayerSigner,
   getSignatureFromTransaction,
@@ -18,7 +18,7 @@ import {
   airdropFactory,
   lamports,
   KeyPairSigner,
-  SolanaError,
+  trezoaError,
 } from "gill";
 import {
   updateOrAppendSetComputeUnitPriceInstruction,
@@ -28,7 +28,7 @@ import {
 const DEBUG_TRANSACTIONS = false;
 
 const createDefaultTransaction = async (
-  client: SolanaClient,
+  client: TrezoaClient,
   feePayer: TransactionSigner,
   computeLimit: number = 200_000,
   feeMicroLamports: MicroLamports = 1n as MicroLamports,
@@ -46,7 +46,7 @@ const createDefaultTransaction = async (
   );
 };
 export const signAndSendTransaction = async (
-  client: SolanaClient,
+  client: TrezoaClient,
   transactionMessage: CompilableTransactionMessage &
     TransactionMessageWithBlockhashLifetime,
   commitment: Commitment = 'processed'
@@ -68,7 +68,7 @@ async function sendAndConfirmInstructions({
   instructions,
   description
 }: {
-  client: SolanaClient,
+  client: TrezoaClient,
   payer: TransactionSigner,
   instructions: Instruction[],
   description: string
@@ -91,8 +91,8 @@ async function sendAndConfirmInstructions({
     );
     return signature;
   } catch (error) {
-    if (error instanceof SolanaError && DEBUG_TRANSACTIONS) {
-      console.log("Solana Error:",error.context.__code);
+    if (error instanceof trezoaError && DEBUG_TRANSACTIONS) {
+      console.log("trezoa Error:",error.context.__code);
     }
 
     // Preserve the original error message if it exists
@@ -101,7 +101,7 @@ async function sendAndConfirmInstructions({
   }
 }
 
-async function setupWallets(client: SolanaClient, wallets: KeyPairSigner<string>[]) {
+async function setupWallets(client: TrezoaClient, wallets: KeyPairSigner<string>[]) {
   try {
     const airdrop = airdropFactory({ rpc: client.rpc, rpcSubscriptions: client.rpcSubscriptions });
     const airdropPromises = wallets.map(async (wallet) => {

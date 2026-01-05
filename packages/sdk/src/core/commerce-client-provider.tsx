@@ -11,7 +11,7 @@ import React, {
 } from 'react';
 import { QueryClient, QueryClientProvider, type QueryClient as RQClient } from '@tanstack/react-query';
 import { ArcWebClient, type ArcWebClientConfig } from './web-client';
-import type { Address } from '@solana/kit';
+import type { Address } from '@trezoa/kit';
 
 // The context now only holds the client instance.
 const ArcClientContext = createContext<ArcWebClient | null>(null);

@@ -1,5 +1,5 @@
 /**
- * Tabs Alpha - Simplified Tabs Implementation for Solana Commerce SDK
+ * Tabs Alpha - Simplified Tabs Implementation for Trezoa Commerce SDK
  * Based on the modular tabs system but streamlined for our use case
  */
 

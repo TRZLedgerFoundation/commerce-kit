@@ -1,5 +1,5 @@
 {
-    "name": "@solana-commerce/connector",
+    "name": "@trezoa-commerce/connector",
     "version": "0.1.0",
     "description": "Headless wallet connector client and React provider built on Wallet Standard",
     "main": "./dist/index.js",

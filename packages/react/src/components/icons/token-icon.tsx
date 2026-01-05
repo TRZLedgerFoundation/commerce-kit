@@ -1,5 +1,5 @@
 import React from 'react';
-import { SolanaIcon } from './solana-icon';
+import { TrezoaIcon } from './trezoa-icon';
 import { USDCIcon } from './usdc-icon';
 import { USDTIcon } from './usdt-icon';
 
@@ -96,9 +96,9 @@ export const TokenIcon: React.FC<TokenIconProps> = ({
     const finalTestId = testId || `token-icon-${symbol}`;
 
     switch (symbol.toUpperCase()) {
-        case 'SOL':
+        case 'TRZ':
         case 'SOL_DEVNET':
-            return <SolanaIcon size={size} className={className} data-testid={finalTestId} />;
+            return <TrezoaIcon size={size} className={className} data-testid={finalTestId} />;
 
         case 'USDC':
         case 'USDC_DEVNET':

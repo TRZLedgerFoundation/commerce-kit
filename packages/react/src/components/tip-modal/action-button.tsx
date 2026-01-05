@@ -13,11 +13,11 @@ interface ActionButtonProps {
     isProcessing?: boolean;
     onClick: () => void;
     children: React.ReactNode;
-    solEquivalent?: string; // Optional SOL amount to display (e.g., "0.026 SOL")
+    trzEquivalent?: string; // Optional TRZ amount to display (e.g., "0.026 SOL")
 }
 
 export const ActionButton = memo<ActionButtonProps>(
-    ({ theme, isDisabled = false, isProcessing = false, onClick, children, solEquivalent }) => {
+    ({ theme, isDisabled = false, isProcessing = false, onClick, children, trzEquivalent }) => {
         const disabled = isDisabled || isProcessing;
 
         // Generate CSS custom properties for dynamic theming
@@ -33,7 +33,7 @@ export const ActionButton = memo<ActionButtonProps>(
             >
                 <span className="ck-action-button-text">
                     {children}
-                    {solEquivalent && <span className="ck-action-button-sol-equivalent">({solEquivalent})</span>}
+                    {trzEquivalent && <span className="ck-action-button-trz-equivalent">({trzEquivalent})</span>}
                 </span>
             </button>
         );

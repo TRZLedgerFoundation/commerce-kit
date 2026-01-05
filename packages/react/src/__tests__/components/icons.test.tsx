@@ -1,11 +1,11 @@
 import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
-import { SolanaIcon, USDCIcon, USDTIcon, TokenIcon, ErrorIcon, SuccessIcon } from '../../components/icons';
+import { TrezoaIcon, USDCIcon, USDTIcon, TokenIcon, ErrorIcon, SuccessIcon } from '../../components/icons';
 
 describe('Icon Components', () => {
-    describe('SolanaIcon', () => {
+    describe('TrezoaIcon', () => {
         it('should render with default size', () => {
-            render(<SolanaIcon />);
+            render(<TrezoaIcon />);
 
             const svg = document.querySelector('svg');
             expect(svg).toBeInTheDocument();
@@ -14,7 +14,7 @@ describe('Icon Components', () => {
         });
 
         it('should render with custom size', () => {
-            render(<SolanaIcon size={48} />);
+            render(<TrezoaIcon size={48} />);
 
             const svg = document.querySelector('svg');
             expect(svg).toHaveAttribute('width', '48');
@@ -22,15 +22,15 @@ describe('Icon Components', () => {
         });
 
         it('should have correct accessibility attributes', () => {
-            render(<SolanaIcon />);
+            render(<TrezoaIcon />);
 
             const svg = document.querySelector('svg');
             expect(svg).toHaveAttribute('role', 'img');
-            expect(svg).toHaveAttribute('aria-label', 'Solana');
+            expect(svg).toHaveAttribute('aria-label', 'trezoa');
         });
 
         it('should accept custom className', () => {
-            render(<SolanaIcon className="custom-class" />);
+            render(<TrezoaIcon className="custom-class" />);
 
             const svg = document.querySelector('svg');
             expect(svg).toHaveClass('custom-class');
@@ -79,11 +79,11 @@ describe('Icon Components', () => {
 
     describe('TokenIcon', () => {
         it('should render correct icon for SOL', () => {
-            render(<TokenIcon symbol="SOL" />);
+            render(<TokenIcon symbol="TRZ" />);
 
-            // Should render SolanaIcon
+            // Should render TrezoaIcon
             const svg = document.querySelector('svg');
-            expect(svg).toHaveAttribute('aria-label', 'Solana');
+            expect(svg).toHaveAttribute('aria-label', 'trezoa');
         });
 
         it('should render correct icon for USDC', () => {
@@ -109,7 +109,7 @@ describe('Icon Components', () => {
         });
 
         it('should pass size to underlying icon', () => {
-            render(<TokenIcon symbol="SOL" size={64} />);
+            render(<TokenIcon symbol="TRZ" size={64} />);
 
             const svg = document.querySelector('svg');
             expect(svg).toHaveAttribute('width', '64');
@@ -185,9 +185,9 @@ describe('Icon Components', () => {
 
     describe('Icon consistency', () => {
         it('should have consistent default sizes across all icons', () => {
-            const { unmount: unmount1 } = render(<SolanaIcon />);
+            const { unmount: unmount1 } = render(<TrezoaIcon />);
             let svg = document.querySelector('svg');
-            const solanaSize = { width: svg?.getAttribute('width'), height: svg?.getAttribute('height') };
+            const trezoaSize = { width: svg?.getAttribute('width'), height: svg?.getAttribute('height') };
             unmount1();
 
             const { unmount: unmount2 } = render(<USDCIcon />);
@@ -211,7 +211,7 @@ describe('Icon Components', () => {
             unmount5();
 
             // All should have the same default size (24x24)
-            expect(solanaSize).toEqual({ width: '24', height: '24' });
+            expect(trezoaSize).toEqual({ width: '24', height: '24' });
             expect(usdcSize).toEqual({ width: '24', height: '24' });
             expect(usdtSize).toEqual({ width: '24', height: '24' });
             expect(errorSize).toEqual({ width: '24', height: '24' });
@@ -220,7 +220,7 @@ describe('Icon Components', () => {
 
         it('should have consistent accessibility attributes', () => {
             const icons = [
-                { component: SolanaIcon, label: 'Solana' },
+                { component: TrezoaIcon, label: 'trezoa' },
                 { component: USDCIcon, label: 'USDC' },
                 { component: USDTIcon, label: 'USDT' },
                 { component: ErrorIcon, label: 'Error' },
@@ -241,7 +241,7 @@ describe('Icon Components', () => {
 
     describe('Edge cases', () => {
         it('should handle zero size gracefully', () => {
-            render(<SolanaIcon size={0} />);
+            render(<TrezoaIcon size={0} />);
 
             const svg = document.querySelector('svg');
             expect(svg).toHaveAttribute('width', '0');
@@ -249,7 +249,7 @@ describe('Icon Components', () => {
         });
 
         it('should handle very large sizes', () => {
-            render(<TokenIcon symbol="SOL" size={1000} />);
+            render(<TokenIcon symbol="TRZ" size={1000} />);
 
             const svg = document.querySelector('svg');
             expect(svg).toHaveAttribute('width', '1000');
@@ -264,7 +264,7 @@ describe('Icon Components', () => {
         });
 
         it('should handle missing props gracefully', () => {
-            render(<TokenIcon symbol="SOL" />);
+            render(<TokenIcon symbol="TRZ" />);
 
             // Should render without errors even with minimal props
             const svg = document.querySelector('svg');
@@ -274,20 +274,20 @@ describe('Icon Components', () => {
 
     describe('Token icon mapping', () => {
         it('should map currency symbols to correct icons', () => {
-            const currencies = ['SOL', 'USDC', 'USDT'] as const;
+            const currencies = ['TRZ', 'USDC', 'USDT'] as const;
 
             currencies.forEach(currency => {
                 const { unmount } = render(<TokenIcon symbol={currency} />);
 
                 const svg = document.querySelector('svg');
-                expect(svg).toHaveAttribute('aria-label', currency === 'SOL' ? 'Solana' : currency);
+                expect(svg).toHaveAttribute('aria-label', currency === 'TRZ' ? 'trezoa' : currency);
 
                 unmount();
             });
         });
 
         it('should handle case variations in token symbols', () => {
-            const { unmount: unmount1 } = render(<TokenIcon symbol="sol" as any />);
+            const { unmount: unmount1 } = render(<TokenIcon symbol="trz" as any />);
             let svg = document.querySelector('svg');
             expect(svg).toBeInTheDocument();
             unmount1();

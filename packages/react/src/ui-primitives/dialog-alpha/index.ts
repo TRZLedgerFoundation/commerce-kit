@@ -1,5 +1,5 @@
 /**
- * Dialog Alpha - Simplified Dialog Implementation for Solana Commerce SDK
+ * Dialog Alpha - Simplified Dialog Implementation for Trezoa Commerce SDK
  * Based on the modular dialog system but streamlined for our use case
  */
 

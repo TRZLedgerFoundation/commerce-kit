@@ -1,7 +1,7 @@
 {
-    "name": "@solana-commerce/sdk",
+    "name": "@trezoa-commerce/sdk",
     "version": "0.1.0",
-    "description": "React hooks for Solana development",
+    "description": "React hooks for Trezoa development",
     "main": "./dist/index.js",
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.ts",
@@ -39,14 +39,14 @@
         }
     },
     "dependencies": {
-        "@solana-commerce/connector": "workspace:*",
-        "@solana/kit": "^2.3.0",
-        "@solana/keys": "^2.3.0",
-        "@solana/rpc-types": "^2.3.0",
-        "@solana-program/compute-budget": "^0.8.0",
-        "@solana-program/system": "^0.7.0",
-        "@solana-program/token": "^0.5.1",
-        "@solana/transactions": "^2.3.0",
+        "@trezoa-commerce/connector": "workspace:*",
+        "@trezoa/kit": "^2.3.0",
+        "@trezoa/keys": "^2.3.0",
+        "@trezoa/rpc-types": "^2.3.0",
+        "@trezoa-program/compute-budget": "^0.8.0",
+        "@trezoa-program/system": "^0.7.0",
+        "@trezoa-program/token": "^0.5.1",
+        "@trezoa/transactions": "^2.3.0",
         "@wallet-standard/app": "^1.0.0",
         "@wallet-standard/base": "^1.0.0",
         "@wallet-standard/features": "^1.0.0",
@@ -66,7 +66,7 @@
         "vitest": "^1.0.0"
     },
     "keywords": [
-        "solana",
+        "trezoa",
         "react",
         "hooks",
         "blockchain",

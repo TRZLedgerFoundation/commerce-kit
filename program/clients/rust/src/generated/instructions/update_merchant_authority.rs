@@ -15,48 +15,48 @@ pub const UPDATE_MERCHANT_AUTHORITY_DISCRIMINATOR: u8 = 7;
 pub struct UpdateMerchantAuthority {
       
               
-          pub payer: solana_pubkey::Pubkey,
+          pub payer: trezoa_pubkey::Pubkey,
           
               
-          pub authority: solana_pubkey::Pubkey,
+          pub authority: trezoa_pubkey::Pubkey,
                 /// Merchant PDA
 
     
               
-          pub merchant: solana_pubkey::Pubkey,
+          pub merchant: trezoa_pubkey::Pubkey,
           
               
-          pub new_authority: solana_pubkey::Pubkey,
+          pub new_authority: trezoa_pubkey::Pubkey,
       }
 
 impl UpdateMerchantAuthority {
-  pub fn instruction(&self) -> solana_instruction::Instruction {
+  pub fn instruction(&self) -> trezoa_instruction::Instruction {
     self.instruction_with_remaining_accounts(&[])
   }
   #[allow(clippy::arithmetic_side_effects)]
   #[allow(clippy::vec_init_then_push)]
-  pub fn instruction_with_remaining_accounts(&self, remaining_accounts: &[solana_instruction::AccountMeta]) -> solana_instruction::Instruction {
+  pub fn instruction_with_remaining_accounts(&self, remaining_accounts: &[trezoa_instruction::AccountMeta]) -> trezoa_instruction::Instruction {
     let mut accounts = Vec::with_capacity(4+ remaining_accounts.len());
-                            accounts.push(solana_instruction::AccountMeta::new(
+                            accounts.push(trezoa_instruction::AccountMeta::new(
             self.payer,
             true
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new(
+                                          accounts.push(trezoa_instruction::AccountMeta::new(
             self.authority,
             true
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new(
+                                          accounts.push(trezoa_instruction::AccountMeta::new(
             self.merchant,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             self.new_authority,
             false
           ));
                       accounts.extend_from_slice(remaining_accounts);
     let data = borsh::to_vec(&UpdateMerchantAuthorityInstructionData::new()).unwrap();
     
-    solana_instruction::Instruction {
+    trezoa_instruction::Instruction {
       program_id: crate::COMMERCE_PROGRAM_ID,
       accounts,
       data,
@@ -96,11 +96,11 @@ impl Default for UpdateMerchantAuthorityInstructionData {
           ///   3. `[]` new_authority
 #[derive(Clone, Debug, Default)]
 pub struct UpdateMerchantAuthorityBuilder {
-            payer: Option<solana_pubkey::Pubkey>,
-                authority: Option<solana_pubkey::Pubkey>,
-                merchant: Option<solana_pubkey::Pubkey>,
-                new_authority: Option<solana_pubkey::Pubkey>,
-                __remaining_accounts: Vec<solana_instruction::AccountMeta>,
+            payer: Option<trezoa_pubkey::Pubkey>,
+                authority: Option<trezoa_pubkey::Pubkey>,
+                merchant: Option<trezoa_pubkey::Pubkey>,
+                new_authority: Option<trezoa_pubkey::Pubkey>,
+                __remaining_accounts: Vec<trezoa_instruction::AccountMeta>,
 }
 
 impl UpdateMerchantAuthorityBuilder {
@@ -108,40 +108,40 @@ impl UpdateMerchantAuthorityBuilder {
     Self::default()
   }
             #[inline(always)]
-    pub fn payer(&mut self, payer: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn payer(&mut self, payer: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.payer = Some(payer);
                     self
     }
             #[inline(always)]
-    pub fn authority(&mut self, authority: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn authority(&mut self, authority: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.authority = Some(authority);
                     self
     }
             /// Merchant PDA
 #[inline(always)]
-    pub fn merchant(&mut self, merchant: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn merchant(&mut self, merchant: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.merchant = Some(merchant);
                     self
     }
             #[inline(always)]
-    pub fn new_authority(&mut self, new_authority: solana_pubkey::Pubkey) -> &mut Self {
+    pub fn new_authority(&mut self, new_authority: trezoa_pubkey::Pubkey) -> &mut Self {
                         self.new_authority = Some(new_authority);
                     self
     }
             /// Add an additional account to the instruction.
   #[inline(always)]
-  pub fn add_remaining_account(&mut self, account: solana_instruction::AccountMeta) -> &mut Self {
+  pub fn add_remaining_account(&mut self, account: trezoa_instruction::AccountMeta) -> &mut Self {
     self.__remaining_accounts.push(account);
     self
   }
   /// Add additional accounts to the instruction.
   #[inline(always)]
-  pub fn add_remaining_accounts(&mut self, accounts: &[solana_instruction::AccountMeta]) -> &mut Self {
+  pub fn add_remaining_accounts(&mut self, accounts: &[trezoa_instruction::AccountMeta]) -> &mut Self {
     self.__remaining_accounts.extend_from_slice(accounts);
     self
   }
   #[allow(clippy::clone_on_copy)]
-  pub fn instruction(&self) -> solana_instruction::Instruction {
+  pub fn instruction(&self) -> trezoa_instruction::Instruction {
     let accounts = UpdateMerchantAuthority {
                               payer: self.payer.expect("payer is not set"),
                                         authority: self.authority.expect("authority is not set"),
@@ -157,43 +157,43 @@ impl UpdateMerchantAuthorityBuilder {
   pub struct UpdateMerchantAuthorityCpiAccounts<'a, 'b> {
           
                     
-              pub payer: &'b solana_account_info::AccountInfo<'a>,
+              pub payer: &'b trezoa_account_info::AccountInfo<'a>,
                 
                     
-              pub authority: &'b solana_account_info::AccountInfo<'a>,
+              pub authority: &'b trezoa_account_info::AccountInfo<'a>,
                         /// Merchant PDA
 
       
                     
-              pub merchant: &'b solana_account_info::AccountInfo<'a>,
+              pub merchant: &'b trezoa_account_info::AccountInfo<'a>,
                 
                     
-              pub new_authority: &'b solana_account_info::AccountInfo<'a>,
+              pub new_authority: &'b trezoa_account_info::AccountInfo<'a>,
             }
 
 /// `update_merchant_authority` CPI instruction.
 pub struct UpdateMerchantAuthorityCpi<'a, 'b> {
   /// The program to invoke.
-  pub __program: &'b solana_account_info::AccountInfo<'a>,
+  pub __program: &'b trezoa_account_info::AccountInfo<'a>,
       
               
-          pub payer: &'b solana_account_info::AccountInfo<'a>,
+          pub payer: &'b trezoa_account_info::AccountInfo<'a>,
           
               
-          pub authority: &'b solana_account_info::AccountInfo<'a>,
+          pub authority: &'b trezoa_account_info::AccountInfo<'a>,
                 /// Merchant PDA
 
     
               
-          pub merchant: &'b solana_account_info::AccountInfo<'a>,
+          pub merchant: &'b trezoa_account_info::AccountInfo<'a>,
           
               
-          pub new_authority: &'b solana_account_info::AccountInfo<'a>,
+          pub new_authority: &'b trezoa_account_info::AccountInfo<'a>,
         }
 
 impl<'a, 'b> UpdateMerchantAuthorityCpi<'a, 'b> {
   pub fn new(
-    program: &'b solana_account_info::AccountInfo<'a>,
+    program: &'b trezoa_account_info::AccountInfo<'a>,
           accounts: UpdateMerchantAuthorityCpiAccounts<'a, 'b>,
           ) -> Self {
     Self {
@@ -205,15 +205,15 @@ impl<'a, 'b> UpdateMerchantAuthorityCpi<'a, 'b> {
                 }
   }
   #[inline(always)]
-  pub fn invoke(&self) -> solana_program_error::ProgramResult {
+  pub fn invoke(&self) -> trezoa_program_error::ProgramResult {
     self.invoke_signed_with_remaining_accounts(&[], &[])
   }
   #[inline(always)]
-  pub fn invoke_with_remaining_accounts(&self, remaining_accounts: &[(&'b solana_account_info::AccountInfo<'a>, bool, bool)]) -> solana_program_error::ProgramResult {
+  pub fn invoke_with_remaining_accounts(&self, remaining_accounts: &[(&'b trezoa_account_info::AccountInfo<'a>, bool, bool)]) -> trezoa_program_error::ProgramResult {
     self.invoke_signed_with_remaining_accounts(&[], remaining_accounts)
   }
   #[inline(always)]
-  pub fn invoke_signed(&self, signers_seeds: &[&[&[u8]]]) -> solana_program_error::ProgramResult {
+  pub fn invoke_signed(&self, signers_seeds: &[&[&[u8]]]) -> trezoa_program_error::ProgramResult {
     self.invoke_signed_with_remaining_accounts(signers_seeds, &[])
   }
   #[allow(clippy::arithmetic_side_effects)]
@@ -222,27 +222,27 @@ impl<'a, 'b> UpdateMerchantAuthorityCpi<'a, 'b> {
   pub fn invoke_signed_with_remaining_accounts(
     &self,
     signers_seeds: &[&[&[u8]]],
-    remaining_accounts: &[(&'b solana_account_info::AccountInfo<'a>, bool, bool)]
-  ) -> solana_program_error::ProgramResult {
+    remaining_accounts: &[(&'b trezoa_account_info::AccountInfo<'a>, bool, bool)]
+  ) -> trezoa_program_error::ProgramResult {
     let mut accounts = Vec::with_capacity(4+ remaining_accounts.len());
-                            accounts.push(solana_instruction::AccountMeta::new(
+                            accounts.push(trezoa_instruction::AccountMeta::new(
             *self.payer.key,
             true
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new(
+                                          accounts.push(trezoa_instruction::AccountMeta::new(
             *self.authority.key,
             true
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new(
+                                          accounts.push(trezoa_instruction::AccountMeta::new(
             *self.merchant.key,
             false
           ));
-                                          accounts.push(solana_instruction::AccountMeta::new_readonly(
+                                          accounts.push(trezoa_instruction::AccountMeta::new_readonly(
             *self.new_authority.key,
             false
           ));
                       remaining_accounts.iter().for_each(|remaining_account| {
-      accounts.push(solana_instruction::AccountMeta {
+      accounts.push(trezoa_instruction::AccountMeta {
           pubkey: *remaining_account.0.key,
           is_signer: remaining_account.1,
           is_writable: remaining_account.2,
@@ -250,7 +250,7 @@ impl<'a, 'b> UpdateMerchantAuthorityCpi<'a, 'b> {
     });
     let data = borsh::to_vec(&UpdateMerchantAuthorityInstructionData::new()).unwrap();
     
-    let instruction = solana_instruction::Instruction {
+    let instruction = trezoa_instruction::Instruction {
       program_id: crate::COMMERCE_PROGRAM_ID,
       accounts,
       data,
@@ -264,9 +264,9 @@ impl<'a, 'b> UpdateMerchantAuthorityCpi<'a, 'b> {
               remaining_accounts.iter().for_each(|remaining_account| account_infos.push(remaining_account.0.clone()));
 
     if signers_seeds.is_empty() {
-      solana_cpi::invoke(&instruction, &account_infos)
+      trezoa_cpi::invoke(&instruction, &account_infos)
     } else {
-      solana_cpi::invoke_signed(&instruction, &account_infos, signers_seeds)
+      trezoa_cpi::invoke_signed(&instruction, &account_infos, signers_seeds)
     }
   }
 }
@@ -285,7 +285,7 @@ pub struct UpdateMerchantAuthorityCpiBuilder<'a, 'b> {
 }
 
 impl<'a, 'b> UpdateMerchantAuthorityCpiBuilder<'a, 'b> {
-  pub fn new(program: &'b solana_account_info::AccountInfo<'a>) -> Self {
+  pub fn new(program: &'b trezoa_account_info::AccountInfo<'a>) -> Self {
     let instruction = Box::new(UpdateMerchantAuthorityCpiBuilderInstruction {
       __program: program,
               payer: None,
@@ -297,29 +297,29 @@ impl<'a, 'b> UpdateMerchantAuthorityCpiBuilder<'a, 'b> {
     Self { instruction }
   }
       #[inline(always)]
-    pub fn payer(&mut self, payer: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn payer(&mut self, payer: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
                         self.instruction.payer = Some(payer);
                     self
     }
       #[inline(always)]
-    pub fn authority(&mut self, authority: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn authority(&mut self, authority: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
                         self.instruction.authority = Some(authority);
                     self
     }
       /// Merchant PDA
 #[inline(always)]
-    pub fn merchant(&mut self, merchant: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn merchant(&mut self, merchant: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
                         self.instruction.merchant = Some(merchant);
                     self
     }
       #[inline(always)]
-    pub fn new_authority(&mut self, new_authority: &'b solana_account_info::AccountInfo<'a>) -> &mut Self {
+    pub fn new_authority(&mut self, new_authority: &'b trezoa_account_info::AccountInfo<'a>) -> &mut Self {
                         self.instruction.new_authority = Some(new_authority);
                     self
     }
             /// Add an additional account to the instruction.
   #[inline(always)]
-  pub fn add_remaining_account(&mut self, account: &'b solana_account_info::AccountInfo<'a>, is_writable: bool, is_signer: bool) -> &mut Self {
+  pub fn add_remaining_account(&mut self, account: &'b trezoa_account_info::AccountInfo<'a>, is_writable: bool, is_signer: bool) -> &mut Self {
     self.instruction.__remaining_accounts.push((account, is_writable, is_signer));
     self
   }
@@ -328,17 +328,17 @@ impl<'a, 'b> UpdateMerchantAuthorityCpiBuilder<'a, 'b> {
   /// Each account is represented by a tuple of the `AccountInfo`, a `bool` indicating whether the account is writable or not,
   /// and a `bool` indicating whether the account is a signer or not.
   #[inline(always)]
-  pub fn add_remaining_accounts(&mut self, accounts: &[(&'b solana_account_info::AccountInfo<'a>, bool, bool)]) -> &mut Self {
+  pub fn add_remaining_accounts(&mut self, accounts: &[(&'b trezoa_account_info::AccountInfo<'a>, bool, bool)]) -> &mut Self {
     self.instruction.__remaining_accounts.extend_from_slice(accounts);
     self
   }
   #[inline(always)]
-  pub fn invoke(&self) -> solana_program_error::ProgramResult {
+  pub fn invoke(&self) -> trezoa_program_error::ProgramResult {
     self.invoke_signed(&[])
   }
   #[allow(clippy::clone_on_copy)]
   #[allow(clippy::vec_init_then_push)]
-  pub fn invoke_signed(&self, signers_seeds: &[&[&[u8]]]) -> solana_program_error::ProgramResult {
+  pub fn invoke_signed(&self, signers_seeds: &[&[&[u8]]]) -> trezoa_program_error::ProgramResult {
         let instruction = UpdateMerchantAuthorityCpi {
         __program: self.instruction.__program,
                   
@@ -356,12 +356,12 @@ impl<'a, 'b> UpdateMerchantAuthorityCpiBuilder<'a, 'b> {
 
 #[derive(Clone, Debug)]
 struct UpdateMerchantAuthorityCpiBuilderInstruction<'a, 'b> {
-  __program: &'b solana_account_info::AccountInfo<'a>,
-            payer: Option<&'b solana_account_info::AccountInfo<'a>>,
-                authority: Option<&'b solana_account_info::AccountInfo<'a>>,
-                merchant: Option<&'b solana_account_info::AccountInfo<'a>>,
-                new_authority: Option<&'b solana_account_info::AccountInfo<'a>>,
+  __program: &'b trezoa_account_info::AccountInfo<'a>,
+            payer: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+                authority: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+                merchant: Option<&'b trezoa_account_info::AccountInfo<'a>>,
+                new_authority: Option<&'b trezoa_account_info::AccountInfo<'a>>,
                 /// Additional instruction accounts `(AccountInfo, is_writable, is_signer)`.
-  __remaining_accounts: Vec<(&'b solana_account_info::AccountInfo<'a>, bool, bool)>,
+  __remaining_accounts: Vec<(&'b trezoa_account_info::AccountInfo<'a>, bool, bool)>,
 }
 

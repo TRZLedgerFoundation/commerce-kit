@@ -8,7 +8,7 @@ import {
   TOKEN_PROGRAM_ADDRESS,
   getMintToInstruction,
 } from "gill/programs";
-import { createSolanaClient, lamports } from "gill";
+import { createTrezoaClient, lamports } from "gill";
 import { loadKeypairSignerFromFile } from "gill/node";
 import {
   assertGetOrCreateMerchant,
@@ -25,7 +25,7 @@ import { sendAndConfirmInstructions } from "../integration/helpers/transactions"
 
 const KEYPAIR_FILE = "./tests/devnet/devnet-test-keypair.json";
 const MINT_KEYPAIR_FILE = "./tests/devnet/test-mint-keypair.json";
-const DEVNET_RPC_URL = "https://api.devnet.solana.com";
+const DEVNET_RPC_URL = "https://api.devnet.trezoa.com";
 const USDC_DECIMALS = 6;
 const TEST_AMOUNT = 1 * 10 ** USDC_DECIMALS; // 1 USDC
 const MINT_AMOUNT = 1000 * 10 ** USDC_DECIMALS; // 1000 USDC
@@ -40,7 +40,7 @@ async function main() {
   } catch (error) {
     console.log("❌ Could not load keypair from", KEYPAIR_FILE);
     console.log(
-      "Please create a keypair file with: solana-keygen new -o",
+      "Please create a keypair file with: trezoa-keygen new -o",
       KEYPAIR_FILE
     );
     process.exit(1);
@@ -48,13 +48,13 @@ async function main() {
 
   console.log("🔑 Authority:", signer.address);
 
-  const client = createSolanaClient({
+  const client = createTrezoaClient({
     urlOrMoniker: DEVNET_RPC_URL,
   });
 
   const balance = await client.rpc.getBalance(signer.address).send();
   const balanceInSol = Number(balance.value) / 10 ** 9;
-  console.log("💰 Balance:", balanceInSol, "SOL");
+  console.log("💰 Balance:", balanceInSol, "TRZ");
 
   if (balanceInSol < 1) {
     console.log("🚰 Requesting airdrop...");
@@ -68,7 +68,7 @@ async function main() {
       console.log("✅ Airdrop complete");
     } catch (error) {
       console.error("❌ Airdrop failed:", error);
-      console.log("Please ensure you have enough SOL on devnet");
+      console.log("Please ensure you have enough TRZ on devnet");
       process.exit(1);
     }
   }

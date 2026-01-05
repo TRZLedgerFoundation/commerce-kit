@@ -2,7 +2,7 @@ import React, { useState, useMemo, memo } from 'react';
 import { getBorderRadius, getButtonText, getButtonShadow, getButtonBorder, getAccessibleTextColor } from '../../utils';
 import type { TriggerButtonProps } from '../../types';
 
-const SolanaPayIcon = (
+const TrezoaPayIcon = (
     <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path
             d="M3.98967 11.7879C4.10222 11.6755 4.25481 11.6123 4.41392 11.6123H19.0941C19.3615 11.6123 19.4954 11.9357 19.3062 12.1247L16.4054 15.0232C16.2929 15.1356 16.1403 15.1988 15.9812 15.1988H1.30102C1.03359 15.1988 0.899716 14.8754 1.08889 14.6864L3.98967 11.7879Z"
@@ -77,7 +77,7 @@ export const TriggerButton = memo<TriggerButtonProps>(
                         gap: isIconOnly ? '0' : '0.5rem',
                     }}
                 >
-                    {SolanaPayIcon}
+                    {TrezoaPayIcon}
                     {!isIconOnly && buttonText}
                 </div>
             </button>

@@ -25,13 +25,13 @@ const mockWalletsApi = {
 // Type for mock wallet
 type MockWallet = ReturnType<typeof createMockWallet>;
 
-// Mock wallet with Solana support
+// Mock wallet with Trezoa support
 const createMockWallet = (name: string, hasConnect = true, hasDisconnect = true, hasEvents = false) => ({
     name,
     icon: `data:image/svg+xml;base64,${name}Icon`,
     version: '1.0.0',
     accounts: [],
-    chains: ['solana:mainnet', 'solana:devnet'],
+    chains: ['trezoa:mainnet', 'trezoa:devnet'],
     features: {
         ...(hasConnect && {
             'standard:connect': {
@@ -177,11 +177,11 @@ describe('ConnectorClient', () => {
     });
 
     describe('Wallet Discovery', () => {
-        it('should discover Solana-compatible wallets', () => {
+        it('should discover Trezoa-compatible wallets', () => {
             const phantomWallet = createMockWallet('Phantom');
-            const solflareWallet = createMockWallet('Solflare');
+            const trzflareWallet = createMockWallet('Solflare');
 
-            mockWalletsApi.get.mockReturnValue([phantomWallet, solflareWallet]);
+            mockWalletsApi.get.mockReturnValue([phantomWallet, trzflareWallet]);
 
             const client = new ConnectorClient();
             const state = client.getConnectorState();

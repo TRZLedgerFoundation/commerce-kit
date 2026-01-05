@@ -2,12 +2,12 @@
 const config = {
   reactStrictMode: true,
   transpilePackages: [
-    '@solana-commerce/connector',
-    '@solana-commerce/react',
-    '@solana-commerce/headless'
+    '@trezoa-commerce/connector',
+    '@trezoa-commerce/react',
+    '@trezoa-commerce/headless'
   ],
   experimental: {
-    optimizePackageImports: ['@solana-commerce/connector', '@solana-commerce/headless', '@solana-commerce/react'],
+    optimizePackageImports: ['@trezoa-commerce/connector', '@trezoa-commerce/headless', '@trezoa-commerce/react'],
   },
   // Turbopack configuration
   turbopack: {

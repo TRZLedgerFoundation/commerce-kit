@@ -3,7 +3,7 @@
 import React, { useMemo } from 'react';
 import type { ReactNode } from 'react';
 import { ArcClientProvider, useArcClient } from './commerce-client-provider';
-import { useConnectorClient } from '@solana-commerce/connector';
+import { useConnectorClient } from '@trezoa-commerce/connector';
 import type { ArcWebClientConfig } from './web-client';
 import type { QueryClient } from '@tanstack/react-query';
 

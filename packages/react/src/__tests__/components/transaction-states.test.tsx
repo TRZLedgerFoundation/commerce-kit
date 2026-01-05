@@ -33,8 +33,8 @@ vi.mock('../../components/icons', () => ({
 }));
 
 // Mock the config context
-vi.mock('../../context/SolanaPayConfigProvider', () => ({
-    useSolanaPayConfig: () => ({
+vi.mock('../../context/TrezoaPayConfigProvider', () => ({
+    useTrezoaPayConfig: () => ({
         merchant: {
             name: 'Test Merchant',
         },
@@ -191,7 +191,7 @@ describe('Transaction State Components', () => {
         });
 
         it('should handle different currencies correctly', () => {
-            const { rerender } = render(<TransactionSuccess {...defaultSuccessProps} currency="SOL" amount={0.5} />);
+            const { rerender } = render(<TransactionSuccess {...defaultSuccessProps} currency="TRZ" amount={0.5} />);
 
             expect(screen.getByText(/0.5 SOL/)).toBeInTheDocument();
 
@@ -287,7 +287,7 @@ describe('Transaction State Components', () => {
                 <TransactionSuccess
                     {...defaultSuccessProps}
                     showDetails={true}
-                    explorerUrl="https://explorer.solana.com"
+                    explorerUrl="https://explorer.trezoa.com"
                 />,
             );
 

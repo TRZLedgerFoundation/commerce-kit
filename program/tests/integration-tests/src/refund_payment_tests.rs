@@ -12,15 +12,15 @@ use commerce_program_client::{
     instructions::RefundPaymentBuilder,
     types::{FeeType, PolicyData, RefundPolicy, SettlementPolicy},
 };
-use solana_sdk::{
+use trezoa_sdk::{
     instruction::{AccountMeta, Instruction},
     pubkey::Pubkey,
     signature::Keypair,
     signer::Signer,
     system_program::ID as SYSTEM_PROGRAM_ID,
 };
-use spl_associated_token_account::get_associated_token_address;
-use spl_token::ID as TOKEN_PROGRAM_ID;
+use tpl_associated_token_account::get_associated_token_address;
+use tpl_token::ID as TOKEN_PROGRAM_ID;
 
 // Helper function to set up test context for refund_payment tests
 async fn setup_refund_payment_test(

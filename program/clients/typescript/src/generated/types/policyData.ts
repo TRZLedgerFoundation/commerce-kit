@@ -19,7 +19,7 @@ import {
   type Encoder,
   type GetDiscriminatedUnionVariant,
   type GetDiscriminatedUnionVariantContent,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import {
   getRefundPolicyDecoder,
   getRefundPolicyEncoder,

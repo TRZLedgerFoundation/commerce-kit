@@ -4,9 +4,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Structure
 
-This is a Solana program using the Pinocchio framework for efficient program development. The project is structured as a Rust workspace with the following key components:
+This is a trezoa program using the Pinocchio framework for efficient program development. The project is structured as a Rust workspace with the following key components:
 
-- `program/` - Main Solana program written in Rust using Pinocchio
+- `program/` - Main trezoa program written in Rust using Pinocchio
 - `clients/rust/` - Rust client library for interacting with the program
 - `clients/typescript/` - TypeScript client (generated)
 - `tests/integration-tests/` - Integration tests for the program
@@ -64,7 +64,7 @@ pnpm run test:ci:integration
 
 ## Program Architecture
 
-The Solana program follows standard structure:
+The trezoa program follows standard structure:
 - `lib.rs` - Main module declarations with program ID
 - `entrypoint.rs` - Program entrypoint (excluded with no-entrypoint feature)
 - `instructions.rs` - Instruction definitions (IDL feature only)

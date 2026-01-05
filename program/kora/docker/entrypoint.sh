@@ -164,7 +164,7 @@ case "$1" in
         echo "  sign-if-paid        - Direct sign-if-paid command"
         echo ""
         echo "Environment Variables:"
-        echo "  RPC_URL             - Solana RPC endpoint"
+        echo "  RPC_URL             - Trezoa RPC endpoint"
         echo "  KORA_PRIVATE_KEY    - Private key for memory signer"
         echo "  KORA_CONFIG_PATH    - Path to kora.toml config file"
         echo "  PORT                - RPC server port (server mode only)"

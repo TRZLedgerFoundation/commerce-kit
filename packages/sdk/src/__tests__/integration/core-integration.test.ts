@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { getClusterInfo } from '../../utils/cluster';
-// Transport functionality now handled by @solana/kit
+// Transport functionality now handled by @trezoa/kit
 
 describe('Core Integration Tests', () => {
     describe('Cluster Configuration', () => {
@@ -9,8 +9,8 @@ describe('Core Integration Tests', () => {
 
             expect(clusterInfo).toEqual({
                 name: 'devnet',
-                rpcUrl: 'https://api.devnet.solana.com',
-                wsUrl: 'wss://api.devnet.solana.com',
+                rpcUrl: 'https://api.devnet.trezoa.com',
+                wsUrl: 'wss://api.devnet.trezoa.com',
                 isMainnet: false,
                 isDevnet: true,
                 isTestnet: false,
@@ -22,8 +22,8 @@ describe('Core Integration Tests', () => {
 
             expect(clusterInfo).toEqual({
                 name: 'mainnet',
-                rpcUrl: 'https://api.mainnet-beta.solana.com',
-                wsUrl: 'wss://api.mainnet-beta.solana.com',
+                rpcUrl: 'https://api.mainnet-beta.trezoa.com',
+                wsUrl: 'wss://api.mainnet-beta.trezoa.com',
                 isMainnet: true,
                 isDevnet: false,
                 isTestnet: false,
@@ -35,8 +35,8 @@ describe('Core Integration Tests', () => {
 
             expect(clusterInfo).toEqual({
                 name: 'testnet',
-                rpcUrl: 'https://api.testnet.solana.com',
-                wsUrl: 'wss://api.testnet.solana.com',
+                rpcUrl: 'https://api.testnet.trezoa.com',
+                wsUrl: 'wss://api.testnet.trezoa.com',
                 isMainnet: false,
                 isDevnet: false,
                 isTestnet: true,
@@ -112,10 +112,10 @@ describe('Core Integration Tests', () => {
             const mainnet = getClusterInfo('mainnet');
             const testnet = getClusterInfo('testnet');
 
-            // All should use .solana.com domain
-            expect(devnet.rpcUrl).toContain('.solana.com');
-            expect(mainnet.rpcUrl).toContain('.solana.com');
-            expect(testnet.rpcUrl).toContain('.solana.com');
+            // All should use .trezoa.com domain
+            expect(devnet.rpcUrl).toContain('.trezoa.com');
+            expect(mainnet.rpcUrl).toContain('.trezoa.com');
+            expect(testnet.rpcUrl).toContain('.trezoa.com');
         });
     });
 

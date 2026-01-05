@@ -10,7 +10,7 @@ import {
   KeyPairSigner,
   partiallySignTransaction,
   pipe,
-  SolanaClient,
+  TrezoaClient,
   Transaction,
   TransactionSigner,
 } from "gill";
@@ -35,12 +35,12 @@ import {
 } from "../../clients/typescript/src/generated";
 
 async function getNextOrderId(
-  solanaClient: SolanaClient,
+  trezoaClient: TrezoaClient,
   merchantOperatorConfigPda: Address
 ): Promise<number> {
   try {
     const account = await fetchEncodedAccount(
-      solanaClient.rpc,
+      trezoaClient.rpc,
       merchantOperatorConfigPda
     );
 
@@ -61,11 +61,11 @@ async function getNextOrderId(
 }
 
 async function getPaymentAccount(
-  solanaClient: SolanaClient,
+  trezoaClient: TrezoaClient,
   paymentPda: Address
 ): Promise<Payment> {
   try {
-    const account = await fetchEncodedAccount(solanaClient.rpc, paymentPda);
+    const account = await fetchEncodedAccount(trezoaClient.rpc, paymentPda);
 
     if (!account.exists) {
       throw new Error("Payment account does not exist");
@@ -96,7 +96,7 @@ async function generateMint({
   authority,
   mintKeypair,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: KeyPairSigner;
   authority: KeyPairSigner;
   mintKeypair: KeyPairSigner;
@@ -147,7 +147,7 @@ async function createAssociatedTokenAccount({
   mint,
   owner,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: KeyPairSigner;
   mint: Address;
   owner: Address;
@@ -183,7 +183,7 @@ async function signAndSerializeTransaction({
   instructions,
   description,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   payer: TransactionSigner;
   signers: CryptoKeyPair[];
   instructions: Instruction[];
@@ -210,7 +210,7 @@ async function accountExists({
   client,
   address,
 }: {
-  client: SolanaClient;
+  client: TrezoaClient;
   address: Address;
 }): Promise<boolean> {
   try {

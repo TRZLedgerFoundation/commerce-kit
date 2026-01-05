@@ -1,6 +1,6 @@
 import type { Wallet, WalletAccount } from '@wallet-standard/base';
 
-declare module '@solana-commerce/connector' {
+declare module '@trezoa-commerce/connector' {
     export interface WalletInfo {
         wallet: Wallet;
         name: string;

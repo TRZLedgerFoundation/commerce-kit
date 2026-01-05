@@ -35,7 +35,7 @@ const AccessibilityTestComponent = () => {
                             data-testid="currency-select"
                         >
                             <option value="USDC">USDC - USD Coin</option>
-                            <option value="SOL">SOL - Solana</option>
+                            <option value="TRZ">SOL - trezoa</option>
                             <option value="USDT">USDT - Tether USD</option>
                         </select>
                         <div id="currency-help" className="sr-only">

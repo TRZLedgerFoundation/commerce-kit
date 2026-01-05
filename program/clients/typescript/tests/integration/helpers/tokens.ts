@@ -2,7 +2,7 @@ import {
     Address,
     getMinimumBalanceForRentExemption,
     KeyPairSigner,
-    SolanaClient
+    TrezoaClient
 } from "gill";
 import {
     getCreateAccountInstruction,
@@ -23,7 +23,7 @@ async function generateMint({
     authority,
     mint,
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     payer: KeyPairSigner,
     authority: KeyPairSigner,
     mint: KeyPairSigner,
@@ -65,7 +65,7 @@ async function mintToOwner({
     authority,
     amount,
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     payer: KeyPairSigner,
     mint: Address
     authority: KeyPairSigner,
@@ -113,7 +113,7 @@ async function generateManyTokenAccounts({
     mint,
     owners,
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     payer: KeyPairSigner,
     mint: Address,
     owners: Address[],

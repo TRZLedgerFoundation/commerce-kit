@@ -1,22 +1,22 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { vi } from 'vitest';
-import { address } from '@solana/kit';
+import { address } from '@trezoa/kit';
 import type { ArcWebClientConfig, ArcWebClientState } from '../core/web-client';
 import { ArcClientProvider } from '../core/commerce-client-provider';
 
 // Mock Arc client state
 export const createMockArcState = (overrides: Partial<ArcWebClientState> = {}): ArcWebClientState => ({
     network: {
-        rpcUrl: 'https://api.devnet.solana.com',
+        rpcUrl: 'https://api.devnet.trezoa.com',
         isMainnet: false,
         isDevnet: true,
         isTestnet: false,
         canAirdrop: true,
         clusterInfo: {
             name: 'devnet',
-            rpcUrl: 'https://api.devnet.solana.com',
-            wsUrl: 'wss://api.devnet.solana.com',
+            rpcUrl: 'https://api.devnet.trezoa.com',
+            wsUrl: 'wss://api.devnet.trezoa.com',
             isMainnet: false,
             isDevnet: true,
             isTestnet: false,
@@ -134,8 +134,8 @@ export const MOCK_ADDRESSES = {
 };
 
 export const MOCK_LAMPORTS = {
-    ONE_SOL: 1_000_000_000n,
-    HALF_SOL: 500_000_000n,
-    POINT_ONE_SOL: 100_000_000n,
+    ONE_TRZ: 1_000_000_000n,
+    HALF_TRZ: 500_000_000n,
+    POINT_ONE_TRZ: 100_000_000n,
     MINIMUM: 1n,
 };

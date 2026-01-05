@@ -1,4 +1,4 @@
-import { Address, SolanaClient } from 'gill';
+import { Address, TrezoaClient } from 'gill';
 import { fetchToken } from 'gill/programs';
 import { expect } from '@jest/globals';
 import {
@@ -17,7 +17,7 @@ export async function assertMerchantAccount({
     expectedBump,
     expectedSettlementWallet
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     merchantPda: Address,
     expectedOwner: Address,
     expectedBump: number,
@@ -37,7 +37,7 @@ export async function assertOperatorAccount({
     expectedOwner,
     expectedBump
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     operatorPda: Address,
     expectedOwner: Address,
     expectedBump: number
@@ -54,7 +54,7 @@ export async function assertTokenAccount({
     expectedMint,
     expectedOwner
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     tokenAccount: Address,
     expectedMint: Address,
     expectedOwner: Address
@@ -77,7 +77,7 @@ export async function assertMerchantOperatorConfigAccount({
     expectedPolicies,
     expectedAcceptedCurrencies
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     merchantOperatorConfigPda: Address,
     expectedBump: number,
     expectedVersion: number,
@@ -132,7 +132,7 @@ export async function assertPaymentAccount({
     expectedAmount,
     expectedStatus,
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     paymentPda: Address,
     expectedOrderId: number,
     expectedAmount: bigint,
@@ -147,7 +147,7 @@ export async function assertPaymentAccount({
 }
 
 // Helper function to get token balance
-export async function getTokenBalance(client: SolanaClient, tokenAccount: Address): Promise<bigint> {
+export async function getTokenBalance(client: TrezoaClient, tokenAccount: Address): Promise<bigint> {
     const balance = await client.rpc.getTokenAccountBalance(tokenAccount, { commitment: 'processed' }).send();
     return BigInt(balance.value.amount);
 }
@@ -160,7 +160,7 @@ export async function assertTokenBalanceChanges({
     receiverAta,
     expectedAmount,
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     preBalances: [bigint, bigint], // [senderPreBalance, receiverPreBalance]
     senderAta: Address,
     receiverAta: Address,
@@ -191,7 +191,7 @@ export async function assertMultipleTokenBalanceChanges({
     preBalances,
     balanceChanges,
 }: {
-    client: SolanaClient,
+    client: TrezoaClient,
     preBalances: Map<Address, bigint>, // Map of ATA to pre-balance
     balanceChanges: BalanceChange[],
 }) {

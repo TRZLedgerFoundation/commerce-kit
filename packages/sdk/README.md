@@ -1,19 +1,19 @@
-# @solana-commerce/sdk
+# @trezoa-commerce/sdk
 
-Modern React hooks for Solana development - Type-safe, progressive complexity, built on Solana Kit
+Modern React hooks for Trezoa development - Type-safe, progressive complexity, built on Trezoa Kit
 
 <!-- TODO: Add npm version badge when published -->
 
 ## Installation
 
 ```bash
-pnpm add @solana-commerce/sdk
+pnpm add @trezoa-commerce/sdk
 ```
 
 ## Quick Start
 
 ```typescript
-import { ArcProvider, useTransferSOL } from '@solana-commerce/sdk';
+import { ArcProvider, useTransferTRZ } from '@trezoa-commerce/sdk';
 
 function App() {
   return (
@@ -24,16 +24,16 @@ function App() {
 }
 
 function TransferComponent() {
-  const { transferSOL } = useTransferSOL();
+  const { transferTRZ } = useTransferTRZ();
 
-  return <button onClick={() => transferSOL({ to: 'address', amount: 1n })}>Send</button>;
+  return <button onClick={() => transferTRZ({ to: 'address', amount: 1n })}>Send</button>;
 }
 ```
 
 ## Features
 
-- Solana React Provider with automatic RPC client management
-- Solana Kit/Gill-based Solana Hooks for common operations
+- Trezoa React Provider with automatic RPC client management
+- Trezoa Kit/Gill-based Trezoa Hooks for common operations
 
 ### Arc Provider
 
@@ -51,23 +51,23 @@ function TransferComponent() {
 ### Hooks
 
 - **useArcClient()** - Access RPC client and configuration
-- **useTransferSOL()** - Transfer SOL with automatic retry
-- **useTransferToken()** - Transfer SPL tokens with automatic retry
+- **useTransferTRZ()** - Transfer TRZ with automatic retry
+- **useTransferToken()** - Transfer TPL tokens with automatic retry
 - **useStandardWallets()** - Wallet Standard integration
 
 ## Examples
 
-### SOL Transfer
+### TRZ Transfer
 
 ```typescript
-function SendSOL() {
-  const { transferSOL, isLoading } = useTransferSOL();
+function SendTRZ() {
+  const { transferTRZ, isLoading } = useTransferTRZ();
 
   const handleTransfer = async () => {
     try {
-      const { signature } = await transferSOL({
+      const { signature } = await transferTRZ({
         to: 'recipient-address',
-        amount: BigInt(1_000_000_000) // 1 SOL in lamports
+        amount: BigInt(1_000_000_000) // 1 TRZ in lamports
       });
       console.log('Transfer successful:', signature);
     } catch (error) {
@@ -77,7 +77,7 @@ function SendSOL() {
 
   return (
     <button onClick={handleTransfer} disabled={isLoading}>
-      Send 1 SOL
+      Send 1 TRZ
     </button>
   );
 }
@@ -93,7 +93,7 @@ function App() {
     <ArcProvider
       config={{
         network: 'devnet',
-        rpcUrl: 'https://api.devnet.solana.com',
+        rpcUrl: 'https://api.devnet.trezoa.com',
         debug: true
       }}
     >

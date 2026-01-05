@@ -103,10 +103,10 @@ export class ConnectorClient {
                 const hasConnect = Boolean(features['standard:connect']);
                 const hasDisconnect = Boolean(features['standard:disconnect']);
                 const chains = walletEntry.chains as IdentifierArray | undefined;
-                const isSolana =
+                const isTrezoa =
                     Array.isArray(chains) &&
-                    chains.some(chain => typeof chain === 'string' && chain.includes('solana'));
-                const connectable = Boolean(hasConnect && hasDisconnect && isSolana);
+                    chains.some(chain => typeof chain === 'string' && chain.includes('trezoa'));
+                const connectable = Boolean(hasConnect && hasDisconnect && isTrezoa);
                 return {
                     wallet: walletEntry,
                     name: walletEntry.name,

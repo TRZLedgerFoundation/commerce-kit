@@ -2,11 +2,11 @@
  * 🛡️ Arc Error Handler - Enterprise-Grade Error Management
  *
  * Provides comprehensive error classification, retry logic, and recovery strategies
- * for production Solana applications. Handles network failures, rate limiting,
+ * for production Trezoa applications. Handles network failures, rate limiting,
  * transaction errors, and wallet issues with intelligent retry mechanisms.
  */
 
-import type { Address } from '@solana/kit';
+import type { Address } from '@trezoa/kit';
 
 // ===== ERROR CLASSIFICATION =====
 
@@ -189,8 +189,8 @@ export class ArcError extends Error {
             case ArcErrorCode.INSUFFICIENT_FUNDS:
                 return {
                     canRecover: true,
-                    userMessage: 'Insufficient SOL balance. Please add funds to your wallet.',
-                    developerMessage: 'Transaction requires more SOL than available in wallet.',
+                    userMessage: 'Insufficient TRZ balance. Please add funds to your wallet.',
+                    developerMessage: 'Transaction requires more TRZ than available in wallet.',
                 };
 
             case ArcErrorCode.RATE_LIMITED:

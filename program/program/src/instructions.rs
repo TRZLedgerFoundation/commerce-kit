@@ -7,7 +7,7 @@ use shank::ShankInstruction;
 
 use crate::state::{FeeType, PolicyData};
 
-/// Instructions for the Solana Commerce Program. This
+/// Instructions for the Trezoa Commerce Program. This
 /// is currently not used in the program business logic, but
 /// we include it for IDL generation.
 #[repr(C, u8)]

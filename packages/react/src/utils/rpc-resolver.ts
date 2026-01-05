@@ -59,8 +59,8 @@ function getServerRpcUrl(network: string): string | null {
     const globalProcess = (globalThis as any).process;
     if (!globalProcess?.env) return null;
 
-    const envKey = `SOLANA_RPC_${network.toUpperCase()}`;
-    return globalProcess.env[envKey] || globalProcess.env.SOLANA_RPC_URL || null;
+    const envKey = `TREZOA_RPC_${network.toUpperCase()}`;
+    return globalProcess.env[envKey] || globalProcess.env.TREZOA_RPC_URL || null;
 }
 
 /**
@@ -69,19 +69,19 @@ function getServerRpcUrl(network: string): string | null {
 function getPublicRpcEndpoint(network: string, priority: string): RpcEndpoint {
     const endpoints = {
         mainnet: {
-            fast: 'https://api.mainnet-beta.solana.com',
-            reliable: 'https://api.mainnet-beta.solana.com',
-            'cost-effective': 'https://api.mainnet-beta.solana.com',
+            fast: 'https://api.mainnet-beta.trezoa.com',
+            reliable: 'https://api.mainnet-beta.trezoa.com',
+            'cost-effective': 'https://api.mainnet-beta.trezoa.com',
         },
         devnet: {
-            fast: 'https://api.devnet.solana.com',
-            reliable: 'https://api.devnet.solana.com',
-            'cost-effective': 'https://api.devnet.solana.com',
+            fast: 'https://api.devnet.trezoa.com',
+            reliable: 'https://api.devnet.trezoa.com',
+            'cost-effective': 'https://api.devnet.trezoa.com',
         },
         testnet: {
-            fast: 'https://api.testnet.solana.com',
-            reliable: 'https://api.testnet.solana.com',
-            'cost-effective': 'https://api.testnet.solana.com',
+            fast: 'https://api.testnet.trezoa.com',
+            reliable: 'https://api.testnet.trezoa.com',
+            'cost-effective': 'https://api.testnet.trezoa.com',
         },
     };
 
@@ -89,7 +89,7 @@ function getPublicRpcEndpoint(network: string, priority: string): RpcEndpoint {
     const url = networkEndpoints?.[priority as keyof typeof networkEndpoints] || networkEndpoints?.reliable;
 
     return {
-        url: url || `https://api.${network}.solana.com`,
+        url: url || `https://api.${network}.trezoa.com`,
         network,
         priority,
         rateLimitTier: 'free',
@@ -126,6 +126,6 @@ export async function fetchRpcUrl(config: RpcEndpointConfig): Promise<string> {
         return endpoint.url;
     } catch (error) {
         console.warn('[RPC Resolver] Failed to resolve RPC URL, using fallback:', error);
-        return `https://api.${config.network}.solana.com`;
+        return `https://api.${config.network}.trezoa.com`;
     }
 }

@@ -5,7 +5,7 @@ use crate::{
     },
     utils::TestContext,
 };
-use solana_sdk::signature::{Keypair, Signer};
+use trezoa_sdk::signature::{Keypair, Signer};
 
 #[tokio::test]
 async fn test_create_merchant_success() {

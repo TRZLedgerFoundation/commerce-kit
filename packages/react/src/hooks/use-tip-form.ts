@@ -4,7 +4,7 @@
  */
 
 import { useReducer, useCallback, useMemo } from 'react';
-import type { Currency, PaymentMethod, SolanaCommerceConfig, TipModalStep } from '../types';
+import type { Currency, PaymentMethod, TrezoaCommerceConfig, TipModalStep } from '../types';
 import { ALL_CURRENCIES } from '../constants/tip-modal';
 import { convertUsdToLamports, getDecimals } from '../utils';
 
@@ -35,7 +35,7 @@ type TipFormAction =
     | { type: 'RESET_TO_FORM' };
 
 // Initial state factory
-const createInitialState = (config: SolanaCommerceConfig): TipFormState => ({
+const createInitialState = (config: TrezoaCommerceConfig): TipFormState => ({
     selectedAmount: 5,
     selectedCurrency: (config.allowedMints?.[0] as Currency) || 'USDC',
     selectedPaymentMethod: 'qr',
@@ -76,7 +76,7 @@ function tipFormReducer(state: TipFormState, action: TipFormAction): TipFormStat
 }
 
 // Hook
-export function useTipForm(config: SolanaCommerceConfig) {
+export function useTipForm(config: TrezoaCommerceConfig) {
     const [state, dispatch] = useReducer(tipFormReducer, config, createInitialState);
 
     // Available currencies based on config
@@ -136,8 +136,8 @@ export function useTipForm(config: SolanaCommerceConfig) {
 
                         let lamports: number;
 
-                        // For SOL currencies, convert USD amount to equivalent SOL lamports using current price
-                        if (state.selectedCurrency === 'SOL' || state.selectedCurrency === 'SOL_DEVNET') {
+                        // For TRZ currencies, convert USD amount to equivalent TRZ lamports using current price
+                        if (state.selectedCurrency === 'TRZ' || state.selectedCurrency === 'SOL_DEVNET') {
                             lamports = await convertUsdToLamports(computed.finalAmount);
                         } else {
                             // For stablecoins and other currencies, use direct conversion with proper decimals

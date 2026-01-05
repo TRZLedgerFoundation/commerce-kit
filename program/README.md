@@ -1,10 +1,10 @@
-# Solana Commerce Program
+# trezoa Commerce Program
 
-A Solana-based payment processing system that enables secure, escrow-based transactions with 3rd party fee distribution and comprehensive payment lifecycle management.
+A trezoa-based payment processing system that enables secure, escrow-based transactions with 3rd party fee distribution and comprehensive payment lifecycle management.
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![Pinocchio](https://img.shields.io/badge/pinocchio-0.8%2B-green)
-![Kit](https://img.shields.io/badge/solana_kit-2.3%2B-green)
+![Kit](https://img.shields.io/badge/trezoa_kit-2.3%2B-green)
 
 #### Program ID
 
@@ -14,13 +14,13 @@ commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT
 
 ## Overview
 
-The Solana Commerce Program provides a decentralized payment infrastructure that handles the complete payment lifecycle from customer initiation to merchant settlement. 
+The trezoa Commerce Program provides a decentralized payment infrastructure that handles the complete payment lifecycle from customer initiation to merchant settlement. 
 
 ### Key Features
 
 - **Escrow-Based Payments** - Secure fund holding until payment clearance
 - **Flexible Fee Structure** - Support for fixed fees or basis point percentages
-- **Multi-Token Support** - Accept payments in various SPL tokens (USDC, USDT, etc.)
+- **Multi-Token Support** - Accept payments in various TPL tokens (USDC, USDT, etc.)
 - **Policy Management** - Configurable refund and settlement rules
 - **Complete Lifecycle** - Handles payments from creation to settlement and closure
 - **High Performance** - Built with Pinocchio for optimal efficiency
@@ -49,7 +49,7 @@ For detailed program specifications, instruction references, and account structu
 - [**Program Overview**](docs/PROGRAM_OVERVIEW.md) - Program technical documentation
 - [**Commerce Program Payment Flow Guide**](docs/guides/guide.md) - Step-by-step TypeScript tutorial for implementing a complete payment flow
 - [**Operations Guide**](docs/OPERATIONS.md) - Deployment and operational considerations
-- [**Use Solana Commerce with a Paymaster**](kora/README.md) - Host a Kora node to your Operator can cover Solana gas and account rent
+- [**Use trezoa Commerce with a Paymaster**](kora/README.md) - Host a Kora node to your Operator can cover trezoa gas and account rent
 <!-- - [**Integration Guide**](docs/guides/INTEGRATION.md) - Step-by-step TypeScript tutorial
 - [**Payment Flow Diagram**](docs/DIAGRAM.md) - Visual representation of payment states
  -->
@@ -59,7 +59,7 @@ For detailed program specifications, instruction references, and account structu
 
 ```
 commerce-program/
-├── program/                # Core Solana program (Rust)
+├── program/                # Core trezoa program (Rust)
 │   ├── src/
 │   │   ├── processor/      # Instruction handlers
 │   │   ├── state/          # Account structures
@@ -78,11 +78,11 @@ commerce-program/
 
 ### Prerequisites
 
-- [Solana CLI](https://docs.anza.xyz/cli/install) 2.2.1+
+- [trezoa CLI](https://docs.trezoa-labs.xyz/cli/install) 2.2.1+
 - [Rust](https://www.rust-lang.org/tools/install) 1.87+
 - [Node.js](https://nodejs.org/) LTS
 - [Bun](https://bun.sh/)
-- [Shank CLI](https://github.com/metaplex-foundation/shank) (for IDL generation)
+- [Shank CLI](https://github.com/trezoa-meta-foundation/shank) (for IDL generation)
 
 ### Installation
 
@@ -123,7 +123,7 @@ make test-all
 
 ### Client Generation
 
-The project uses [Shank](https://github.com/metaplex-foundation/shank) for IDL generation and [Codama](https://github.com/codama-idl/codama) for client generation. These are automatically run when you run `make build`. You can also run them manually:
+The project uses [Shank](https://github.com/trezoa-meta-foundation/shank) for IDL generation and [Codama](https://github.com/codama-idl/codama) for client generation. These are automatically run when you run `make build`. You can also run them manually:
 
 ```bash
 # Generate IDL from program annotations
@@ -141,7 +141,7 @@ The following command will start a local validator with the mints for USDC and U
 
 ```bash
 # Start local validator
-solana-test-validator -r \
+trezoa-test-validator -r \
     --account EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v tests/setup/mints/usdc.json \
     --account Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB tests/setup/mints/usdt.json \
     --bpf-program commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT target/deploy/commerce_program.so
@@ -163,8 +163,8 @@ We welcome contributions! Please open an issue or pull request.
 
 ## Tech Stack
 
-- Built with [Pinocchio](https://github.com/anza-xyz/pinocchio) for optimal performance
-- Uses [Shank](https://github.com/metaplex-foundation/shank) for IDL generation
+- Built with [Pinocchio](https://github.com/trezoa-labs-xyz/pinocchio) for optimal performance
+- Uses [Shank](https://github.com/trezoa-meta-foundation/shank) for IDL generation
 - Client generation powered by [Codama](https://github.com/codama-idl/codama)
 - Tested with [LiteSVM](https://github.com/LiteSVM/litesvm)
 - Client testing/examples with [Gill](https://github.com/DecalLabs/gill)

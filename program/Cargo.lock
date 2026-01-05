@@ -719,15 +719,15 @@ dependencies = [
  "borsh 1.5.7",
  "num-derive",
  "num-traits",
- "solana-account",
- "solana-account-info",
- "solana-client",
- "solana-cpi",
- "solana-instruction",
- "solana-program",
- "solana-program-entrypoint",
- "solana-program-error",
- "solana-pubkey",
+ "trezoa-account",
+ "trezoa-account-info",
+ "trezoa-client",
+ "trezoa-cpi",
+ "trezoa-instruction",
+ "trezoa-program",
+ "trezoa-program-entrypoint",
+ "trezoa-program-error",
+ "trezoa-pubkey",
  "thiserror 2.0.14",
 ]
 
@@ -2039,55 +2039,55 @@ dependencies = [
  "indexmap",
  "itertools 0.14.0",
  "log",
- "solana-account",
- "solana-address-lookup-table-interface",
- "solana-bpf-loader-program",
- "solana-builtins",
- "solana-clock",
- "solana-compute-budget",
- "solana-compute-budget-instruction",
- "solana-config-program",
- "solana-epoch-rewards",
- "solana-epoch-schedule",
- "solana-feature-set",
- "solana-fee",
- "solana-fee-structure",
- "solana-hash",
- "solana-instruction",
- "solana-instructions-sysvar",
- "solana-keypair",
- "solana-last-restart-slot",
- "solana-loader-v3-interface",
- "solana-loader-v4-interface",
- "solana-log-collector",
- "solana-measure",
- "solana-message",
- "solana-native-token",
- "solana-nonce",
- "solana-nonce-account",
- "solana-precompiles",
- "solana-program-error",
- "solana-program-runtime",
- "solana-pubkey",
- "solana-rent",
- "solana-reserved-account-keys",
- "solana-sdk-ids",
- "solana-sha256-hasher",
- "solana-signature",
- "solana-signer",
- "solana-slot-hashes",
- "solana-slot-history",
- "solana-stake-interface",
- "solana-svm-transaction",
- "solana-system-interface",
- "solana-system-program",
- "solana-sysvar",
- "solana-sysvar-id",
- "solana-timings",
- "solana-transaction",
- "solana-transaction-context",
- "solana-transaction-error",
- "solana-vote-program",
+ "trezoa-account",
+ "trezoa-address-lookup-table-interface",
+ "trezoa-bpf-loader-program",
+ "trezoa-builtins",
+ "trezoa-clock",
+ "trezoa-compute-budget",
+ "trezoa-compute-budget-instruction",
+ "trezoa-config-program",
+ "trezoa-epoch-rewards",
+ "trezoa-epoch-schedule",
+ "trezoa-feature-set",
+ "trezoa-fee",
+ "trezoa-fee-structure",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-instructions-sysvar",
+ "trezoa-keypair",
+ "trezoa-last-restart-slot",
+ "trezoa-loader-v3-interface",
+ "trezoa-loader-v4-interface",
+ "trezoa-log-collector",
+ "trezoa-measure",
+ "trezoa-message",
+ "trezoa-native-token",
+ "trezoa-nonce",
+ "trezoa-nonce-account",
+ "trezoa-precompiles",
+ "trezoa-program-error",
+ "trezoa-program-runtime",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-reserved-account-keys",
+ "trezoa-sdk-ids",
+ "trezoa-sha256-hasher",
+ "trezoa-signature",
+ "trezoa-signer",
+ "trezoa-slot-hashes",
+ "trezoa-slot-history",
+ "trezoa-stake-interface",
+ "trezoa-svm-transaction",
+ "trezoa-system-interface",
+ "trezoa-system-program",
+ "trezoa-sysvar",
+ "trezoa-sysvar-id",
+ "trezoa-timings",
+ "trezoa-transaction",
+ "trezoa-transaction-context",
+ "trezoa-transaction-error",
+ "trezoa-vote-program",
  "thiserror 2.0.14",
 ]
 
@@ -3487,7 +3487,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-account"
+name = "trezoa-account"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0f949fe4edaeaea78c844023bfc1c898e0b1f5a100f8a8d2d0f85d0a7b090258"
@@ -3496,16 +3496,16 @@ dependencies = [
  "serde",
  "serde_bytes",
  "serde_derive",
- "solana-account-info",
- "solana-clock",
- "solana-instruction",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-sysvar",
+ "trezoa-account-info",
+ "trezoa-clock",
+ "trezoa-instruction",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-sysvar",
 ]
 
 [[package]]
-name = "solana-account-decoder-client-types"
+name = "trezoa-account-decoder-client-types"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9b3485b583fcc58b5fa121fa0b4acb90061671fb1a9769493e8b4ad586581f47"
@@ -3515,26 +3515,26 @@ dependencies = [
  "serde",
  "serde_derive",
  "serde_json",
- "solana-account",
- "solana-pubkey",
+ "trezoa-account",
+ "trezoa-pubkey",
  "zstd",
 ]
 
 [[package]]
-name = "solana-account-info"
+name = "trezoa-account-info"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e0c17d606a298a205fae325489fbed88ee6dc4463c111672172327e741c8905d"
 dependencies = [
  "bincode",
  "serde",
- "solana-program-error",
- "solana-program-memory",
- "solana-pubkey",
+ "trezoa-program-error",
+ "trezoa-program-memory",
+ "trezoa-pubkey",
 ]
 
 [[package]]
-name = "solana-address-lookup-table-interface"
+name = "trezoa-address-lookup-table-interface"
 version = "2.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d1673f67efe870b64a65cb39e6194be5b26527691ce5922909939961a6e6b395"
@@ -3543,15 +3543,15 @@ dependencies = [
  "bytemuck",
  "serde",
  "serde_derive",
- "solana-clock",
- "solana-instruction",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-slot-hashes",
+ "trezoa-clock",
+ "trezoa-instruction",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-slot-hashes",
 ]
 
 [[package]]
-name = "solana-address-lookup-table-program"
+name = "trezoa-address-lookup-table-program"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c758a82a60e5fcc93b3ee00615b0e244295aa8b2308475ea2b48f4900862a2e0"
@@ -3561,22 +3561,22 @@ dependencies = [
  "log",
  "num-derive",
  "num-traits",
- "solana-address-lookup-table-interface",
- "solana-bincode",
- "solana-clock",
- "solana-feature-set",
- "solana-instruction",
- "solana-log-collector",
- "solana-packet",
- "solana-program-runtime",
- "solana-pubkey",
- "solana-system-interface",
- "solana-transaction-context",
+ "trezoa-address-lookup-table-interface",
+ "trezoa-bincode",
+ "trezoa-clock",
+ "trezoa-feature-set",
+ "trezoa-instruction",
+ "trezoa-log-collector",
+ "trezoa-packet",
+ "trezoa-program-runtime",
+ "trezoa-pubkey",
+ "trezoa-system-interface",
+ "trezoa-transaction-context",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-atomic-u64"
+name = "trezoa-atomic-u64"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d52e52720efe60465b052b9e7445a01c17550666beec855cce66f44766697bc2"
@@ -3585,41 +3585,41 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-big-mod-exp"
+name = "trezoa-big-mod-exp"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "75db7f2bbac3e62cfd139065d15bcda9e2428883ba61fc8d27ccb251081e7567"
 dependencies = [
  "num-bigint 0.4.6",
  "num-traits",
- "solana-define-syscall",
+ "trezoa-define-syscall",
 ]
 
 [[package]]
-name = "solana-bincode"
+name = "trezoa-bincode"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "19a3787b8cf9c9fe3dd360800e8b70982b9e5a8af9e11c354b6665dd4a003adc"
 dependencies = [
  "bincode",
  "serde",
- "solana-instruction",
+ "trezoa-instruction",
 ]
 
 [[package]]
-name = "solana-blake3-hasher"
+name = "trezoa-blake3-hasher"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a1a0801e25a1b31a14494fc80882a036be0ffd290efc4c2d640bfcca120a4672"
 dependencies = [
  "blake3",
- "solana-define-syscall",
- "solana-hash",
- "solana-sanitize",
+ "trezoa-define-syscall",
+ "trezoa-hash",
+ "trezoa-sanitize",
 ]
 
 [[package]]
-name = "solana-bn254"
+name = "trezoa-bn254"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9abc69625158faaab02347370b91c0d8e0fe347bf9287239f0fbe8f5864d91da"
@@ -3629,12 +3629,12 @@ dependencies = [
  "ark-ff",
  "ark-serialize",
  "bytemuck",
- "solana-define-syscall",
+ "trezoa-define-syscall",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-borsh"
+name = "trezoa-borsh"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "718333bcd0a1a7aed6655aa66bef8d7fb047944922b2d3a18f49cbc13e73d004"
@@ -3644,7 +3644,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-bpf-loader-program"
+name = "trezoa-bpf-loader-program"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0cbc2581d0f39cd7698e46baa06fc5e8928b323a85ed3a4fdbdfe0d7ea9fc152"
@@ -3653,69 +3653,69 @@ dependencies = [
  "libsecp256k1",
  "qualifier_attr",
  "scopeguard",
- "solana-account",
- "solana-account-info",
- "solana-big-mod-exp",
- "solana-bincode",
- "solana-blake3-hasher",
- "solana-bn254",
- "solana-clock",
- "solana-compute-budget",
- "solana-cpi",
- "solana-curve25519",
- "solana-feature-set",
- "solana-hash",
- "solana-instruction",
- "solana-keccak-hasher",
- "solana-loader-v3-interface",
- "solana-loader-v4-interface",
- "solana-log-collector",
- "solana-measure",
- "solana-packet",
- "solana-poseidon",
- "solana-precompiles",
- "solana-program-entrypoint",
- "solana-program-memory",
- "solana-program-runtime",
- "solana-pubkey",
- "solana-sbpf",
- "solana-sdk-ids",
- "solana-secp256k1-recover",
- "solana-sha256-hasher",
- "solana-stable-layout",
- "solana-system-interface",
- "solana-sysvar",
- "solana-sysvar-id",
- "solana-timings",
- "solana-transaction-context",
- "solana-type-overrides",
+ "trezoa-account",
+ "trezoa-account-info",
+ "trezoa-big-mod-exp",
+ "trezoa-bincode",
+ "trezoa-blake3-hasher",
+ "trezoa-bn254",
+ "trezoa-clock",
+ "trezoa-compute-budget",
+ "trezoa-cpi",
+ "trezoa-curve25519",
+ "trezoa-feature-set",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-keccak-hasher",
+ "trezoa-loader-v3-interface",
+ "trezoa-loader-v4-interface",
+ "trezoa-log-collector",
+ "trezoa-measure",
+ "trezoa-packet",
+ "trezoa-poseidon",
+ "trezoa-precompiles",
+ "trezoa-program-entrypoint",
+ "trezoa-program-memory",
+ "trezoa-program-runtime",
+ "trezoa-pubkey",
+ "trezoa-sbpf",
+ "trezoa-sdk-ids",
+ "trezoa-secp256k1-recover",
+ "trezoa-sha256-hasher",
+ "trezoa-stable-layout",
+ "trezoa-system-interface",
+ "trezoa-sysvar",
+ "trezoa-sysvar-id",
+ "trezoa-timings",
+ "trezoa-transaction-context",
+ "trezoa-type-overrides",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-builtins"
+name = "trezoa-builtins"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9ab1c09b653992c685c56c611004a1c96e80e76b31a2a2ecc06c47690646b98a"
 dependencies = [
- "solana-address-lookup-table-program",
- "solana-bpf-loader-program",
- "solana-compute-budget-program",
- "solana-config-program",
- "solana-feature-set",
- "solana-loader-v4-program",
- "solana-program-runtime",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-stake-program",
- "solana-system-program",
- "solana-vote-program",
- "solana-zk-elgamal-proof-program",
- "solana-zk-token-proof-program",
+ "trezoa-address-lookup-table-program",
+ "trezoa-bpf-loader-program",
+ "trezoa-compute-budget-program",
+ "trezoa-config-program",
+ "trezoa-feature-set",
+ "trezoa-loader-v4-program",
+ "trezoa-program-runtime",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-stake-program",
+ "trezoa-system-program",
+ "trezoa-vote-program",
+ "trezoa-zk-elgamal-proof-program",
+ "trezoa-zk-token-proof-program",
 ]
 
 [[package]]
-name = "solana-builtins-default-costs"
+name = "trezoa-builtins-default-costs"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c4ee734c35b736e632aa3b1367f933d93ee7b4129dd1e20ca942205d4834054e"
@@ -3724,21 +3724,21 @@ dependencies = [
  "lazy_static",
  "log",
  "qualifier_attr",
- "solana-address-lookup-table-program",
- "solana-bpf-loader-program",
- "solana-compute-budget-program",
- "solana-config-program",
- "solana-feature-set",
- "solana-loader-v4-program",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-stake-program",
- "solana-system-program",
- "solana-vote-program",
+ "trezoa-address-lookup-table-program",
+ "trezoa-bpf-loader-program",
+ "trezoa-compute-budget-program",
+ "trezoa-config-program",
+ "trezoa-feature-set",
+ "trezoa-loader-v4-program",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-stake-program",
+ "trezoa-system-program",
+ "trezoa-vote-program",
 ]
 
 [[package]]
-name = "solana-client"
+name = "trezoa-client"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1e25b7073890561a6b7875a921572fc4a9a2c78b3e60fb8e0a7ee4911961f8bd"
@@ -3753,83 +3753,83 @@ dependencies = [
  "log",
  "quinn",
  "rayon",
- "solana-account",
- "solana-client-traits",
- "solana-commitment-config",
- "solana-connection-cache",
- "solana-epoch-info",
- "solana-hash",
- "solana-instruction",
- "solana-keypair",
- "solana-measure",
- "solana-message",
- "solana-pubkey",
- "solana-pubsub-client",
- "solana-quic-client",
- "solana-quic-definitions",
- "solana-rpc-client",
- "solana-rpc-client-api",
- "solana-rpc-client-nonce-utils",
- "solana-signature",
- "solana-signer",
- "solana-streamer",
- "solana-thin-client",
- "solana-time-utils",
- "solana-tpu-client",
- "solana-transaction",
- "solana-transaction-error",
- "solana-udp-client",
+ "trezoa-account",
+ "trezoa-client-traits",
+ "trezoa-commitment-config",
+ "trezoa-connection-cache",
+ "trezoa-epoch-info",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-keypair",
+ "trezoa-measure",
+ "trezoa-message",
+ "trezoa-pubkey",
+ "trezoa-pubsub-client",
+ "trezoa-quic-client",
+ "trezoa-quic-definitions",
+ "trezoa-rpc-client",
+ "trezoa-rpc-client-api",
+ "trezoa-rpc-client-nonce-utils",
+ "trezoa-signature",
+ "trezoa-signer",
+ "trezoa-streamer",
+ "trezoa-thin-client",
+ "trezoa-time-utils",
+ "trezoa-tpu-client",
+ "trezoa-transaction",
+ "trezoa-transaction-error",
+ "trezoa-udp-client",
  "thiserror 2.0.14",
  "tokio",
 ]
 
 [[package]]
-name = "solana-client-traits"
+name = "trezoa-client-traits"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "83f0071874e629f29e0eb3dab8a863e98502ac7aba55b7e0df1803fc5cac72a7"
 dependencies = [
- "solana-account",
- "solana-commitment-config",
- "solana-epoch-info",
- "solana-hash",
- "solana-instruction",
- "solana-keypair",
- "solana-message",
- "solana-pubkey",
- "solana-signature",
- "solana-signer",
- "solana-system-interface",
- "solana-transaction",
- "solana-transaction-error",
+ "trezoa-account",
+ "trezoa-commitment-config",
+ "trezoa-epoch-info",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-keypair",
+ "trezoa-message",
+ "trezoa-pubkey",
+ "trezoa-signature",
+ "trezoa-signer",
+ "trezoa-system-interface",
+ "trezoa-transaction",
+ "trezoa-transaction-error",
 ]
 
 [[package]]
-name = "solana-clock"
+name = "trezoa-clock"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "67c2177a1b9fe8326004f1151a5acd124420b737811080b1035df31349e4d892"
 dependencies = [
  "serde",
  "serde_derive",
- "solana-sdk-ids",
- "solana-sdk-macro",
- "solana-sysvar-id",
+ "trezoa-sdk-ids",
+ "trezoa-sdk-macro",
+ "trezoa-sysvar-id",
 ]
 
 [[package]]
-name = "solana-cluster-type"
+name = "trezoa-cluster-type"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7ace9fea2daa28354d107ea879cff107181d85cd4e0f78a2bedb10e1a428c97e"
 dependencies = [
  "serde",
  "serde_derive",
- "solana-hash",
+ "trezoa-hash",
 ]
 
 [[package]]
-name = "solana-commitment-config"
+name = "trezoa-commitment-config"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ac49c4dde3edfa832de1697e9bcdb7c3b3f7cb7a1981b7c62526c8bb6700fb73"
@@ -3839,38 +3839,38 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-compute-budget"
+name = "trezoa-compute-budget"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "eab40b24943ca51f1214fcf7979807640ea82a8387745f864cf3cd93d1337b01"
 dependencies = [
- "solana-fee-structure",
- "solana-program-entrypoint",
+ "trezoa-fee-structure",
+ "trezoa-program-entrypoint",
 ]
 
 [[package]]
-name = "solana-compute-budget-instruction"
+name = "trezoa-compute-budget-instruction"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0a6ef2a514cde8dce77495aefd23671dc46f638f504765910424436bc745dc04"
 dependencies = [
  "log",
- "solana-borsh",
- "solana-builtins-default-costs",
- "solana-compute-budget",
- "solana-compute-budget-interface",
- "solana-feature-set",
- "solana-instruction",
- "solana-packet",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-svm-transaction",
- "solana-transaction-error",
+ "trezoa-borsh",
+ "trezoa-builtins-default-costs",
+ "trezoa-compute-budget",
+ "trezoa-compute-budget-interface",
+ "trezoa-feature-set",
+ "trezoa-instruction",
+ "trezoa-packet",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-svm-transaction",
+ "trezoa-transaction-error",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-compute-budget-interface"
+name = "trezoa-compute-budget-interface"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3a5df17b195d312b66dccdde9beec6709766d8230cb4718c4c08854f780d0309"
@@ -3878,22 +3878,22 @@ dependencies = [
  "borsh 1.5.7",
  "serde",
  "serde_derive",
- "solana-instruction",
- "solana-sdk-ids",
+ "trezoa-instruction",
+ "trezoa-sdk-ids",
 ]
 
 [[package]]
-name = "solana-compute-budget-program"
+name = "trezoa-compute-budget-program"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5ba922073c64647fe62f032787d34d50a8152533b5a5c85608ae1b2afb00ab63"
 dependencies = [
  "qualifier_attr",
- "solana-program-runtime",
+ "trezoa-program-runtime",
 ]
 
 [[package]]
-name = "solana-config-program"
+name = "trezoa-config-program"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0ab5647203179631940e0659a635e5d3f514ba60f6457251f8f8fbf3830e56b0"
@@ -3902,22 +3902,22 @@ dependencies = [
  "chrono",
  "serde",
  "serde_derive",
- "solana-account",
- "solana-bincode",
- "solana-instruction",
- "solana-log-collector",
- "solana-packet",
- "solana-program-runtime",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-short-vec",
- "solana-stake-interface",
- "solana-system-interface",
- "solana-transaction-context",
+ "trezoa-account",
+ "trezoa-bincode",
+ "trezoa-instruction",
+ "trezoa-log-collector",
+ "trezoa-packet",
+ "trezoa-program-runtime",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-short-vec",
+ "trezoa-stake-interface",
+ "trezoa-system-interface",
+ "trezoa-transaction-context",
 ]
 
 [[package]]
-name = "solana-connection-cache"
+name = "trezoa-connection-cache"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0392439ea05772166cbce3bebf7816bdcc3088967039c7ce050cea66873b1c50"
@@ -3930,32 +3930,32 @@ dependencies = [
  "log",
  "rand 0.8.5",
  "rayon",
- "solana-keypair",
- "solana-measure",
- "solana-metrics",
- "solana-net-utils",
- "solana-time-utils",
- "solana-transaction-error",
+ "trezoa-keypair",
+ "trezoa-measure",
+ "trezoa-metrics",
+ "trezoa-net-utils",
+ "trezoa-time-utils",
+ "trezoa-transaction-error",
  "thiserror 2.0.14",
  "tokio",
 ]
 
 [[package]]
-name = "solana-cpi"
+name = "trezoa-cpi"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8dc71126edddc2ba014622fc32d0f5e2e78ec6c5a1e0eb511b85618c09e9ea11"
 dependencies = [
- "solana-account-info",
- "solana-define-syscall",
- "solana-instruction",
- "solana-program-error",
- "solana-pubkey",
- "solana-stable-layout",
+ "trezoa-account-info",
+ "trezoa-define-syscall",
+ "trezoa-instruction",
+ "trezoa-program-error",
+ "trezoa-pubkey",
+ "trezoa-stable-layout",
 ]
 
 [[package]]
-name = "solana-curve25519"
+name = "trezoa-curve25519"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f213e3a853a23814dee39d730cd3a5583b7b1e6b37b2cd4d940bbe62df7acc16"
@@ -3963,13 +3963,13 @@ dependencies = [
  "bytemuck",
  "bytemuck_derive",
  "curve25519-dalek 4.1.3",
- "solana-define-syscall",
+ "trezoa-define-syscall",
  "subtle",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-decode-error"
+name = "trezoa-decode-error"
 version = "2.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8c781686a18db2f942e70913f7ca15dc120ec38dcab42ff7557db2c70c625a35"
@@ -3978,13 +3978,13 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-define-syscall"
+name = "trezoa-define-syscall"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf784bb2cb3e02cac9801813c30187344228d2ae952534902108f6150573a33d"
 
 [[package]]
-name = "solana-derivation-path"
+name = "trezoa-derivation-path"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "939756d798b25c5ec3cca10e06212bdca3b1443cb9bb740a38124f58b258737b"
@@ -3995,7 +3995,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-ed25519-program"
+name = "trezoa-ed25519-program"
 version = "2.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a1feafa1691ea3ae588f99056f4bdd1293212c7ece28243d7da257c443e84753"
@@ -4003,14 +4003,14 @@ dependencies = [
  "bytemuck",
  "bytemuck_derive",
  "ed25519-dalek",
- "solana-feature-set",
- "solana-instruction",
- "solana-precompile-error",
- "solana-sdk-ids",
+ "trezoa-feature-set",
+ "trezoa-instruction",
+ "trezoa-precompile-error",
+ "trezoa-sdk-ids",
 ]
 
 [[package]]
-name = "solana-epoch-info"
+name = "trezoa-epoch-info"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "90ef6f0b449290b0b9f32973eefd95af35b01c5c0c34c569f936c34c5b20d77b"
@@ -4020,66 +4020,66 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-epoch-rewards"
+name = "trezoa-epoch-rewards"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "86b575d3dd323b9ea10bb6fe89bf6bf93e249b215ba8ed7f68f1a3633f384db7"
 dependencies = [
  "serde",
  "serde_derive",
- "solana-hash",
- "solana-sdk-ids",
- "solana-sdk-macro",
- "solana-sysvar-id",
+ "trezoa-hash",
+ "trezoa-sdk-ids",
+ "trezoa-sdk-macro",
+ "trezoa-sysvar-id",
 ]
 
 [[package]]
-name = "solana-epoch-rewards-hasher"
+name = "trezoa-epoch-rewards-hasher"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "96c5fd2662ae7574810904585fd443545ed2b568dbd304b25a31e79ccc76e81b"
 dependencies = [
  "siphasher 0.3.11",
- "solana-hash",
- "solana-pubkey",
+ "trezoa-hash",
+ "trezoa-pubkey",
 ]
 
 [[package]]
-name = "solana-epoch-schedule"
+name = "trezoa-epoch-schedule"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3fce071fbddecc55d727b1d7ed16a629afe4f6e4c217bc8d00af3b785f6f67ed"
 dependencies = [
  "serde",
  "serde_derive",
- "solana-sdk-ids",
- "solana-sdk-macro",
- "solana-sysvar-id",
+ "trezoa-sdk-ids",
+ "trezoa-sdk-macro",
+ "trezoa-sysvar-id",
 ]
 
 [[package]]
-name = "solana-example-mocks"
+name = "trezoa-example-mocks"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "84461d56cbb8bb8d539347151e0525b53910102e4bced875d49d5139708e39d3"
 dependencies = [
  "serde",
  "serde_derive",
- "solana-address-lookup-table-interface",
- "solana-clock",
- "solana-hash",
- "solana-instruction",
- "solana-keccak-hasher",
- "solana-message",
- "solana-nonce",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-system-interface",
+ "trezoa-address-lookup-table-interface",
+ "trezoa-clock",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-keccak-hasher",
+ "trezoa-message",
+ "trezoa-nonce",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-system-interface",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-feature-gate-interface"
+name = "trezoa-feature-gate-interface"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0f9c7fbf3e58b64a667c5f35e90af580538a95daea7001ff7806c0662d301bdf"
@@ -4087,43 +4087,43 @@ dependencies = [
  "bincode",
  "serde",
  "serde_derive",
- "solana-account",
- "solana-account-info",
- "solana-instruction",
- "solana-program-error",
- "solana-pubkey",
- "solana-rent",
- "solana-sdk-ids",
- "solana-system-interface",
+ "trezoa-account",
+ "trezoa-account-info",
+ "trezoa-instruction",
+ "trezoa-program-error",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-sdk-ids",
+ "trezoa-system-interface",
 ]
 
 [[package]]
-name = "solana-feature-set"
+name = "trezoa-feature-set"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "89e1d3b52b4a014efeaaab67f14e40af3972a4be61c523d612860db8e3145529"
 dependencies = [
  "ahash",
  "lazy_static",
- "solana-epoch-schedule",
- "solana-hash",
- "solana-pubkey",
- "solana-sha256-hasher",
+ "trezoa-epoch-schedule",
+ "trezoa-hash",
+ "trezoa-pubkey",
+ "trezoa-sha256-hasher",
 ]
 
 [[package]]
-name = "solana-fee"
+name = "trezoa-fee"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ee323b500b445d45624ad99a08b12b37c9964ac12debf2cde9ddfad9b06e0073"
 dependencies = [
- "solana-feature-set",
- "solana-fee-structure",
- "solana-svm-transaction",
+ "trezoa-feature-set",
+ "trezoa-fee-structure",
+ "trezoa-svm-transaction",
 ]
 
 [[package]]
-name = "solana-fee-calculator"
+name = "trezoa-fee-calculator"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d89bc408da0fb3812bc3008189d148b4d3e08252c79ad810b245482a3f70cd8d"
@@ -4134,19 +4134,19 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-fee-structure"
+name = "trezoa-fee-structure"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f45f94a88efdb512805563181dfa1c85c60a21b6e6d602bf24a2ea88f9399d6e"
 dependencies = [
  "serde",
  "serde_derive",
- "solana-message",
- "solana-native-token",
+ "trezoa-message",
+ "trezoa-native-token",
 ]
 
 [[package]]
-name = "solana-genesis-config"
+name = "trezoa-genesis-config"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "968dabd2b92d57131473eddbd475339da530e14f54397386abf303de3a2595a2"
@@ -4156,28 +4156,28 @@ dependencies = [
  "memmap2",
  "serde",
  "serde_derive",
- "solana-account",
- "solana-clock",
- "solana-cluster-type",
- "solana-epoch-schedule",
- "solana-fee-calculator",
- "solana-hash",
- "solana-inflation",
- "solana-keypair",
- "solana-logger",
- "solana-native-token",
- "solana-poh-config",
- "solana-pubkey",
- "solana-rent",
- "solana-sdk-ids",
- "solana-sha256-hasher",
- "solana-shred-version",
- "solana-signer",
- "solana-time-utils",
+ "trezoa-account",
+ "trezoa-clock",
+ "trezoa-cluster-type",
+ "trezoa-epoch-schedule",
+ "trezoa-fee-calculator",
+ "trezoa-hash",
+ "trezoa-inflation",
+ "trezoa-keypair",
+ "trezoa-logger",
+ "trezoa-native-token",
+ "trezoa-poh-config",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-sdk-ids",
+ "trezoa-sha256-hasher",
+ "trezoa-shred-version",
+ "trezoa-signer",
+ "trezoa-time-utils",
 ]
 
 [[package]]
-name = "solana-hard-forks"
+name = "trezoa-hard-forks"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b6c28371f878e2ead55611d8ba1b5fb879847156d04edea13693700ad1a28baf"
@@ -4187,7 +4187,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-hash"
+name = "trezoa-hash"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf7bcb14392900fe02e4e34e90234fbf0c673d4e327888410ba99fa2ba0f4e99"
@@ -4199,13 +4199,13 @@ dependencies = [
  "js-sys",
  "serde",
  "serde_derive",
- "solana-atomic-u64",
- "solana-sanitize",
+ "trezoa-atomic-u64",
+ "trezoa-sanitize",
  "wasm-bindgen",
 ]
 
 [[package]]
-name = "solana-inflation"
+name = "trezoa-inflation"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "23eef6a09eb8e568ce6839573e4966850e85e9ce71e6ae1a6c930c1c43947de3"
@@ -4215,17 +4215,17 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-inline-spl"
+name = "trezoa-inline-spl"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "951545bd7d0ab4a878cfc7375ac9f1a475cb6936626677b2ba1d25e7b9f3910b"
 dependencies = [
  "bytemuck",
- "solana-pubkey",
+ "trezoa-pubkey",
 ]
 
 [[package]]
-name = "solana-instruction"
+name = "trezoa-instruction"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9ce496a475e5062ba5de97215ab39d9c358f9c9df4bb7f3a45a1f1a8bd9065ed"
@@ -4237,42 +4237,42 @@ dependencies = [
  "num-traits",
  "serde",
  "serde_derive",
- "solana-define-syscall",
- "solana-pubkey",
+ "trezoa-define-syscall",
+ "trezoa-pubkey",
  "wasm-bindgen",
 ]
 
 [[package]]
-name = "solana-instructions-sysvar"
+name = "trezoa-instructions-sysvar"
 version = "2.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e0e85a6fad5c2d0c4f5b91d34b8ca47118fc593af706e523cdbedf846a954f57"
 dependencies = [
  "bitflags 2.9.1",
- "solana-account-info",
- "solana-instruction",
- "solana-program-error",
- "solana-pubkey",
- "solana-sanitize",
- "solana-sdk-ids",
- "solana-serialize-utils",
- "solana-sysvar-id",
+ "trezoa-account-info",
+ "trezoa-instruction",
+ "trezoa-program-error",
+ "trezoa-pubkey",
+ "trezoa-sanitize",
+ "trezoa-sdk-ids",
+ "trezoa-serialize-utils",
+ "trezoa-sysvar-id",
 ]
 
 [[package]]
-name = "solana-keccak-hasher"
+name = "trezoa-keccak-hasher"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "c7aeb957fbd42a451b99235df4942d96db7ef678e8d5061ef34c9b34cae12f79"
 dependencies = [
  "sha3",
- "solana-define-syscall",
- "solana-hash",
- "solana-sanitize",
+ "trezoa-define-syscall",
+ "trezoa-hash",
+ "trezoa-sanitize",
 ]
 
 [[package]]
-name = "solana-keypair"
+name = "trezoa-keypair"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3dbb7042c2e0c561afa07242b2099d55c57bd1b1da3b6476932197d84e15e3e4"
@@ -4281,30 +4281,30 @@ dependencies = [
  "ed25519-dalek",
  "ed25519-dalek-bip32",
  "rand 0.7.3",
- "solana-derivation-path",
- "solana-pubkey",
- "solana-seed-derivable",
- "solana-seed-phrase",
- "solana-signature",
- "solana-signer",
+ "trezoa-derivation-path",
+ "trezoa-pubkey",
+ "trezoa-seed-derivable",
+ "trezoa-seed-phrase",
+ "trezoa-signature",
+ "trezoa-signer",
  "wasm-bindgen",
 ]
 
 [[package]]
-name = "solana-last-restart-slot"
+name = "trezoa-last-restart-slot"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4a6360ac2fdc72e7463565cd256eedcf10d7ef0c28a1249d261ec168c1b55cdd"
 dependencies = [
  "serde",
  "serde_derive",
- "solana-sdk-ids",
- "solana-sdk-macro",
- "solana-sysvar-id",
+ "trezoa-sdk-ids",
+ "trezoa-sdk-macro",
+ "trezoa-sysvar-id",
 ]
 
 [[package]]
-name = "solana-loader-v2-interface"
+name = "trezoa-loader-v2-interface"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d8ab08006dad78ae7cd30df8eea0539e207d08d91eaefb3e1d49a446e1c49654"
@@ -4312,13 +4312,13 @@ dependencies = [
  "serde",
  "serde_bytes",
  "serde_derive",
- "solana-instruction",
- "solana-pubkey",
- "solana-sdk-ids",
+ "trezoa-instruction",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
 ]
 
 [[package]]
-name = "solana-loader-v3-interface"
+name = "trezoa-loader-v3-interface"
 version = "3.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fa4be76cfa9afd84ca2f35ebc09f0da0f0092935ccdac0595d98447f259538c2"
@@ -4326,14 +4326,14 @@ dependencies = [
  "serde",
  "serde_bytes",
  "serde_derive",
- "solana-instruction",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-system-interface",
+ "trezoa-instruction",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-system-interface",
 ]
 
 [[package]]
-name = "solana-loader-v4-interface"
+name = "trezoa-loader-v4-interface"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "706a777242f1f39a83e2a96a2a6cb034cb41169c6ecbee2cf09cb873d9659e7e"
@@ -4341,40 +4341,40 @@ dependencies = [
  "serde",
  "serde_bytes",
  "serde_derive",
- "solana-instruction",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-system-interface",
+ "trezoa-instruction",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-system-interface",
 ]
 
 [[package]]
-name = "solana-loader-v4-program"
+name = "trezoa-loader-v4-program"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "81b24999844b09096c79567c1298617efe084860149d875b702ef76e2faa2462"
 dependencies = [
  "log",
  "qualifier_attr",
- "solana-account",
- "solana-bincode",
- "solana-bpf-loader-program",
- "solana-compute-budget",
- "solana-instruction",
- "solana-loader-v3-interface",
- "solana-loader-v4-interface",
- "solana-log-collector",
- "solana-measure",
- "solana-packet",
- "solana-program-runtime",
- "solana-pubkey",
- "solana-sbpf",
- "solana-sdk-ids",
- "solana-transaction-context",
- "solana-type-overrides",
+ "trezoa-account",
+ "trezoa-bincode",
+ "trezoa-bpf-loader-program",
+ "trezoa-compute-budget",
+ "trezoa-instruction",
+ "trezoa-loader-v3-interface",
+ "trezoa-loader-v4-interface",
+ "trezoa-log-collector",
+ "trezoa-measure",
+ "trezoa-packet",
+ "trezoa-program-runtime",
+ "trezoa-pubkey",
+ "trezoa-sbpf",
+ "trezoa-sdk-ids",
+ "trezoa-transaction-context",
+ "trezoa-type-overrides",
 ]
 
 [[package]]
-name = "solana-log-collector"
+name = "trezoa-log-collector"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4aa28cd428e0af919d2fafd31c646835622abfd7ed4dba4df68e3c00f461bc66"
@@ -4383,7 +4383,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-logger"
+name = "trezoa-logger"
 version = "2.3.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "db8e777ec1afd733939b532a42492d888ec7c88d8b4127a5d867eb45c6eb5cd5"
@@ -4396,13 +4396,13 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-measure"
+name = "trezoa-measure"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8f1fced2cfeff80f0214af86bc27bc6e798465a45b70329c3b468bb75957c082"
 
 [[package]]
-name = "solana-message"
+name = "trezoa-message"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "268486ba8a294ed22a4d7c1ec05f540c3dbe71cfa7c6c54b6d4d13668d895678"
@@ -4412,20 +4412,20 @@ dependencies = [
  "lazy_static",
  "serde",
  "serde_derive",
- "solana-bincode",
- "solana-hash",
- "solana-instruction",
- "solana-pubkey",
- "solana-sanitize",
- "solana-sdk-ids",
- "solana-short-vec",
- "solana-system-interface",
- "solana-transaction-error",
+ "trezoa-bincode",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-pubkey",
+ "trezoa-sanitize",
+ "trezoa-sdk-ids",
+ "trezoa-short-vec",
+ "trezoa-system-interface",
+ "trezoa-transaction-error",
  "wasm-bindgen",
 ]
 
 [[package]]
-name = "solana-metrics"
+name = "trezoa-metrics"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "89db46736ae1929db9629d779485052647117f3fcc190755519853b705f6dba5"
@@ -4435,30 +4435,30 @@ dependencies = [
  "lazy_static",
  "log",
  "reqwest",
- "solana-clock",
- "solana-cluster-type",
- "solana-sha256-hasher",
- "solana-time-utils",
+ "trezoa-clock",
+ "trezoa-cluster-type",
+ "trezoa-sha256-hasher",
+ "trezoa-time-utils",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-msg"
+name = "trezoa-msg"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f36a1a14399afaabc2781a1db09cb14ee4cc4ee5c7a5a3cfcc601811379a8092"
 dependencies = [
- "solana-define-syscall",
+ "trezoa-define-syscall",
 ]
 
 [[package]]
-name = "solana-native-token"
+name = "trezoa-native-token"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "33e9de00960197412e4be3902a6cd35e60817c511137aca6c34c66cd5d4017ec"
 
 [[package]]
-name = "solana-net-utils"
+name = "trezoa-net-utils"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0752a7103c1a5bdbda04aa5abc78281232f2eda286be6edf8e44e27db0cca2a1"
@@ -4474,55 +4474,55 @@ dependencies = [
  "serde",
  "serde_derive",
  "socket2 0.5.10",
- "solana-serde",
+ "trezoa-serde",
  "tokio",
  "url",
 ]
 
 [[package]]
-name = "solana-nonce"
+name = "trezoa-nonce"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "703e22eb185537e06204a5bd9d509b948f0066f2d1d814a6f475dafb3ddf1325"
 dependencies = [
  "serde",
  "serde_derive",
- "solana-fee-calculator",
- "solana-hash",
- "solana-pubkey",
- "solana-sha256-hasher",
+ "trezoa-fee-calculator",
+ "trezoa-hash",
+ "trezoa-pubkey",
+ "trezoa-sha256-hasher",
 ]
 
 [[package]]
-name = "solana-nonce-account"
+name = "trezoa-nonce-account"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cde971a20b8dbf60144d6a84439dda86b5466e00e2843091fe731083cda614da"
 dependencies = [
- "solana-account",
- "solana-hash",
- "solana-nonce",
- "solana-sdk-ids",
+ "trezoa-account",
+ "trezoa-hash",
+ "trezoa-nonce",
+ "trezoa-sdk-ids",
 ]
 
 [[package]]
-name = "solana-offchain-message"
+name = "trezoa-offchain-message"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b526398ade5dea37f1f147ce55dae49aa017a5d7326606359b0445ca8d946581"
 dependencies = [
  "num_enum",
- "solana-hash",
- "solana-packet",
- "solana-pubkey",
- "solana-sanitize",
- "solana-sha256-hasher",
- "solana-signature",
- "solana-signer",
+ "trezoa-hash",
+ "trezoa-packet",
+ "trezoa-pubkey",
+ "trezoa-sanitize",
+ "trezoa-sha256-hasher",
+ "trezoa-signature",
+ "trezoa-signer",
 ]
 
 [[package]]
-name = "solana-packet"
+name = "trezoa-packet"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "004f2d2daf407b3ec1a1ca5ec34b3ccdfd6866dd2d3c7d0715004a96e4b6d127"
@@ -4536,7 +4536,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-perf"
+name = "trezoa-perf"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3f0962d3818fc942a888f7c2d530896aeaf6f2da2187592a67bbdc8cf8a54192"
@@ -4555,20 +4555,20 @@ dependencies = [
  "rand 0.8.5",
  "rayon",
  "serde",
- "solana-hash",
- "solana-message",
- "solana-metrics",
- "solana-packet",
- "solana-pubkey",
- "solana-rayon-threadlimit",
- "solana-sdk-ids",
- "solana-short-vec",
- "solana-signature",
- "solana-time-utils",
+ "trezoa-hash",
+ "trezoa-message",
+ "trezoa-metrics",
+ "trezoa-packet",
+ "trezoa-pubkey",
+ "trezoa-rayon-threadlimit",
+ "trezoa-sdk-ids",
+ "trezoa-short-vec",
+ "trezoa-signature",
+ "trezoa-time-utils",
 ]
 
 [[package]]
-name = "solana-poh-config"
+name = "trezoa-poh-config"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d650c3b4b9060082ac6b0efbbb66865089c58405bfb45de449f3f2b91eccee75"
@@ -4578,57 +4578,57 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-poseidon"
+name = "trezoa-poseidon"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8ad1ea160d08dc423c35021fa3e437a5783eb256f5ab8bc3024e27db913acf42"
 dependencies = [
  "ark-bn254",
  "light-poseidon",
- "solana-define-syscall",
+ "trezoa-define-syscall",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-precompile-error"
+name = "trezoa-precompile-error"
 version = "2.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4d87b2c1f5de77dfe2b175ee8dd318d196aaca4d0f66f02842f80c852811f9f8"
 dependencies = [
  "num-traits",
- "solana-decode-error",
+ "trezoa-decode-error",
 ]
 
 [[package]]
-name = "solana-precompiles"
+name = "trezoa-precompiles"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6a460ab805ec063802105b463ecb5eb02c3ffe469e67a967eea8a6e778e0bc06"
 dependencies = [
  "lazy_static",
- "solana-ed25519-program",
- "solana-feature-set",
- "solana-message",
- "solana-precompile-error",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-secp256k1-program",
- "solana-secp256r1-program",
+ "trezoa-ed25519-program",
+ "trezoa-feature-set",
+ "trezoa-message",
+ "trezoa-precompile-error",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-secp256k1-program",
+ "trezoa-secp256r1-program",
 ]
 
 [[package]]
-name = "solana-presigner"
+name = "trezoa-presigner"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "81a57a24e6a4125fc69510b6774cd93402b943191b6cddad05de7281491c90fe"
 dependencies = [
- "solana-pubkey",
- "solana-signature",
- "solana-signer",
+ "trezoa-pubkey",
+ "trezoa-signature",
+ "trezoa-signer",
 ]
 
 [[package]]
-name = "solana-program"
+name = "trezoa-program"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "586469467e93ceb79048f8d8e3a619bf61d05396ee7de95cb40280301a589d05"
@@ -4652,75 +4652,75 @@ dependencies = [
  "serde",
  "serde_bytes",
  "serde_derive",
- "solana-account-info",
- "solana-address-lookup-table-interface",
- "solana-atomic-u64",
- "solana-big-mod-exp",
- "solana-bincode",
- "solana-blake3-hasher",
- "solana-borsh",
- "solana-clock",
- "solana-cpi",
- "solana-decode-error",
- "solana-define-syscall",
- "solana-epoch-rewards",
- "solana-epoch-schedule",
- "solana-example-mocks",
- "solana-feature-gate-interface",
- "solana-fee-calculator",
- "solana-hash",
- "solana-instruction",
- "solana-instructions-sysvar",
- "solana-keccak-hasher",
- "solana-last-restart-slot",
- "solana-loader-v2-interface",
- "solana-loader-v3-interface",
- "solana-loader-v4-interface",
- "solana-message",
- "solana-msg",
- "solana-native-token",
- "solana-nonce",
- "solana-program-entrypoint",
- "solana-program-error",
- "solana-program-memory",
- "solana-program-option",
- "solana-program-pack",
- "solana-pubkey",
- "solana-rent",
- "solana-sanitize",
- "solana-sdk-ids",
- "solana-sdk-macro",
- "solana-secp256k1-recover",
- "solana-serde-varint",
- "solana-serialize-utils",
- "solana-sha256-hasher",
- "solana-short-vec",
- "solana-slot-hashes",
- "solana-slot-history",
- "solana-stable-layout",
- "solana-stake-interface",
- "solana-system-interface",
- "solana-sysvar",
- "solana-sysvar-id",
- "solana-vote-interface",
+ "trezoa-account-info",
+ "trezoa-address-lookup-table-interface",
+ "trezoa-atomic-u64",
+ "trezoa-big-mod-exp",
+ "trezoa-bincode",
+ "trezoa-blake3-hasher",
+ "trezoa-borsh",
+ "trezoa-clock",
+ "trezoa-cpi",
+ "trezoa-decode-error",
+ "trezoa-define-syscall",
+ "trezoa-epoch-rewards",
+ "trezoa-epoch-schedule",
+ "trezoa-example-mocks",
+ "trezoa-feature-gate-interface",
+ "trezoa-fee-calculator",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-instructions-sysvar",
+ "trezoa-keccak-hasher",
+ "trezoa-last-restart-slot",
+ "trezoa-loader-v2-interface",
+ "trezoa-loader-v3-interface",
+ "trezoa-loader-v4-interface",
+ "trezoa-message",
+ "trezoa-msg",
+ "trezoa-native-token",
+ "trezoa-nonce",
+ "trezoa-program-entrypoint",
+ "trezoa-program-error",
+ "trezoa-program-memory",
+ "trezoa-program-option",
+ "trezoa-program-pack",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-sanitize",
+ "trezoa-sdk-ids",
+ "trezoa-sdk-macro",
+ "trezoa-secp256k1-recover",
+ "trezoa-serde-varint",
+ "trezoa-serialize-utils",
+ "trezoa-sha256-hasher",
+ "trezoa-short-vec",
+ "trezoa-slot-hashes",
+ "trezoa-slot-history",
+ "trezoa-stable-layout",
+ "trezoa-stake-interface",
+ "trezoa-system-interface",
+ "trezoa-sysvar",
+ "trezoa-sysvar-id",
+ "trezoa-vote-interface",
  "thiserror 2.0.14",
  "wasm-bindgen",
 ]
 
 [[package]]
-name = "solana-program-entrypoint"
+name = "trezoa-program-entrypoint"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "473ffe73c68d93e9f2aa726ad2985fe52760052709aaab188100a42c618060ec"
 dependencies = [
- "solana-account-info",
- "solana-msg",
- "solana-program-error",
- "solana-pubkey",
+ "trezoa-account-info",
+ "trezoa-msg",
+ "trezoa-program-error",
+ "trezoa-pubkey",
 ]
 
 [[package]]
-name = "solana-program-error"
+name = "trezoa-program-error"
 version = "2.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9ee2e0217d642e2ea4bee237f37bd61bb02aec60da3647c48ff88f6556ade775"
@@ -4729,39 +4729,39 @@ dependencies = [
  "num-traits",
  "serde",
  "serde_derive",
- "solana-decode-error",
- "solana-instruction",
- "solana-msg",
- "solana-pubkey",
+ "trezoa-decode-error",
+ "trezoa-instruction",
+ "trezoa-msg",
+ "trezoa-pubkey",
 ]
 
 [[package]]
-name = "solana-program-memory"
+name = "trezoa-program-memory"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1b0268f6c89825fb634a34bd0c3b8fdaeaecfc3728be1d622a8ee6dd577b60d4"
 dependencies = [
  "num-traits",
- "solana-define-syscall",
+ "trezoa-define-syscall",
 ]
 
 [[package]]
-name = "solana-program-option"
+name = "trezoa-program-option"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dc677a2e9bc616eda6dbdab834d463372b92848b2bfe4a1ed4e4b4adba3397d0"
 
 [[package]]
-name = "solana-program-pack"
+name = "trezoa-program-pack"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "319f0ef15e6e12dc37c597faccb7d62525a509fec5f6975ecb9419efddeb277b"
 dependencies = [
- "solana-program-error",
+ "trezoa-program-error",
 ]
 
 [[package]]
-name = "solana-program-runtime"
+name = "trezoa-program-runtime"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6c3d36fed5548b1a8625eb071df6031a95aa69f884e29bf244821e53c49372bc"
@@ -4774,35 +4774,35 @@ dependencies = [
  "percentage",
  "rand 0.8.5",
  "serde",
- "solana-account",
- "solana-clock",
- "solana-compute-budget",
- "solana-epoch-rewards",
- "solana-epoch-schedule",
- "solana-feature-set",
- "solana-hash",
- "solana-instruction",
- "solana-last-restart-slot",
- "solana-log-collector",
- "solana-measure",
- "solana-metrics",
- "solana-precompiles",
- "solana-pubkey",
- "solana-rent",
- "solana-sbpf",
- "solana-sdk-ids",
- "solana-slot-hashes",
- "solana-stable-layout",
- "solana-sysvar",
- "solana-sysvar-id",
- "solana-timings",
- "solana-transaction-context",
- "solana-type-overrides",
+ "trezoa-account",
+ "trezoa-clock",
+ "trezoa-compute-budget",
+ "trezoa-epoch-rewards",
+ "trezoa-epoch-schedule",
+ "trezoa-feature-set",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-last-restart-slot",
+ "trezoa-log-collector",
+ "trezoa-measure",
+ "trezoa-metrics",
+ "trezoa-precompiles",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-sbpf",
+ "trezoa-sdk-ids",
+ "trezoa-slot-hashes",
+ "trezoa-stable-layout",
+ "trezoa-sysvar",
+ "trezoa-sysvar-id",
+ "trezoa-timings",
+ "trezoa-transaction-context",
+ "trezoa-type-overrides",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-pubkey"
+name = "trezoa-pubkey"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "40db1ff5a0f8aea2c158d78ab5f2cf897848964251d1df42fef78efd3c85b863"
@@ -4820,16 +4820,16 @@ dependencies = [
  "rand 0.8.5",
  "serde",
  "serde_derive",
- "solana-atomic-u64",
- "solana-decode-error",
- "solana-define-syscall",
- "solana-sanitize",
- "solana-sha256-hasher",
+ "trezoa-atomic-u64",
+ "trezoa-decode-error",
+ "trezoa-define-syscall",
+ "trezoa-sanitize",
+ "trezoa-sha256-hasher",
  "wasm-bindgen",
 ]
 
 [[package]]
-name = "solana-pubsub-client"
+name = "trezoa-pubsub-client"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0bd251d37c932105a684415db44bee52e75ad818dfecbf963a605289b5aaecc5"
@@ -4842,11 +4842,11 @@ dependencies = [
  "serde",
  "serde_derive",
  "serde_json",
- "solana-account-decoder-client-types",
- "solana-clock",
- "solana-pubkey",
- "solana-rpc-client-api",
- "solana-signature",
+ "trezoa-account-decoder-client-types",
+ "trezoa-clock",
+ "trezoa-pubkey",
+ "trezoa-rpc-client-api",
+ "trezoa-signature",
  "thiserror 2.0.14",
  "tokio",
  "tokio-stream",
@@ -4856,7 +4856,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-quic-client"
+name = "trezoa-quic-client"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0d072e6787b6fa9da86591bcf870823b0d6f87670df3c92628505db7a9131e44"
@@ -4870,33 +4870,33 @@ dependencies = [
  "quinn",
  "quinn-proto",
  "rustls 0.23.29",
- "solana-connection-cache",
- "solana-keypair",
- "solana-measure",
- "solana-metrics",
- "solana-net-utils",
- "solana-pubkey",
- "solana-quic-definitions",
- "solana-rpc-client-api",
- "solana-signer",
- "solana-streamer",
- "solana-tls-utils",
- "solana-transaction-error",
+ "trezoa-connection-cache",
+ "trezoa-keypair",
+ "trezoa-measure",
+ "trezoa-metrics",
+ "trezoa-net-utils",
+ "trezoa-pubkey",
+ "trezoa-quic-definitions",
+ "trezoa-rpc-client-api",
+ "trezoa-signer",
+ "trezoa-streamer",
+ "trezoa-tls-utils",
+ "trezoa-transaction-error",
  "thiserror 2.0.14",
  "tokio",
 ]
 
 [[package]]
-name = "solana-quic-definitions"
+name = "trezoa-quic-definitions"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e606feac5110eb5d8afaa43ccaeea3ec49ccec36773387930b5ba545e745aea2"
 dependencies = [
- "solana-keypair",
+ "trezoa-keypair",
 ]
 
 [[package]]
-name = "solana-rayon-threadlimit"
+name = "trezoa-rayon-threadlimit"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "17f7b65ddd8ac75efcc31b627d4f161046312994313a4520b65a8b14202ab5d6"
@@ -4906,59 +4906,59 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-rent"
+name = "trezoa-rent"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d1aea8fdea9de98ca6e8c2da5827707fb3842833521b528a713810ca685d2480"
 dependencies = [
  "serde",
  "serde_derive",
- "solana-sdk-ids",
- "solana-sdk-macro",
- "solana-sysvar-id",
+ "trezoa-sdk-ids",
+ "trezoa-sdk-macro",
+ "trezoa-sysvar-id",
 ]
 
 [[package]]
-name = "solana-rent-collector"
+name = "trezoa-rent-collector"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7c1e19f5d5108b0d824244425e43bc78bbb9476e2199e979b0230c9f632d3bf4"
 dependencies = [
  "serde",
  "serde_derive",
- "solana-account",
- "solana-clock",
- "solana-epoch-schedule",
- "solana-genesis-config",
- "solana-pubkey",
- "solana-rent",
- "solana-sdk-ids",
+ "trezoa-account",
+ "trezoa-clock",
+ "trezoa-epoch-schedule",
+ "trezoa-genesis-config",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-sdk-ids",
 ]
 
 [[package]]
-name = "solana-rent-debits"
+name = "trezoa-rent-debits"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4f6f9113c6003492e74438d1288e30cffa8ccfdc2ef7b49b9e816d8034da18cd"
 dependencies = [
- "solana-pubkey",
- "solana-reward-info",
+ "trezoa-pubkey",
+ "trezoa-reward-info",
 ]
 
 [[package]]
-name = "solana-reserved-account-keys"
+name = "trezoa-reserved-account-keys"
 version = "2.2.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e4b22ea19ca2a3f28af7cd047c914abf833486bf7a7c4a10fc652fff09b385b1"
 dependencies = [
  "lazy_static",
- "solana-feature-set",
- "solana-pubkey",
- "solana-sdk-ids",
+ "trezoa-feature-set",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
 ]
 
 [[package]]
-name = "solana-reward-info"
+name = "trezoa-reward-info"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "18205b69139b1ae0ab8f6e11cdcb627328c0814422ad2482000fa2ca54ae4a2f"
@@ -4968,7 +4968,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-rpc-client"
+name = "trezoa-rpc-client"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7cb874b757d9d3c646f031132b20d43538309060a32d02b4aebb0f8fc2cd159a"
@@ -4985,28 +4985,28 @@ dependencies = [
  "serde",
  "serde_derive",
  "serde_json",
- "solana-account",
- "solana-account-decoder-client-types",
- "solana-clock",
- "solana-commitment-config",
- "solana-epoch-info",
- "solana-epoch-schedule",
- "solana-feature-gate-interface",
- "solana-hash",
- "solana-instruction",
- "solana-message",
- "solana-pubkey",
- "solana-rpc-client-api",
- "solana-signature",
- "solana-transaction",
- "solana-transaction-error",
- "solana-transaction-status-client-types",
- "solana-version",
+ "trezoa-account",
+ "trezoa-account-decoder-client-types",
+ "trezoa-clock",
+ "trezoa-commitment-config",
+ "trezoa-epoch-info",
+ "trezoa-epoch-schedule",
+ "trezoa-feature-gate-interface",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-message",
+ "trezoa-pubkey",
+ "trezoa-rpc-client-api",
+ "trezoa-signature",
+ "trezoa-transaction",
+ "trezoa-transaction-error",
+ "trezoa-transaction-status-client-types",
+ "trezoa-version",
  "tokio",
 ]
 
 [[package]]
-name = "solana-rpc-client-api"
+name = "trezoa-rpc-client-api"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "f7105452c4f039fd2c07e6fda811ff23bd270c99f91ac160308f02701eb19043"
@@ -5021,46 +5021,46 @@ dependencies = [
  "serde",
  "serde_derive",
  "serde_json",
- "solana-account",
- "solana-account-decoder-client-types",
- "solana-clock",
- "solana-commitment-config",
- "solana-fee-calculator",
- "solana-inflation",
- "solana-inline-spl",
- "solana-pubkey",
- "solana-signer",
- "solana-transaction-error",
- "solana-transaction-status-client-types",
- "solana-version",
+ "trezoa-account",
+ "trezoa-account-decoder-client-types",
+ "trezoa-clock",
+ "trezoa-commitment-config",
+ "trezoa-fee-calculator",
+ "trezoa-inflation",
+ "trezoa-inline-spl",
+ "trezoa-pubkey",
+ "trezoa-signer",
+ "trezoa-transaction-error",
+ "trezoa-transaction-status-client-types",
+ "trezoa-version",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-rpc-client-nonce-utils"
+name = "trezoa-rpc-client-nonce-utils"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0244e2bf439ec424179414173cdc8b43e34371608752799c5610bf17430eee18"
 dependencies = [
- "solana-account",
- "solana-commitment-config",
- "solana-hash",
- "solana-message",
- "solana-nonce",
- "solana-pubkey",
- "solana-rpc-client",
- "solana-sdk-ids",
+ "trezoa-account",
+ "trezoa-commitment-config",
+ "trezoa-hash",
+ "trezoa-message",
+ "trezoa-nonce",
+ "trezoa-pubkey",
+ "trezoa-rpc-client",
+ "trezoa-sdk-ids",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-sanitize"
+name = "trezoa-sanitize"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "61f1bc1357b8188d9c4a3af3fc55276e56987265eb7ad073ae6f8180ee54cecf"
 
 [[package]]
-name = "solana-sbpf"
+name = "trezoa-sbpf"
 version = "0.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "66a3ce7a0f4d6830124ceb2c263c36d1ee39444ec70146eb49b939e557e72b96"
@@ -5077,7 +5077,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-sdk"
+name = "trezoa-sdk"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4808e8d7f3c931657e615042d4176b423e66f64dc99e3dc3c735a197e512029b"
@@ -5088,76 +5088,76 @@ dependencies = [
  "js-sys",
  "serde",
  "serde_json",
- "solana-account",
- "solana-bn254",
- "solana-client-traits",
- "solana-cluster-type",
- "solana-commitment-config",
- "solana-compute-budget-interface",
- "solana-decode-error",
- "solana-derivation-path",
- "solana-ed25519-program",
- "solana-epoch-info",
- "solana-epoch-rewards-hasher",
- "solana-feature-set",
- "solana-fee-structure",
- "solana-genesis-config",
- "solana-hard-forks",
- "solana-inflation",
- "solana-instruction",
- "solana-keypair",
- "solana-message",
- "solana-native-token",
- "solana-nonce-account",
- "solana-offchain-message",
- "solana-packet",
- "solana-poh-config",
- "solana-precompile-error",
- "solana-precompiles",
- "solana-presigner",
- "solana-program",
- "solana-program-memory",
- "solana-pubkey",
- "solana-quic-definitions",
- "solana-rent-collector",
- "solana-rent-debits",
- "solana-reserved-account-keys",
- "solana-reward-info",
- "solana-sanitize",
- "solana-sdk-ids",
- "solana-sdk-macro",
- "solana-secp256k1-program",
- "solana-secp256k1-recover",
- "solana-secp256r1-program",
- "solana-seed-derivable",
- "solana-seed-phrase",
- "solana-serde",
- "solana-serde-varint",
- "solana-short-vec",
- "solana-shred-version",
- "solana-signature",
- "solana-signer",
- "solana-system-transaction",
- "solana-time-utils",
- "solana-transaction",
- "solana-transaction-context",
- "solana-transaction-error",
- "solana-validator-exit",
+ "trezoa-account",
+ "trezoa-bn254",
+ "trezoa-client-traits",
+ "trezoa-cluster-type",
+ "trezoa-commitment-config",
+ "trezoa-compute-budget-interface",
+ "trezoa-decode-error",
+ "trezoa-derivation-path",
+ "trezoa-ed25519-program",
+ "trezoa-epoch-info",
+ "trezoa-epoch-rewards-hasher",
+ "trezoa-feature-set",
+ "trezoa-fee-structure",
+ "trezoa-genesis-config",
+ "trezoa-hard-forks",
+ "trezoa-inflation",
+ "trezoa-instruction",
+ "trezoa-keypair",
+ "trezoa-message",
+ "trezoa-native-token",
+ "trezoa-nonce-account",
+ "trezoa-offchain-message",
+ "trezoa-packet",
+ "trezoa-poh-config",
+ "trezoa-precompile-error",
+ "trezoa-precompiles",
+ "trezoa-presigner",
+ "trezoa-program",
+ "trezoa-program-memory",
+ "trezoa-pubkey",
+ "trezoa-quic-definitions",
+ "trezoa-rent-collector",
+ "trezoa-rent-debits",
+ "trezoa-reserved-account-keys",
+ "trezoa-reward-info",
+ "trezoa-sanitize",
+ "trezoa-sdk-ids",
+ "trezoa-sdk-macro",
+ "trezoa-secp256k1-program",
+ "trezoa-secp256k1-recover",
+ "trezoa-secp256r1-program",
+ "trezoa-seed-derivable",
+ "trezoa-seed-phrase",
+ "trezoa-serde",
+ "trezoa-serde-varint",
+ "trezoa-short-vec",
+ "trezoa-shred-version",
+ "trezoa-signature",
+ "trezoa-signer",
+ "trezoa-system-transaction",
+ "trezoa-time-utils",
+ "trezoa-transaction",
+ "trezoa-transaction-context",
+ "trezoa-transaction-error",
+ "trezoa-validator-exit",
  "thiserror 2.0.14",
  "wasm-bindgen",
 ]
 
 [[package]]
-name = "solana-sdk-ids"
+name = "trezoa-sdk-ids"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5c5d8b9cc68d5c88b062a33e23a6466722467dde0035152d8fb1afbcdf350a5f"
 dependencies = [
- "solana-pubkey",
+ "trezoa-pubkey",
 ]
 
 [[package]]
-name = "solana-sdk-macro"
+name = "trezoa-sdk-macro"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "86280da8b99d03560f6ab5aca9de2e38805681df34e0bb8f238e69b29433b9df"
@@ -5169,7 +5169,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-secp256k1-program"
+name = "trezoa-secp256k1-program"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a0a1caa972414cc78122c32bdae65ac5fe89df7db598585a5cde19d16a20280a"
@@ -5180,55 +5180,55 @@ dependencies = [
  "serde",
  "serde_derive",
  "sha3",
- "solana-feature-set",
- "solana-instruction",
- "solana-precompile-error",
- "solana-sdk-ids",
+ "trezoa-feature-set",
+ "trezoa-instruction",
+ "trezoa-precompile-error",
+ "trezoa-sdk-ids",
 ]
 
 [[package]]
-name = "solana-secp256k1-recover"
+name = "trezoa-secp256k1-recover"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baa3120b6cdaa270f39444f5093a90a7b03d296d362878f7a6991d6de3bbe496"
 dependencies = [
  "borsh 1.5.7",
  "libsecp256k1",
- "solana-define-syscall",
+ "trezoa-define-syscall",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-secp256r1-program"
+name = "trezoa-secp256r1-program"
 version = "2.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "cf903cbdc36a161533812f90acfccdb434ed48982bd5dd71f3217930572c4a80"
 dependencies = [
  "bytemuck",
  "openssl",
- "solana-feature-set",
- "solana-instruction",
- "solana-precompile-error",
- "solana-sdk-ids",
+ "trezoa-feature-set",
+ "trezoa-instruction",
+ "trezoa-precompile-error",
+ "trezoa-sdk-ids",
 ]
 
 [[package]]
-name = "solana-security-txt"
+name = "trezoa-security-txt"
 version = "1.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "468aa43b7edb1f9b7b7b686d5c3aeb6630dc1708e86e31343499dd5c4d775183"
 
 [[package]]
-name = "solana-seed-derivable"
+name = "trezoa-seed-derivable"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "3beb82b5adb266c6ea90e5cf3967235644848eac476c5a1f2f9283a143b7c97f"
 dependencies = [
- "solana-derivation-path",
+ "trezoa-derivation-path",
 ]
 
 [[package]]
-name = "solana-seed-phrase"
+name = "trezoa-seed-phrase"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "36187af2324f079f65a675ec22b31c24919cb4ac22c79472e85d819db9bbbc15"
@@ -5239,7 +5239,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-serde"
+name = "trezoa-serde"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "1931484a408af466e14171556a47adaa215953c7f48b24e5f6b0282763818b04"
@@ -5248,7 +5248,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-serde-varint"
+name = "trezoa-serde-varint"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bcc07d00200d82e6def2f7f7a45738e3406b17fe54a18adcf0defa16a97ccadb"
@@ -5257,29 +5257,29 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-serialize-utils"
+name = "trezoa-serialize-utils"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "817a284b63197d2b27afdba829c5ab34231da4a9b4e763466a003c40ca4f535e"
 dependencies = [
- "solana-instruction",
- "solana-pubkey",
- "solana-sanitize",
+ "trezoa-instruction",
+ "trezoa-pubkey",
+ "trezoa-sanitize",
 ]
 
 [[package]]
-name = "solana-sha256-hasher"
+name = "trezoa-sha256-hasher"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0037386961c0d633421f53560ad7c80675c0447cba4d1bb66d60974dd486c7ea"
 dependencies = [
  "sha2 0.10.9",
- "solana-define-syscall",
- "solana-hash",
+ "trezoa-define-syscall",
+ "trezoa-hash",
 ]
 
 [[package]]
-name = "solana-short-vec"
+name = "trezoa-short-vec"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5c54c66f19b9766a56fa0057d060de8378676cb64987533fa088861858fc5a69"
@@ -5288,18 +5288,18 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-shred-version"
+name = "trezoa-shred-version"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "afd3db0461089d1ad1a78d9ba3f15b563899ca2386351d38428faa5350c60a98"
 dependencies = [
- "solana-hard-forks",
- "solana-hash",
- "solana-sha256-hasher",
+ "trezoa-hard-forks",
+ "trezoa-hash",
+ "trezoa-sha256-hasher",
 ]
 
 [[package]]
-name = "solana-signature"
+name = "trezoa-signature"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "47d251c8f3dc015f320b4161daac7f108156c837428e5a8cc61136d25beb11d6"
@@ -5310,35 +5310,35 @@ dependencies = [
  "serde",
  "serde-big-array",
  "serde_derive",
- "solana-sanitize",
+ "trezoa-sanitize",
 ]
 
 [[package]]
-name = "solana-signer"
+name = "trezoa-signer"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7c41991508a4b02f021c1342ba00bcfa098630b213726ceadc7cb032e051975b"
 dependencies = [
- "solana-pubkey",
- "solana-signature",
- "solana-transaction-error",
+ "trezoa-pubkey",
+ "trezoa-signature",
+ "trezoa-transaction-error",
 ]
 
 [[package]]
-name = "solana-slot-hashes"
+name = "trezoa-slot-hashes"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "0c8691982114513763e88d04094c9caa0376b867a29577939011331134c301ce"
 dependencies = [
  "serde",
  "serde_derive",
- "solana-hash",
- "solana-sdk-ids",
- "solana-sysvar-id",
+ "trezoa-hash",
+ "trezoa-sdk-ids",
+ "trezoa-sysvar-id",
 ]
 
 [[package]]
-name = "solana-slot-history"
+name = "trezoa-slot-history"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "97ccc1b2067ca22754d5283afb2b0126d61eae734fc616d23871b0943b0d935e"
@@ -5346,22 +5346,22 @@ dependencies = [
  "bv",
  "serde",
  "serde_derive",
- "solana-sdk-ids",
- "solana-sysvar-id",
+ "trezoa-sdk-ids",
+ "trezoa-sysvar-id",
 ]
 
 [[package]]
-name = "solana-stable-layout"
+name = "trezoa-stable-layout"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9f14f7d02af8f2bc1b5efeeae71bc1c2b7f0f65cd75bcc7d8180f2c762a57f54"
 dependencies = [
- "solana-instruction",
- "solana-pubkey",
+ "trezoa-instruction",
+ "trezoa-pubkey",
 ]
 
 [[package]]
-name = "solana-stake-interface"
+name = "trezoa-stake-interface"
 version = "1.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5269e89fde216b4d7e1d1739cf5303f8398a1ff372a81232abbee80e554a838c"
@@ -5371,47 +5371,47 @@ dependencies = [
  "num-traits",
  "serde",
  "serde_derive",
- "solana-clock",
- "solana-cpi",
- "solana-decode-error",
- "solana-instruction",
- "solana-program-error",
- "solana-pubkey",
- "solana-system-interface",
- "solana-sysvar-id",
+ "trezoa-clock",
+ "trezoa-cpi",
+ "trezoa-decode-error",
+ "trezoa-instruction",
+ "trezoa-program-error",
+ "trezoa-pubkey",
+ "trezoa-system-interface",
+ "trezoa-sysvar-id",
 ]
 
 [[package]]
-name = "solana-stake-program"
+name = "trezoa-stake-program"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "dabc713c25ff999424ec68ac4572f2ff6bfd6317922c7864435ccaf9c76504a8"
 dependencies = [
  "bincode",
  "log",
- "solana-account",
- "solana-bincode",
- "solana-clock",
- "solana-config-program",
- "solana-feature-set",
- "solana-genesis-config",
- "solana-instruction",
- "solana-log-collector",
- "solana-native-token",
- "solana-packet",
- "solana-program-runtime",
- "solana-pubkey",
- "solana-rent",
- "solana-sdk-ids",
- "solana-stake-interface",
- "solana-sysvar",
- "solana-transaction-context",
- "solana-type-overrides",
- "solana-vote-interface",
+ "trezoa-account",
+ "trezoa-bincode",
+ "trezoa-clock",
+ "trezoa-config-program",
+ "trezoa-feature-set",
+ "trezoa-genesis-config",
+ "trezoa-instruction",
+ "trezoa-log-collector",
+ "trezoa-native-token",
+ "trezoa-packet",
+ "trezoa-program-runtime",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-sdk-ids",
+ "trezoa-stake-interface",
+ "trezoa-sysvar",
+ "trezoa-transaction-context",
+ "trezoa-type-overrides",
+ "trezoa-vote-interface",
 ]
 
 [[package]]
-name = "solana-streamer"
+name = "trezoa-streamer"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "68441234b1235afb242e7482cabf3e32eb29554e4c4159d5d58e19e54ccfd424"
@@ -5437,20 +5437,20 @@ dependencies = [
  "rustls 0.23.29",
  "smallvec",
  "socket2 0.5.10",
- "solana-keypair",
- "solana-measure",
- "solana-metrics",
- "solana-net-utils",
- "solana-packet",
- "solana-perf",
- "solana-pubkey",
- "solana-quic-definitions",
- "solana-signature",
- "solana-signer",
- "solana-time-utils",
- "solana-tls-utils",
- "solana-transaction-error",
- "solana-transaction-metrics-tracker",
+ "trezoa-keypair",
+ "trezoa-measure",
+ "trezoa-metrics",
+ "trezoa-net-utils",
+ "trezoa-packet",
+ "trezoa-perf",
+ "trezoa-pubkey",
+ "trezoa-quic-definitions",
+ "trezoa-signature",
+ "trezoa-signer",
+ "trezoa-time-utils",
+ "trezoa-tls-utils",
+ "trezoa-transaction-error",
+ "trezoa-transaction-metrics-tracker",
  "thiserror 2.0.14",
  "tokio",
  "tokio-util",
@@ -5458,21 +5458,21 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-svm-transaction"
+name = "trezoa-svm-transaction"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4fc4392f0eed412141a376e99dfb052069b96f13697a9abb335504babe29387a"
 dependencies = [
- "solana-hash",
- "solana-message",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-signature",
- "solana-transaction",
+ "trezoa-hash",
+ "trezoa-message",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-signature",
+ "trezoa-transaction",
 ]
 
 [[package]]
-name = "solana-system-interface"
+name = "trezoa-system-interface"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "94d7c18cb1a91c6be5f5a8ac9276a1d7c737e39a21beba9ea710ab4b9c63bc90"
@@ -5481,14 +5481,14 @@ dependencies = [
  "num-traits",
  "serde",
  "serde_derive",
- "solana-decode-error",
- "solana-instruction",
- "solana-pubkey",
+ "trezoa-decode-error",
+ "trezoa-instruction",
+ "trezoa-pubkey",
  "wasm-bindgen",
 ]
 
 [[package]]
-name = "solana-system-program"
+name = "trezoa-system-program"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "43c8f684977e4439031b3a27b954ab05a6bdf697d581692aaf8888cf92b73b9e"
@@ -5497,39 +5497,39 @@ dependencies = [
  "log",
  "serde",
  "serde_derive",
- "solana-account",
- "solana-bincode",
- "solana-instruction",
- "solana-log-collector",
- "solana-nonce",
- "solana-nonce-account",
- "solana-packet",
- "solana-program-runtime",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-system-interface",
- "solana-sysvar",
- "solana-transaction-context",
- "solana-type-overrides",
+ "trezoa-account",
+ "trezoa-bincode",
+ "trezoa-instruction",
+ "trezoa-log-collector",
+ "trezoa-nonce",
+ "trezoa-nonce-account",
+ "trezoa-packet",
+ "trezoa-program-runtime",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-system-interface",
+ "trezoa-sysvar",
+ "trezoa-transaction-context",
+ "trezoa-type-overrides",
 ]
 
 [[package]]
-name = "solana-system-transaction"
+name = "trezoa-system-transaction"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5bd98a25e5bcba8b6be8bcbb7b84b24c2a6a8178d7fb0e3077a916855ceba91a"
 dependencies = [
- "solana-hash",
- "solana-keypair",
- "solana-message",
- "solana-pubkey",
- "solana-signer",
- "solana-system-interface",
- "solana-transaction",
+ "trezoa-hash",
+ "trezoa-keypair",
+ "trezoa-message",
+ "trezoa-pubkey",
+ "trezoa-signer",
+ "trezoa-system-interface",
+ "trezoa-transaction",
 ]
 
 [[package]]
-name = "solana-sysvar"
+name = "trezoa-sysvar"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "bf6b44740d7f0c9f375d045c165bc0aab4a90658f92d6835aeb0649afaeaff9a"
@@ -5541,42 +5541,42 @@ dependencies = [
  "lazy_static",
  "serde",
  "serde_derive",
- "solana-account-info",
- "solana-clock",
- "solana-define-syscall",
- "solana-epoch-rewards",
- "solana-epoch-schedule",
- "solana-fee-calculator",
- "solana-hash",
- "solana-instruction",
- "solana-instructions-sysvar",
- "solana-last-restart-slot",
- "solana-program-entrypoint",
- "solana-program-error",
- "solana-program-memory",
- "solana-pubkey",
- "solana-rent",
- "solana-sanitize",
- "solana-sdk-ids",
- "solana-sdk-macro",
- "solana-slot-hashes",
- "solana-slot-history",
- "solana-stake-interface",
- "solana-sysvar-id",
+ "trezoa-account-info",
+ "trezoa-clock",
+ "trezoa-define-syscall",
+ "trezoa-epoch-rewards",
+ "trezoa-epoch-schedule",
+ "trezoa-fee-calculator",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-instructions-sysvar",
+ "trezoa-last-restart-slot",
+ "trezoa-program-entrypoint",
+ "trezoa-program-error",
+ "trezoa-program-memory",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-sanitize",
+ "trezoa-sdk-ids",
+ "trezoa-sdk-macro",
+ "trezoa-slot-hashes",
+ "trezoa-slot-history",
+ "trezoa-stake-interface",
+ "trezoa-sysvar-id",
 ]
 
 [[package]]
-name = "solana-sysvar-id"
+name = "trezoa-sysvar-id"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5762b273d3325b047cfda250787f8d796d781746860d5d0a746ee29f3e8812c1"
 dependencies = [
- "solana-pubkey",
- "solana-sdk-ids",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
 ]
 
 [[package]]
-name = "solana-thin-client"
+name = "trezoa-thin-client"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "721a034e94fcfaf8bde1ae4980e7eb58bfeb0c9a243b032b0761fdd19018afbf"
@@ -5584,58 +5584,58 @@ dependencies = [
  "bincode",
  "log",
  "rayon",
- "solana-account",
- "solana-client-traits",
- "solana-clock",
- "solana-commitment-config",
- "solana-connection-cache",
- "solana-epoch-info",
- "solana-hash",
- "solana-instruction",
- "solana-keypair",
- "solana-message",
- "solana-pubkey",
- "solana-rpc-client",
- "solana-rpc-client-api",
- "solana-signature",
- "solana-signer",
- "solana-system-interface",
- "solana-transaction",
- "solana-transaction-error",
+ "trezoa-account",
+ "trezoa-client-traits",
+ "trezoa-clock",
+ "trezoa-commitment-config",
+ "trezoa-connection-cache",
+ "trezoa-epoch-info",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-keypair",
+ "trezoa-message",
+ "trezoa-pubkey",
+ "trezoa-rpc-client",
+ "trezoa-rpc-client-api",
+ "trezoa-signature",
+ "trezoa-signer",
+ "trezoa-system-interface",
+ "trezoa-transaction",
+ "trezoa-transaction-error",
 ]
 
 [[package]]
-name = "solana-time-utils"
+name = "trezoa-time-utils"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6af261afb0e8c39252a04d026e3ea9c405342b08c871a2ad8aa5448e068c784c"
 
 [[package]]
-name = "solana-timings"
+name = "trezoa-timings"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "49d9eabdce318cb07c60a23f1cc367b43e177c79225b5c2a081869ad182172ad"
 dependencies = [
  "eager",
  "enum-iterator",
- "solana-pubkey",
+ "trezoa-pubkey",
 ]
 
 [[package]]
-name = "solana-tls-utils"
+name = "trezoa-tls-utils"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a228df037e560a02aac132193f492bdd761e2f90188cd16a440f149882f589b1"
 dependencies = [
  "rustls 0.23.29",
- "solana-keypair",
- "solana-pubkey",
- "solana-signer",
+ "trezoa-keypair",
+ "trezoa-pubkey",
+ "trezoa-signer",
  "x509-parser",
 ]
 
 [[package]]
-name = "solana-tpu-client"
+name = "trezoa-tpu-client"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "aaceb9e9349de58740021f826ae72319513eca84ebb6d30326e2604fdad4cefb"
@@ -5647,29 +5647,29 @@ dependencies = [
  "indicatif",
  "log",
  "rayon",
- "solana-client-traits",
- "solana-clock",
- "solana-commitment-config",
- "solana-connection-cache",
- "solana-epoch-info",
- "solana-measure",
- "solana-message",
- "solana-net-utils",
- "solana-pubkey",
- "solana-pubsub-client",
- "solana-quic-definitions",
- "solana-rpc-client",
- "solana-rpc-client-api",
- "solana-signature",
- "solana-signer",
- "solana-transaction",
- "solana-transaction-error",
+ "trezoa-client-traits",
+ "trezoa-clock",
+ "trezoa-commitment-config",
+ "trezoa-connection-cache",
+ "trezoa-epoch-info",
+ "trezoa-measure",
+ "trezoa-message",
+ "trezoa-net-utils",
+ "trezoa-pubkey",
+ "trezoa-pubsub-client",
+ "trezoa-quic-definitions",
+ "trezoa-rpc-client",
+ "trezoa-rpc-client-api",
+ "trezoa-signature",
+ "trezoa-signer",
+ "trezoa-transaction",
+ "trezoa-transaction-error",
  "thiserror 2.0.14",
  "tokio",
 ]
 
 [[package]]
-name = "solana-transaction"
+name = "trezoa-transaction"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "753b3e9afed170e4cfc0ea1e87b5dfdc6d4a50270869414edd24c6ea1f529b29"
@@ -5677,27 +5677,27 @@ dependencies = [
  "bincode",
  "serde",
  "serde_derive",
- "solana-bincode",
- "solana-feature-set",
- "solana-hash",
- "solana-instruction",
- "solana-keypair",
- "solana-message",
- "solana-precompiles",
- "solana-pubkey",
- "solana-reserved-account-keys",
- "solana-sanitize",
- "solana-sdk-ids",
- "solana-short-vec",
- "solana-signature",
- "solana-signer",
- "solana-system-interface",
- "solana-transaction-error",
+ "trezoa-bincode",
+ "trezoa-feature-set",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-keypair",
+ "trezoa-message",
+ "trezoa-precompiles",
+ "trezoa-pubkey",
+ "trezoa-reserved-account-keys",
+ "trezoa-sanitize",
+ "trezoa-sdk-ids",
+ "trezoa-short-vec",
+ "trezoa-signature",
+ "trezoa-signer",
+ "trezoa-system-interface",
+ "trezoa-transaction-error",
  "wasm-bindgen",
 ]
 
 [[package]]
-name = "solana-transaction-context"
+name = "trezoa-transaction-context"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5022de04cbba05377f68bf848c8c1322ead733f88a657bf792bb40f3257b8218"
@@ -5705,27 +5705,27 @@ dependencies = [
  "bincode",
  "serde",
  "serde_derive",
- "solana-account",
- "solana-instruction",
- "solana-pubkey",
- "solana-rent",
- "solana-signature",
+ "trezoa-account",
+ "trezoa-instruction",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-signature",
 ]
 
 [[package]]
-name = "solana-transaction-error"
+name = "trezoa-transaction-error"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "222a9dc8fdb61c6088baab34fc3a8b8473a03a7a5fd404ed8dd502fa79b67cb1"
 dependencies = [
  "serde",
  "serde_derive",
- "solana-instruction",
- "solana-sanitize",
+ "trezoa-instruction",
+ "trezoa-sanitize",
 ]
 
 [[package]]
-name = "solana-transaction-metrics-tracker"
+name = "trezoa-transaction-metrics-tracker"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e9256ea8a6cead9e03060fd8fdc24d400a57a719364db48a3e4d1776b09c2365"
@@ -5735,14 +5735,14 @@ dependencies = [
  "lazy_static",
  "log",
  "rand 0.8.5",
- "solana-packet",
- "solana-perf",
- "solana-short-vec",
- "solana-signature",
+ "trezoa-packet",
+ "trezoa-perf",
+ "trezoa-short-vec",
+ "trezoa-signature",
 ]
 
 [[package]]
-name = "solana-transaction-status-client-types"
+name = "trezoa-transaction-status-client-types"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d5ac91c8f0465c566164044ad7b3d18d15dfabab1b8b4a4a01cb83c047efdaae"
@@ -5753,19 +5753,19 @@ dependencies = [
  "serde",
  "serde_derive",
  "serde_json",
- "solana-account-decoder-client-types",
- "solana-commitment-config",
- "solana-message",
- "solana-reward-info",
- "solana-signature",
- "solana-transaction",
- "solana-transaction-context",
- "solana-transaction-error",
+ "trezoa-account-decoder-client-types",
+ "trezoa-commitment-config",
+ "trezoa-message",
+ "trezoa-reward-info",
+ "trezoa-signature",
+ "trezoa-transaction",
+ "trezoa-transaction-context",
+ "trezoa-transaction-error",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-type-overrides"
+name = "trezoa-type-overrides"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d39dc2e501edfea7ce1cec2fe2a2428aedfea1cc9c31747931e0d90d5c57b020"
@@ -5775,29 +5775,29 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-udp-client"
+name = "trezoa-udp-client"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "85085c0aa14ebb8e26219386fb7f4348d159f5a67858c2fdefef3cc5f4ce090c"
 dependencies = [
  "async-trait",
- "solana-connection-cache",
- "solana-keypair",
- "solana-net-utils",
- "solana-streamer",
- "solana-transaction-error",
+ "trezoa-connection-cache",
+ "trezoa-keypair",
+ "trezoa-net-utils",
+ "trezoa-streamer",
+ "trezoa-transaction-error",
  "thiserror 2.0.14",
  "tokio",
 ]
 
 [[package]]
-name = "solana-validator-exit"
+name = "trezoa-validator-exit"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "7bbf6d7a3c0b28dd5335c52c0e9eae49d0ae489a8f324917faf0ded65a812c1d"
 
 [[package]]
-name = "solana-version"
+name = "trezoa-version"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4f60a01e2721bfd2e094b465440ae461d75acd363e9653565a73d2c586becb3b"
@@ -5805,13 +5805,13 @@ dependencies = [
  "semver",
  "serde",
  "serde_derive",
- "solana-feature-set",
- "solana-sanitize",
- "solana-serde-varint",
+ "trezoa-feature-set",
+ "trezoa-sanitize",
+ "trezoa-serde-varint",
 ]
 
 [[package]]
-name = "solana-vote-interface"
+name = "trezoa-vote-interface"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d4507bb9d071fb81cfcf676f12fba3db4098f764524ef0b5567d671a81d41f3e"
@@ -5821,21 +5821,21 @@ dependencies = [
  "num-traits",
  "serde",
  "serde_derive",
- "solana-clock",
- "solana-decode-error",
- "solana-hash",
- "solana-instruction",
- "solana-pubkey",
- "solana-rent",
- "solana-sdk-ids",
- "solana-serde-varint",
- "solana-serialize-utils",
- "solana-short-vec",
- "solana-system-interface",
+ "trezoa-clock",
+ "trezoa-decode-error",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-sdk-ids",
+ "trezoa-serde-varint",
+ "trezoa-serialize-utils",
+ "trezoa-short-vec",
+ "trezoa-system-interface",
 ]
 
 [[package]]
-name = "solana-vote-program"
+name = "trezoa-vote-program"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ab654bb2622d85b2ca0c36cb89c99fa1286268e0d784efec03a3d42e9c6a55f4"
@@ -5846,30 +5846,30 @@ dependencies = [
  "num-traits",
  "serde",
  "serde_derive",
- "solana-account",
- "solana-bincode",
- "solana-clock",
- "solana-epoch-schedule",
- "solana-feature-set",
- "solana-hash",
- "solana-instruction",
- "solana-keypair",
- "solana-metrics",
- "solana-packet",
- "solana-program-runtime",
- "solana-pubkey",
- "solana-rent",
- "solana-sdk-ids",
- "solana-signer",
- "solana-slot-hashes",
- "solana-transaction",
- "solana-transaction-context",
- "solana-vote-interface",
+ "trezoa-account",
+ "trezoa-bincode",
+ "trezoa-clock",
+ "trezoa-epoch-schedule",
+ "trezoa-feature-set",
+ "trezoa-hash",
+ "trezoa-instruction",
+ "trezoa-keypair",
+ "trezoa-metrics",
+ "trezoa-packet",
+ "trezoa-program-runtime",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-sdk-ids",
+ "trezoa-signer",
+ "trezoa-slot-hashes",
+ "trezoa-transaction",
+ "trezoa-transaction-context",
+ "trezoa-vote-interface",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "solana-zk-elgamal-proof-program"
+name = "trezoa-zk-elgamal-proof-program"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "4d241af6328b3e0e20695bb705c850119ec5881b386c338783b8c8bc79e76c65"
@@ -5877,15 +5877,15 @@ dependencies = [
  "bytemuck",
  "num-derive",
  "num-traits",
- "solana-instruction",
- "solana-log-collector",
- "solana-program-runtime",
- "solana-sdk-ids",
- "solana-zk-sdk",
+ "trezoa-instruction",
+ "trezoa-log-collector",
+ "trezoa-program-runtime",
+ "trezoa-sdk-ids",
+ "trezoa-zk-sdk",
 ]
 
 [[package]]
-name = "solana-zk-sdk"
+name = "trezoa-zk-sdk"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d8318220b73552a2765c6545a4be04fc87fe21b6dd0cb8c2b545a66121bf5b8a"
@@ -5907,14 +5907,14 @@ dependencies = [
  "serde_derive",
  "serde_json",
  "sha3",
- "solana-derivation-path",
- "solana-instruction",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-seed-derivable",
- "solana-seed-phrase",
- "solana-signature",
- "solana-signer",
+ "trezoa-derivation-path",
+ "trezoa-instruction",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-seed-derivable",
+ "trezoa-seed-phrase",
+ "trezoa-signature",
+ "trezoa-signer",
  "subtle",
  "thiserror 2.0.14",
  "wasm-bindgen",
@@ -5922,7 +5922,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "solana-zk-token-proof-program"
+name = "trezoa-zk-token-proof-program"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "123b7c7d2f9e68190630b216781ca832af0ed78b69acd89a2ad2766cc460c312"
@@ -5930,16 +5930,16 @@ dependencies = [
  "bytemuck",
  "num-derive",
  "num-traits",
- "solana-feature-set",
- "solana-instruction",
- "solana-log-collector",
- "solana-program-runtime",
- "solana-sdk-ids",
- "solana-zk-token-sdk",
+ "trezoa-feature-set",
+ "trezoa-instruction",
+ "trezoa-log-collector",
+ "trezoa-program-runtime",
+ "trezoa-sdk-ids",
+ "trezoa-zk-token-sdk",
 ]
 
 [[package]]
-name = "solana-zk-token-sdk"
+name = "trezoa-zk-token-sdk"
 version = "2.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "b3cf301f8d8e02ef58fc2ce85868f5c760720e1ce74ee4b3c3dcb64c8da7bcff"
@@ -5960,15 +5960,15 @@ dependencies = [
  "serde_derive",
  "serde_json",
  "sha3",
- "solana-curve25519",
- "solana-derivation-path",
- "solana-instruction",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-seed-derivable",
- "solana-seed-phrase",
- "solana-signature",
- "solana-signer",
+ "trezoa-curve25519",
+ "trezoa-derivation-path",
+ "trezoa-instruction",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-seed-derivable",
+ "trezoa-seed-phrase",
+ "trezoa-signature",
+ "trezoa-signer",
  "subtle",
  "thiserror 2.0.14",
  "zeroize",
@@ -5992,7 +5992,7 @@ dependencies = [
  "borsh 1.5.7",
  "num-derive",
  "num-traits",
- "solana-program",
+ "trezoa-program",
  "spl-associated-token-account-client",
  "spl-token",
  "spl-token-2022",
@@ -6005,8 +6005,8 @@ version = "2.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "d6f8349dbcbe575f354f9a533a21f272f3eb3808a49e2fdc1c34393b88ba76cb"
 dependencies = [
- "solana-instruction",
- "solana-pubkey",
+ "trezoa-instruction",
+ "trezoa-pubkey",
 ]
 
 [[package]]
@@ -6016,8 +6016,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "a7398da23554a31660f17718164e31d31900956054f54f52d5ec1be51cb4f4b3"
 dependencies = [
  "bytemuck",
- "solana-program-error",
- "solana-sha256-hasher",
+ "trezoa-program-error",
+ "trezoa-sha256-hasher",
  "spl-discriminator-derive",
 ]
 
@@ -6052,18 +6052,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "65edfeed09cd4231e595616aa96022214f9c9d2be02dea62c2b30d5695a6833a"
 dependencies = [
  "bytemuck",
- "solana-account-info",
- "solana-cpi",
- "solana-instruction",
- "solana-msg",
- "solana-program-entrypoint",
- "solana-program-error",
- "solana-pubkey",
- "solana-rent",
- "solana-sdk-ids",
- "solana-system-interface",
- "solana-sysvar",
- "solana-zk-sdk",
+ "trezoa-account-info",
+ "trezoa-cpi",
+ "trezoa-instruction",
+ "trezoa-msg",
+ "trezoa-program-entrypoint",
+ "trezoa-program-error",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-sdk-ids",
+ "trezoa-system-interface",
+ "trezoa-sysvar",
+ "trezoa-zk-sdk",
  "spl-pod",
  "spl-token-confidential-transfer-proof-extraction",
 ]
@@ -6074,12 +6074,12 @@ version = "6.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9f09647c0974e33366efeb83b8e2daebb329f0420149e74d3a4bd2c08cf9f7cb"
 dependencies = [
- "solana-account-info",
- "solana-instruction",
- "solana-msg",
- "solana-program-entrypoint",
- "solana-program-error",
- "solana-pubkey",
+ "trezoa-account-info",
+ "trezoa-instruction",
+ "trezoa-msg",
+ "trezoa-program-entrypoint",
+ "trezoa-program-error",
+ "trezoa-pubkey",
 ]
 
 [[package]]
@@ -6093,12 +6093,12 @@ dependencies = [
  "bytemuck_derive",
  "num-derive",
  "num-traits",
- "solana-decode-error",
- "solana-msg",
- "solana-program-error",
- "solana-program-option",
- "solana-pubkey",
- "solana-zk-sdk",
+ "trezoa-decode-error",
+ "trezoa-msg",
+ "trezoa-program-error",
+ "trezoa-program-option",
+ "trezoa-pubkey",
+ "trezoa-zk-sdk",
  "thiserror 2.0.14",
 ]
 
@@ -6110,9 +6110,9 @@ checksum = "9cdebc8b42553070b75aa5106f071fef2eb798c64a7ec63375da4b1f058688c6"
 dependencies = [
  "num-derive",
  "num-traits",
- "solana-decode-error",
- "solana-msg",
- "solana-program-error",
+ "trezoa-decode-error",
+ "trezoa-msg",
+ "trezoa-program-error",
  "spl-program-error-derive",
  "thiserror 2.0.14",
 ]
@@ -6138,12 +6138,12 @@ dependencies = [
  "bytemuck",
  "num-derive",
  "num-traits",
- "solana-account-info",
- "solana-decode-error",
- "solana-instruction",
- "solana-msg",
- "solana-program-error",
- "solana-pubkey",
+ "trezoa-account-info",
+ "trezoa-decode-error",
+ "trezoa-instruction",
+ "trezoa-msg",
+ "trezoa-program-error",
+ "trezoa-pubkey",
  "spl-discriminator",
  "spl-pod",
  "spl-program-error",
@@ -6162,20 +6162,20 @@ dependencies = [
  "num-derive",
  "num-traits",
  "num_enum",
- "solana-account-info",
- "solana-cpi",
- "solana-decode-error",
- "solana-instruction",
- "solana-msg",
- "solana-program-entrypoint",
- "solana-program-error",
- "solana-program-memory",
- "solana-program-option",
- "solana-program-pack",
- "solana-pubkey",
- "solana-rent",
- "solana-sdk-ids",
- "solana-sysvar",
+ "trezoa-account-info",
+ "trezoa-cpi",
+ "trezoa-decode-error",
+ "trezoa-instruction",
+ "trezoa-msg",
+ "trezoa-program-entrypoint",
+ "trezoa-program-error",
+ "trezoa-program-memory",
+ "trezoa-program-option",
+ "trezoa-program-pack",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-sdk-ids",
+ "trezoa-sysvar",
  "thiserror 2.0.14",
 ]
 
@@ -6190,25 +6190,25 @@ dependencies = [
  "num-derive",
  "num-traits",
  "num_enum",
- "solana-account-info",
- "solana-clock",
- "solana-cpi",
- "solana-decode-error",
- "solana-instruction",
- "solana-msg",
- "solana-native-token",
- "solana-program-entrypoint",
- "solana-program-error",
- "solana-program-memory",
- "solana-program-option",
- "solana-program-pack",
- "solana-pubkey",
- "solana-rent",
- "solana-sdk-ids",
- "solana-security-txt",
- "solana-system-interface",
- "solana-sysvar",
- "solana-zk-sdk",
+ "trezoa-account-info",
+ "trezoa-clock",
+ "trezoa-cpi",
+ "trezoa-decode-error",
+ "trezoa-instruction",
+ "trezoa-msg",
+ "trezoa-native-token",
+ "trezoa-program-entrypoint",
+ "trezoa-program-error",
+ "trezoa-program-memory",
+ "trezoa-program-option",
+ "trezoa-program-pack",
+ "trezoa-pubkey",
+ "trezoa-rent",
+ "trezoa-sdk-ids",
+ "trezoa-security-txt",
+ "trezoa-system-interface",
+ "trezoa-sysvar",
+ "trezoa-zk-sdk",
  "spl-elgamal-registry",
  "spl-memo",
  "spl-pod",
@@ -6231,8 +6231,8 @@ checksum = "94ab20faf7b5edaa79acd240e0f21d5a2ef936aa99ed98f698573a2825b299c4"
 dependencies = [
  "base64 0.22.1",
  "bytemuck",
- "solana-curve25519",
- "solana-zk-sdk",
+ "trezoa-curve25519",
+ "trezoa-zk-sdk",
 ]
 
 [[package]]
@@ -6242,15 +6242,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fe2629860ff04c17bafa9ba4bed8850a404ecac81074113e1f840dbd0ebb7bd6"
 dependencies = [
  "bytemuck",
- "solana-account-info",
- "solana-curve25519",
- "solana-instruction",
- "solana-instructions-sysvar",
- "solana-msg",
- "solana-program-error",
- "solana-pubkey",
- "solana-sdk-ids",
- "solana-zk-sdk",
+ "trezoa-account-info",
+ "trezoa-curve25519",
+ "trezoa-instruction",
+ "trezoa-instructions-sysvar",
+ "trezoa-msg",
+ "trezoa-program-error",
+ "trezoa-pubkey",
+ "trezoa-sdk-ids",
+ "trezoa-zk-sdk",
  "spl-pod",
  "thiserror 2.0.14",
 ]
@@ -6262,7 +6262,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ae5b124840d4aed474cef101d946a798b806b46a509ee4df91021e1ab1cef3ef"
 dependencies = [
  "curve25519-dalek 4.1.3",
- "solana-zk-sdk",
+ "trezoa-zk-sdk",
  "thiserror 2.0.14",
 ]
 
@@ -6275,11 +6275,11 @@ dependencies = [
  "bytemuck",
  "num-derive",
  "num-traits",
- "solana-decode-error",
- "solana-instruction",
- "solana-msg",
- "solana-program-error",
- "solana-pubkey",
+ "trezoa-decode-error",
+ "trezoa-instruction",
+ "trezoa-msg",
+ "trezoa-program-error",
+ "trezoa-pubkey",
  "spl-discriminator",
  "spl-pod",
  "thiserror 2.0.14",
@@ -6294,12 +6294,12 @@ dependencies = [
  "borsh 1.5.7",
  "num-derive",
  "num-traits",
- "solana-borsh",
- "solana-decode-error",
- "solana-instruction",
- "solana-msg",
- "solana-program-error",
- "solana-pubkey",
+ "trezoa-borsh",
+ "trezoa-decode-error",
+ "trezoa-instruction",
+ "trezoa-msg",
+ "trezoa-program-error",
+ "trezoa-pubkey",
  "spl-discriminator",
  "spl-pod",
  "spl-type-length-value",
@@ -6316,13 +6316,13 @@ dependencies = [
  "bytemuck",
  "num-derive",
  "num-traits",
- "solana-account-info",
- "solana-cpi",
- "solana-decode-error",
- "solana-instruction",
- "solana-msg",
- "solana-program-error",
- "solana-pubkey",
+ "trezoa-account-info",
+ "trezoa-cpi",
+ "trezoa-decode-error",
+ "trezoa-instruction",
+ "trezoa-msg",
+ "trezoa-program-error",
+ "trezoa-pubkey",
  "spl-discriminator",
  "spl-pod",
  "spl-program-error",
@@ -6340,10 +6340,10 @@ dependencies = [
  "bytemuck",
  "num-derive",
  "num-traits",
- "solana-account-info",
- "solana-decode-error",
- "solana-msg",
- "solana-program-error",
+ "trezoa-account-info",
+ "trezoa-decode-error",
+ "trezoa-msg",
+ "trezoa-program-error",
  "spl-discriminator",
  "spl-pod",
  "thiserror 2.0.14",
@@ -6464,9 +6464,9 @@ dependencies = [
  "borsh 1.5.7",
  "commerce-program-client",
  "litesvm",
- "solana-program",
- "solana-program-pack",
- "solana-sdk",
+ "trezoa-program",
+ "trezoa-program-pack",
+ "trezoa-sdk",
  "spl-associated-token-account",
  "spl-token",
  "tokio",

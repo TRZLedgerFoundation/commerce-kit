@@ -1,5 +1,5 @@
 /**
- * @solana-commerce/sdk - Type Exports
+ * @trezoa-commerce/sdk - Type Exports
  *
  * Central location for all public types.
  * Internal types should remain in their respective modules.

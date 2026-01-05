@@ -1,13 +1,13 @@
-# @solana-commerce/headless
+# @trezoa-commerce/headless
 
-Framework-agnostic commerce primitives for Solana
+Framework-agnostic commerce primitives for Trezoa
 
 <!-- TODO: Add npm version badge when published -->
 
 ## Installation
 
 ```bash
-pnpm add @solana-commerce/headless
+pnpm add @trezoa-commerce/headless
 ```
 
 ## Features
@@ -16,19 +16,19 @@ pnpm add @solana-commerce/headless
 - Type-safe payment flows
 - Cart and order management
 - Payment verification on-chain
-- Solana Pay URL generation (and QR code generation with customizable styling)
+- Trezoa Pay URL generation (and QR code generation with customizable styling)
 - No UI dependencies
 
 ## Quick Start
 
 ```typescript
-import { createCommercePaymentRequest, createCartRequest } from '@solana-commerce/headless';
+import { createCommercePaymentRequest, createCartRequest } from '@trezoa-commerce/headless';
 
 // Create a payment request
 const payment = createCommercePaymentRequest({
     recipient: 'merchant-wallet-address',
-    amount: 10000000, // 0.01 SOL in lamports
-    currency: 'SOL',
+    amount: 10000000, // 0.01 TRZ in lamports
+    currency: 'TRZ',
     label: 'Store Purchase',
     message: 'Thank you for your order!',
 });
@@ -41,7 +41,7 @@ const cart = createCartRequest(
         { id: '2', name: 'Product B', price: 10000000 },
     ],
     {
-        currency: 'SOL',
+        currency: 'TRZ',
         label: 'Cart Checkout',
     },
 );
@@ -51,13 +51,13 @@ const cart = createCartRequest(
 
 ### Payment Functions
 
-- **`createCommercePaymentRequest(request)`** - Create a commerce payment request with Solana Pay URL
+- **`createCommercePaymentRequest(request)`** - Create a commerce payment request with Trezoa Pay URL
 - **`verifyPayment(rpc, signature, expectedAmount?, expectedRecipient?, expectedMint?)`** - Verify a payment transaction on-chain
 - **`waitForConfirmation(rpc, signature, timeoutMs?)`** - Wait for transaction confirmation
 
-### Solana Pay Functions
+### Trezoa Pay Functions
 
-- **`createSolanaPayRequest(request, options)`** - Create a Solana Pay request with styled QR code
+- **`createTrezoaPayRequest(request, options)`** - Create a Trezoa Pay request with styled QR code
 - **`createQRPaymentRequest(recipientAddress, amount, tokenAddress?, options?)`** - Helper to create payment request with QR code from string inputs
 
 ### Cart Functions
@@ -75,8 +75,8 @@ const cart = createCartRequest(
 ## Example
 
 ```typescript
-import { createCartRequest, createCommercePaymentRequest, verifyPayment } from '@solana-commerce/headless';
-import { createSolanaClient } from 'gill';
+import { createCartRequest, createCommercePaymentRequest, verifyPayment } from '@trezoa-commerce/headless';
+import { createTrezoaClient } from 'gill';
 
 // 1. Create cart
 const cart = createCartRequest(
@@ -101,7 +101,7 @@ const payment = createCommercePaymentRequest({
 // 3. Display payment.url as QR code or link
 
 // 4. After user pays, verify transaction
-const client = createSolanaClient(/*...*/);
+const client = createTrezoaClient(/*...*/);
 const verification = await verifyPayment(client.rpc, receivedSignature, payment.amount, payment.recipient);
 
 if (verification.verified) {

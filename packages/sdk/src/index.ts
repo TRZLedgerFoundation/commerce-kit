@@ -1,5 +1,5 @@
 /**
- * @solana-commerce/sdk - Minimal Export
+ * @trezoa-commerce/sdk - Minimal Export
  *
  * Only exports what @react actually uses.
  * Reduced from 90KB to ~20KB bundle.
@@ -8,11 +8,11 @@
 // ===== CORE PROVIDER & HOOKS =====
 export { ArcProvider } from './core/commerce-provider';
 export { useArcClient } from './core/commerce-client-provider';
-export { useTransferSOL } from './hooks/use-transfer-sol';
+export { useTransferTRZ } from './hooks/use-transfer-trz';
 export { useTransferToken } from './hooks/use-transfer-token';
 
 // Export essential types
-export type { UseTransferSOLReturn } from './hooks/use-transfer-sol';
+export type { UseTransferTRZReturn } from './hooks/use-transfer-trz';
 export type {
     UseTransferTokenReturn,
     TransferTokenOptions,
@@ -24,11 +24,11 @@ export type {
 // Provider types
 export type { ArcProviderProps } from './core/commerce-provider';
 export type { ArcWebClientConfig } from './core/web-client';
-export type { SolanaClusterMoniker } from 'gill';
+export type { TrezoaClusterMoniker } from 'gill';
 
 // ===== ADDRESS HELPERS =====
-export { address } from '@solana/kit';
-export type { Address } from '@solana/kit';
+export { address } from '@trezoa/kit';
+export type { Address } from '@trezoa/kit';
 
 // ===== QUERY UTILITIES (for cache management) =====
 export { queryKeys } from './utils/query-keys';

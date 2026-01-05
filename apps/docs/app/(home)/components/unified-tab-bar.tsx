@@ -1,6 +1,6 @@
 'use client';
 
-import { TabsRoot, TabsList, TabsTab } from '@solana-commerce/react';
+import { TabsRoot, TabsList, TabsTab } from '@trezoa-commerce/react';
 import type { Mode } from './types';
 import Image from 'next/image';
 import logoCommerceKit from '../assets/logo-commercekit.png';

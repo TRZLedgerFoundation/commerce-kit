@@ -15,7 +15,7 @@ import {
   type FixedSizeCodec,
   type FixedSizeDecoder,
   type FixedSizeEncoder,
-} from '@solana/kit';
+} from '@trezoa/kit';
 
 export type RefundPolicy = { maxAmount: bigint; maxTimeAfterPurchase: bigint };
 

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { createStyledQRCode, type QROptions } from '@solana-commerce/solana-pay';
+import { createStyledQRCode, type QROptions } from '@trezoa-commerce/trezoa-pay';
 
 interface QRCustomizationPreviewProps {
   theme: {
@@ -15,7 +15,7 @@ interface QRCustomizationPreviewProps {
 
 
 
-const sampleURL = 'solana:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v?amount=1&memo=demo';
+const sampleURL = 'trezoa:EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v?amount=1&memo=demo';
 
 
 

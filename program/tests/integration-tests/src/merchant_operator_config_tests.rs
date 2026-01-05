@@ -13,11 +13,11 @@ use commerce_program_client::{
     instructions::InitializeMerchantOperatorConfigBuilder,
     types::{FeeType, PolicyData, RefundPolicy},
 };
-use solana_sdk::{
+use trezoa_sdk::{
     instruction::AccountMeta, pubkey::Pubkey, signature::Keypair, signer::Signer,
     system_program::ID as SYSTEM_PROGRAM_ID,
 };
-use spl_token::ID as TOKEN_PROGRAM_ID;
+use tpl_token::ID as TOKEN_PROGRAM_ID;
 
 #[tokio::test]
 async fn test_initialize_merchant_operator_config_success() {

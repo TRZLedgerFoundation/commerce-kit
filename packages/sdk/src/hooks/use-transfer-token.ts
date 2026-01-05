@@ -17,13 +17,13 @@ import {
     type Address,
     type TransactionSigner,
     type Instruction,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import {
     TOKEN_PROGRAM_ADDRESS,
     findAssociatedTokenPda,
     getTransferInstruction,
     getCreateAssociatedTokenInstruction,
-} from '@solana-program/token';
+} from '@trezoa-program/token';
 import { createInvalidator } from '../utils/invalidate';
 import { validateAndNormalizeAmount } from '../utils/schema-validation';
 
@@ -413,7 +413,7 @@ export function useTransferToken(
         try {
             // Validate and normalize the amount input with proper decimal handling
             const validatedAmount = validateAndNormalizeAmount(amountInput, {
-                decimals: 9, // Default to 9 decimals for standard SPL tokens
+                decimals: 9, // Default to 9 decimals for standard TPL tokens
                 allowDecimals: true,
             });
 

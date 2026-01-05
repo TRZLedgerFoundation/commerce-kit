@@ -1,8 +1,8 @@
 import { describe, it, expect, beforeEach } from "@jest/globals";
 import {
   address,
-  createSolanaClient,
-  SolanaClient,
+  createTrezoaClient,
+  TrezoaClient,
   KeyPairSigner,
   Address,
   lamports,
@@ -19,7 +19,7 @@ import {
 import { assertMerchantOperatorConfigAccount } from "./helpers/assertions";
 
 describe("Initialize Merchant Operator Config", () => {
-  let client: SolanaClient;
+  let client: TrezoaClient;
   let payer: KeyPairSigner;
   let operatorAuthority: KeyPairSigner;
   let merchantAuthority: KeyPairSigner;
@@ -36,13 +36,13 @@ describe("Initialize Merchant Operator Config", () => {
   const usdtMint = address("Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB");
 
   let version = 1; // incremented after each test
-  const operatorFee = lamports(100000n); // 0.0001 SOL
+  const operatorFee = lamports(100000n); // 0.0001 TRZ
   const feeType = FeeType.Fixed;
   const currentOrderId = 0;
   const daysToClose = 7;
 
   beforeEach(async () => {
-    client = createSolanaClient({ urlOrMoniker: "http://localhost:8899" });
+    client = createTrezoaClient({ urlOrMoniker: "http://localhost:8899" });
 
     payer = await generateExtractableKeyPairSigner();
     operatorAuthority = await generateExtractableKeyPairSigner();

@@ -14,7 +14,7 @@ export interface OrderItem {
     name: string;
     description?: string;
     price: number;
-    currency?: string; // mint address or 'SOL'
+    currency?: string; // mint address or 'TRZ'
     image?: string;
     metadata?: Record<string, any>;
 }

@@ -1,5 +1,5 @@
 {
-    "name": "@solana-commerce/react",
+    "name": "@trezoa-commerce/react",
     "version": "0.1.1",
     "description": "React SDK for Commerce platform",
     "main": "dist/index.js",
@@ -34,10 +34,10 @@
         "test:coverage": "vitest run --coverage"
     },
     "dependencies": {
-        "@solana-commerce/connector": "workspace:*",
-        "@solana-commerce/headless": "workspace:*",
-        "@solana-commerce/sdk": "workspace:*",
-        "@solana-commerce/solana-pay": "workspace:*",
+        "@trezoa-commerce/connector": "workspace:*",
+        "@trezoa-commerce/headless": "workspace:*",
+        "@trezoa-commerce/sdk": "workspace:*",
+        "@trezoa-commerce/trezoa-pay": "workspace:*",
         "gill": "^0.10.2"
     },
     "peerDependencies": {

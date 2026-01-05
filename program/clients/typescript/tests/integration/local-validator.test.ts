@@ -1,8 +1,8 @@
 import { describe, expect } from '@jest/globals';
 import {
     address,
-    createSolanaClient,
-    SolanaClient,
+    createTrezoaClient,
+    TrezoaClient,
 } from 'gill';
 import {
     COMMERCE_PROGRAM_PROGRAM_ADDRESS,
@@ -14,12 +14,12 @@ import { TOKEN_PROGRAM_ADDRESS } from 'gill/programs';
  * If these tests fail, it is likely the reason for the other tests to fail.
  */
 describe('Local Test Validator', () => {
-    let client: SolanaClient;
+    let client: TrezoaClient;
     const usdcMint = address('EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v');
     const usdtMint = address('Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB');
     beforeEach(async () => {
-        // Initialize Solana client
-        client = createSolanaClient({
+        // Initialize trezoa client
+        client = createTrezoaClient({
             urlOrMoniker: 'http://localhost:8899',
         });
     }, 20_000);

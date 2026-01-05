@@ -14,7 +14,7 @@ const CompletePaymentFlow = ({
     onSuccess?: () => void;
     onError?: (error: string) => void;
 }) => {
-    const [selectedCurrency, setSelectedCurrency] = React.useState<'USDC' | 'SOL'>('USDC');
+    const [selectedCurrency, setSelectedCurrency] = React.useState<'USDC' | 'TRZ'>('USDC');
     const [selectedAmount, setSelectedAmount] = React.useState<number>(0);
     const [showCustomInput, setShowCustomInput] = React.useState(false);
     const [customAmount, setCustomAmount] = React.useState('');
@@ -47,11 +47,11 @@ const CompletePaymentFlow = ({
                     <select
                         id="currency-selector"
                         value={selectedCurrency}
-                        onChange={e => setSelectedCurrency(e.target.value as 'USDC' | 'SOL')}
+                        onChange={e => setSelectedCurrency(e.target.value as 'USDC' | 'TRZ')}
                         data-testid="currency-selector"
                     >
                         <option value="USDC">USDC</option>
-                        <option value="SOL">SOL</option>
+                        <option value="TRZ">SOL</option>
                     </select>
                 </div>
 
@@ -134,14 +134,14 @@ const CompletePaymentFlow = ({
             {paymentMethod === 'qr' && finalAmount > 0 && (
                 <div data-testid="payment-qr-section">
                     <div data-testid="qr-code">
-                        QR Code: solana:{recipient}?amount={finalAmount}
+                        QR Code: trezoa:{recipient}?amount={finalAmount}
                     </div>
                     <div data-testid="payment-url">
-                        solana:{recipient}?amount={finalAmount}
+                        trezoa:{recipient}?amount={finalAmount}
                         {selectedCurrency === 'USDC'
-                            ? '&spl-token=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'
+                            ? '&tpl-token=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v'
                             : selectedCurrency === 'USDT'
-                              ? '&spl-token=Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB'
+                              ? '&tpl-token=Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB'
                               : ''}
                     </div>
                 </div>
@@ -255,8 +255,8 @@ describe('Complete Payment Flow Integration', () => {
             await user.type(customInput, '25.50');
             expect(customInput).toHaveValue(25.5);
 
-            // Select SOL currency
-            await user.selectOptions(screen.getByTestId('currency-selector'), 'SOL');
+            // Select TRZ currency
+            await user.selectOptions(screen.getByTestId('currency-selector'), 'TRZ');
 
             // Initiate payment
             await user.click(screen.getByTestId('pay-button'));
@@ -318,13 +318,13 @@ describe('Complete Payment Flow Integration', () => {
             await user.click(screen.getByTestId('amount-10'));
 
             // Switch from USDC to SOL
-            await user.selectOptions(screen.getByTestId('currency-selector'), 'SOL');
+            await user.selectOptions(screen.getByTestId('currency-selector'), 'TRZ');
 
             // Should generate new payment request
             await waitFor(() => {
                 const paymentUrl = screen.getByTestId('payment-url');
-                expect(paymentUrl).toHaveTextContent('solana:');
-                expect(paymentUrl).not.toHaveTextContent('spl-token'); // SOL doesn't use spl-token param
+                expect(paymentUrl).toHaveTextContent('trezoa:');
+                expect(paymentUrl).not.toHaveTextContent('tpl-token'); // TRZ doesn't use tpl-token param
             });
 
             // Switch back to USDC
@@ -332,7 +332,7 @@ describe('Complete Payment Flow Integration', () => {
 
             await waitFor(() => {
                 const paymentUrl = screen.getByTestId('payment-url');
-                expect(paymentUrl).toHaveTextContent('spl-token'); // USDC should include spl-token
+                expect(paymentUrl).toHaveTextContent('tpl-token'); // USDC should include tpl-token
             });
         });
 
@@ -443,7 +443,7 @@ describe('Complete Payment Flow Integration', () => {
             for (let i = 0; i < 5; i++) {
                 await user.click(screen.getByTestId('amount-5'));
                 await user.click(screen.getByTestId('amount-10'));
-                await user.selectOptions(screen.getByTestId('currency-selector'), 'SOL');
+                await user.selectOptions(screen.getByTestId('currency-selector'), 'TRZ');
                 await user.selectOptions(screen.getByTestId('currency-selector'), 'USDC');
             }
 
@@ -485,7 +485,7 @@ describe('Complete Payment Flow Integration', () => {
         it('should handle all supported currencies correctly', async () => {
             renderComponent();
 
-            const currencies = ['USDC', 'SOL'] as const;
+            const currencies = ['USDC', 'TRZ'] as const;
 
             for (const currency of currencies) {
                 await user.selectOptions(screen.getByTestId('currency-selector'), currency);
@@ -494,10 +494,10 @@ describe('Complete Payment Flow Integration', () => {
                 const paymentUrl = screen.getByTestId('payment-url');
                 expect(paymentUrl).toBeInTheDocument();
 
-                if (currency === 'SOL') {
-                    expect(paymentUrl).not.toHaveTextContent('spl-token');
+                if (currency === 'TRZ') {
+                    expect(paymentUrl).not.toHaveTextContent('tpl-token');
                 } else {
-                    expect(paymentUrl).toHaveTextContent('spl-token');
+                    expect(paymentUrl).toHaveTextContent('tpl-token');
                 }
             }
         });

@@ -20,14 +20,14 @@ use commerce_program_client::{
     },
     types::{FeeType, PolicyData, Status},
 };
-use solana_sdk::{
+use trezoa_sdk::{
     instruction::AccountMeta,
     pubkey::Pubkey,
     signature::{Keypair, Signer},
     system_program::ID as SYSTEM_PROGRAM_ID,
 };
-use spl_associated_token_account::get_associated_token_address;
-use spl_token::ID as TOKEN_PROGRAM_ID;
+use tpl_associated_token_account::get_associated_token_address;
+use tpl_token::ID as TOKEN_PROGRAM_ID;
 
 pub fn assert_get_or_create_operator(
     context: &mut TestContext,

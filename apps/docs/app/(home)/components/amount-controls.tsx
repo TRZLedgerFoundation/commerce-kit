@@ -46,7 +46,7 @@ export function ConfigurationInputs({
         <Input
           value={walletAddress}
           onChange={(e) => onWalletAddressChange(e.target.value)}
-          placeholder="Your Solana wallet address"
+          placeholder="Your trezoa wallet address"
         />
       </div>
 

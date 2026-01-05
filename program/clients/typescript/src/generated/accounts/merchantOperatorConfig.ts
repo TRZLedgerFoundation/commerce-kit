@@ -35,7 +35,7 @@ import {
   type FixedSizeEncoder,
   type MaybeAccount,
   type MaybeEncodedAccount,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import {
   getFeeTypeDecoder,
   getFeeTypeEncoder,

@@ -18,7 +18,7 @@ import {
   type MaybeAccount,
   type MaybeEncodedAccount,
   type ReadonlyUint8Array,
-} from '@solana/kit';
+} from '@trezoa/kit';
 import { type FeeType } from '../generated/types/feeType';
 import {
   getPolicyDataDecoder,

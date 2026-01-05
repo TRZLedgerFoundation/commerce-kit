@@ -12,7 +12,7 @@ COMMERCE_DIR="$(cd "$SCRIPT_DIR/.." && git rev-parse --show-toplevel)"
 # Always download Kora repository for demo
 echo "🔄 Downloading Kora repository for demo..."
 TEMP_KORA_DIR="/tmp/kora-demo-$(date +%s)"
-git clone --depth 1 https://github.com/solana-foundation/kora.git "$TEMP_KORA_DIR"
+git clone --depth 1 https://github.com/trzledgerfoundation/kora.git "$TEMP_KORA_DIR"
 
 # Copy Docker files from commerce project to downloaded repo
 echo "📂 Copying Docker configuration files..."
@@ -39,7 +39,7 @@ cleanup() {
     echo "🧹 Cleaning up test environment..."
     docker stop kora-test-server 2>/dev/null || true
     docker rm kora-test-server 2>/dev/null || true
-    pkill -f "solana-test-validator" 2>/dev/null || true
+    pkill -f "trezoa-test-validator" 2>/dev/null || true
 
     # Clean up temporary Kora directory if it was downloaded
     if [[ "$KORA_DIR" == /tmp/kora-demo-* ]]; then
@@ -73,17 +73,17 @@ make generate-clients
 # Step 3: Fetch mint accounts for USDC and USDT
 echo "📥 Fetching mint accounts..."
 mkdir -p "$COMMERCE_DIR/program/tests/setup/mints"
-solana account EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v -um \
+trezoa account EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v -um \
     --output-file "$COMMERCE_DIR/program/tests/setup/mints/usdc.json" --output json-compact || {
     echo "⚠️  Could not fetch USDC mint account, continuing without it"
 }
-solana account Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB -um \
+trezoa account Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB -um \
     --output-file "$COMMERCE_DIR/program/tests/setup/mints/usdt.json" --output json-compact || {
     echo "⚠️  Could not fetch USDT mint account, continuing without it"
 }
 
-# Step 4: Start Solana test validator with mint accounts and commerce program
-echo "⚡ Starting Solana test validator..."
+# Step 4: Start Trezoa test validator with mint accounts and commerce program
+echo "⚡ Starting Trezoa test validator..."
 VALIDATOR_ARGS="-r --rpc-port $VALIDATOR_PORT"
 
 # Add mint accounts if they exist
@@ -97,7 +97,7 @@ fi
 # Add commerce program
 VALIDATOR_ARGS="$VALIDATOR_ARGS --bpf-program commkU28d52cwo2Ma3Marxz4Qr9REtfJtuUfqnDnbhT $COMMERCE_DIR/program/target/deploy/commerce_program.so"
 
-solana-test-validator $VALIDATOR_ARGS --quiet &
+trezoa-test-validator $VALIDATOR_ARGS --quiet &
 
 # Wait for validator to be ready
 echo "⏳ Waiting for test validator..."
@@ -109,18 +109,18 @@ KORA_KEYPAIR_FILE="$KORA_TEST_DIR/keys/kora-operator.json"
 
 if [ ! -f "$KORA_KEYPAIR_FILE" ]; then
     echo "❌ Kora operator keypair not found at $KORA_KEYPAIR_FILE"
-    echo "Please create it with: solana-keygen new --outfile $KORA_KEYPAIR_FILE"
+    echo "Please create it with: trezoa-keygen new --outfile $KORA_KEYPAIR_FILE"
     exit 1
 fi
 
 TEST_KEYPAIR=$(cat "$KORA_KEYPAIR_FILE")
-TEST_PUBKEY=$(solana-keygen pubkey "$KORA_KEYPAIR_FILE")
+TEST_PUBKEY=$(trezoa-keygen pubkey "$KORA_KEYPAIR_FILE")
 
 echo "  → Kora operator public key: $TEST_PUBKEY"
 
 # Fund the Kora operator keypair
 echo "  → Funding Kora operator with 10 SOL..."
-solana airdrop 10 "$TEST_PUBKEY" \
+trezoa airdrop 10 "$TEST_PUBKEY" \
     --url "http://127.0.0.1:$VALIDATOR_PORT" || true
 
 # Step 6: Start Kora server in Docker

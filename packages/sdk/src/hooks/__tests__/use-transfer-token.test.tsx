@@ -16,7 +16,7 @@ vi.mock('../../core/commerce-client-provider', () => ({
             connected: true,
         },
         network: {
-            rpcUrl: 'https://api.devnet.solana.com',
+            rpcUrl: 'https://api.devnet.trezoa.com',
             isDevnet: true,
         },
         config: {
@@ -176,7 +176,7 @@ vi.mock('../../core/rpc-manager', () => ({
     releaseRpcConnection: vi.fn(),
 }));
 
-vi.mock('@solana/kit', () => ({
+vi.mock('@trezoa/kit', () => ({
     sendAndConfirmTransactionFactory: vi.fn(() => vi.fn()),
     createTransactionMessage: vi.fn(() => ({})),
     pipe: vi.fn((...args) => {
@@ -190,7 +190,7 @@ vi.mock('@solana/kit', () => ({
     address: vi.fn(addr => addr),
 }));
 
-vi.mock('@solana-program/token', () => ({
+vi.mock('@trezoa-program/token', () => ({
     TOKEN_PROGRAM_ADDRESS: 'TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA',
     findAssociatedTokenPda: vi.fn(() => Promise.resolve(['mock-token-account'])),
     getTransferInstruction: vi.fn(() => ({
@@ -339,7 +339,7 @@ describe('useTransferToken', () => {
                         connected: true,
                     },
                     network: {
-                        rpcUrl: 'https://api.devnet.solana.com',
+                        rpcUrl: 'https://api.devnet.trezoa.com',
                         isDevnet: true,
                     },
                     config: {

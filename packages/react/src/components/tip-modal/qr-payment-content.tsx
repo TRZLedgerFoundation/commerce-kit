@@ -1,11 +1,11 @@
 import { memo, useEffect, useState, useRef } from 'react';
 import { getBorderRadius } from '../../utils';
 import { type ThemeConfig, type MerchantConfig, type Currency, CurrencyMap } from '../../types';
-import { useSolanaPay } from '../../hooks/use-solana-pay';
+import { useTrezoaPay } from '../../hooks/use-trezoa-pay';
 import { useTimer } from '../../hooks/use-timer';
 import { usePaymentStatus } from '../../hooks/use-payment-status';
 import { MerchantAddressPill } from './merchant-address-pill';
-import { address, createSolanaClient } from 'gill';
+import { address, createTrezoaClient } from 'gill';
 import {
     getAssociatedTokenAccountAddress,
     TOKEN_PROGRAM_ADDRESS,
@@ -62,7 +62,7 @@ export const QRPaymentContent = memo<QRPaymentContentProps>(
         // Compute the effective amount for QR code generation
         const effectiveAmount = showCustomInput ? parseFloat(customAmount || '0') : selectedAmount;
 
-        const { paymentRequest, loading } = useSolanaPay(config.merchant.wallet, effectiveAmount, selectedCurrency);
+        const { paymentRequest, loading } = useTrezoaPay(config.merchant.wallet, effectiveAmount, selectedCurrency);
 
         // Start polling when QR code is generated and user might have scanned it
         useEffect(() => {
@@ -88,7 +88,7 @@ export const QRPaymentContent = memo<QRPaymentContentProps>(
                 clearInterval(pollingIntervalRef.current);
             }
 
-            const client = createSolanaClient({
+            const client = createTrezoaClient({
                 urlOrMoniker: config.rpcUrl || 'mainnet',
             });
 
@@ -116,10 +116,10 @@ export const QRPaymentContent = memo<QRPaymentContentProps>(
                     const merchantAddress = address(config.merchant.wallet);
                     let addressToCheck = merchantAddress;
 
-                    // For SPL tokens, we need to check the Associated Token Account
+                    // For TPL tokens, we need to check the Associated Token Account
                     const tokenInfo = CurrencyMap[selectedCurrency];
 
-                    if (tokenInfo !== 'SOL') {
+                    if (tokenInfo !== 'TRZ') {
                         try {
                             addressToCheck = await getAssociatedTokenAccountAddress(
                                 tokenInfo.mint,

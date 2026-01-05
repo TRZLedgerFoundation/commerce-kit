@@ -11,7 +11,7 @@ import {
   getUtf8Encoder,
   type Address,
   type ProgramDerivedAddress,
-} from '@solana/kit';
+} from '@trezoa/kit';
 
 export async function findEventAuthorityPda(
   config: { programAddress?: Address | undefined } = {}

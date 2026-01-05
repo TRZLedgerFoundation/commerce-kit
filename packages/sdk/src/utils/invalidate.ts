@@ -29,7 +29,7 @@ export class QueryInvalidator {
         ]);
     }
 
-    // Invalidate after SOL transfer
+    // Invalidate after TRZ transfer
     async invalidateAfterTransfer(from: string, to: string, options?: InvalidateOptions) {
         await Promise.all([this.invalidateAddress(from, options), this.invalidateAddress(to, options)]);
     }

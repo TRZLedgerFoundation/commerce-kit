@@ -1,40 +1,40 @@
-# Solana Commerce Kit
+# Trezoa Commerce Kit
 
-Modern toolkit for building Solana commerce applications
+Modern toolkit for building Trezoa commerce applications
 
 <!-- TODO: Add npm version badges when packages are published -->
 
 ## Overview
 
-Solana Commerce Kit is a comprehensive TypeScript SDK for building e-commerce applications on Solana. It provides everything from low-level payment primitives to high-level React components, enabling developers to integrate payments, tips, and checkout flows with minimal configuration.
+Trezoa Commerce Kit is a comprehensive TypeScript SDK for building e-commerce applications on Trezoa. It provides everything from low-level payment primitives to high-level React components, enabling developers to integrate payments, tips, and checkout flows with minimal configuration.
 
-Built on modern Solana libraries (@solana/kit, Wallet Standard) with a focus on type safety, developer experience, and production readiness.
+Built on modern Trezoa libraries (@trezoa/kit, Wallet Standard) with a focus on type safety, developer experience, and production readiness.
 
 **Key Features:**
 - Complete payment flows for tips, purchases, and cart checkout
 - Production-ready React components with customizable theming
 - Framework-agnostic commerce logic
 - Wallet Standard integration for multi-wallet support
-- Full Solana Pay protocol implementation
+- Full Trezoa Pay protocol implementation
 - TypeScript-first with comprehensive type definitions
 
 ## Packages
 
 | Package | Description | Docs |
 |---------|-------------|------|
-| [@solana-commerce/kit](./) | All-in-one SDK with complete functionality |  |
-| [@solana-commerce/react](./packages/react) | React components for payments, tips, and checkout | [README](./packages/react/README.md) |
-| [@solana-commerce/sdk](./packages/sdk) | Core React hooks for Solana development | [README](./packages/sdk/README.md) |
-| [@solana-commerce/headless](./packages/headless) | Framework-agnostic commerce logic | [README](./packages/headless/README.md) |
-| [@solana-commerce/connector](./packages/connector) | Wallet connection built on Wallet Standard | [README](./packages/connector/README.md) |
-| [@solana-commerce/solana-pay](./packages/solana-pay) | Solana Pay protocol implementation | [README](./packages/solana-pay/README.md) |
+| [@trezoa-commerce/kit](./) | All-in-one SDK with complete functionality |  |
+| [@trezoa-commerce/react](./packages/react) | React components for payments, tips, and checkout | [README](./packages/react/README.md) |
+| [@trezoa-commerce/sdk](./packages/sdk) | Core React hooks for Trezoa development | [README](./packages/sdk/README.md) |
+| [@trezoa-commerce/headless](./packages/headless) | Framework-agnostic commerce logic | [README](./packages/headless/README.md) |
+| [@trezoa-commerce/connector](./packages/connector) | Wallet connection built on Wallet Standard | [README](./packages/connector/README.md) |
+| [@trezoa-commerce/trezoa-pay](./packages/trezoa-pay) | Trezoa Pay protocol implementation | [README](./packages/trezoa-pay/README.md) |
 
 ## Package Overview
 
-### @solana-commerce/kit
+### @trezoa-commerce/kit
 Meta-package that re-exports all functionality. Install this for complete access to the entire toolkit.
 
-### @solana-commerce/react
+### @trezoa-commerce/react
 Complete UI components for commerce applications:
 - PaymentButton with secure iframe architecture
 - Tip modal with customizable amounts
@@ -42,14 +42,14 @@ Complete UI components for commerce applications:
 - Transaction state management
 - Customizable theming system
 
-### @solana-commerce/sdk
-Type-safe React hooks for Solana development:
+### @trezoa-commerce/sdk
+Type-safe React hooks for Trezoa development:
 - Wallet management (`useWallet`, `useStandardWallets`)
-- Account operations (`useBalance`, `useTransferSOL`)
+- Account operations (`useBalance`, `useTransferTRZ`)
 - Token transfers (`useTransferToken`)
 - RPC client access (`useArcClient`)
 
-### @solana-commerce/headless
+### @trezoa-commerce/headless
 Framework-agnostic commerce primitives:
 - Payment flow logic
 - Cart management
@@ -57,46 +57,46 @@ Framework-agnostic commerce primitives:
 - Checkout calculations
 - Type definitions
 
-### @solana-commerce/connector
+### @trezoa-commerce/connector
 Headless wallet connector with optional React support:
 - Wallet Standard integration
 - Multi-wallet detection and connection
 - React provider and hooks
 - Framework-agnostic core client
 
-### @solana-commerce/solana-pay
-Complete Solana Pay protocol implementation:
+### @trezoa-commerce/trezoa-pay
+Complete Trezoa Pay protocol implementation:
 - Payment URL creation and parsing
 - QR code generation
-- SOL and SPL token transfers
+- TRZ and TPL token transfers
 - Transaction building
 
 ## Architecture
 
 ```
-commerce-kit/   # @solana-commerce/kit - all packages in one install
+commerce-kit/   # @trezoa-commerce/kit - all packages in one install
 |---packages/
-│   ├── @solana-commerce/connector
-│   ├── @solana-commerce/headless
-│   ├── @solana-commerce/react
-│   ├── @solana-commerce/sdk
-│   └── @solana-commerce/solana-pay
+│   ├── @trezoa-commerce/connector
+│   ├── @trezoa-commerce/headless
+│   ├── @trezoa-commerce/react
+│   ├── @trezoa-commerce/sdk
+│   └── @trezoa-commerce/trezoa-pay
 ```
 
 **Choosing a Package:**
-- Need everything? → `@solana-commerce/kit`
-- Wallet connection? → `@solana-commerce/connector`
-- Custom UI or non-React framework? → `@solana-commerce/headless`
-- Building React app with UI? → `@solana-commerce/react`
-- Need just hooks? → `@solana-commerce/sdk`
-- Solana Pay protocol? → `@solana-commerce/solana-pay`
+- Need everything? → `@trezoa-commerce/kit`
+- Wallet connection? → `@trezoa-commerce/connector`
+- Custom UI or non-React framework? → `@trezoa-commerce/headless`
+- Building React app with UI? → `@trezoa-commerce/react`
+- Need just hooks? → `@trezoa-commerce/sdk`
+- Trezoa Pay protocol? → `@trezoa-commerce/trezoa-pay`
 
 ## Usage Examples
 
 ### E-commerce Checkout
 
 ```typescript
-import { PaymentButton } from '@solana-commerce/react';
+import { PaymentButton } from '@trezoa-commerce/react';
 
 function CheckoutButton() {
   return (
@@ -110,12 +110,12 @@ function CheckoutButton() {
         products: [
           {
             id: 'course-1',
-            name: 'Solana Development Course',
-            price: 100000000, // 0.1 SOL in lamports
-            currency: 'SOL'
+            name: 'Trezoa Development Course',
+            price: 100000000, // 0.1 TRZ in lamports
+            currency: 'TRZ'
           }
         ],
-        allowedMints: ['SOL', 'USDC'],
+        allowedMints: ['TRZ', 'USDC'],
         theme: {
           primaryColor: '#9945FF',
           borderRadius: 'lg'
@@ -132,11 +132,11 @@ function CheckoutButton() {
 ### Custom Integration with Hooks
 
 ```typescript
-import { ArcProvider, useWallet, useTransferSOL } from '@solana-commerce/sdk';
+import { ArcProvider, useWallet, useTransferTRZ } from '@trezoa-commerce/sdk';
 
 function CustomPayment() {
   const { wallet, connect } = useWallet();
-  const { transferSOL, isLoading } = useTransferSOL();
+  const { transferTRZ, isLoading } = useTransferTRZ();
 
   const handlePayment = async () => {
     if (!wallet) {
@@ -144,15 +144,15 @@ function CustomPayment() {
       return;
     }
 
-    const { signature } = await transferSOL({
+    const { signature } = await transferTRZ({
       to: 'merchant-address',
-      amount: BigInt(1_000_000_000) // 1 SOL
+      amount: BigInt(1_000_000_000) // 1 TRZ
     });
 
     console.log('Payment sent:', signature);
   };
 
-  return <button onClick={handlePayment}>Pay 1 SOL</button>;
+  return <button onClick={handlePayment}>Pay 1 TRZ</button>;
 }
 ```
 
@@ -166,7 +166,7 @@ function CustomPayment() {
 
 ### Setup
 ```bash
-git clone https://github.com/solana-foundation/commerce-kit.git
+git clone https://github.com/trzledgerfoundation/commerce-kit.git
 cd commerce-kit
 pnpm install
 ```

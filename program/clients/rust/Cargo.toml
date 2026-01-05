@@ -4,24 +4,24 @@ version = "0.0.1"
 edition = "2021"
 description = "Rust client for the Commerce Program"
 license = "MIT"
-repository = "https://github.com/solana-commerce/commerce-program"
+repository = "https://github.com/trezoa-commerce/commerce-program"
 
 [dependencies]
 borsh = { workspace = true }
-solana-program = { workspace = true }
-solana-account-info = { workspace = true }
-solana-pubkey = { workspace = true }
-solana-program-entrypoint = { workspace = true }
-solana-instruction = { workspace = true }
-solana-cpi = { workspace = true }
+trezoa-program = { workspace = true }
+trezoa-account-info = { workspace = true }
+trezoa-pubkey = { workspace = true }
+trezoa-program-entrypoint = { workspace = true }
+trezoa-instruction = { workspace = true }
+trezoa-cpi = { workspace = true }
 num-derive = { workspace = true }
 num-traits = { workspace = true }
 
-solana-client = { workspace = true, optional = true }
-solana-account = { workspace = true, optional = true }
-solana-program-error = { workspace = true }
+trezoa-client = { workspace = true, optional = true }
+trezoa-account = { workspace = true, optional = true }
+trezoa-program-error = { workspace = true }
 thiserror = { workspace = true }
 
 [features]
 default = []
-fetch = ["solana-client", "solana-account"]
+fetch = ["trezoa-client", "trezoa-account"]

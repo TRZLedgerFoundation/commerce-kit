@@ -6,11 +6,11 @@
 
 import {
   Address,
-  createSolanaClient,
+  createTrezoaClient,
   generateKeyPairSigner,
   KeyPairSigner,
   ProgramDerivedAddress,
-  SolanaClient,
+  TrezoaClient,
   Transaction,
 } from "gill";
 import {
@@ -56,7 +56,7 @@ const FEE_TYPE = FeeType.Bps;
 const MINT_DECIMALS = 10 ** 6;
 
 type TestSetup = {
-  solanaClient: SolanaClient;
+  trezoaClient: TrezoaClient;
   // Signers
   koraOperatorSigner: KeyPairSigner;
   merchantSigner: KeyPairSigner;
@@ -81,7 +81,7 @@ let testSetup: TestSetup;
 async function setupTest(): Promise<TestSetup> {
   console.log("🚀 Starting basic test setup...");
 
-  const solanaClient = createSolanaClient({
+  const trezoaClient = createTrezoaClient({
     urlOrMoniker: "localnet",
   });
 
@@ -93,18 +93,18 @@ async function setupTest(): Promise<TestSetup> {
   const buyerSigner = await generateKeyPairSigner();
 
   // Do not give lamports to buyer, as it will use Kora
-  await setupWallets(solanaClient, [koraOperatorSigner, merchantSigner]);
+  await setupWallets(trezoaClient, [koraOperatorSigner, merchantSigner]);
 
   console.log("💰 Creating test mint and minting tokens to buyer...");
 
   await generateMint({
-    client: solanaClient,
+    client: trezoaClient,
     payer: koraOperatorSigner,
     authority: koraOperatorSigner,
     mintKeypair,
   });
   const buyerAta = await mintToOwner({
-    client: solanaClient,
+    client: trezoaClient,
     payer: koraOperatorSigner,
     mint: mintKeypair.address,
     authority: koraOperatorSigner,
@@ -127,7 +127,7 @@ async function setupTest(): Promise<TestSetup> {
       version: MERCHANT_OPERATOR_VERSION,
     });
 
-  const orderId = await getNextOrderId(solanaClient, merchantOperatorConfigPda);
+  const orderId = await getNextOrderId(trezoaClient, merchantOperatorConfigPda);
 
   const [paymentPda, paymentBump] = await findPaymentPda({
     merchantOperatorConfig: merchantOperatorConfigPda,
@@ -139,14 +139,14 @@ async function setupTest(): Promise<TestSetup> {
   console.log("🔍 Generating Associated Token Accounts...");
 
   const koraOperatorSignerATA = await createAssociatedTokenAccount({
-    client: solanaClient,
+    client: trezoaClient,
     payer: koraOperatorSigner,
     mint: mintKeypair.address,
     owner: koraOperatorSigner.address,
   });
 
   return {
-    solanaClient,
+    trezoaClient,
     koraOperatorSigner,
     merchantSigner,
     buyerSigner,
@@ -166,16 +166,16 @@ async function setupTest(): Promise<TestSetup> {
 }
 
 async function setupCommerceAccount({
-  solanaClient,
+  trezoaClient,
   testSetup,
 }: {
-  solanaClient: SolanaClient;
+  trezoaClient: TrezoaClient;
   testSetup: TestSetup;
 }) {
   console.log("🔍 Setting up Commerce Account...");
 
   await generateManyTokenAccounts({
-    client: solanaClient,
+    client: trezoaClient,
     payer: testSetup.koraOperatorSigner,
     mint: testSetup.mintAddress,
     owners: [
@@ -189,12 +189,12 @@ async function setupCommerceAccount({
   });
 
   const operatorExists = await accountExists({
-    client: solanaClient,
+    client: trezoaClient,
     address: testSetup.operatorPda[0],
   });
   if (!operatorExists) {
     await assertGetOrCreateOperator({
-      client: solanaClient,
+      client: trezoaClient,
       payer: testSetup.koraOperatorSigner,
       owner: testSetup.koraOperatorSigner,
       failIfExists: false,
@@ -202,12 +202,12 @@ async function setupCommerceAccount({
   }
 
   const merchantExists = await accountExists({
-    client: solanaClient,
+    client: trezoaClient,
     address: testSetup.merchantPda[0],
   });
   if (!merchantExists) {
     await assertGetOrCreateMerchant({
-      client: solanaClient,
+      client: trezoaClient,
       payer: testSetup.koraOperatorSigner,
       authority: testSetup.merchantSigner,
       settlementWallet: testSetup.merchantSigner,
@@ -216,12 +216,12 @@ async function setupCommerceAccount({
   }
 
   const merchantOperatorConfigExists = await accountExists({
-    client: solanaClient,
+    client: trezoaClient,
     address: testSetup.merchantOperatorConfigPda[0],
   });
   if (!merchantOperatorConfigExists) {
     await assertGetOrCreateMerchantOperatorConfig({
-      client: solanaClient,
+      client: trezoaClient,
       payer: testSetup.koraOperatorSigner,
       authority: testSetup.merchantSigner,
       merchantPda: testSetup.merchantPda[0],
@@ -238,10 +238,10 @@ async function setupCommerceAccount({
 }
 
 async function makeGaslessPayment({
-  solanaClient,
+  trezoaClient,
   testSetup,
 }: {
-  solanaClient: SolanaClient;
+  trezoaClient: TrezoaClient;
   testSetup: TestSetup;
 }): Promise<Transaction> {
   console.log("🔍 Making gasless payment...");
@@ -293,7 +293,7 @@ async function makeGaslessPayment({
   });
 
   return signAndSerializeTransaction({
-    client: solanaClient,
+    client: trezoaClient,
     payer: testSetup.koraOperatorSigner,
     signers: [testSetup.buyerSigner.keyPair],
     instructions: [tokenTransferIx, paymentIx],
@@ -305,12 +305,12 @@ async function main() {
   testSetup = await setupTest();
 
   await setupCommerceAccount({
-    solanaClient: testSetup.solanaClient,
+    trezoaClient: testSetup.trezoaClient,
     testSetup,
   });
 
   const signedTx = await makeGaslessPayment({
-    solanaClient: testSetup.solanaClient,
+    trezoaClient: testSetup.trezoaClient,
     testSetup,
   });
 
@@ -323,19 +323,19 @@ async function main() {
 
   console.log("🔍 Transaction signed by Kora!");
 
-  const sendTx = await testSetup.solanaClient.rpc
+  const sendTx = await testSetup.trezoaClient.rpc
     .sendTransaction(signedTransaction, {
       encoding: "base64",
     })
     .send();
 
-  console.log("🔍 Transaction sent to solana! Signature: ", sendTx);
+  console.log("🔍 Transaction sent to trezoa! Signature: ", sendTx);
 
   // Wait for transaction to be processed
   await new Promise((resolve) => setTimeout(resolve, 5_000));
 
   const paymentAccount = await getPaymentAccount(
-    testSetup.solanaClient,
+    testSetup.trezoaClient,
     testSetup.paymentPda[0]
   );
   console.log("🔍 Payment account:", paymentAccount);

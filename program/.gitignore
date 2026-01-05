@@ -4,7 +4,7 @@ node_modules
 dist/
 .DS_Store
 
-# Solana program dependencies for integration tests
+# Trezoa program dependencies for integration tests
 /tests/integration-tests/deps
 
 # Codama generated clients

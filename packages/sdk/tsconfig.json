@@ -14,7 +14,7 @@
         "noUncheckedIndexedAccess": false,
         "baseUrl": ".",
         "paths": {
-            "@solana-commerce/connector": ["./src/types/connector-kit-shim.d.ts"]
+            "@trezoa-commerce/connector": ["./src/types/connector-kit-shim.d.ts"]
         }
     },
     "include": ["src/**/*"],

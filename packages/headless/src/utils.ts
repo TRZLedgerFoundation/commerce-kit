@@ -3,7 +3,7 @@
  */
 
 import { STABLECOINS } from './types';
-import { isAddress, LAMPORTS_PER_SOL } from 'gill';
+import { isAddress, LAMPORTS_PER_TRZ } from 'gill';
 
 export function validateCustomerInfo(email?: string, name?: string, mode?: string) {
     const errors: Record<string, string> = {};
@@ -24,7 +24,7 @@ export function validateCustomerInfo(email?: string, name?: string, mode?: strin
     };
 }
 
-export function validatePaymentMethod(method: string, allowedMints: string[] = ['SOL']) {
+export function validatePaymentMethod(method: string, allowedMints: string[] = ['TRZ']) {
     if (!allowedMints.includes(method)) {
         return {
             valid: false,
@@ -67,8 +67,8 @@ export function createPaymentUrl(recipient: string, amount: number, merchantName
         message: mode === 'tip' ? 'Thank you for your support!' : `Purchase from ${merchantName}`,
     });
 
-    // Per Solana Pay spec, recipient must be in the path, not a query param
-    return `solana:${recipient}?${params.toString()}`;
+    // Per Trezoa Pay spec, recipient must be in the path, not a query param
+    return `trezoa:${recipient}?${params.toString()}`;
 }
 
 interface PaymentRequest {
@@ -94,19 +94,19 @@ export function validatePaymentRequest(request: PaymentRequest) {
     };
 }
 
-export function formatSolAmount(lamports: number, decimals: number = 3): string {
-    return (lamports / LAMPORTS_PER_SOL).toFixed(decimals);
+export function formatTrzAmount(lamports: number, decimals: number = 3): string {
+    return (lamports / LAMPORTS_PER_TRZ).toFixed(decimals);
 }
 
-export function parseSolAmount(solAmount: string): number {
-    const parsed = parseFloat(solAmount);
-    return isNaN(parsed) ? 0 : Math.round(parsed * LAMPORTS_PER_SOL);
+export function parseTrzAmount(trzAmount: string): number {
+    const parsed = parseFloat(trzAmount);
+    return isNaN(parsed) ? 0 : Math.round(parsed * LAMPORTS_PER_TRZ);
 }
 
 /**
- * Validate Solana address (alias for validateWalletAddress)
+ * Validate Trezoa address (alias for validateWalletAddress)
  */
-export { isAddress as isValidSolanaAddress } from 'gill';
+export { isAddress as isValidTrezoaAddress } from 'gill';
 
 /**
  * Convert lamports to display amount
@@ -116,7 +116,7 @@ export function lamportsToDisplay(lamports: number, currency?: string): string {
         const stablecoin = STABLECOINS[currency];
         return (lamports / Math.pow(10, stablecoin.decimals)).toFixed(stablecoin.decimals);
     }
-    return (lamports / LAMPORTS_PER_SOL).toFixed(9);
+    return (lamports / LAMPORTS_PER_TRZ).toFixed(9);
 }
 
 /**
@@ -127,7 +127,7 @@ export function displayToLamports(amount: number, currency?: string): number {
         const stablecoin = STABLECOINS[currency];
         return Math.round(amount * Math.pow(10, stablecoin.decimals));
     }
-    return Math.round(amount * LAMPORTS_PER_SOL);
+    return Math.round(amount * LAMPORTS_PER_TRZ);
 }
 
 export { toMinorUnits } from './utils/validation';

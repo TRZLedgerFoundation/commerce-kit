@@ -14,7 +14,7 @@ get_config = true
 sign_transaction_if_paid = true
 
 [validation]
-max_allowed_lamports = 10000000 # 0.01 SOL max for testing
+max_allowed_lamports = 10000000 # 0.01 TRZ max for testing
 max_signatures = 10
 price_source = "Mock"
 
@@ -30,15 +30,15 @@ allowed_tokens = [
     "Es9vMFrzaCERmJfrF4H2FYD4KCoNkY11McCe8BenwNYB", # USDT
     "3xBgvWJBV2SrgkPzfNNegkLm4Diom5kzTsZWfa1D8HRp", # Test mint for gasless transactions
 ]
-allowed_spl_paid_tokens = [
+allowed_tpl_paid_tokens = [
     "3xBgvWJBV2SrgkPzfNNegkLm4Diom5kzTsZWfa1D8HRp", # Test mint for gasless transactions
 ]
 disallowed_accounts = []
 
 # Fee payer policy controls what actions the fee payer can perform
 [validation.fee_payer_policy]
-allow_sol_transfers = true
-allow_spl_transfers = true
+allow_trz_transfers = true
+allow_tpl_transfers = true
 allow_token2022_transfers = true
 allow_assign = true
 

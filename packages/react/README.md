@@ -1,13 +1,13 @@
-# @solana-commerce/react
+# @trezoa-commerce/react
 
-React SDK for Solana commerce applications
+React SDK for Trezoa commerce applications
 
 <!-- TODO: Add npm version badge when published -->
 
 ## Installation
 
 ```bash
-pnpm add @solana-commerce/react
+pnpm add @trezoa-commerce/react
 ```
 
 ## Features
@@ -35,8 +35,8 @@ pnpm add @solana-commerce/react
 
 ### Hooks
 
-- **useSolanaPay** - Solana Pay integration
-- **useSolEquivalent** - Token to SOL conversion
+- **useTrezoaPay** - Trezoa Pay integration
+- **useTrzEquivalent** - Token to TRZ conversion
 - **useTipForm** - Tip form state management
 - **usePaymentStatus** - Payment status tracking
 - Several utility hooks for UI state management
@@ -129,7 +129,7 @@ function Cart() {
       config={{
         merchant: { name: 'Store', wallet: 'address' },
         mode: 'cart',
-        allowedMints: ['SOL', 'USDC']
+        allowedMints: ['TRZ', 'USDC']
       }}
       paymentConfig={{
         products: items

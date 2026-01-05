@@ -15,7 +15,7 @@ const mockTheme = {
 const mockCurrencies = [
     { value: 'USDC', label: 'USD Coin', symbol: 'USDC' },
     { value: 'USDT', label: 'Tether USD', symbol: 'USDT' },
-    { value: 'SOL', label: 'Solana', symbol: 'SOL' },
+    { value: 'TRZ', label: 'trezoa', symbol: 'TRZ' },
 ] as const;
 
 // Mock the hooks and dependencies

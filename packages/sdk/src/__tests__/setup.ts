@@ -34,7 +34,7 @@ global.fetch = vi.fn().mockImplementation(async (url: string, options?: RequestI
             };
             break;
         case 'getBalance':
-            result = 1000000000; // 1 SOL in lamports
+            result = 1000000000; // 1 TRZ in lamports
             break;
         case 'sendTransaction':
             result = 'mock-signature-12345';
@@ -87,7 +87,7 @@ Object.defineProperty(window, 'localStorage', {
     writable: true,
 });
 
-// Mock crypto API with WebCrypto support for Solana digest operations
+// Mock crypto API with WebCrypto support for Trezoa digest operations
 const mockDigest = vi.fn().mockImplementation(async (algorithm: string, data: ArrayBuffer) => {
     // Return a mock hash for testing - 32 bytes for SHA-256
     const hashLength = algorithm.includes('256') ? 32 : 20;
@@ -123,7 +123,7 @@ const createMockRpc = () => ({
                 };
             case 'getBalance':
                 return {
-                    value: 1000000000, // 1 SOL in lamports
+                    value: 1000000000, // 1 TRZ in lamports
                 };
             case 'sendTransaction':
                 return 'mock-signature-12345';
@@ -186,7 +186,7 @@ vi.mock('../core/commerce-client-provider', () => ({
     ArcClientProvider: ({ children }: { children: React.ReactNode }) => children,
     useArcClient: vi.fn(() => ({
         network: {
-            rpcUrl: 'https://api.devnet.solana.com',
+            rpcUrl: 'https://api.devnet.trezoa.com',
             isMainnet: false,
             isDevnet: true,
             isTestnet: false,
@@ -212,8 +212,8 @@ vi.mock('../core/commerce-client-provider', () => ({
     })),
 }));
 
-// Mock Solana address generation to prevent WebCrypto issues
-vi.mock('@solana-program/token', async importOriginal => {
+// Mock Trezoa address generation to prevent WebCrypto issues
+vi.mock('@trezoa-program/token', async importOriginal => {
     const actual = (await importOriginal()) as Record<string, unknown>;
     return {
         ...actual,
@@ -224,8 +224,8 @@ vi.mock('@solana-program/token', async importOriginal => {
     };
 });
 
-// Mock @solana/kit address functions
-vi.mock('@solana/kit', async importOriginal => {
+// Mock @trezoa/kit address functions
+vi.mock('@trezoa/kit', async importOriginal => {
     const actual = (await importOriginal()) as Record<string, unknown>;
     return {
         ...actual,

@@ -1,8 +1,8 @@
 'use client';
 
 import React from 'react';
-import { SolanaCommerceClient } from './solana-commerce-client';
-import { type CommerceMode } from '@solana-commerce/react';
+import { trezoaCommerceClient } from './trezoa-commerce-client';
+import { type CommerceMode } from '@trezoa-commerce/react';
 
 import type { Mode, CheckoutStyle, Customizations, DemoConfig } from './types';
 import { IconCursorarrowRays, IconHandPointUpLeftFill, IconInsetFilledCenterRectangle, IconApp, IconShadow } from 'symbols-react';
@@ -94,7 +94,7 @@ export function DemoPreview({
               )`
             }}
             className="flex flex-col items-center justify-center border border-gray-200  rounded-lg bg-zinc-100 p-6 py-12 text-center relative">
-              <SolanaCommerceClient
+              <trezoaCommerceClient
                 config={{
                   ...config,
                   mode: config.mode === 'qrCustomization' ? 'tip' : config.mode as CommerceMode

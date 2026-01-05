@@ -19,7 +19,7 @@ describe('Types & Configuration', () => {
             it('should have valid USDC mint address', () => {
                 const usdc = STABLECOINS.USDC;
 
-                // Should be valid Base58 Solana address
+                // Should be valid Base58 Trezoa address
                 expect(usdc.mint).toMatch(/^[1-9A-HJ-NP-Za-km-z]{43,44}$/);
                 expect(usdc.mint.length).toBeGreaterThanOrEqual(43);
                 expect(usdc.mint.length).toBeLessThanOrEqual(44);
@@ -214,10 +214,10 @@ describe('Types & Configuration', () => {
                 });
             });
 
-            it('should use solana-labs token-list for icons', () => {
+            it('should use trezoa-labs token-list for icons', () => {
                 Object.values(STABLECOINS).forEach(config => {
                     if (config.icon) {
-                        expect(config.icon).toContain('solana-labs/token-list');
+                        expect(config.icon).toContain('trezoa-labs/token-list');
                         expect(config.icon).toContain('mainnet');
                     }
                 });
@@ -320,12 +320,12 @@ describe('Types & Configuration', () => {
 
     describe('Configuration Validation', () => {
         describe('Mint Address Validation', () => {
-            it('should have valid Solana mint addresses', () => {
+            it('should have valid Trezoa mint addresses', () => {
                 Object.values(STABLECOINS).forEach(config => {
                     // Should be valid Base58 encoding
                     expect(config.mint).toMatch(/^[1-9A-HJ-NP-Za-km-z]+$/);
 
-                    // Should be reasonable length for Solana address
+                    // Should be reasonable length for Trezoa address
                     expect(config.mint.length).toBeGreaterThanOrEqual(32);
                     expect(config.mint.length).toBeLessThanOrEqual(44);
                 });
@@ -486,12 +486,12 @@ describe('Types & Configuration', () => {
                 });
             });
 
-            it('should provide mint addresses for SPL token transfers', () => {
+            it('should provide mint addresses for TPL token transfers', () => {
                 Object.values(STABLECOINS).forEach(config => {
                     expect(config.mint).toBeTruthy();
                     expect(typeof config.mint).toBe('string');
 
-                    // Should be usable as SPL token mint
+                    // Should be usable as TPL token mint
                     expect(config.mint.length).toBeGreaterThan(30);
                 });
             });

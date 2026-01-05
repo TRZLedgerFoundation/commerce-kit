@@ -20,7 +20,7 @@
     "format:check": "prettier --check \"packages/**/*.{ts,tsx,js,jsx,json,md}\""
   },
   "devDependencies": {
-    "@solana/prettier-config-solana": "0.0.5",
+    "@trezoa/prettier-config-trezoa": "0.0.5",
     "prettier": "^3.6.2",
     "turbo": "latest",
     "typescript": "^5.9.2"
@@ -28,5 +28,5 @@
   "dependencies": {
     "@tanstack/react-query": "^5.90.2"
   },
-  "prettier": "@solana/prettier-config-solana"
+  "prettier": "@trezoa/prettier-config-trezoa"
 }
