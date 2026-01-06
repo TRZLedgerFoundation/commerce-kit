@@ -102,28 +102,27 @@ pub fn fetch_all_maybe_merchant(
 }
 
   #[cfg(feature = "trezoaanchor")]
-  impl anchor_lang::AccountDeserialize for Merchant {
-      fn try_deserialize_unchecked(buf: &mut &[u8]) -> anchor_lang::Result<Self> {
+  impl trezoaanchor_lang::AccountDeserialize for Merchant {
+      fn try_deserialize_unchecked(buf: &mut &[u8]) -> trezoaanchor_lang::Result<Self> {
         Ok(Self::deserialize(buf)?)
       }
   }
 
   #[cfg(feature = "trezoaanchor")]
-  impl anchor_lang::AccountSerialize for Merchant {}
+  impl trezoaanchor_lang::AccountSerialize for Merchant {}
 
   #[cfg(feature = "trezoaanchor")]
-  impl anchor_lang::Owner for Merchant {
+  impl trezoaanchor_lang::Owner for Merchant {
       fn owner() -> Pubkey {
         crate::COMMERCE_PROGRAM_ID
       }
   }
 
   #[cfg(feature = "trezoaanchor-idl-build")]
-  impl anchor_lang::IdlBuild for Merchant {}
+  impl trezoaanchor_lang::IdlBuild for Merchant {}
 
-  
   #[cfg(feature = "trezoaanchor-idl-build")]
-  impl anchor_lang::Discriminator for Merchant {
+  impl trezoaanchor_lang::Discriminator for Merchant {
     const DISCRIMINATOR: &[u8] = &[0; 8];
   }
 

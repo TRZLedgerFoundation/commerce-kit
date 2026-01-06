@@ -79,7 +79,7 @@ This document covers critical operational considerations for using the trezoa Co
 - Use priority fees to ensure transactions are processed quickly
 - Implement client-side retry logic with exponential backoff
 - Simulate transactions to estimate compute unit usage and optimize instructions
-- Leverage [Kora](../kora/README.md) to enable the Operator to cover transaction fees for users
+- Leverage [TrezoaKora](../trezoakora/README.md) to enable the Operator to cover transaction fees for users
 
 
 ## Common Error Scenarios

@@ -50,7 +50,7 @@ const seen = new Set<string>();
 export const Link: typeof NextLink = (({ children, ...props }) => {
   const [images, setImages] = useState<PrefetchImage[]>([]);
   const [preloading, setPreloading] = useState<(() => void)[]>([]);
-  const linkRef = useRef<HTMLAnchorElement>(null);
+  const linkRef = useRef<HTMLTrezoaAnchorElement>(null);
   const prefetchTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const router = useRouter();
 

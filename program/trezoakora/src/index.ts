@@ -1,7 +1,7 @@
 #!/usr/bin/env ts-node
 
 /**
- * Test gasless transaction flow via Kora
+ * Test gasless transaction flow via TrezoaKora
  */
 
 import {
@@ -46,9 +46,9 @@ import {
   TOKEN_PROGRAM_ADDRESS,
   getTransferInstruction,
 } from "gill/programs";
-import { signTransactionIfPaidWithKora } from "./kora-utils";
+import { signTransactionIfPaidWithTrezoaKora } from "./trezoakora-utils";
 
-const KORA_ENDPOINT = "http://localhost:8080";
+const TREZOAKORA_ENDPOINT = "http://localhost:8080";
 
 const MERCHANT_OPERATOR_VERSION = 1;
 const OPERATOR_FEE = 0n;
@@ -87,12 +87,12 @@ async function setupTest(): Promise<TestSetup> {
 
   console.log("🔍 Setting up wallets & airdropping...");
 
-  const koraOperatorSigner = await loadKeypair("./keys/kora-operator.json");
+  const koraOperatorSigner = await loadKeypair("./keys/trezoakora-operator.json");
   const merchantSigner = await loadKeypair("./keys/commerce-merchant.json");
   const mintKeypair = await loadKeypair("./keys/test-mint.json");
   const buyerSigner = await generateKeyPairSigner();
 
-  // Do not give lamports to buyer, as it will use Kora
+  // Do not give lamports to buyer, as it will use TrezoaKora
   await setupWallets(trezoaClient, [koraOperatorSigner, merchantSigner]);
 
   console.log("💰 Creating test mint and minting tokens to buyer...");
@@ -258,15 +258,15 @@ async function makeGaslessPayment({
     tokenProgram: TOKEN_PROGRAM_ADDRESS,
   });
 
-  // Add token transfer instruction for Kora fee payment
-  const koraFeeAmount = 10002n; // Amount Kora expects for fees (in token base units)
+  // Add token transfer instruction for TrezoaKora fee payment
+  const trezoakoraFeeAmount = 10002n; // Amount TrezoaKora expects for fees (in token base units)
 
   const tokenTransferIx = getTransferInstruction(
     {
       source: testSetup.buyerAta,
       destination: testSetup.koraOperatorSignerATA,
       authority: testSetup.buyerSigner,
-      amount: koraFeeAmount,
+      amount: trezoakoraFeeAmount,
     },
     {
       programAddress: TOKEN_PROGRAM_ADDRESS,
@@ -314,14 +314,14 @@ async function main() {
     testSetup,
   });
 
-  console.log("🔍 Sending transaction to kora to be signed...");
+  console.log("🔍 Sending transaction to trezoakora to be signed...");
 
-  const { signedTransaction } = await signTransactionIfPaidWithKora({
-    koraEndpoint: KORA_ENDPOINT,
+  const { signedTransaction } = await signTransactionIfPaidWithTrezoaKora({
+    koraEndpoint: TREZOAKORA_ENDPOINT,
     transaction: signedTx,
   });
 
-  console.log("🔍 Transaction signed by Kora!");
+  console.log("🔍 Transaction signed by TrezoaKora!");
 
   const sendTx = await testSetup.trezoaClient.rpc
     .sendTransaction(signedTransaction, {
@@ -346,7 +346,7 @@ async function main() {
 // Jest test wrapper
 if (typeof describe !== "undefined") {
   // Running in Jest
-  describe("Kora Gasless Transaction Integration", () => {
+  describe("TrezoaKora Gasless Transaction Integration", () => {
     it("should complete gasless payment flow", async () => {
       await main();
     }, 60000); // 60 second timeout

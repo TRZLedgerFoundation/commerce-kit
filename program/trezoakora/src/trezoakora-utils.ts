@@ -8,7 +8,7 @@ import {
   Base64EncodedWireTransaction,
 } from "gill";
 
-// Kora RPC API type definitions
+// TrezoaKora RPC API type definitions
 type KoraRpcApi = {
   signTransactionIfPaid(transaction: string): SignTransactionIfPaidResponse;
   liveness(): LivenessResponse;
@@ -30,7 +30,7 @@ interface LivenessResponse {
   status: string;
 }
 
-// Create Kora RPC client
+// Create TrezoaKora RPC client
 function createKoraRpc(koraEndpoint: string) {
   const koraApi = createJsonRpcApi<KoraRpcApi>({
     requestTransformer: (request: RpcRequest) => {
@@ -62,8 +62,8 @@ function createKoraRpc(koraEndpoint: string) {
   });
 }
 
-// Sign a transaction using Kora RPC
-async function signTransactionIfPaidWithKora({
+// Sign a transaction using TrezoaKora RPC
+async function signTransactionIfPaidWithTrezoaKora({
   koraEndpoint,
   transaction,
 }: {
@@ -81,12 +81,12 @@ async function signTransactionIfPaidWithKora({
         .signed_transaction as Base64EncodedWireTransaction,
     };
   } catch (error) {
-    console.error("❌ Error calling Kora:", error);
+    console.error("❌ Error calling TrezoaKora:", error);
     throw error;
   }
 }
 
-// Helper function to call any Kora RPC method
+// Helper function to call any TrezoaKora RPC method
 async function callKoraRpc<TMethod extends keyof KoraRpcApi>(
   koraEndpoint: string,
   method: TMethod,
@@ -106,7 +106,7 @@ async function callKoraRpc<TMethod extends keyof KoraRpcApi>(
 
 export {
   createKoraRpc,
-  signTransactionIfPaidWithKora,
+  signTransactionIfPaidWithTrezoaKora,
   callKoraRpc,
   type KoraRpcApi,
   type SignTransactionIfPaidRequest,

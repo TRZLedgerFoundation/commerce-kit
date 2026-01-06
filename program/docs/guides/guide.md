@@ -7,7 +7,7 @@ The trezoa Commerce Program is an on-chain payment processing system that enable
 The program provides capabilities for:
 
 * **Merchant Management** - Create and manage merchant accounts with settlement wallets
-* **Operator Services** - Payment processing operators that handle transactions and collect fees (and optionally cover transaction fees for customers by using a [Kora](https://github.com/trzledgerfoundation/kora) paymaster node)
+* **Operator Services** - Payment processing operators that handle transactions and collect fees (and optionally cover transaction fees for customers by using a [TrezoaKora](https://github.com/trzledgerfoundation/trezoakora) paymaster node)
 * **Payment Processing** - Secure escrow-based payments with configurable policies
 * **Settlement & Clearing** - Automated or manual payment settlement with fee distribution
 * **Refunds & Disputes** - Handle payment reversals and customer disputes

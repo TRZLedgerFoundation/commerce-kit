@@ -1,60 +1,60 @@
 #!/bin/bash
 
-# Test script for Kora Docker + Commerce Program integration
+# Test script for TrezoaKora Docker + Commerce Program integration
 set -e
 
-echo "🚀 Starting Kora Docker + Commerce Program Integration Test"
+echo "🚀 Starting TrezoaKora Docker + Commerce Program Integration Test"
 
 # Auto-detect paths using git
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 COMMERCE_DIR="$(cd "$SCRIPT_DIR/.." && git rev-parse --show-toplevel)"
 
-# Always download Kora repository for demo
-echo "🔄 Downloading Kora repository for demo..."
-TEMP_KORA_DIR="/tmp/kora-demo-$(date +%s)"
-git clone --depth 1 https://github.com/trzledgerfoundation/kora.git "$TEMP_KORA_DIR"
+# Always download TrezoaKora repository for demo
+echo "🔄 Downloading TrezoaKora repository for demo..."
+TEMP_TREZOAKORA_DIR="/tmp/trezoakora-demo-$(date +%s)"
+git clone --depth 1 https://github.com/trzledgerfoundation/trezoakora.git "$TEMP_TREZOAKORA_DIR"
 
 # Copy Docker files from commerce project to downloaded repo
 echo "📂 Copying Docker configuration files..."
-cp "$SCRIPT_DIR/docker/Dockerfile.simple" "$TEMP_KORA_DIR/Dockerfile.simple" 2>/dev/null || {
+cp "$SCRIPT_DIR/docker/Dockerfile.simple" "$TEMP_TREZOAKORA_DIR/Dockerfile.simple" 2>/dev/null || {
     echo "⚠️  Dockerfile.simple not found in commerce project, using default"
 }
-cp "$SCRIPT_DIR/docker/.dockerignore" "$TEMP_KORA_DIR/.dockerignore" 2>/dev/null || {
+cp "$SCRIPT_DIR/docker/.dockerignore" "$TEMP_TREZOAKORA_DIR/.dockerignore" 2>/dev/null || {
     echo "⚠️  .dockerignore not found in commerce project, using default"
 }
-cp "$SCRIPT_DIR/docker/entrypoint.sh" "$TEMP_KORA_DIR/entrypoint.sh" 2>/dev/null || {
+cp "$SCRIPT_DIR/docker/entrypoint.sh" "$TEMP_TREZOAKORA_DIR/entrypoint.sh" 2>/dev/null || {
     echo "⚠️  entrypoint.sh not found in commerce project, using default"
 }
 
-KORA_DIR="$TEMP_KORA_DIR"
-echo "✅ Downloaded Kora to temporary directory: $KORA_DIR"
+TREZOAKORA_DIR="$TEMP_TREZOAKORA_DIR"
+echo "✅ Downloaded TrezoaKora to temporary directory: $TREZOAKORA_DIR"
 
 # Configuration
-KORA_TEST_DIR="$COMMERCE_DIR/program/kora"
-KORA_PORT=8080
+TREZOAKORA_TEST_DIR="$COMMERCE_DIR/program/trezoakora"
+TREZOAKORA_PORT=8080
 VALIDATOR_PORT=8899
 
 # Cleanup function
 cleanup() {
     echo "🧹 Cleaning up test environment..."
-    docker stop kora-test-server 2>/dev/null || true
-    docker rm kora-test-server 2>/dev/null || true
+    docker stop trezoakora-test-server 2>/dev/null || true
+    docker rm trezoakora-test-server 2>/dev/null || true
     pkill -f "trezoa-test-validator" 2>/dev/null || true
 
-    # Clean up temporary Kora directory if it was downloaded
-    if [[ "$KORA_DIR" == /tmp/kora-demo-* ]]; then
-        echo "🗑️  Removing temporary Kora directory..."
-        rm -rf "$KORA_DIR"
+    # Clean up temporary TrezoaKora directory if it was downloaded
+    if [[ "$TREZOAKORA_DIR" == /tmp/trezoakora-demo-* ]]; then
+        echo "🗑️  Removing temporary TrezoaKora directory..."
+        rm -rf "$TREZOAKORA_DIR"
     fi
     exit 0
 }
 
 trap cleanup EXIT
 
-# Step 1: Build Kora Docker image (using simplified Dockerfile to avoid cargo-chef issues)
-echo "📦 Building Kora Docker image..."
-cd "$KORA_DIR"
-docker build -f Dockerfile.simple -t kora-node:test .
+# Step 1: Build TrezoaKora Docker image (using simplified Dockerfile to avoid cargo-chef issues)
+echo "📦 Building TrezoaKora Docker image..."
+cd "$TREZOAKORA_DIR"
+docker build -f Dockerfile.simple -t trezoakora-node:test .
 
 # Step 2: Build commerce program first
 echo "🏗️  Building commerce program..."
@@ -103,59 +103,59 @@ trezoa-test-validator $VALIDATOR_ARGS --quiet &
 echo "⏳ Waiting for test validator..."
 sleep 5
 
-# Step 5: Use existing Kora operator keypair
-echo "🔑 Using Kora operator keypair..."
-KORA_KEYPAIR_FILE="$KORA_TEST_DIR/keys/kora-operator.json"
+# Step 5: Use existing TrezoaKora operator keypair
+echo "🔑 Using TrezoaKora operator keypair..."
+TREZOAKORA_KEYPAIR_FILE="$TREZOAKORA_TEST_DIR/keys/trezoakora-operator.json"
 
-if [ ! -f "$KORA_KEYPAIR_FILE" ]; then
-    echo "❌ Kora operator keypair not found at $KORA_KEYPAIR_FILE"
-    echo "Please create it with: trezoa-keygen new --outfile $KORA_KEYPAIR_FILE"
+if [ ! -f "$TREZOAKORA_KEYPAIR_FILE" ]; then
+    echo "❌ TrezoaKora operator keypair not found at $TREZOAKORA_KEYPAIR_FILE"
+    echo "Please create it with: trezoa-keygen new --outfile $TREZOAKORA_KEYPAIR_FILE"
     exit 1
 fi
 
-TEST_KEYPAIR=$(cat "$KORA_KEYPAIR_FILE")
-TEST_PUBKEY=$(trezoa-keygen pubkey "$KORA_KEYPAIR_FILE")
+TEST_KEYPAIR=$(cat "$TREZOAKORA_KEYPAIR_FILE")
+TEST_PUBKEY=$(trezoa-keygen pubkey "$TREZOAKORA_KEYPAIR_FILE")
 
-echo "  → Kora operator public key: $TEST_PUBKEY"
+echo "  → TrezoaKora operator public key: $TEST_PUBKEY"
 
-# Fund the Kora operator keypair
-echo "  → Funding Kora operator with 10 SOL..."
+# Fund the TrezoaKora operator keypair
+echo "  → Funding TrezoaKora operator with 10 SOL..."
 trezoa airdrop 10 "$TEST_PUBKEY" \
     --url "http://127.0.0.1:$VALIDATOR_PORT" || true
 
-# Step 6: Start Kora server in Docker
-echo "🌐 Starting Kora RPC server..."
+# Step 6: Start TrezoaKora server in Docker
+echo "🌐 Starting TrezoaKora RPC server..."
 docker run -d \
-    --name kora-test-server \
-    -p "$KORA_PORT:$KORA_PORT" \
-    -v "$KORA_TEST_DIR/test-kora.toml:/app/config/kora.toml:ro" \
+    --name trezoakora-test-server \
+    -p "$TREZOAKORA_PORT:$TREZOAKORA_PORT" \
+    -v "$TREZOAKORA_TEST_DIR/test-trezoakora.toml:/app/config/trezoakora.toml:ro" \
     -e RUST_LOG=debug \
     -e RPC_URL="http://host.docker.internal:$VALIDATOR_PORT" \
-    -e PORT="$KORA_PORT" \
-    -e KORA_PRIVATE_KEY="$TEST_KEYPAIR" \
-    -e KORA_CONFIG_PATH=/app/config/kora.toml \
-    kora-node:test server
+    -e PORT="$TREZOAKORA_PORT" \
+    -e TREZOAKORA_PRIVATE_KEY="$TEST_KEYPAIR" \
+    -e TREZOAKORA_CONFIG_PATH=/app/config/trezoakora.toml \
+    trezoakora-node:test server
 
-# Wait for Kora to start with proper health check loop
-echo "⏳ Waiting for Kora server to start..."
+# Wait for TrezoaKora to start with proper health check loop
+echo "⏳ Waiting for TrezoaKora server to start..."
 sleep 3
 
 # Wait for liveness endpoint to be ready (up to 30 seconds)
 echo "  → Checking server readiness..."
 
 # Check if container is running
-if ! docker ps | grep -q "kora-test-server"; then
+if ! docker ps | grep -q "trezoakora-test-server"; then
     echo "  ❌ Docker container is not running!"
-    docker logs kora-test-server 2>/dev/null || echo "No logs available"
+    docker logs trezoakora-test-server 2>/dev/null || echo "No logs available"
     exit 1
 fi
 
-# Step 7: Test Kora endpoints
-echo "🧪 Testing Kora endpoints..."
+# Step 7: Test TrezoaKora endpoints
+echo "🧪 Testing TrezoaKora endpoints..."
 
 # Test liveness endpoint with JSON-RPC
 echo "  → Testing liveness endpoint..."
-liveness_response=$(curl -s -X POST "http://localhost:$KORA_PORT" \
+liveness_response=$(curl -s -X POST "http://localhost:$TREZOAKORA_PORT" \
     -H "Content-Type: application/json" \
     -d '{"jsonrpc":"2.0","method":"liveness","id":1}')
 
@@ -163,7 +163,7 @@ if echo "$liveness_response" | grep -q '"result":null'; then
     echo "  ✅ Liveness check passed"
 else
     echo "❌ Liveness check failed: $liveness_response"
-    docker logs kora-test-server
+    docker logs trezoakora-test-server
     exit 1
 fi
 

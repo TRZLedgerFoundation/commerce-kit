@@ -1,12 +1,12 @@
 {
-  "name": "kora-commerce-testing",
+  "name": "trezoakora-commerce-testing",
   "version": "1.0.0",
-  "description": "Testing utilities for Kora gasless relayer integration with commerce program",
+  "description": "Testing utilities for TrezoaKora gasless relayer integration with commerce program",
   "main": "dist/index.js",
   "type": "module",
   "types": "dist/index.d.ts",
   "scripts": {
-    "test:integration": "./test-kora-integration.sh",
+    "test:integration": "./test-trezoakora-integration.sh",
     "test": "jest"
   },
   "dependencies": {

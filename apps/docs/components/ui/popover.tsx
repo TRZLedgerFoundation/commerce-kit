@@ -39,10 +39,10 @@ function PopoverContent({
   )
 }
 
-function PopoverAnchor({
+function PopoverTrezoaAnchor({
   ...props
 }: React.ComponentProps<typeof PopoverPrimitive.TrezoaAnchor>) {
   return <PopoverPrimitive.TrezoaAnchor data-slot="popover-trezoaanchor" {...props} />
 }
 
-export { Popover, PopoverTrigger, PopoverContent, PopoverAnchor }
+export { Popover, PopoverTrigger, PopoverContent, PopoverTrezoaAnchor }

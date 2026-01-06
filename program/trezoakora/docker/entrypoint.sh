@@ -1,12 +1,12 @@
 #!/bin/bash
 
-# Kora Node Docker Entrypoint Script
+# TrezoaKora Node Docker Entrypoint Script
 # Handles both RPC server and CLI modes with dynamic configuration
 
 set -e
 
 # Default config file location
-CONFIG_FILE="${KORA_CONFIG_PATH:-/app/config/kora.toml}"
+CONFIG_FILE="${TREZOAKORA_CONFIG_PATH:-/app/config/trezoakora.toml}"
 
 # Function to build common args for both RPC and CLI
 build_common_args() {
@@ -23,8 +23,8 @@ build_common_args() {
     fi
 
     # Add private key (memory signer)
-    if [ -n "$KORA_PRIVATE_KEY" ]; then
-        args+=(--private-key "$KORA_PRIVATE_KEY")
+    if [ -n "$TREZOAKORA_PRIVATE_KEY" ]; then
+        args+=(--private-key "$TREZOAKORA_PRIVATE_KEY")
     fi
 
     # Skip signer loading if requested
@@ -100,7 +100,7 @@ build_common_args() {
 
 # Function to run RPC server
 run_server() {
-    echo "Starting Kora RPC Server..."
+    echo "Starting TrezoaKora RPC Server..."
 
     local args=()
     read -ra args <<< "$(build_common_args)"
@@ -118,17 +118,17 @@ run_server() {
         args+=(--metrics-endpoint "$METRICS_ENDPOINT")
     fi
 
-    exec kora-rpc "${args[@]}"
+    exec trezoakora-rpc "${args[@]}"
 }
 
 # Function to run CLI commands
 run_cli() {
-    echo "Running Kora CLI: $*"
+    echo "Running TrezoaKora CLI: $*"
 
     local args=()
     read -ra args <<< "$(build_common_args)"
 
-    exec kora-cli "${args[@]}" "$@"
+    exec trezoakora-cli "${args[@]}" "$@"
 }
 
 # Main execution logic
@@ -165,8 +165,8 @@ case "$1" in
         echo ""
         echo "Environment Variables:"
         echo "  RPC_URL             - Trezoa RPC endpoint"
-        echo "  KORA_PRIVATE_KEY    - Private key for memory signer"
-        echo "  KORA_CONFIG_PATH    - Path to kora.toml config file"
+        echo "  TREZOAKORA_PRIVATE_KEY    - Private key for memory signer"
+        echo "  TREZOAKORA_CONFIG_PATH    - Path to trezoakora.toml config file"
         echo "  PORT                - RPC server port (server mode only)"
         echo "  LOGGING_FORMAT      - Logging format: standard|json"
         echo "  METRICS_ENDPOINT    - Metrics endpoint URL"

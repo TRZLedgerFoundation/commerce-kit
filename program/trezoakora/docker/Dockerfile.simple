@@ -1,4 +1,4 @@
-# Simplified Dockerfile for Kora testing
+# Simplified Dockerfile for TrezoaKora testing
 FROM rust:1.75-slim AS builder
 
 # Install build dependencies
@@ -14,7 +14,7 @@ WORKDIR /app
 COPY . .
 
 # Build only the RPC server
-RUN cargo build --release --bin kora-rpc --bin kora-cli
+RUN cargo build --release --bin trezoakora-rpc --bin trezoakora-cli
 
 # Runtime stage
 FROM debian:bookworm-slim AS runtime
@@ -26,8 +26,8 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy binaries
-COPY --from=builder /app/target/release/kora-rpc /usr/local/bin/kora-rpc
-COPY --from=builder /app/target/release/kora-cli /usr/local/bin/kora-cli
+COPY --from=builder /app/target/release/trezoakora-rpc /usr/local/bin/trezoakora-rpc
+COPY --from=builder /app/target/release/trezoakora-cli /usr/local/bin/trezoakora-cli
 
 # Copy entrypoint script if it exists
 COPY entrypoint.sh /usr/local/bin/entrypoint.sh
@@ -44,7 +44,7 @@ EXPOSE 8080
 # Environment variables
 ENV RUST_LOG=info \
     RPC_URL=http://127.0.0.1:8899 \
-    KORA_CONFIG_PATH=/app/config/kora.toml \
+    KORA_CONFIG_PATH=/app/config/trezoakora.toml \
     PORT=8080
 
 # Health check using JSON-RPC liveness method

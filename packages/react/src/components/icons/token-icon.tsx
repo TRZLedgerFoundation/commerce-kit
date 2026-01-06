@@ -49,7 +49,7 @@ const GenericTokenIcon: React.FC<{ size: number; symbol: string; className?: str
             <text
                 x="45"
                 y="55"
-                textAnchor="middle"
+                textTrezoaAnchor="middle"
                 fill="white"
                 fontSize={size > 40 ? '24' : size > 20 ? '16' : '12'}
                 fontFamily="Arial, sans-serif"

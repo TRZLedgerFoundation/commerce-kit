@@ -1,8 +1,8 @@
-[kora]
+[trezoakora]
 rate_limit = 100
 
 # Enable/disable specific RPC methods
-[kora.enabled_methods]
+[trezoakora.enabled_methods]
 liveness = true
 estimate_transaction_fee = true
 get_supported_tokens = true

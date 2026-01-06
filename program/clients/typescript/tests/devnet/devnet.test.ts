@@ -20,7 +20,7 @@ import {
   generateMint,
   getNextOrderId,
   createAssociatedTokenAccount,
-} from "../../../../kora/src/utils";
+} from "../../../../trezoakora/src/utils";
 import { sendAndConfirmInstructions } from "../integration/helpers/transactions";
 
 const KEYPAIR_FILE = "./tests/devnet/devnet-test-keypair.json";
