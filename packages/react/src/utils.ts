@@ -5,7 +5,7 @@
 
 import { useMemo } from 'react';
 import type { ThemeConfig, BorderRadius, CommerceMode, MerchantConfig, Currency } from './types';
-import { isAddress } from 'gill';
+import { isAddress } from 'trezoagill';
 import { CURRENCY_DECIMALS } from './constants/tip-modal';
 
 // Constants
@@ -183,7 +183,7 @@ export function getAccessibleTextColor(
     return light;
 }
 
-// Security & validation - using isAddress from gill directly
+// Security & validation - using isAddress from trezoagill directly
 
 export const sanitizeString = (str: string): string => {
     // XSS prevention for user inputs

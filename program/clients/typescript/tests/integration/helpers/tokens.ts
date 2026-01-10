@@ -3,7 +3,7 @@ import {
     getMinimumBalanceForRentExemption,
     KeyPairSigner,
     TrezoaClient
-} from "gill";
+} from "trezoagill";
 import {
     getCreateAccountInstruction,
     TOKEN_PROGRAM_ADDRESS,
@@ -12,7 +12,7 @@ import {
     getCreateAssociatedTokenIdempotentInstructionAsync,
     getMintToInstruction,
     findAssociatedTokenPda
-} from "gill/programs";
+} from "trezoagill/programs";
 import { sendAndConfirmInstructions } from "./transactions";
 
 const space = getMintSize();

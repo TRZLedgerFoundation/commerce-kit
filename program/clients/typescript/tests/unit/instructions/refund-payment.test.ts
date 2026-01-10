@@ -5,7 +5,7 @@ import {
   REFUND_PAYMENT_DISCRIMINATOR,
   findOperatorPda,
 } from "../../../src/generated";
-import { AccountRole } from "gill";
+import { AccountRole } from "trezoagill";
 import {
   mockTransactionSigner,
   TEST_ADDRESSES,
@@ -14,7 +14,7 @@ import {
 import { 
   TOKEN_PROGRAM_ADDRESS,
   findAssociatedTokenPda 
-} from 'gill/programs';
+} from 'trezoagill/programs';
 
 describe("refundPayment", () => {
   it("should create a valid refund payment instruction", () => {

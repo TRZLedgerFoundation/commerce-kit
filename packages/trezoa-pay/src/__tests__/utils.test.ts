@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { createTPLToken, createRecipient, isValidTrezoaAddress } from '../utils';
-import { address } from 'gill';
+import { address } from 'trezoagill';
 
 describe('Utils', () => {
     const validAddress = '9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM';
@@ -182,7 +182,7 @@ describe('Utils', () => {
             } catch (error) {
                 const err = error as Error;
                 expect(err.message).toContain('Invalid TPL token address');
-                // Should also contain information from the underlying gill address function
+                // Should also contain information from the underlying trezoagill address function
             }
         });
     });
@@ -196,16 +196,16 @@ describe('Utils', () => {
             expect(typeof token.toString).toBe('function');
             expect(typeof recipient.toString).toBe('function');
 
-            // Should be compatible with gill Address type
+            // Should be compatible with trezoagill Address type
             expect(token).toBeDefined();
             expect(recipient).toBeDefined();
         });
 
-        it('should work with gill address functions', () => {
+        it('should work with trezoagill address functions', () => {
             const token = createTPLToken(validTokenAddress);
             const recipient = createRecipient(validAddress);
 
-            // Should be usable where gill Address is expected
+            // Should be usable where trezoagill Address is expected
             const tokenString = address(token.toString()).toString();
             const recipientString = address(recipient.toString()).toString();
 

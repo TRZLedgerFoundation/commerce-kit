@@ -7,9 +7,9 @@ import {
   findAssociatedTokenPda,
   TOKEN_PROGRAM_ADDRESS,
   getMintToInstruction,
-} from "gill/programs";
-import { createTrezoaClient, lamports } from "gill";
-import { loadKeypairSignerFromFile } from "gill/node";
+} from "trezoagill/programs";
+import { createTrezoaClient, lamports } from "trezoagill";
+import { loadKeypairSignerFromFile } from "trezoagill/node";
 import {
   assertGetOrCreateMerchant,
   assertGetOrCreateMerchantOperatorConfig,

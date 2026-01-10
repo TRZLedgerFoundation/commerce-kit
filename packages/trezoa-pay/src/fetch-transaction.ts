@@ -1,4 +1,4 @@
-import { Address, Rpc, TrezoaRpcApi, Signature, Transaction } from 'gill';
+import { Address, Rpc, TrezoaRpcApi, Signature, Transaction } from 'trezoagill';
 
 export async function fetchTransaction(rpc: Rpc<TrezoaRpcApi>, signature: Signature): Promise<Transaction> {
     const response = await rpc.getTransaction(signature).send();

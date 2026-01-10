@@ -19,11 +19,11 @@ import {
   lamports,
   KeyPairSigner,
   trezoaError,
-} from "gill";
+} from "trezoagill";
 import {
   updateOrAppendSetComputeUnitPriceInstruction,
   updateOrAppendSetComputeUnitLimitInstruction,
-} from "gill/programs";
+} from "trezoagill/programs";
 
 const DEBUG_TRANSACTIONS = false;
 

@@ -7,7 +7,7 @@ import {
     lamports,
     generateExtractableKeyPairSigner,
     ProgramDerivedAddressBump,
-} from 'gill';
+} from 'trezoagill';
 import {
     FeeType,
     findPaymentPda,
@@ -22,7 +22,7 @@ import {
 } from './helpers/state-utils';
 import { DAYS_TO_CLOSE } from './helpers/constants';
 import { generateManyTokenAccounts, generateMint, mintToOwner } from './helpers/tokens';
-import { findAssociatedTokenPda, TOKEN_PROGRAM_ADDRESS } from 'gill/programs';
+import { findAssociatedTokenPda, TOKEN_PROGRAM_ADDRESS } from 'trezoagill/programs';
 
 describe.only('Make Payment', () => {
     let client: TrezoaClient;

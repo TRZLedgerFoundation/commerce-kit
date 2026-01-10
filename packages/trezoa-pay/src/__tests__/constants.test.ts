@@ -33,7 +33,7 @@ describe('Constants', () => {
         });
 
         it('should have program IDs as proper Address objects', () => {
-            // Should have gill Address properties
+            // Should have trezoagill Address properties
             expect(MEMO_PROGRAM_ID).toHaveProperty('toString');
             expect(TOKEN_PROGRAM_ID).toHaveProperty('toString');
 

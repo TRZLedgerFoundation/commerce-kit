@@ -1,4 +1,4 @@
-import { address, Address } from 'gill';
+import { address, Address } from 'trezoagill';
 
 export const TREZOA_PROTOCOL = 'trezoa:';
 

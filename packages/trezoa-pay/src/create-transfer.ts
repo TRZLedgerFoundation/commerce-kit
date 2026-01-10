@@ -10,7 +10,7 @@ import {
     TrezoaRpcApi,
     TransactionMessageWithBlockhashLifetime,
     TransactionSigner,
-} from 'gill';
+} from 'trezoagill';
 import { createTrzTransfer } from './create-trz-transfer';
 import { createTplTransfer } from './create-tpl-transfer';
 import { CreateTransferError } from './error';

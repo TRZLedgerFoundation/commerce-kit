@@ -3,7 +3,7 @@
  */
 
 import { STABLECOINS } from './types';
-import { isAddress, LAMPORTS_PER_TRZ } from 'gill';
+import { isAddress, LAMPORTS_PER_TRZ } from 'trezoagill';
 
 export function validateCustomerInfo(email?: string, name?: string, mode?: string) {
     const errors: Record<string, string> = {};
@@ -54,8 +54,8 @@ export function createPaymentReference() {
     return `commerce-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 }
 
-// Re-export isAddress from gill for convenience
-export { isAddress as validateWalletAddress } from 'gill';
+// Re-export isAddress from trezoagill for convenience
+export { isAddress as validateWalletAddress } from 'trezoagill';
 
 export function createPaymentUrl(recipient: string, amount: number, merchantName: string, mode: string = 'payment') {
     if (!isAddress(recipient) || amount <= 0) return '';
@@ -106,7 +106,7 @@ export function parseTrzAmount(trzAmount: string): number {
 /**
  * Validate Trezoa address (alias for validateWalletAddress)
  */
-export { isAddress as isValidTrezoaAddress } from 'gill';
+export { isAddress as isValidTrezoaAddress } from 'trezoagill';
 
 /**
  * Convert lamports to display amount

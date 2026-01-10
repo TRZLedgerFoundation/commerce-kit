@@ -1,4 +1,4 @@
-import { address } from 'gill';
+import { address } from 'trezoagill';
 import { TREZOA_PROTOCOL, HTTPS_PROTOCOL, TRZ_DECIMALS } from './constants';
 import type { TransferRequestURLFields, TransactionRequestURLFields } from './encode-url';
 

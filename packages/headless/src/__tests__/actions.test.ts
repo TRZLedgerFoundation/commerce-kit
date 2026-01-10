@@ -4,17 +4,17 @@ import { createCartRequest } from '../actions/cart';
 import { createTipRequest } from '../actions/tip';
 import { verifyPayment, waitForConfirmation, createCommercePaymentRequest } from '../actions/payment';
 import { formatPaymentAmount, getTokenConfig } from '../utils';
-import type { TrezoaClient } from 'gill';
+import type { TrezoaClient } from 'trezoagill';
 
-// Mock gill for payment verification
-vi.mock('gill', () => ({
+// Mock trezoagill for payment verification
+vi.mock('trezoagill', () => ({
     signature: vi.fn(sig => ({ toString: () => sig })),
     address: vi.fn(addr => ({ toString: () => addr })),
     isAddress: vi.fn(() => true),
     LAMPORTS_PER_TRZ: 1000000000,
 }));
 
-vi.mock('gill/programs/token', () => ({
+vi.mock('trezoagill/programs/token', () => ({
     getAssociatedTokenAccountAddress: vi.fn().mockResolvedValue({ toString: () => 'mock-ata-address' }),
     TOKEN_PROGRAM_ADDRESS: '4JkrrPuuQPxDZuBW1bgrM1GBa8oYg1LxcuX9szBPh3ic',
     TOKEN_2022_PROGRAM_ADDRESS: 'TokenzQdBNbLqP5VEhdkAS6EPFLC1PHnBqCXEpPxuEb',

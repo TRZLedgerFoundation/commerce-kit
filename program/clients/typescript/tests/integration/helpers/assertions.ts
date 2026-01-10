@@ -1,5 +1,5 @@
-import { Address, TrezoaClient } from 'gill';
-import { fetchToken } from 'gill/programs';
+import { Address, TrezoaClient } from 'trezoagill';
+import { fetchToken } from 'trezoagill/programs';
 import { expect } from '@jest/globals';
 import {
     fetchMerchant,

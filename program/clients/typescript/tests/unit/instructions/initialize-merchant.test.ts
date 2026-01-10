@@ -5,11 +5,11 @@ import {
   INITIALIZE_MERCHANT_DISCRIMINATOR,
   findMerchantPda,
 } from '../../../src/generated';
-import { AccountRole } from 'gill';
+import { AccountRole } from 'trezoagill';
 import { mockTransactionSigner, TEST_ADDRESSES, EXPECTED_PROGRAM_ADDRESS } from '../../../tests/setup/mocks';
 import { 
   SYSTEM_PROGRAM_ADDRESS,
-} from 'gill/programs';
+} from 'trezoagill/programs';
 
 describe('initializeMerchant', () => {
   it('should create a valid initialize merchant instruction', () => {

@@ -5,7 +5,7 @@ import {
   CLOSE_PAYMENT_DISCRIMINATOR,
   findOperatorPda,
 } from '../../../src/generated';
-import { AccountRole } from 'gill';
+import { AccountRole } from 'trezoagill';
 import { mockTransactionSigner, TEST_ADDRESSES, EXPECTED_PROGRAM_ADDRESS } from '../../../tests/setup/mocks';
 
 describe('closePayment', () => {

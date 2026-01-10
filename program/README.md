@@ -167,4 +167,4 @@ We welcome contributions! Please open an issue or pull request.
 - Uses [Shank](https://github.com/trezoa-meta-foundation/shank) for IDL generation
 - Client generation powered by [Codoma](https://github.com/codoma-idl/codoma)
 - Tested with [LiteSVM](https://github.com/LiteSVM/litesvm)
-- Client testing/examples with [Gill](https://github.com/DecalLabs/gill)
+- Client testing/examples with [TrezoaGill](https://github.com/DecalLabs/gill)

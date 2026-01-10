@@ -8,7 +8,7 @@ import {
   lamports,
   generateExtractableKeyPairSigner,
   ProgramDerivedAddressBump,
-} from "gill";
+} from "trezoagill";
 import { FeeType, PolicyData } from "../../src/generated";
 import { setupWallets } from "./helpers/transactions";
 import {

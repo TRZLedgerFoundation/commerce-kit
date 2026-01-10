@@ -6,7 +6,7 @@ import {
     type TransferRequestURLFields,
     type TransactionRequestURLFields,
 } from '../encode-url';
-import { address } from 'gill';
+import { address } from 'trezoagill';
 
 describe('encodeURL', () => {
     const testRecipient = address('9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM');

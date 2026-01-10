@@ -5,8 +5,8 @@ import {
   CREATE_OPERATOR_DISCRIMINATOR,
   findOperatorPda,
 } from '../../../src/generated';
-import { AccountRole } from 'gill';
-import { SYSTEM_PROGRAM_ADDRESS } from 'gill/programs';
+import { AccountRole } from 'trezoagill';
+import { SYSTEM_PROGRAM_ADDRESS } from 'trezoagill/programs';
 import { mockTransactionSigner, TEST_ADDRESSES, EXPECTED_PROGRAM_ADDRESS } from '../../../tests/setup/mocks';
 
 describe('createOperator', () => {

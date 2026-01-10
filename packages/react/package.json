@@ -38,7 +38,7 @@
         "@trezoa-commerce/headless": "workspace:*",
         "@trezoa-commerce/sdk": "workspace:*",
         "@trezoa-commerce/trezoa-pay": "workspace:*",
-        "gill": "^0.10.2"
+        "trezoagill": "^0.10.2"
     },
     "peerDependencies": {
         "react": ">=19.0.0",

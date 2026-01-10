@@ -1,4 +1,4 @@
-import { address } from 'gill';
+import { address } from 'trezoagill';
 import type { TPLToken, Recipient } from './types';
 
 /**

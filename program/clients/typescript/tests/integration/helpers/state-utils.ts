@@ -5,12 +5,12 @@ import {
   ProgramDerivedAddressBump,
   fetchEncodedAccount,
   assertAccountExists,
-} from "gill";
+} from "trezoagill";
 import {
   SYSTEM_PROGRAM_ADDRESS,
   TOKEN_PROGRAM_ADDRESS,
   findAssociatedTokenPda,
-} from "gill/programs";
+} from "trezoagill/programs";
 import {
   findOperatorPda,
   findMerchantPda,

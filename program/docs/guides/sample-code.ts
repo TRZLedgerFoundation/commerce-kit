@@ -1,4 +1,4 @@
-import { loadKeypairSignerFromFile } from "gill/node";
+import { loadKeypairSignerFromFile } from "trezoagill/node";
 import {
     createTrezoaClient,
     TrezoaClient,
@@ -10,7 +10,7 @@ import {
     TransactionSigner,
     Blockhash,
     TrezoaError
-} from 'gill';
+} from 'trezoagill';
 import {
     findOperatorPda,
     findMerchantPda,
@@ -29,7 +29,7 @@ import {
     estimateComputeUnitLimitFactory,
     findAssociatedTokenPda,
     getCreateAssociatedTokenIdempotentInstructionAsync
-} from 'gill/programs';
+} from 'trezoagill/programs';
 
 const CONFIG = {
     CLUSTER_URL: 'devnet',

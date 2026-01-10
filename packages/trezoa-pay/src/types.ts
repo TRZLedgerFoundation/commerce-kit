@@ -1,4 +1,4 @@
-import type { Address } from 'gill';
+import type { Address } from 'trezoagill';
 
 export type Recipient = Address;
 

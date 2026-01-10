@@ -50,7 +50,7 @@
         "@wallet-standard/app": "^1.0.0",
         "@wallet-standard/base": "^1.0.0",
         "@wallet-standard/features": "^1.0.0",
-        "gill": "^0.10.2"
+        "trezoagill": "^0.10.2"
     },
     "devDependencies": {
         "@biomejs/biome": "^1.9.4",

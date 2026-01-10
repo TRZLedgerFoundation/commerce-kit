@@ -6,7 +6,7 @@ import {
   getOperatorSize,
   type OperatorArgs,
 } from '../../../src/generated/accounts/operator';
-import { address, getAddressCodec } from 'gill';
+import { address, getAddressCodec } from 'trezoagill';
 
 describe('Operator Account', () => {
   const mockOperatorData: OperatorArgs = {

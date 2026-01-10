@@ -3,11 +3,11 @@ import {
     address,
     createTrezoaClient,
     TrezoaClient,
-} from 'gill';
+} from 'trezoagill';
 import {
     COMMERCE_PROGRAM_PROGRAM_ADDRESS,
 } from '../../src/generated';
-import { TOKEN_PROGRAM_ADDRESS } from 'gill/programs';
+import { TOKEN_PROGRAM_ADDRESS } from 'trezoagill/programs';
 
 /**
  * These tests should be used to verify that the local test validator is working as expected.

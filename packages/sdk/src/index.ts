@@ -24,7 +24,7 @@ export type {
 // Provider types
 export type { ArcProviderProps } from './core/commerce-provider';
 export type { ArcWebClientConfig } from './core/web-client';
-export type { TrezoaClusterMoniker } from 'gill';
+export type { TrezoaClusterMoniker } from 'trezoagill';
 
 // ===== ADDRESS HELPERS =====
 export { address } from '@trezoa/kit';

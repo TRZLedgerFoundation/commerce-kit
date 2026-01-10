@@ -5,14 +5,14 @@
     "module": "./dist/index.mjs",
     "types": "./dist/index.d.ts",
     "scripts": {
-        "build": "tsup src/index.ts --format cjs,esm --dts --clean --external gill",
-        "dev": "tsup src/index.ts --format cjs,esm --dts --watch --external gill",
+        "build": "tsup src/index.ts --format cjs,esm --dts --clean --external trezoagill",
+        "dev": "tsup src/index.ts --format cjs,esm --dts --watch --external trezoagill",
         "clean": "rm -rf dist",
         "test": "vitest run",
         "test:watch": "vitest"
     },
     "dependencies": {
-        "gill": "^0.10.2",
+        "trezoagill": "^0.10.2",
         "qrcode": "^1.5.4"
     },
     "devDependencies": {

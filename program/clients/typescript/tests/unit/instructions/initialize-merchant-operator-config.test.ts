@@ -6,9 +6,9 @@ import {
   FeeType,
   findMerchantOperatorConfigPda,
 } from '../../../src/generated';
-import { AccountRole } from 'gill';
+import { AccountRole } from 'trezoagill';
 import { mockTransactionSigner, TEST_ADDRESSES, EXPECTED_PROGRAM_ADDRESS } from '../../../tests/setup/mocks';
-import { SYSTEM_PROGRAM_ADDRESS } from 'gill/programs';
+import { SYSTEM_PROGRAM_ADDRESS } from 'trezoagill/programs';
 import { DAYS_TO_CLOSE } from '../../integration/helpers/constants';
 
 describe('initializeMerchantOperatorConfig', () => {

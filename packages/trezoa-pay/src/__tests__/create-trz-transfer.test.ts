@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from 'vitest';
 import { createTrzTransfer, type CreateTrzTransferFields } from '../create-trz-transfer';
-import { address } from 'gill';
+import { address } from 'trezoagill';
 
-// Mock gill/programs
-vi.mock('gill/programs', () => ({
+// Mock trezoagill/programs
+vi.mock('trezoagill/programs', () => ({
     getTransferTrzInstruction: vi.fn(() => ({ type: 'transfer-trz-instruction' })),
     getTransferInstruction: vi.fn(() => ({ type: 'transfer-instruction' })),
 }));
@@ -29,7 +29,7 @@ describe('createTrzTransfer', () => {
             expect(result).toHaveLength(1);
             expect(result[0]).toEqual({ type: 'transfer-instruction' });
 
-            const { getTransferInstruction } = await import('gill/programs');
+            const { getTransferInstruction } = await import('trezoagill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
                 source: testSender,
                 destination: testRecipient,
@@ -46,7 +46,7 @@ describe('createTrzTransfer', () => {
 
             await createTrzTransfer(mockRpc as any, testSender, fields);
 
-            const { getTransferInstruction } = await import('gill/programs');
+            const { getTransferInstruction } = await import('trezoagill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
                 source: testSender,
                 destination: testRecipient,
@@ -63,7 +63,7 @@ describe('createTrzTransfer', () => {
 
             await createTrzTransfer(mockRpc as any, testSender, fields);
 
-            const { getTransferInstruction } = await import('gill/programs');
+            const { getTransferInstruction } = await import('trezoagill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
                 source: testSender,
                 destination: testRecipient,
@@ -80,7 +80,7 @@ describe('createTrzTransfer', () => {
 
             await createTrzTransfer(mockRpc as any, testSender, fields);
 
-            const { getTransferInstruction } = await import('gill/programs');
+            const { getTransferInstruction } = await import('trezoagill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
                 source: testSender,
                 destination: testRecipient,
@@ -110,7 +110,7 @@ describe('createTrzTransfer', () => {
             const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
 
-            const { getTransferInstruction } = await import('gill/programs');
+            const { getTransferInstruction } = await import('trezoagill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
                 source: testSender,
                 destination: testRecipient,
@@ -170,7 +170,7 @@ describe('createTrzTransfer', () => {
             const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
 
-            const { getTransferInstruction } = await import('gill/programs');
+            const { getTransferInstruction } = await import('trezoagill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
                 source: testSender,
                 destination: testRecipient,
@@ -250,7 +250,7 @@ describe('createTrzTransfer', () => {
 
             await createTrzTransfer(mockRpc as any, testSender, fields);
 
-            const { getTransferInstruction } = await import('gill/programs');
+            const { getTransferInstruction } = await import('trezoagill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith(
                 expect.objectContaining({
                     destination: testRecipient,
@@ -267,7 +267,7 @@ describe('createTrzTransfer', () => {
             const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
 
-            const { getTransferInstruction } = await import('gill/programs');
+            const { getTransferInstruction } = await import('trezoagill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
                 source: testSender,
                 destination: testSender,
@@ -299,7 +299,7 @@ describe('createTrzTransfer', () => {
 
             await createTrzTransfer(mockRpc as any, testSender, fields);
 
-            const { getTransferInstruction } = await import('gill/programs');
+            const { getTransferInstruction } = await import('trezoagill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
                 source: testSender,
                 destination: testRecipient,
@@ -369,7 +369,7 @@ describe('createTrzTransfer', () => {
 
     describe('Error Scenarios', () => {
         it('should handle instruction creation errors', async () => {
-            const { getTransferInstruction } = await import('gill/programs');
+            const { getTransferInstruction } = await import('trezoagill/programs');
             vi.mocked(getTransferInstruction).mockImplementationOnce(() => {
                 throw new Error('Instruction creation failed');
             });
@@ -394,7 +394,7 @@ describe('createTrzTransfer', () => {
             const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
 
-            const { getTransferInstruction } = await import('gill/programs');
+            const { getTransferInstruction } = await import('trezoagill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
                 source: testSender,
                 destination: testRecipient,
@@ -421,7 +421,7 @@ describe('createTrzTransfer', () => {
 
                 await createTrzTransfer(mockRpc as any, testSender, fields);
 
-                const { getTransferInstruction } = await import('gill/programs');
+                const { getTransferInstruction } = await import('trezoagill/programs');
                 expect(getTransferInstruction).toHaveBeenCalledWith({
                     source: testSender,
                     destination: testRecipient,
@@ -446,7 +446,7 @@ describe('createTrzTransfer', () => {
 
                 await createTrzTransfer(mockRpc as any, testSender, fields);
 
-                const { getTransferInstruction } = await import('gill/programs');
+                const { getTransferInstruction } = await import('trezoagill/programs');
                 expect(getTransferInstruction).toHaveBeenCalledWith({
                     source: testSender,
                     destination: testRecipient,
@@ -464,7 +464,7 @@ describe('createTrzTransfer', () => {
 
             await createTrzTransfer(mockRpc as any, testSender, fields);
 
-            const { getTransferInstruction } = await import('gill/programs');
+            const { getTransferInstruction } = await import('trezoagill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
                 source: testSender,
                 destination: testRecipient,
@@ -523,7 +523,7 @@ describe('createTrzTransfer', () => {
                 const result = await createTrzTransfer(mockRpc as any, sender, fields);
                 expect(result).toHaveLength(1);
 
-                const { getTransferInstruction } = await import('gill/programs');
+                const { getTransferInstruction } = await import('trezoagill/programs');
                 expect(getTransferInstruction).toHaveBeenCalledWith({
                     source: sender,
                     destination: testRecipient,
@@ -549,7 +549,7 @@ describe('createTrzTransfer', () => {
                 const result = await createTrzTransfer(mockRpc as any, testSender, fields);
                 expect(result).toHaveLength(1);
 
-                const { getTransferInstruction } = await import('gill/programs');
+                const { getTransferInstruction } = await import('trezoagill/programs');
                 expect(getTransferInstruction).toHaveBeenCalledWith({
                     source: testSender,
                     destination: recipient,

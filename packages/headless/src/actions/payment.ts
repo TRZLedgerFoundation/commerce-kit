@@ -1,12 +1,12 @@
-import type { TrezoaClient } from 'gill';
+import type { TrezoaClient } from 'trezoagill';
 import { OrderRequest, PaymentVerificationResult } from '../types';
 import { STABLECOINS } from '../types/tokens';
-import { signature, type Signature, address } from 'gill';
+import { signature, type Signature, address } from 'trezoagill';
 import {
     getAssociatedTokenAccountAddress,
     TOKEN_PROGRAM_ADDRESS,
     TOKEN_2022_PROGRAM_ADDRESS,
-} from 'gill/programs/token';
+} from 'trezoagill/programs/token';
 
 export async function verifyPayment(
     rpc: TrezoaClient['rpc'],

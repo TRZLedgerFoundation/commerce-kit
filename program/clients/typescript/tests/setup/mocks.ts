@@ -4,7 +4,7 @@ import {
   SignatureBytes,
   TransactionMessageBytes,
   TransactionSigner,
-} from 'gill';
+} from 'trezoagill';
 
 /**
  * Creates a mock TransactionSigner for testing purposes

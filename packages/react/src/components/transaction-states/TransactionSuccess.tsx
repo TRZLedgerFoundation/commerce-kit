@@ -1,6 +1,6 @@
 import type { ThemeConfig, MerchantConfig, Currency } from '../../types';
 import { SuccessIcon } from '../icons';
-import { getExplorerLink } from 'gill';
+import { getExplorerLink } from 'trezoagill';
 
 interface TransactionSuccessProps {
     theme: Required<ThemeConfig>;

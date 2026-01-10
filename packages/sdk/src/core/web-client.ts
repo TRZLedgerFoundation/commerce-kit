@@ -1,7 +1,7 @@
 'use client';
 
 import type { Address } from '@trezoa/kit';
-import type { TrezoaClusterMoniker } from 'gill';
+import type { TrezoaClusterMoniker } from 'trezoagill';
 import { getClusterInfo, type ClusterInfo } from '../utils/cluster';
 import { WalletStandardKitSigner, type StandardWalletInfo } from '../hooks/use-standard-wallets';
 import type { ConnectorClient, ConnectorState } from '@trezoa-commerce/connector';
@@ -11,7 +11,7 @@ import type { Wallet } from '@wallet-standard/base';
 
 /**
  * Configuration for the ArcWebClient.
- * Uses TrezoaClusterMoniker from gill for standard network types.
+ * Uses TrezoaClusterMoniker from trezoagill for standard network types.
  */
 export interface ArcWebClientConfig {
     network?: TrezoaClusterMoniker;

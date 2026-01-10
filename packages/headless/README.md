@@ -76,7 +76,7 @@ const cart = createCartRequest(
 
 ```typescript
 import { createCartRequest, createCommercePaymentRequest, verifyPayment } from '@trezoa-commerce/headless';
-import { createTrezoaClient } from 'gill';
+import { createTrezoaClient } from 'trezoagill';
 
 // 1. Create cart
 const cart = createCartRequest(

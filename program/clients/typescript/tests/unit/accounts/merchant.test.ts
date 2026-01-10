@@ -6,7 +6,7 @@ import {
   getMerchantSize,
   type MerchantArgs,
 } from '../../../src/generated/accounts/merchant';
-import { address, getAddressCodec } from 'gill';
+import { address, getAddressCodec } from 'trezoagill';
 
 describe('Merchant Account', () => {
   const mockMerchantData: MerchantArgs = {

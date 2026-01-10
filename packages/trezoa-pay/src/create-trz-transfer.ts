@@ -1,7 +1,7 @@
-import { getTransferInstruction } from 'gill/programs';
+import { getTransferInstruction } from 'trezoagill/programs';
 import type { Amount, Memo, Recipient, References } from './types';
-import { address, Address, Rpc, TrezoaRpcApi, TransactionSigner, Instruction } from 'gill';
-import { getTransferTrzInstruction } from 'gill/programs';
+import { address, Address, Rpc, TrezoaRpcApi, TransactionSigner, Instruction } from 'trezoagill';
+import { getTransferTrzInstruction } from 'trezoagill/programs';
 
 export interface CreateTrzTransferFields {
     recipient: Recipient;

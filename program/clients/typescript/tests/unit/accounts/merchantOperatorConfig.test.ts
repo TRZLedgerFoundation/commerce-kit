@@ -10,7 +10,7 @@ import {
   getMerchantOperatorConfigSize,
   type MerchantOperatorConfigArgs,
 } from '../../../src/';
-import { address, getAddressCodec } from 'gill';
+import { address, getAddressCodec } from 'trezoagill';
 
 describe('MerchantOperatorConfig Account', () => {
   const mockConfigData: MerchantOperatorConfigArgs = {

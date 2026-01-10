@@ -1,11 +1,11 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { createTransfer, type CreateTransferFields } from '../create-transfer';
 import { CreateTransferError } from '../error';
-import { address, type Address } from 'gill';
+import { address, type Address } from 'trezoagill';
 
 // Mock the dependencies
-vi.mock('gill', async () => {
-    const actual = await vi.importActual('gill');
+vi.mock('trezoagill', async () => {
+    const actual = await vi.importActual('trezoagill');
     return {
         ...actual,
         pipe: vi.fn((initial, ...fns) => fns.reduce((acc, fn) => fn(acc), initial)),
@@ -244,7 +244,7 @@ describe('createTransfer', () => {
                 createTransactionMessage,
                 setTransactionMessageLifetimeUsingBlockhash,
                 appendTransactionMessageInstructions,
-            } = await import('gill');
+            } = await import('trezoagill');
 
             expect(createTransactionMessage).toHaveBeenCalledWith({ version: 0 });
             expect(setTransactionMessageLifetimeUsingBlockhash).toHaveBeenCalled();
@@ -261,7 +261,7 @@ describe('createTransfer', () => {
 
             expect(mockRpc.getLatestBlockhash).toHaveBeenCalled();
 
-            const { setTransactionMessageLifetimeUsingBlockhash } = await import('gill');
+            const { setTransactionMessageLifetimeUsingBlockhash } = await import('trezoagill');
             expect(setTransactionMessageLifetimeUsingBlockhash).toHaveBeenCalledWith(
                 { blockhash: 'test-blockhash', lastValidBlockHeight: 12345n },
                 expect.any(Object),
@@ -276,7 +276,7 @@ describe('createTransfer', () => {
 
             await createTransfer(mockRpc as any, testSender, fields);
 
-            const { appendTransactionMessageInstructions } = await import('gill');
+            const { appendTransactionMessageInstructions } = await import('trezoagill');
             expect(appendTransactionMessageInstructions).toHaveBeenCalledWith(
                 [{ type: 'trz-transfer' }],
                 expect.any(Object),

@@ -1,4 +1,4 @@
-import { loadKeypairSignerFromFile } from "gill/node";
+import { loadKeypairSignerFromFile } from "trezoagill/node";
 import { join } from "path";
 import {
   Address,
@@ -13,7 +13,7 @@ import {
   TrezoaClient,
   Transaction,
   TransactionSigner,
-} from "gill";
+} from "trezoagill";
 import {
   getCreateAccountInstruction,
   TOKEN_PROGRAM_ADDRESS,
@@ -23,7 +23,7 @@ import {
   getMintToInstruction,
   findAssociatedTokenPda,
   getCreateAssociatedTokenIdempotentInstruction,
-} from "gill/programs";
+} from "trezoagill/programs";
 import {
   createDefaultTransaction,
   sendAndConfirmInstructions,

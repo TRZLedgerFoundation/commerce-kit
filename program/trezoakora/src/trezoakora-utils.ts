@@ -6,7 +6,7 @@ import {
   RpcRequest,
   getBase64EncodedWireTransaction,
   Base64EncodedWireTransaction,
-} from "gill";
+} from "trezoagill";
 
 // TrezoaKora RPC API type definitions
 type KoraRpcApi = {

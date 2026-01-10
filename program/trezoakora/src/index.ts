@@ -12,7 +12,7 @@ import {
   ProgramDerivedAddress,
   TrezoaClient,
   Transaction,
-} from "gill";
+} from "trezoagill";
 import {
   loadKeypair,
   generateMint,
@@ -45,7 +45,7 @@ import {
   SYSTEM_PROGRAM_ADDRESS,
   TOKEN_PROGRAM_ADDRESS,
   getTransferInstruction,
-} from "gill/programs";
+} from "trezoagill/programs";
 import { signTransactionIfPaidWithTrezoaKora } from "./trezoakora-utils";
 
 const TREZOAKORA_ENDPOINT = "http://localhost:8080";

@@ -5,12 +5,12 @@ import { useTrezoaPay } from '../../hooks/use-trezoa-pay';
 import { useTimer } from '../../hooks/use-timer';
 import { usePaymentStatus } from '../../hooks/use-payment-status';
 import { MerchantAddressPill } from './merchant-address-pill';
-import { address, createTrezoaClient } from 'gill';
+import { address, createTrezoaClient } from 'trezoagill';
 import {
     getAssociatedTokenAccountAddress,
     TOKEN_PROGRAM_ADDRESS,
     TOKEN_2022_PROGRAM_ADDRESS,
-} from 'gill/programs/token';
+} from 'trezoagill/programs/token';
 
 interface QRPaymentContentProps {
     theme: Required<ThemeConfig>;

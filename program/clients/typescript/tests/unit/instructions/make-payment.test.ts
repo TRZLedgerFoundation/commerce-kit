@@ -6,7 +6,7 @@ import {
   findPaymentPda,
   findOperatorPda,
 } from "../../../src/generated";
-import { AccountRole } from "gill";
+import { AccountRole } from "trezoagill";
 import {
   mockTransactionSigner,
   TEST_ADDRESSES,
@@ -15,7 +15,7 @@ import {
 import { 
   TOKEN_PROGRAM_ADDRESS,
   findAssociatedTokenPda 
-} from 'gill/programs';
+} from 'trezoagill/programs';
 
 describe("makePayment", () => {
   it("should create a valid make payment instruction", () => {

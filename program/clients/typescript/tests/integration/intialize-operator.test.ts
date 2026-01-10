@@ -4,7 +4,7 @@ import {
     TrezoaClient,
     KeyPairSigner,
     generateExtractableKeyPairSigner,
-} from 'gill';
+} from 'trezoagill';
 import { setupWallets } from './helpers/transactions';
 import { assertGetOrCreateOperator } from './helpers/state-utils';
 

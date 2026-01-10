@@ -1,5 +1,5 @@
 import { expect } from '@jest/globals';
-import { address } from 'gill';
+import { address } from 'trezoagill';
 import {
   findEventAuthorityPda,
 } from '../../../src/generated/pdas/eventAuthority';

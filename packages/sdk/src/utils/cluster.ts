@@ -1,8 +1,8 @@
 /**
- * Cluster utilities using gill's built-in functions
+ * Cluster utilities using trezoagill's built-in functions
  */
 
-import { getPublicTrezoaRpcUrl, type TrezoaClusterMoniker } from 'gill';
+import { getPublicTrezoaRpcUrl, type TrezoaClusterMoniker } from 'trezoagill';
 
 export type ClusterInfo = {
     name: string;
@@ -40,7 +40,7 @@ function deriveWebSocketUrl(rpcUrl: string): string {
 
 /**
  * Get cluster information from a network identifier
- * Leverages gill's getPublicTrezoaRpcUrl for standard networks
+ * Leverages trezoagill's getPublicTrezoaRpcUrl for standard networks
  */
 export function getClusterInfo(network: string): ClusterInfo {
     // Handle standard Trezoa cluster monikers

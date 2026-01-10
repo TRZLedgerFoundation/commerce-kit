@@ -14,8 +14,8 @@ import {
     displayToLamports,
 } from '../utils';
 
-// Mock gill address function
-vi.mock('gill', () => ({
+// Mock trezoagill address function
+vi.mock('trezoagill', () => ({
     address: vi.fn(addr => {
         // Mock successful validation for known addresses
         if (

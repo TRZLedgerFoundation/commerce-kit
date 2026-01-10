@@ -45,8 +45,8 @@ export type {
     Network,
 } from './types';
 
-// Re-export TrezoaClusterMoniker from gill for convenience
-export type { TrezoaClusterMoniker } from 'gill';
+// Re-export TrezoaClusterMoniker from trezoagill for convenience
+export type { TrezoaClusterMoniker } from 'trezoagill';
 
 // Re-export payment configuration types
 export type { PaymentConfig, Product } from './components/ui/secure-iframe-shell';
@@ -65,7 +65,7 @@ import { ResponsiveShell } from './components/ui/responsive-shell';
 import { SecureIframeShell } from './components/ui/secure-iframe-shell';
 import { AppProvider } from '@trezoa-commerce/connector';
 import { ArcProvider } from '@trezoa-commerce/sdk';
-import { isAddress } from 'gill';
+import { isAddress } from 'trezoagill';
 import { useTheme, useTotalAmount, usePaymentUrl, createPaymentError, getBorderRadius } from './utils';
 import { TriggerButton } from './components/ui';
 import type { PaymentButtonProps } from './types';

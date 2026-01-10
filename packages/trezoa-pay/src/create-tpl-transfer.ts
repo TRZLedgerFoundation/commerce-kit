@@ -1,13 +1,13 @@
 import type { Amount, Memo, Recipient, References, TPLToken } from './types';
-import { address, type Address, Rpc, TrezoaRpcApi, Instruction, AccountRole, type AccountMeta } from 'gill';
+import { address, type Address, Rpc, TrezoaRpcApi, Instruction, AccountRole, type AccountMeta } from 'trezoagill';
 import {
     getAssociatedTokenAccountAddress,
     getTransferCheckedInstruction,
     TOKEN_PROGRAM_ADDRESS,
     TOKEN_2022_PROGRAM_ADDRESS,
     fetchMint,
-} from 'gill/programs/token';
-import { getAddMemoInstruction } from 'gill/programs';
+} from 'trezoagill/programs/token';
+import { getAddMemoInstruction } from 'trezoagill/programs';
 import { CreateTransferError } from './error';
 
 export interface CreateTplTransferFields {

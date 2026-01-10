@@ -115,7 +115,7 @@ Initialize a new Node.js blank project with the required dependencies:
 
 ```bash
 pnpm init
-pnpm add gill
+pnpm add trezoagill
 pnpm add -D typescript tsx @types/node
 ```
 
@@ -292,7 +292,7 @@ Let's walk through the implementation step by step.
 Start with the necessary imports and configuration:
 
 ```ts
-import { loadKeypairSignerFromFile } from "gill/node";
+import { loadKeypairSignerFromFile } from "trezoagill/node";
 import {
     createTrezoaClient,
     TrezoaClient,
@@ -304,7 +304,7 @@ import {
     TransactionSigner,
     Blockhash,
     trezoaError
-} from 'gill';
+} from 'trezoagill';
 import {
     findOperatorPda,
     findMerchantPda,
@@ -323,7 +323,7 @@ import {
     estimateComputeUnitLimitFactory,
     findAssociatedTokenPda,
     getCreateAssociatedTokenIdempotentInstructionAsync
-} from 'gill/programs';
+} from 'trezoagill/programs';
 
 const CONFIG = {
     CLUSTER_URL: 'devnet',

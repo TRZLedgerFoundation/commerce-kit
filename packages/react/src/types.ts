@@ -4,15 +4,15 @@
  */
 
 import { TPLToken } from '@trezoa-commerce/trezoa-pay';
-import { address, TrezoaClusterMoniker } from 'gill';
-import { TOKEN_PROGRAM_ADDRESS, TOKEN_2022_PROGRAM_ADDRESS } from 'gill/programs/token';
+import { address, TrezoaClusterMoniker } from 'trezoagill';
+import { TOKEN_PROGRAM_ADDRESS, TOKEN_2022_PROGRAM_ADDRESS } from 'trezoagill/programs/token';
 import type React from 'react';
 
 // Core enums and types
 export type CommerceMode = 'cart' | 'tip' | 'buyNow';
 export type Position = 'inline' | 'overlay';
 export type BorderRadius = 'none' | 'sm' | 'md' | 'lg' | 'xl' | 'full';
-// Use TrezoaClusterMoniker from gill instead of custom Network type
+// Use TrezoaClusterMoniker from trezoagill instead of custom Network type
 // Note: TrezoaClusterMoniker uses "mainnet" (not "mainnet-beta") and includes "testnet"
 export type Network = TrezoaClusterMoniker;
 

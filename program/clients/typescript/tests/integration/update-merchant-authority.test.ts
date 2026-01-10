@@ -6,7 +6,7 @@ import {
     Address,
     generateExtractableKeyPairSigner,
     ProgramDerivedAddressBump,
-} from 'gill';
+} from 'trezoagill';
 import { setupWallets } from './helpers/transactions';
 import {
     assertGetOrCreateMerchant,
