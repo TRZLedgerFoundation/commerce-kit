@@ -1,14 +1,14 @@
 import {
-  Codama,
+  Codoma,
   bottomUpTransformerVisitor,
   assertIsNode,
   isNode,
   structFieldTypeNode,
   numberTypeNode,
-} from "codama";
+} from "codoma";
 
-export function appendAccountDiscriminator(commerceCodama: Codama): Codama {
-  commerceCodama.update(
+export function appendAccountDiscriminator(commerceCodoma: Codoma): Codoma {
+  commerceCodoma.update(
     bottomUpTransformerVisitor([
       {
         select: "[accountNode]",
@@ -45,5 +45,5 @@ export function appendAccountDiscriminator(commerceCodama: Codama): Codama {
       },
     ])
   );
-  return commerceCodama;
+  return commerceCodoma;
 }

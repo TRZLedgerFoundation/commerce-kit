@@ -34,7 +34,7 @@ export function useTrezoaPay(recipient: string, amount: number, currency: Curren
         // Get token info from enhanced currency map
         const tokenInfo = CurrencyMap[currency];
         const decimals = tokenInfo === 'TRZ' ? 9 : tokenInfo.decimals;
-        // For native SOL, use undefined; for TPL tokens, use the mint address
+        // For native TRZ, use undefined; for TPL tokens, use the mint address
         const tplToken = tokenInfo === 'TRZ' ? undefined : tokenInfo.mint;
 
         return {

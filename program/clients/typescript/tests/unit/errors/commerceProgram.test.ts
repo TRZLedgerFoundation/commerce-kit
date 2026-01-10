@@ -151,7 +151,7 @@ describe('Commerce Program Errors', () => {
     });
 
     it('should return production message when NODE_ENV is production', () => {
-      // Ref: https://github.com/codama-idl/codama/blob/62ad68d475fdccfa6315f455564a091508046987/packages/errors/README.md?plain=1#L33
+      // Ref: https://github.com/codoma-idl/codoma/blob/62ad68d475fdccfa6315f455564a091508046987/packages/errors/README.md?plain=1#L33
       process.env.NODE_ENV = 'production';
 
       const result = getCommerceProgramErrorMessage(COMMERCE_PROGRAM_ERROR__INVALID_MINT);

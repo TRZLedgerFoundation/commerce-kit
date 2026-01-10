@@ -20,7 +20,7 @@
     "format:check": "prettier --check \"packages/**/*.{ts,tsx,js,jsx,json,md}\""
   },
   "devDependencies": {
-    "@trezoa/prettier-config-trezoa": "0.0.5",
+    "@trezoa/prettier-config-trezoa": "0.0.6",
     "prettier": "^3.6.2",
     "turbo": "latest",
     "typescript": "^5.9.2"

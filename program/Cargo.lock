@@ -5994,8 +5994,8 @@ dependencies = [
  "num-traits",
  "trezoa-program",
  "spl-associated-token-account-client",
- "spl-token",
- "spl-token-2022",
+ "tpl-token",
+ "tpl-token-2022",
  "thiserror 2.0.14",
 ]
 
@@ -6065,7 +6065,7 @@ dependencies = [
  "trezoa-sysvar",
  "trezoa-zk-sdk",
  "spl-pod",
- "spl-token-confidential-transfer-proof-extraction",
+ "tpl-token-confidential-transfer-proof-extraction",
 ]
 
 [[package]]
@@ -6152,7 +6152,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "spl-token"
+name = "tpl-token"
 version = "8.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "053067c6a82c705004f91dae058b11b4780407e9ccd6799dc9e7d0fab5f242da"
@@ -6180,7 +6180,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "spl-token-2022"
+name = "tpl-token-2022"
 version = "8.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "31f0dfbb079eebaee55e793e92ca5f433744f4b71ee04880bfd6beefba5973e5"
@@ -6212,19 +6212,19 @@ dependencies = [
  "spl-elgamal-registry",
  "spl-memo",
  "spl-pod",
- "spl-token",
- "spl-token-confidential-transfer-ciphertext-arithmetic",
- "spl-token-confidential-transfer-proof-extraction",
- "spl-token-confidential-transfer-proof-generation",
- "spl-token-group-interface",
- "spl-token-metadata-interface",
+ "tpl-token",
+ "tpl-token-confidential-transfer-ciphertext-arithmetic",
+ "tpl-token-confidential-transfer-proof-extraction",
+ "tpl-token-confidential-transfer-proof-generation",
+ "tpl-token-group-interface",
+ "tpl-token-metadata-interface",
  "spl-transfer-hook-interface",
  "spl-type-length-value",
  "thiserror 2.0.14",
 ]
 
 [[package]]
-name = "spl-token-confidential-transfer-ciphertext-arithmetic"
+name = "tpl-token-confidential-transfer-ciphertext-arithmetic"
 version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "94ab20faf7b5edaa79acd240e0f21d5a2ef936aa99ed98f698573a2825b299c4"
@@ -6236,7 +6236,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "spl-token-confidential-transfer-proof-extraction"
+name = "tpl-token-confidential-transfer-proof-extraction"
 version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "fe2629860ff04c17bafa9ba4bed8850a404ecac81074113e1f840dbd0ebb7bd6"
@@ -6256,7 +6256,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "spl-token-confidential-transfer-proof-generation"
+name = "tpl-token-confidential-transfer-proof-generation"
 version = "0.4.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ae5b124840d4aed474cef101d946a798b806b46a509ee4df91021e1ab1cef3ef"
@@ -6267,7 +6267,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "spl-token-group-interface"
+name = "tpl-token-group-interface"
 version = "0.6.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "5597b4cd76f85ce7cd206045b7dc22da8c25516573d42d267c8d1fd128db5129"
@@ -6286,7 +6286,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "spl-token-metadata-interface"
+name = "tpl-token-metadata-interface"
 version = "0.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "304d6e06f0de0c13a621464b1fd5d4b1bebf60d15ca71a44d3839958e0da16ee"
@@ -6468,7 +6468,7 @@ dependencies = [
  "trezoa-program-pack",
  "trezoa-sdk",
  "spl-associated-token-account",
- "spl-token",
+ "tpl-token",
  "tokio",
 ]
 

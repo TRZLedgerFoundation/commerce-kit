@@ -13,7 +13,7 @@ interface ActionButtonProps {
     isProcessing?: boolean;
     onClick: () => void;
     children: React.ReactNode;
-    trzEquivalent?: string; // Optional TRZ amount to display (e.g., "0.026 SOL")
+    trzEquivalent?: string; // Optional TRZ amount to display (e.g., "0.026 TRZ")
 }
 
 export const ActionButton = memo<ActionButtonProps>(

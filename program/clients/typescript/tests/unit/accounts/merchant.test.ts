@@ -73,7 +73,7 @@ describe('Merchant Account', () => {
     expect(typeof decoded.settlementWallet).toBe('string');
     
     // Validate account size - getMerchantSize() returns the expected size
-    // However, actual encoded size is 66 - potential Codama generator bug
+    // However, actual encoded size is 66 - potential Codoma generator bug
     // expect(getMerchantSize()).toBe(66);
   });
 

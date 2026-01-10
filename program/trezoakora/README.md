@@ -8,7 +8,7 @@ This directory contains testing utilities for integrating the TrezoaKora gasless
 
 The test demonstrates a complete gasless payment flow where:
 1. A buyer without TRZ can make payments using tokens
-2. TrezoaKora sponsors the transaction fees (SOL) for the user
+2. TrezoaKora sponsors the transaction fees (TRZ) for the user
 3. The Commerce Program processes the payment normally
 
 ## Files
@@ -74,7 +74,7 @@ The integration test performs the following steps:
 
 3. **Gasless Payment**:
    - Creates a payment transaction with:
-     - Token transfer to TrezoaKora for fee payment (in tokens, not SOL)
+     - Token transfer to TrezoaKora for fee payment (in tokens, not TRZ)
      - Commerce program payment instruction
    - Sends transaction to TrezoaKora for signing and fee sponsorship
    - Submits the signed transaction to the blockchain

@@ -1,8 +1,8 @@
 import {
-  Codama,
+  Codoma,
   setInstructionAccountDefaultValuesVisitor,
   publicKeyValueNode,
-} from "codama";
+} from "codoma";
 import {
   TOKEN_PROGRAM_ID,
   ATA_PROGRAM_ID,
@@ -12,8 +12,8 @@ import {
   EVENT_AUTHORITY_PDA,
 } from "../constants";
 
-export function setDefaultAccountValues(commerceCodama: Codama): Codama {
-  commerceCodama.update(
+export function setDefaultAccountValues(commerceCodoma: Codoma): Codoma {
+  commerceCodoma.update(
     setInstructionAccountDefaultValuesVisitor([
       {
         account: "tokenProgram",
@@ -41,5 +41,5 @@ export function setDefaultAccountValues(commerceCodama: Codama): Codama {
       },
     ])
   );
-  return commerceCodama;
+  return commerceCodoma;
 }

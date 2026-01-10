@@ -78,7 +78,7 @@ describe('Icon Components', () => {
     });
 
     describe('TokenIcon', () => {
-        it('should render correct icon for SOL', () => {
+        it('should render correct icon for TRZ', () => {
             render(<TokenIcon symbol="TRZ" />);
 
             // Should render TrezoaIcon

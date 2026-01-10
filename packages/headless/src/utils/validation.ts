@@ -138,7 +138,7 @@ export function formatPaymentAmount(amount: number, currency?: string): string {
         const stablecoin = STABLECOINS[currency];
         return `${(amount / Math.pow(10, stablecoin.decimals)).toFixed(stablecoin.decimals)} ${stablecoin.symbol}`;
     }
-    return `${(amount / LAMPORTS_PER_TRZ).toFixed(9)} SOL`;
+    return `${(amount / LAMPORTS_PER_TRZ).toFixed(9)} TRZ`;
 }
 
 /**

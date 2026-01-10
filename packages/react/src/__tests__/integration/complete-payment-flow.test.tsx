@@ -51,7 +51,7 @@ const CompletePaymentFlow = ({
                         data-testid="currency-selector"
                     >
                         <option value="USDC">USDC</option>
-                        <option value="TRZ">SOL</option>
+                        <option value="TRZ">TRZ</option>
                     </select>
                 </div>
 
@@ -317,7 +317,7 @@ describe('Complete Payment Flow Integration', () => {
             // Select amount first
             await user.click(screen.getByTestId('amount-10'));
 
-            // Switch from USDC to SOL
+            // Switch from USDC to TRZ
             await user.selectOptions(screen.getByTestId('currency-selector'), 'TRZ');
 
             // Should generate new payment request

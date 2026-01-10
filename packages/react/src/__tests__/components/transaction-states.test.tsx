@@ -193,7 +193,7 @@ describe('Transaction State Components', () => {
         it('should handle different currencies correctly', () => {
             const { rerender } = render(<TransactionSuccess {...defaultSuccessProps} currency="TRZ" amount={0.5} />);
 
-            expect(screen.getByText(/0.5 SOL/)).toBeInTheDocument();
+            expect(screen.getByText(/0.5 TRZ/)).toBeInTheDocument();
 
             rerender(<TransactionSuccess {...defaultSuccessProps} currency="USDT" amount={100} />);
             expect(screen.getByText(/100 USDT/)).toBeInTheDocument();

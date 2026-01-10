@@ -1,13 +1,13 @@
 import {
-  Codama,
+  Codoma,
   bottomUpTransformerVisitor,
   assertIsNode,
   argumentValueNode,
   instructionRemainingAccountsNode,
-} from "codama";
+} from "codoma";
 
-export function appendMOConfigRemainingAccounts(commerceCodama: Codama): Codama {
-  commerceCodama.update(
+export function appendMOConfigRemainingAccounts(commerceCodoma: Codoma): Codoma {
+  commerceCodoma.update(
     bottomUpTransformerVisitor([
       {
         select: "[instructionNode]initializeMerchantOperatorConfig",
@@ -32,5 +32,5 @@ export function appendMOConfigRemainingAccounts(commerceCodama: Codama): Codama 
       },
     ])
   );
-  return commerceCodama;
+  return commerceCodoma;
 }

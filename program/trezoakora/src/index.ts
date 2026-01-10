@@ -230,6 +230,7 @@ async function setupCommerceAccount({
       operatorFee: OPERATOR_FEE,
       feeType: FEE_TYPE,
       currentOrderId: testSetup.orderId - 1,
+      daysToClose: 7, // Required by smart contract - days after payment can be closed
       policies: [],
       acceptedCurrencies: [testSetup.mintAddress],
       failIfExists: false,

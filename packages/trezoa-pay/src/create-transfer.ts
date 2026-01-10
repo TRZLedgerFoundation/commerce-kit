@@ -11,7 +11,7 @@ import {
     TransactionMessageWithBlockhashLifetime,
     TransactionSigner,
 } from 'gill';
-import { createSolTransfer } from './create-trz-transfer';
+import { createTrzTransfer } from './create-trz-transfer';
 import { createTplTransfer } from './create-tpl-transfer';
 import { CreateTransferError } from './error';
 
@@ -45,7 +45,7 @@ export async function createTransfer(
               reference,
               memo,
           })
-        : await createSolTransfer(rpc, sender, {
+        : await createTrzTransfer(rpc, sender, {
               recipient,
               amount,
               reference,

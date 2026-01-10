@@ -269,15 +269,15 @@ You should see something like this and be good to go!
 
 ```bash
 payer balance
-0.4 SOL
+0.4 TRZ
 merchant balance
-0.4 SOL
+0.4 TRZ
 operator balance
-0.4 SOL
+0.4 TRZ
 customer balance
-0.4 SOL
+0.4 TRZ
 settlement balance
-0.4 SOL
+0.4 TRZ
 customer USDC balance
 10
 ```

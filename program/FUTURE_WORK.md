@@ -13,7 +13,7 @@
 - **Better errors** - Improve error messages and codes where appropriate
 
 ## Code Generation
-- **Codama support** - Add policy/currency support in config deserialization
+- **Codoma support** - Add policy/currency support in config deserialization
 
 ## Testing
 - **More sad path tests** - Expand negative test scenarios

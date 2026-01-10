@@ -16,7 +16,7 @@ vi.mock('gill', async () => {
 });
 
 vi.mock('../create-trz-transfer', () => ({
-    createSolTransfer: vi.fn().mockResolvedValue([{ type: 'trz-transfer' }]),
+    createTrzTransfer: vi.fn().mockResolvedValue([{ type: 'trz-transfer' }]),
 }));
 
 vi.mock('../create-tpl-transfer', () => ({
@@ -74,14 +74,14 @@ describe('createTransfer', () => {
         it('should create TRZ transfer with reference', async () => {
             const fields: CreateTransferFields = {
                 recipient: testRecipient,
-                amount: 500000000n, // 0.5 SOL
+                amount: 500000000n, // 0.5 TRZ
                 reference: testReference,
             };
 
             await createTransfer(mockRpc as any, testSender, fields);
 
-            const { createSolTransfer } = await import('../create-trz-transfer');
-            expect(createSolTransfer).toHaveBeenCalledWith(mockRpc, testSender, {
+            const { createTrzTransfer } = await import('../create-trz-transfer');
+            expect(createTrzTransfer).toHaveBeenCalledWith(mockRpc, testSender, {
                 recipient: testRecipient,
                 amount: 500000000n,
                 reference: testReference,
@@ -92,14 +92,14 @@ describe('createTransfer', () => {
         it('should create TRZ transfer with memo', async () => {
             const fields: CreateTransferFields = {
                 recipient: testRecipient,
-                amount: 250000000n, // 0.25 SOL
+                amount: 250000000n, // 0.25 TRZ
                 memo: 'Test payment',
             };
 
             await createTransfer(mockRpc as any, testSender, fields);
 
-            const { createSolTransfer } = await import('../create-trz-transfer');
-            expect(createSolTransfer).toHaveBeenCalledWith(mockRpc, testSender, {
+            const { createTrzTransfer } = await import('../create-trz-transfer');
+            expect(createTrzTransfer).toHaveBeenCalledWith(mockRpc, testSender, {
                 recipient: testRecipient,
                 amount: 250000000n,
                 reference: undefined,
@@ -117,8 +117,8 @@ describe('createTransfer', () => {
 
             await createTransfer(mockRpc as any, testSender, fields);
 
-            const { createSolTransfer } = await import('../create-trz-transfer');
-            expect(createSolTransfer).toHaveBeenCalledWith(mockRpc, testSender, {
+            const { createTrzTransfer } = await import('../create-trz-transfer');
+            expect(createTrzTransfer).toHaveBeenCalledWith(mockRpc, testSender, {
                 recipient: testRecipient,
                 amount: 100000000n,
                 reference: [testReference, reference2],
@@ -312,8 +312,8 @@ describe('createTransfer', () => {
         });
 
         it('should handle instruction creation errors', async () => {
-            const { createSolTransfer } = await import('../create-trz-transfer');
-            vi.mocked(createSolTransfer).mockRejectedValueOnce(new Error('Instruction creation failed'));
+            const { createTrzTransfer } = await import('../create-trz-transfer');
+            vi.mocked(createTrzTransfer).mockRejectedValueOnce(new Error('Instruction creation failed'));
 
             const fields: CreateTransferFields = {
                 recipient: testRecipient,
@@ -335,8 +335,8 @@ describe('createTransfer', () => {
 
             await createTransfer(mockRpc as any, testSender, fields);
 
-            const { createSolTransfer } = await import('../create-trz-transfer');
-            expect(createSolTransfer).toHaveBeenCalledWith(mockRpc, testSender, {
+            const { createTrzTransfer } = await import('../create-trz-transfer');
+            expect(createTrzTransfer).toHaveBeenCalledWith(mockRpc, testSender, {
                 recipient: testRecipient,
                 amount: 0n,
                 reference: undefined,
@@ -353,8 +353,8 @@ describe('createTransfer', () => {
 
             await createTransfer(mockRpc as any, testSender, fields);
 
-            const { createSolTransfer } = await import('../create-trz-transfer');
-            expect(createSolTransfer).toHaveBeenCalledWith(mockRpc, testSender, {
+            const { createTrzTransfer } = await import('../create-trz-transfer');
+            expect(createTrzTransfer).toHaveBeenCalledWith(mockRpc, testSender, {
                 recipient: testRecipient,
                 amount: largeAmount,
                 reference: undefined,
@@ -370,8 +370,8 @@ describe('createTransfer', () => {
 
             await createTransfer(mockRpc as any, testSender, fields);
 
-            const { createSolTransfer } = await import('../create-trz-transfer');
-            expect(createSolTransfer).toHaveBeenCalledWith(mockRpc, testSender, {
+            const { createTrzTransfer } = await import('../create-trz-transfer');
+            expect(createTrzTransfer).toHaveBeenCalledWith(mockRpc, testSender, {
                 recipient: testRecipient,
                 amount: 1n,
                 reference: undefined,
@@ -429,15 +429,15 @@ describe('createTransfer', () => {
             expect(result).toHaveProperty('blockhash');
             expect(result).toHaveProperty('instructions');
 
-            const { createSolTransfer } = await import('../create-trz-transfer');
-            expect(createSolTransfer).toHaveBeenCalledWith(mockRpc, testSender, fields);
+            const { createTrzTransfer } = await import('../create-trz-transfer');
+            expect(createTrzTransfer).toHaveBeenCalledWith(mockRpc, testSender, fields);
         });
 
         it('should create complete TPL transfer with all fields', async () => {
             const fields: CreateTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000n,
-                tplToken: testSplToken,
+                tplToken: testtplToken,
                 reference: testReference,
                 memo: 'USDC payment',
             };

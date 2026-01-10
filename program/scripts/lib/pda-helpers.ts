@@ -1,4 +1,4 @@
-import * as codama from "codama";
+import * as codoma from "codoma";
 import {
   TOKEN_PROGRAM_ID,
   ATA_PROGRAM_ID,
@@ -22,17 +22,17 @@ const {
   accountValueNode,
   pdaNode,
   argumentValueNode,
-} = codama;
+} = codoma;
 
 interface PdaConfig {
   name: string;
-  seeds: codama.PdaSeedNode[];
+  seeds: codoma.PdaSeedNode[];
   programId: string;
-  seedValues: codama.PdaSeedValueNode[];
+  seedValues: codoma.PdaSeedValueNode[];
 }
 
 // Generic PDA value node creator
-export function createPdaValueNode(config: PdaConfig): codama.PdaValueNode {
+export function createPdaValueNode(config: PdaConfig): codoma.PdaValueNode {
   const { name, seeds, programId, seedValues } = config;
   
   return pdaValueNode(
@@ -46,7 +46,7 @@ export function createPdaValueNode(config: PdaConfig): codama.PdaValueNode {
 }
 
 // Helper function to create ATA PDA value node
-export function createAtaPdaValueNode(ownerAccount: string, mintAccount: string): codama.PdaValueNode {
+export function createAtaPdaValueNode(ownerAccount: string, mintAccount: string): codoma.PdaValueNode {
   return createPdaValueNode({
     name: 'associatedTokenAccount',
     seeds: [
@@ -63,7 +63,7 @@ export function createAtaPdaValueNode(ownerAccount: string, mintAccount: string)
 }
 
 // Helper function to create merchant PDA value node
-export function createMerchantPdaValueNode(ownerAccount: string): codama.PdaValueNode {
+export function createMerchantPdaValueNode(ownerAccount: string): codoma.PdaValueNode {
   return createPdaValueNode({
     name: 'merchant',
     seeds: [
@@ -78,7 +78,7 @@ export function createMerchantPdaValueNode(ownerAccount: string): codama.PdaValu
 }
 
 // Helper function to create operator PDA value node
-export function createOperatorPdaValueNode(ownerAccount: string): codama.PdaValueNode {
+export function createOperatorPdaValueNode(ownerAccount: string): codoma.PdaValueNode {
   return createPdaValueNode({
     name: 'operator',
     seeds: [
@@ -93,7 +93,7 @@ export function createOperatorPdaValueNode(ownerAccount: string): codama.PdaValu
 }
 
 // Helper function to create merchantOperatorConfig PDA value node
-export function createMerchantOperatorConfigPdaValueNode(merchantAccount: string, operatorAccount: string): codama.PdaValueNode {
+export function createMerchantOperatorConfigPdaValueNode(merchantAccount: string, operatorAccount: string): codoma.PdaValueNode {
   return createPdaValueNode({
     name: 'merchantOperatorConfig',
     seeds: [
@@ -116,7 +116,7 @@ export function createPaymentPdaValueNode(
   merchantOperatorConfigAccount: string, 
   buyerAccount: string, 
   mintAccount: string
-): codama.PdaValueNode {
+): codoma.PdaValueNode {
   return createPdaValueNode({
     name: 'payment',
     seeds: [

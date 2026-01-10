@@ -157,7 +157,7 @@ describe('Utils', () => {
                 expect(result.error).toBeUndefined();
             });
 
-            it('should reject non-SOL methods by default', () => {
+            it('should reject non-TRZ methods by default', () => {
                 const result = validatePaymentMethod('USDC');
                 expect(result.valid).toBe(false);
                 expect(result.error).toBe('USDC is not allowed');
@@ -177,7 +177,7 @@ describe('Utils', () => {
             it('should handle empty allowed mints array', () => {
                 const result = validatePaymentMethod('TRZ', []);
                 expect(result.valid).toBe(false);
-                expect(result.error).toBe('SOL is not allowed');
+                expect(result.error).toBe('TRZ is not allowed');
             });
 
             it('should handle case sensitivity', () => {
@@ -540,8 +540,8 @@ describe('Utils', () => {
         describe('Basic Formatting', () => {
             it('should format lamports to TRZ with default decimals', () => {
                 expect(formatTrzAmount(1000000000)).toBe('1.000'); // 1 TRZ
-                expect(formatTrzAmount(500000000)).toBe('0.500'); // 0.5 SOL
-                expect(formatTrzAmount(1500000000)).toBe('1.500'); // 1.5 SOL
+                expect(formatTrzAmount(500000000)).toBe('0.500'); // 0.5 TRZ
+                expect(formatTrzAmount(1500000000)).toBe('1.500'); // 1.5 TRZ
             });
 
             it('should format with custom decimal places', () => {
@@ -557,7 +557,7 @@ describe('Utils', () => {
             });
 
             it('should handle large amounts', () => {
-                expect(formatTrzAmount(1000000000000000)).toBe('1000000.000'); // 1M SOL
+                expect(formatTrzAmount(1000000000000000)).toBe('1000000.000'); // 1M TRZ
             });
         });
 
@@ -595,7 +595,7 @@ describe('Utils', () => {
             });
 
             it('should handle large amounts', () => {
-                expect(parseTrzAmount('1000000')).toBe(1000000000000000); // 1M SOL
+                expect(parseTrzAmount('1000000')).toBe(1000000000000000); // 1M TRZ
             });
         });
 
@@ -646,7 +646,7 @@ describe('Utils', () => {
     });
 
     describe('lamportsToDisplay & displayToLamports', () => {
-        describe('SOL Conversion', () => {
+        describe('TRZ Conversion', () => {
             it('should convert lamports to TRZ display', () => {
                 expect(lamportsToDisplay(1000000000)).toBe('1.000000000');
                 expect(lamportsToDisplay(500000000)).toBe('0.500000000');
@@ -676,7 +676,7 @@ describe('Utils', () => {
                 expect(displayToLamports(2, 'USDT')).toBe(2000000);
             });
 
-            it('should handle unknown currency as SOL', () => {
+            it('should handle unknown currency as TRZ', () => {
                 expect(lamportsToDisplay(1000000000, 'UNKNOWN')).toBe('1.000000000');
                 expect(displayToLamports(1, 'UNKNOWN')).toBe(1000000000);
             });

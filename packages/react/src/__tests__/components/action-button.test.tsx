@@ -67,20 +67,20 @@ describe('ActionButton', () => {
 
     it('should show TRZ equivalent when provided', () => {
         render(
-            <ActionButton theme={mockTheme} trzEquivalent="0.05 SOL">
+            <ActionButton theme={mockTheme} trzEquivalent="0.05 TRZ">
                 Pay $10
             </ActionButton>,
         );
 
         expect(screen.getByText('Pay $10')).toBeInTheDocument();
-        expect(screen.getByText('(0.05 SOL)')).toBeInTheDocument();
+        expect(screen.getByText('(0.05 TRZ)')).toBeInTheDocument();
     });
 
     it('should not show TRZ equivalent when not provided', () => {
         render(<ActionButton theme={mockTheme}>Pay $10</ActionButton>);
 
         expect(screen.getByText('Pay $10')).toBeInTheDocument();
-        expect(screen.queryByText(/\d+\.\d+\s+SOL/)).not.toBeInTheDocument(); // Look for format like "0.05 SOL"
+        expect(screen.queryByText(/\d+\.\d+\s+TRZ/)).not.toBeInTheDocument(); // Look for format like "0.05 TRZ"
         expect(screen.queryByText(/\(/)).not.toBeInTheDocument(); // No parentheses should be present
     });
 

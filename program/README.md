@@ -123,7 +123,7 @@ make test-all
 
 ### Client Generation
 
-The project uses [Shank](https://github.com/trezoa-meta-foundation/shank) for IDL generation and [Codama](https://github.com/codama-idl/codama) for client generation. These are automatically run when you run `make build`. You can also run them manually:
+The project uses [Shank](https://github.com/trezoa-meta-foundation/shank) for IDL generation and [Codoma](https://github.com/codoma-idl/codoma) for client generation. These are automatically run when you run `make build`. You can also run them manually:
 
 ```bash
 # Generate IDL from program annotations
@@ -165,6 +165,6 @@ We welcome contributions! Please open an issue or pull request.
 
 - Built with [Pinocchio](https://github.com/trezoa-labs-xyz/pinocchio) for optimal performance
 - Uses [Shank](https://github.com/trezoa-meta-foundation/shank) for IDL generation
-- Client generation powered by [Codama](https://github.com/codama-idl/codama)
+- Client generation powered by [Codoma](https://github.com/codoma-idl/codoma)
 - Tested with [LiteSVM](https://github.com/LiteSVM/litesvm)
 - Client testing/examples with [Gill](https://github.com/DecalLabs/gill)

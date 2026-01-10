@@ -97,7 +97,7 @@ export const PaymentModalContent = memo<PaymentModalContentProps>(
                     }}
                     type="button"
                 >
-                    Pay {formatTrzAmount(totalAmount)} SOL
+                    Pay {formatTrzAmount(totalAmount)} TRZ
                 </button>
                 <DialogClose asChild>
                     <button

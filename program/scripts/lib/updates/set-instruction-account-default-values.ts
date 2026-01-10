@@ -1,7 +1,7 @@
 import {
-  Codama,
+  Codoma,
   setInstructionAccountDefaultValuesVisitor,
-} from "codama";
+} from "codoma";
 import {
   createAtaPdaValueNode,
   createMerchantPdaValueNode,
@@ -10,8 +10,8 @@ import {
   createPaymentPdaValueNode,
 } from "../pda-helpers";
 
-export function setInstructionAccountDefaultValues(commerceCodama: Codama): Codama {
-  commerceCodama.update(
+export function setInstructionAccountDefaultValues(commerceCodoma: Codoma): Codoma {
+  commerceCodoma.update(
     setInstructionAccountDefaultValuesVisitor([
       // For createOperator instruction
       {
@@ -126,5 +126,5 @@ export function setInstructionAccountDefaultValues(commerceCodama: Codama): Coda
       },
     ])
   );
-  return commerceCodama;
+  return commerceCodoma;
 }

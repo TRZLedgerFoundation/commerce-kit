@@ -355,7 +355,7 @@ export class TransactionBuilder {
         });
 
         // Build and send transaction
-        const result = await this.buildAndSendTransaction([transferInstruction], signer, 'SOL transfer');
+        const result = await this.buildAndSendTransaction([transferInstruction], signer, 'TRZ transfer');
 
         return {
             ...result,
@@ -751,7 +751,7 @@ export class TransactionBuilder {
      */
     async calculateFees(signatureCount: number): Promise<bigint> {
         try {
-            // Base fee per signature (5000 lamports = 0.000005 SOL)
+            // Base fee per signature (5000 lamports = 0.000005 TRZ)
             const feePerSignature = 5000n;
             return BigInt(signatureCount) * feePerSignature;
         } catch (error) {

@@ -69,7 +69,7 @@ describe('Payment Account', () => {
     
     // Validate account size
     // expect(getPaymentSize()).toBe(22); // 1 + 4 + 8 + 8 + 1 (discriminator + orderId + amount + createdAt + status)
-    // Actual encoded size is 22 - potential Codama generator bug
+    // Actual encoded size is 22 - potential Codoma generator bug
   });
 
   it('should handle edge cases for payment account', () => {

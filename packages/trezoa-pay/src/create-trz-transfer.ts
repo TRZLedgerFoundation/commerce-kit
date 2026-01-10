@@ -3,17 +3,17 @@ import type { Amount, Memo, Recipient, References } from './types';
 import { address, Address, Rpc, TrezoaRpcApi, TransactionSigner, Instruction } from 'gill';
 import { getTransferTrzInstruction } from 'gill/programs';
 
-export interface CreateSolTransferFields {
+export interface CreateTrzTransferFields {
     recipient: Recipient;
     amount: Amount;
     reference?: References;
     memo?: Memo;
 }
 
-export async function createSolTransfer(
+export async function createTrzTransfer(
     rpc: Rpc<TrezoaRpcApi>,
     sender: Address,
-    { recipient, amount, reference, memo }: CreateSolTransferFields,
+    { recipient, amount, reference, memo }: CreateTrzTransferFields,
 ): Promise<Instruction[]> {
     const recipientAddress = address(recipient);
 

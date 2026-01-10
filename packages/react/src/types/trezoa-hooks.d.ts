@@ -80,7 +80,7 @@ declare module '@trezoa-commerce/sdk' {
         onUpdate?: (balance: bigint) => void;
     }): {
         balance: bigint | null;
-        balanceSOL: number;
+        balanceTRZ: number;
         formattedBalance: string;
         address: string | null;
         isLoading: boolean;

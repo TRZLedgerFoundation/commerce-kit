@@ -150,7 +150,7 @@ export function useTipForm(config: TrezoaCommerceConfig) {
                         console.error('Payment failed:', error);
 
                         // Handle price API errors specifically
-                        if (error instanceof Error && error.message.includes('SOL price')) {
+                        if (error instanceof Error && error.message.includes('TRZ price')) {
                             actions.setPriceError(error.message);
                             actions.setProcessing(false);
                             actions.setStep('form'); // Go back to form to show error

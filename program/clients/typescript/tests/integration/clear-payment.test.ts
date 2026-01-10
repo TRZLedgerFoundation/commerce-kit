@@ -62,7 +62,7 @@ describe('Clear Payment', () => {
         testTokenMint = await generateExtractableKeyPairSigner();
         customer = await generateExtractableKeyPairSigner();
 
-        // Setup wallets with SOL
+        // Setup wallets with TRZ
         await setupWallets(client, [payer, operatorAuthority, merchantAuthority, settlementWallet, testTokenAuthority, customer]);
 
         // Create test token mint

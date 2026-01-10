@@ -9,7 +9,7 @@ generate-idl:
 	@echo "Generating IDL..."
 	pnpm run generate-idl
 
-# Generate clients from IDL using Codama
+# Generate clients from IDL using Codoma
 generate-clients: generate-idl
 	@echo "Generating clients..."
 	pnpm run generate-clients

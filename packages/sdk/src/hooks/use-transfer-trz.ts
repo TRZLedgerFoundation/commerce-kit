@@ -80,7 +80,7 @@ export interface UseTransferTRZReturn {
     // UI INTERACTION HELPERS
     /** Input state for recipient address */
     toInput: string;
-    /** Input state for amount (in SOL) */
+    /** Input state for amount (in TRZ) */
     amountInput: string;
     /** Set recipient address input */
     setToInput: (value: string) => void;

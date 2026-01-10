@@ -133,7 +133,7 @@ describe('useTransferTRZ', () => {
     });
 
     describe('transferTRZ function', () => {
-        it('should successfully transfer SOL', async () => {
+        it('should successfully transfer TRZ', async () => {
             const { result } = renderHook(() => useTransferTRZ(), {
                 wrapper: createWrapper(),
             });
@@ -161,11 +161,11 @@ describe('useTransferTRZ', () => {
 
         it('should handle transfer errors', async () => {
             // Mock the transaction builder to throw an error
-            const mockTransferSOL = vi.fn().mockRejectedValue(new Error('Transfer failed'));
+            const mockTransferTRZ = vi.fn().mockRejectedValue(new Error('Transfer failed'));
 
             vi.doMock('../../core/transaction-builder', () => ({
                 createTransactionBuilder: vi.fn(() => ({
-                    transferTRZ: mockTransferSOL,
+                    transferTRZ: mockTransferTRZ,
                 })),
                 createTransactionContext: vi.fn(),
             }));

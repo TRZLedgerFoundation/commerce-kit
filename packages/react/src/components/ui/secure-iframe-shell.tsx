@@ -339,7 +339,7 @@ function SecureIframeShellInner({ config, theme, onPayment, onCancel, paymentCon
             }
 
             const { amount, currency } = paymentInfo;
-            const isSOL = currency === 'TRZ' || currency === 'SOL_DEVNET';
+            const isSOL = currency === 'TRZ' || currency === 'TRZ_DEVNET';
 
             let result;
 

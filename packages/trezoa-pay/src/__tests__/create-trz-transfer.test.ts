@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { createSolTransfer, type CreateSolTransferFields } from '../create-trz-transfer';
+import { createTrzTransfer, type CreateTrzTransferFields } from '../create-trz-transfer';
 import { address } from 'gill';
 
 // Mock gill/programs
@@ -8,7 +8,7 @@ vi.mock('gill/programs', () => ({
     getTransferInstruction: vi.fn(() => ({ type: 'transfer-instruction' })),
 }));
 
-describe('createSolTransfer', () => {
+describe('createTrzTransfer', () => {
     const mockRpc = {
         getAccountInfo: vi.fn(),
     };
@@ -19,12 +19,12 @@ describe('createSolTransfer', () => {
 
     describe('Basic TRZ Transfer', () => {
         it('should create basic TRZ transfer instruction', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000n, // 1 TRZ in lamports
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
 
             expect(result).toHaveLength(1);
             expect(result[0]).toEqual({ type: 'transfer-instruction' });
@@ -39,12 +39,12 @@ describe('createSolTransfer', () => {
         });
 
         it('should handle decimal amounts correctly', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 500000000n, // 0.5 TRZ in lamports
             };
 
-            await createSolTransfer(mockRpc as any, testSender, fields);
+            await createTrzTransfer(mockRpc as any, testSender, fields);
 
             const { getTransferInstruction } = await import('gill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
@@ -56,12 +56,12 @@ describe('createSolTransfer', () => {
         });
 
         it('should handle small amounts (lamports)', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1n, // 1 lamport
             };
 
-            await createSolTransfer(mockRpc as any, testSender, fields);
+            await createTrzTransfer(mockRpc as any, testSender, fields);
 
             const { getTransferInstruction } = await import('gill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
@@ -73,12 +73,12 @@ describe('createSolTransfer', () => {
         });
 
         it('should handle zero amounts', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 0n,
             };
 
-            await createSolTransfer(mockRpc as any, testSender, fields);
+            await createTrzTransfer(mockRpc as any, testSender, fields);
 
             const { getTransferInstruction } = await import('gill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
@@ -92,22 +92,22 @@ describe('createSolTransfer', () => {
 
     describe('Amount Type Handling', () => {
         it('should handle bigint amounts', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000n,
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
         });
 
         it('should handle string amounts', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: '1000000000' as any, // Test string input
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
 
             const { getTransferInstruction } = await import('gill/programs');
@@ -120,26 +120,26 @@ describe('createSolTransfer', () => {
         });
 
         it('should handle number amounts', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000 as any, // Test number input
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
         });
 
         it('should throw error for amounts exceeding safe integer range', async () => {
             const unsafeAmount = BigInt(Number.MAX_SAFE_INTEGER) + 1n;
 
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: unsafeAmount,
             };
 
-            await expect(createSolTransfer(mockRpc as any, testSender, fields)).rejects.toThrow(RangeError);
+            await expect(createTrzTransfer(mockRpc as any, testSender, fields)).rejects.toThrow(RangeError);
 
-            await expect(createSolTransfer(mockRpc as any, testSender, fields)).rejects.toThrow(
+            await expect(createTrzTransfer(mockRpc as any, testSender, fields)).rejects.toThrow(
                 'exceeds the safe integer range',
             );
         });
@@ -147,14 +147,14 @@ describe('createSolTransfer', () => {
         it('should throw error for string amounts exceeding safe range', async () => {
             const unsafeAmountString = String(BigInt(Number.MAX_SAFE_INTEGER) + 1n);
 
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: unsafeAmountString as any,
             };
 
-            await expect(createSolTransfer(mockRpc as any, testSender, fields)).rejects.toThrow(RangeError);
+            await expect(createTrzTransfer(mockRpc as any, testSender, fields)).rejects.toThrow(RangeError);
 
-            await expect(createSolTransfer(mockRpc as any, testSender, fields)).rejects.toThrow(
+            await expect(createTrzTransfer(mockRpc as any, testSender, fields)).rejects.toThrow(
                 'exceeds the safe integer range',
             );
         });
@@ -162,12 +162,12 @@ describe('createSolTransfer', () => {
         it('should handle maximum safe integer amounts', async () => {
             const maxSafeAmount = BigInt(Number.MAX_SAFE_INTEGER);
 
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: maxSafeAmount,
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
 
             const { getTransferInstruction } = await import('gill/programs');
@@ -182,23 +182,23 @@ describe('createSolTransfer', () => {
 
     describe('Optional Fields', () => {
         it('should create transfer without optional fields', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000n,
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
         });
 
         it('should include reference when provided', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000n,
                 reference: testReference,
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
 
             // The reference should be handled by the instruction (implementation detail)
@@ -207,48 +207,48 @@ describe('createSolTransfer', () => {
 
         it('should include multiple references when provided', async () => {
             const reference2 = address('2Azp9LdtCbxZ9Z7YyxPKLfVpK1TRfqe6QzHnNhCJkNJB');
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000n,
                 reference: [testReference, reference2],
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
         });
 
         it('should include memo when provided', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000n,
                 memo: 'Payment for services',
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
         });
 
         it('should handle all optional fields together', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 2000000000n,
                 reference: testReference,
                 memo: 'Complete payment with reference',
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
         });
     });
 
     describe('Address Validation', () => {
         it('should properly convert recipient address', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000n,
             };
 
-            await createSolTransfer(mockRpc as any, testSender, fields);
+            await createTrzTransfer(mockRpc as any, testSender, fields);
 
             const { getTransferInstruction } = await import('gill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith(
@@ -259,12 +259,12 @@ describe('createSolTransfer', () => {
         });
 
         it('should handle same sender and recipient', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testSender, // Same as sender
                 amount: 1000000000n,
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
 
             const { getTransferInstruction } = await import('gill/programs');
@@ -279,12 +279,12 @@ describe('createSolTransfer', () => {
 
     describe('Instruction Generation', () => {
         it('should generate proper transfer instruction structure', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000n,
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
 
             expect(Array.isArray(result)).toBe(true);
             expect(result).toHaveLength(1);
@@ -292,12 +292,12 @@ describe('createSolTransfer', () => {
         });
 
         it('should use correct instruction parameters', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 750000000n,
             };
 
-            await createSolTransfer(mockRpc as any, testSender, fields);
+            await createTrzTransfer(mockRpc as any, testSender, fields);
 
             const { getTransferInstruction } = await import('gill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
@@ -311,58 +311,58 @@ describe('createSolTransfer', () => {
 
     describe('Edge Cases', () => {
         it('should handle very small transfer amounts', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1n, // 1 lamport
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
         });
 
         it('should handle maximum practical TRZ amounts', async () => {
             const practicalMaxAmount = 1000000n * 1000000000n; // 1M TRZ in lamports
 
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: practicalMaxAmount,
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
         });
 
         it('should handle empty memo', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000n,
                 memo: '',
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
         });
 
         it('should handle very long memos', async () => {
             const longMemo = 'A'.repeat(1000);
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000n,
                 memo: longMemo,
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
         });
 
         it('should handle special characters in memo', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000n,
                 memo: 'Payment: $100 @Company #123 & More! 🚀💰',
             };
 
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
         });
     });
@@ -374,24 +374,24 @@ describe('createSolTransfer', () => {
                 throw new Error('Instruction creation failed');
             });
 
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000n,
             };
 
-            await expect(createSolTransfer(mockRpc as any, testSender, fields)).rejects.toThrow(
+            await expect(createTrzTransfer(mockRpc as any, testSender, fields)).rejects.toThrow(
                 'Instruction creation failed',
             );
         });
 
         it('should handle negative amounts (edge case)', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: -1000000000n as any, // Negative amount
             };
 
             // Should still create instruction (validation might happen elsewhere)
-            const result = await createSolTransfer(mockRpc as any, testSender, fields);
+            const result = await createTrzTransfer(mockRpc as any, testSender, fields);
             expect(result).toHaveLength(1);
 
             const { getTransferInstruction } = await import('gill/programs');
@@ -414,12 +414,12 @@ describe('createSolTransfer', () => {
             ];
 
             for (const testCase of testCases) {
-                const fields: CreateSolTransferFields = {
+                const fields: CreateTrzTransferFields = {
                     recipient: testRecipient,
                     amount: testCase.input,
                 };
 
-                await createSolTransfer(mockRpc as any, testSender, fields);
+                await createTrzTransfer(mockRpc as any, testSender, fields);
 
                 const { getTransferInstruction } = await import('gill/programs');
                 expect(getTransferInstruction).toHaveBeenCalledWith({
@@ -439,12 +439,12 @@ describe('createSolTransfer', () => {
             ];
 
             for (const testCase of testCases) {
-                const fields: CreateSolTransferFields = {
+                const fields: CreateTrzTransferFields = {
                     recipient: testRecipient,
                     amount: testCase.input as any,
                 };
 
-                await createSolTransfer(mockRpc as any, testSender, fields);
+                await createTrzTransfer(mockRpc as any, testSender, fields);
 
                 const { getTransferInstruction } = await import('gill/programs');
                 expect(getTransferInstruction).toHaveBeenCalledWith({
@@ -457,12 +457,12 @@ describe('createSolTransfer', () => {
         });
 
         it('should handle number amounts directly', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000 as any, // Direct number
             };
 
-            await createSolTransfer(mockRpc as any, testSender, fields);
+            await createTrzTransfer(mockRpc as any, testSender, fields);
 
             const { getTransferInstruction } = await import('gill/programs');
             expect(getTransferInstruction).toHaveBeenCalledWith({
@@ -483,7 +483,7 @@ describe('createSolTransfer', () => {
 
             const startTime = Date.now();
             const results = await Promise.all(
-                transfers.map(fields => createSolTransfer(mockRpc as any, testSender, fields)),
+                transfers.map(fields => createTrzTransfer(mockRpc as any, testSender, fields)),
             );
             const endTime = Date.now();
 
@@ -493,13 +493,13 @@ describe('createSolTransfer', () => {
         });
 
         it('should create instructions quickly', async () => {
-            const fields: CreateSolTransferFields = {
+            const fields: CreateTrzTransferFields = {
                 recipient: testRecipient,
                 amount: 1000000000n,
             };
 
             const startTime = Date.now();
-            await createSolTransfer(mockRpc as any, testSender, fields);
+            await createTrzTransfer(mockRpc as any, testSender, fields);
             const endTime = Date.now();
 
             expect(endTime - startTime).toBeLessThan(10); // Very fast operation
@@ -515,12 +515,12 @@ describe('createSolTransfer', () => {
             ];
 
             for (const sender of senders) {
-                const fields: CreateSolTransferFields = {
+                const fields: CreateTrzTransferFields = {
                     recipient: testRecipient,
                     amount: 1000000000n,
                 };
 
-                const result = await createSolTransfer(mockRpc as any, sender, fields);
+                const result = await createTrzTransfer(mockRpc as any, sender, fields);
                 expect(result).toHaveLength(1);
 
                 const { getTransferInstruction } = await import('gill/programs');
@@ -541,12 +541,12 @@ describe('createSolTransfer', () => {
             ];
 
             for (const recipient of recipients) {
-                const fields: CreateSolTransferFields = {
+                const fields: CreateTrzTransferFields = {
                     recipient,
                     amount: 1000000000n,
                 };
 
-                const result = await createSolTransfer(mockRpc as any, testSender, fields);
+                const result = await createTrzTransfer(mockRpc as any, testSender, fields);
                 expect(result).toHaveLength(1);
 
                 const { getTransferInstruction } = await import('gill/programs');
@@ -566,7 +566,7 @@ describe('createSolTransfer', () => {
                 { recipient: testRecipient, amount: 250000000n },
             ];
 
-            const promises = fields.map(field => createSolTransfer(mockRpc as any, testSender, field));
+            const promises = fields.map(field => createTrzTransfer(mockRpc as any, testSender, field));
 
             const results = await Promise.all(promises);
 

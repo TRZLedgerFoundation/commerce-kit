@@ -50,7 +50,7 @@ function convertSOLToLamports(trzAmount: string): bigint {
     return totalLamports;
 }
 
-describe('SOL to Lamports Conversion', () => {
+describe('TRZ to Lamports Conversion', () => {
     describe('Valid conversions', () => {
         it('should convert whole TRZ amounts correctly', () => {
             expect(convertSOLToLamports('1')).toBe(1_000_000_000n);

@@ -1,8 +1,8 @@
 import path from "path";
-import { renderVisitor } from "@codama/renderers-js";
+import { renderVisitor } from "@codoma/renderers-js";
 import { preserveConfigFiles } from './lib/utils';
-import { createCommerceCodamaBuilder } from './lib/commerce-codama-builder';
-import { renderVisitor as renderRustVisitor } from '@codama/renderers-rust';
+import { createCommerceCodomaBuilder } from './lib/commerce-codoma-builder';
+import { renderVisitor as renderRustVisitor } from '@codoma/renderers-rust';
 
 const projectRoot = path.join(__dirname, "..");
 const idlDir = path.join(projectRoot, "idl");
@@ -15,8 +15,8 @@ const typescriptClientsDir = path.join(
   "typescript",
 );
 
-// Create and configure the codama instance using the builder pattern
-const commerceCodama = createCommerceCodamaBuilder(commerceIdl)
+// Create and configure the codoma instance using the builder pattern
+const commerceCodoma = createCommerceCodomaBuilder(commerceIdl)
   .appendAccountDiscriminator()
   .setDefaultAccountValues()
   .appendPdaDerivers()
@@ -28,7 +28,7 @@ const commerceCodama = createCommerceCodamaBuilder(commerceIdl)
 const configPreserver = preserveConfigFiles(typescriptClientsDir, rustClientsDir);
 
 // Generate Rust client
-commerceCodama.accept(
+commerceCodoma.accept(
   renderRustVisitor(path.join(rustClientsDir, "src", "generated"), {
     formatCode: false,
     crateFolder: rustClientsDir,
@@ -37,7 +37,7 @@ commerceCodama.accept(
 );
 
 // Generate TypeScript client
-commerceCodama.accept(
+commerceCodoma.accept(
   renderVisitor(
     path.join(typescriptClientsDir, "src", "generated"),
     {

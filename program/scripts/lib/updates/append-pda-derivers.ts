@@ -1,5 +1,5 @@
 import {
-  Codama,
+  Codoma,
   addPdasVisitor,
   constantPdaSeedNode,
   variablePdaSeedNode,
@@ -7,7 +7,7 @@ import {
   stringTypeNode,
   stringValueNode,
   numberTypeNode,
-} from "codama";
+} from "codoma";
 import {
   MERCHANT_SEED,
   OPERATOR_SEED,
@@ -16,8 +16,8 @@ import {
   EVENT_AUTHORITY_SEED,
 } from "../constants";
 
-export function appendPdaDerivers(commerceCodama: Codama): Codama {
-  commerceCodama.update(
+export function appendPdaDerivers(commerceCodoma: Codoma): Codoma {
+  commerceCodoma.update(
     addPdasVisitor({
       commerceProgram: [
         {
@@ -77,5 +77,5 @@ export function appendPdaDerivers(commerceCodama: Codama): Codama {
       ],
     })
   );
-  return commerceCodama;
+  return commerceCodoma;
 }

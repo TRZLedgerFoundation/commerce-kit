@@ -104,7 +104,7 @@ describe('Constants', () => {
         });
 
         it('should handle large amounts', () => {
-            // 1 million SOL
+            // 1 million TRZ
             const millionTrz = 1000000;
             const lamports = BigInt(millionTrz) * TEN ** BigInt(TRZ_DECIMALS);
             expect(lamports).toBe(1000000000000000n);

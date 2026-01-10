@@ -573,7 +573,7 @@ describe('useTrezoaPay', () => {
             expect(() => {
                 renderHook(() => useTrezoaPay('9WzDXwBbmkg8ZTbNMqUxvQRAyrZzDsGYdLVL9zYtAWWM', 10, 'ZZZ' as any));
             }).toThrow(
-                'Unsupported currency: ZZZ. Supported currencies are: SOL, SOL_DEVNET, USDC, USDT, USDC_DEVNET, USDT_DEVNET',
+                'Unsupported currency: ZZZ. Supported currencies are: TRZ, TRZ_DEVNET, USDC, USDT, USDC_DEVNET, USDT_DEVNET',
             );
 
             consoleSpy.mockRestore();

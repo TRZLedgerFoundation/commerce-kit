@@ -7,7 +7,7 @@ dist/
 # Trezoa program dependencies for integration tests
 /tests/integration-tests/deps
 
-# Codama generated clients
+# Codoma generated clients
 # We'll check in the generated clients to make publishing to crates.io easier
 #/clients/rust/src/generated/*
 #/clients/typescript/src/generated/*

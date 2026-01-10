@@ -20,8 +20,8 @@ export interface UseSolEquivalentReturn {
  */
 export function useTrzEquivalent(currency: Currency, amount: number): UseSolEquivalentReturn {
     // Only calculate for TRZ currencies
-    const isSOL = currency === 'TRZ' || currency === 'SOL_DEVNET';
-    const shouldCalculate = isSOL && amount > 0;
+    const isTRZ = currency === 'TRZ' || currency === 'TRZ_DEVNET';
+    const shouldCalculate = isTRZ && amount > 0;
 
     // Create stable async function reference
     const asyncCalculation = useMemo(
@@ -29,7 +29,7 @@ export function useTrzEquivalent(currency: Currency, amount: number): UseSolEqui
             shouldCalculate
                 ? async () => {
                       const trzAmount = await convertUsdToSol(amount);
-                      return `${trzAmount.toFixed(4)} SOL`;
+                      return `${trzAmount.toFixed(4)} TRZ`;
                   }
                 : undefined,
         [shouldCalculate, amount],

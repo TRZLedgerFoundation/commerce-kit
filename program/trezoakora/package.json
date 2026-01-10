@@ -10,7 +10,7 @@
     "test": "jest"
   },
   "dependencies": {
-    "gill": "^0.10.2"
+    "trezoagill": "^0.14.0"
   },
   "devDependencies": {
     "@jest/globals": "^30.0.5",

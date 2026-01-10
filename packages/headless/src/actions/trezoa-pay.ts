@@ -65,10 +65,10 @@ export async function createQRPaymentRequest(
     try {
         const request: TransferRequestURLFields = {
             recipient: createRecipient(recipientAddress),
-            amount: toMinorUnits(amount, 9), // Default to 9 decimals (SOL standard)
+            amount: toMinorUnits(amount, 9), // Default to 9 decimals (TRZ standard)
         };
 
-        // Only add TPL token if provided and not SOL
+        // Only add TPL token if provided and not TRZ
         if (tokenAddress && tokenAddress !== 'TRZ') {
             request.tplToken = createTPLToken(tokenAddress);
         }

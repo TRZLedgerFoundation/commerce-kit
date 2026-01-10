@@ -119,7 +119,7 @@ TEST_PUBKEY=$(trezoa-keygen pubkey "$TREZOAKORA_KEYPAIR_FILE")
 echo "  → TrezoaKora operator public key: $TEST_PUBKEY"
 
 # Fund the TrezoaKora operator keypair
-echo "  → Funding TrezoaKora operator with 10 SOL..."
+echo "  → Funding TrezoaKora operator with 10 TRZ..."
 trezoa airdrop 10 "$TEST_PUBKEY" \
     --url "http://127.0.0.1:$VALIDATOR_PORT" || true
 

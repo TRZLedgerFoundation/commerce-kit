@@ -10,7 +10,7 @@ export interface TokenConfig {
 
 // Token configurations for all supported payment methods
 export const TOKENS: Record<PaymentMethod, TokenConfig> = {
-    SOL: {
+    TRZ: {
         symbol: 'TRZ',
         decimals: 9,
         name: 'Trezoa',

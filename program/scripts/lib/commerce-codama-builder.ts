@@ -1,5 +1,5 @@
-import * as codama from "codama";
-import { TrezoaAnchorIdl, rootNodeFromTrezoaAnchor } from "@codama/nodes-from-trezoaanchor";
+import * as codoma from "codoma";
+import { TrezoaAnchorIdl, rootNodeFromTrezoaAnchor } from "@codoma/nodes-from-trezoaanchor";
 import {
   appendAccountDiscriminator,
   setDefaultAccountValues,
@@ -8,43 +8,43 @@ import {
   appendMOConfigRemainingAccounts,
 } from "./updates";
 
-export class CommerceCodamaBuilder {
-  private codama: codama.Codama;
+export class CommerceCodomaBuilder {
+  private codoma: codoma.Codoma;
 
   constructor(commerceIdl: TrezoaAnchorIdl) {
-    this.codama = codama.createFromRoot(rootNodeFromTrezoaAnchor(commerceIdl));
+    this.codoma = codoma.createFromRoot(rootNodeFromTrezoaAnchor(commerceIdl));
   }
 
   appendAccountDiscriminator(): this {
-    this.codama = appendAccountDiscriminator(this.codama);
+    this.codoma = appendAccountDiscriminator(this.codoma);
     return this;
   }
 
   setDefaultAccountValues(): this {
-    this.codama = setDefaultAccountValues(this.codama);
+    this.codoma = setDefaultAccountValues(this.codoma);
     return this;
   }
 
   appendPdaDerivers(): this {
-    this.codama = appendPdaDerivers(this.codama);
+    this.codoma = appendPdaDerivers(this.codoma);
     return this;
   }
 
   setInstructionAccountDefaultValues(): this {
-    this.codama = setInstructionAccountDefaultValues(this.codama);
+    this.codoma = setInstructionAccountDefaultValues(this.codoma);
     return this;
   }
 
   appendMOConfigRemainingAccounts(): this {
-    this.codama = appendMOConfigRemainingAccounts(this.codama);
+    this.codoma = appendMOConfigRemainingAccounts(this.codoma);
     return this;
   }
 
-  build(): codama.Codama {
-    return this.codama;
+  build(): codoma.Codoma {
+    return this.codoma;
   }
 }
 
-export function createCommerceCodamaBuilder(commerceIdl: TrezoaAnchorIdl): CommerceCodamaBuilder {
-  return new CommerceCodamaBuilder(commerceIdl);
+export function createCommerceCodomaBuilder(commerceIdl: TrezoaAnchorIdl): CommerceCodomaBuilder {
+  return new CommerceCodomaBuilder(commerceIdl);
 }
