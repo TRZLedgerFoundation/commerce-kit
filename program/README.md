@@ -55,7 +55,7 @@ For detailed program specifications, instruction references, and account structu
  -->
 ## Local Development Quick Start
 
-### Project Structure
+### Trezoa Structure
 
 ```
 commerce-program/
@@ -78,7 +78,7 @@ commerce-program/
 
 ### Prerequisites
 
-- [trezoa CLI](https://docs.trezoa-labs.xyz/cli/install) 2.2.1+
+- [trezoa CLI](https://docs.trezoa-team.xyz/cli/install) 2.2.1+
 - [Rust](https://www.rust-lang.org/tools/install) 1.87+
 - [Node.js](https://nodejs.org/) LTS
 - [Bun](https://bun.sh/)
@@ -123,7 +123,7 @@ make test-all
 
 ### Client Generation
 
-The project uses [Shank](https://github.com/trezoa-meta-foundation/shank) for IDL generation and [Codoma](https://github.com/codoma-idl/codoma) for client generation. These are automatically run when you run `make build`. You can also run them manually:
+The trezoa uses [Shank](https://github.com/trezoa-meta-foundation/shank) for IDL generation and [Codoma](https://github.com/trzledgerfoundation-idl/codoma) for client generation. These are automatically run when you run `make build`. You can also run them manually:
 
 ```bash
 # Generate IDL from program annotations
@@ -163,8 +163,8 @@ We welcome contributions! Please open an issue or pull request.
 
 ## Tech Stack
 
-- Built with [Pinocchio](https://github.com/trezoa-labs-xyz/pinocchio) for optimal performance
+- Built with [Pinocchio](https://github.com/trezoa-team-xyz/pinocchio) for optimal performance
 - Uses [Shank](https://github.com/trezoa-meta-foundation/shank) for IDL generation
-- Client generation powered by [Codoma](https://github.com/codoma-idl/codoma)
+- Client generation powered by [Codoma](https://github.com/trzledgerfoundation-idl/codoma)
 - Tested with [LiteSVM](https://github.com/LiteSVM/litesvm)
 - Client testing/examples with [TrezoaGill](https://github.com/DecalLabs/gill)

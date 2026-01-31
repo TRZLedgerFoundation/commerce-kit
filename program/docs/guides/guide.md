@@ -99,19 +99,19 @@ Each component is represented on-chain as an account governed by the Commerce Pr
 * **State Management** - Payments progress through well-defined states
 * **Rent Optimization** - Payment accounts can be closed to reclaim TRZ rent
 
-## Project Setup
+## Trezoa Setup
 
-Let's start by creating our project structure:
+Let's start by creating our trezoa structure:
 
-### Create a new project
+### Create a new trezoa
 
-From your terminal, create a new project directory and navigate into it:
+From your terminal, create a new trezoa directory and navigate into it:
 
 ```shell
 mkdir trezoa-commerce-demo && cd trezoa-commerce-demo
 ```
 
-Initialize a new Node.js blank project with the required dependencies:
+Initialize a new Node.js blank trezoa with the required dependencies:
 
 ```bash
 pnpm init
@@ -165,7 +165,7 @@ mkdir -p src && touch src/commerce-demo.ts
 
 ### Build the Commerce Client
 
-Clone the Commerce Kit repository into the root of your project:
+Clone the Commerce Kit repository into the root of your trezoa:
 
 ```bash
 git clone https://github.com/hw-commerce/commerce-kit.git
@@ -190,7 +190,7 @@ You should now have a generated TypeScript client in:
 ./commerce-kit/program/clients/typescript
 ```
 
-Link the client to your project:
+Link the client to your trezoa:
 
 ```bash
 # navigate to the client directory
@@ -199,11 +199,11 @@ cd commerce-kit/program/clients/typescript
 pnpm install
 # build the client
 pnpm run build
-# link the client to your project
+# link the client to your trezoa
 pnpm link --global
-# navigate back to the root project directory
+# navigate back to the root trezoa directory
 cd ../../../../
-# link the client to your project
+# link the client to your trezoa
 pnpm link --global @trezoa-commerce/program-client
 ```
 

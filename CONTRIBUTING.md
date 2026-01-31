@@ -1,6 +1,6 @@
 # Contributing to Trezoa Commerce Kit
 
-Thank you for your interest in contributing to Trezoa Commerce Kit. This document provides guidelines for contributing to the project.
+Thank you for your interest in contributing to Trezoa Commerce Kit. This document provides guidelines for contributing to the trezoa.
 
 ## Development Setup
 
@@ -31,7 +31,7 @@ pnpm build
 pnpm test
 ```
 
-## Project Structure
+## Trezoa Structure
 
 ```
 commerce-kit/

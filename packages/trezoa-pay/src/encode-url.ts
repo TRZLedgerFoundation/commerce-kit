@@ -5,19 +5,19 @@ import type { Amount, Label, Link, Memo, Message, Recipient, References, TPLToke
  * Fields of a Trezoa Pay transfer request URL.
  */
 export interface TransferRequestURLFields {
-    /** `recipient` in the [Trezoa Pay spec](https://github.com/trezoa-labs/trezoa-pay/blob/master/SPEC.md#recipient). */
+    /** `recipient` in the [Trezoa Pay spec](https://github.com/trezoa-team/trezoa-pay/blob/master/SPEC.md#recipient). */
     recipient: Recipient;
-    /** `amount` in the [Trezoa Pay spec](https://github.com/trezoa-labs/trezoa-pay/blob/master/SPEC.md#amount). */
+    /** `amount` in the [Trezoa Pay spec](https://github.com/trezoa-team/trezoa-pay/blob/master/SPEC.md#amount). */
     amount?: Amount;
-    /** `tpl-token` in the [Trezoa Pay spec](https://github.com/trezoa-labs/trezoa-pay/blob/master/SPEC.md#tpl-token). */
+    /** `tpl-token` in the [Trezoa Pay spec](https://github.com/trezoa-team/trezoa-pay/blob/master/SPEC.md#tpl-token). */
     tplToken?: TPLToken;
-    /** `reference` in the [Trezoa Pay spec](https://github.com/trezoa-labs/trezoa-pay/blob/master/SPEC.md#reference). */
+    /** `reference` in the [Trezoa Pay spec](https://github.com/trezoa-team/trezoa-pay/blob/master/SPEC.md#reference). */
     reference?: References;
-    /** `label` in the [Trezoa Pay spec](https://github.com/trezoa-labs/trezoa-pay/blob/master/SPEC.md#label). */
+    /** `label` in the [Trezoa Pay spec](https://github.com/trezoa-team/trezoa-pay/blob/master/SPEC.md#label). */
     label?: Label;
-    /** `message` in the [Trezoa Pay spec](https://github.com/trezoa-labs/trezoa-pay/blob/master/SPEC.md#message). */
+    /** `message` in the [Trezoa Pay spec](https://github.com/trezoa-team/trezoa-pay/blob/master/SPEC.md#message). */
     message?: Message;
-    /** `memo` in the [Trezoa Pay spec](https://github.com/trezoa-labs/trezoa-pay/blob/master/SPEC.md#memo). */
+    /** `memo` in the [Trezoa Pay spec](https://github.com/trezoa-team/trezoa-pay/blob/master/SPEC.md#memo). */
     memo?: Memo;
 }
 
@@ -110,11 +110,11 @@ export function encodeTransferRequestURL({
  * Fields of a Trezoa Pay transaction request URL.
  */
 export interface TransactionRequestURLFields {
-    /** `link` in the [Trezoa Pay spec](https://github.com/trezoa-labs/trezoa-pay/blob/master/SPEC.md#link). */
+    /** `link` in the [Trezoa Pay spec](https://github.com/trezoa-team/trezoa-pay/blob/master/SPEC.md#link). */
     link: Link;
-    /** `label` in the [Trezoa Pay spec](https://github.com/trezoa-labs/trezoa-pay/blob/master/SPEC.md#label-1). */
+    /** `label` in the [Trezoa Pay spec](https://github.com/trezoa-team/trezoa-pay/blob/master/SPEC.md#label-1). */
     label?: Label;
-    /** `message` in the [Trezoa Pay spec](https://github.com/trezoa-labs/trezoa-pay/blob/master/SPEC.md#message-1). */
+    /** `message` in the [Trezoa Pay spec](https://github.com/trezoa-team/trezoa-pay/blob/master/SPEC.md#message-1). */
     message?: Message;
 }
 

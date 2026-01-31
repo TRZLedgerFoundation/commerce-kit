@@ -2,9 +2,9 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Project Structure
+## Trezoa Structure
 
-This is a trezoa program using the Pinocchio framework for efficient program development. The project is structured as a Rust workspace with the following key components:
+This is a trezoa program using the Pinocchio framework for efficient program development. The trezoa is structured as a Rust workspace with the following key components:
 
 - `program/` - Main trezoa program written in Rust using Pinocchio
 - `clients/rust/` - Rust client library for interacting with the program
@@ -14,7 +14,7 @@ This is a trezoa program using the Pinocchio framework for efficient program dev
 
 ## Key Dependencies
 
-The project uses Pinocchio framework components:
+The trezoa uses Pinocchio framework components:
 - `pinocchio` - Core framework
 - `pinocchio-token` - Token program interactions
 - `pinocchio-system` - System program interactions

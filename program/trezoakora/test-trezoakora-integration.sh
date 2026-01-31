@@ -14,16 +14,16 @@ echo "🔄 Downloading TrezoaKora repository for demo..."
 TEMP_TREZOAKORA_DIR="/tmp/trezoakora-demo-$(date +%s)"
 git clone --depth 1 https://github.com/trzledgerfoundation/trezoakora.git "$TEMP_TREZOAKORA_DIR"
 
-# Copy Docker files from commerce project to downloaded repo
+# Copy Docker files from commerce trezoa to downloaded repo
 echo "📂 Copying Docker configuration files..."
 cp "$SCRIPT_DIR/docker/Dockerfile.simple" "$TEMP_TREZOAKORA_DIR/Dockerfile.simple" 2>/dev/null || {
-    echo "⚠️  Dockerfile.simple not found in commerce project, using default"
+    echo "⚠️  Dockerfile.simple not found in commerce trezoa, using default"
 }
 cp "$SCRIPT_DIR/docker/.dockerignore" "$TEMP_TREZOAKORA_DIR/.dockerignore" 2>/dev/null || {
-    echo "⚠️  .dockerignore not found in commerce project, using default"
+    echo "⚠️  .dockerignore not found in commerce trezoa, using default"
 }
 cp "$SCRIPT_DIR/docker/entrypoint.sh" "$TEMP_TREZOAKORA_DIR/entrypoint.sh" 2>/dev/null || {
-    echo "⚠️  entrypoint.sh not found in commerce project, using default"
+    echo "⚠️  entrypoint.sh not found in commerce trezoa, using default"
 }
 
 TREZOAKORA_DIR="$TEMP_TREZOAKORA_DIR"

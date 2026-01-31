@@ -17,7 +17,7 @@ Open http://localhost:3000 with your browser to see the result.
 
 ## Explore
 
-In the project, you can see:
+In the trezoa, you can see:
 
 - `lib/source.ts`: Code for content source adapter, [`loader()`](https://fumadocs.dev/docs/headless/source-api) provides the interface to access your content.
 - `app/layout.config.tsx`: Shared options for layouts, optional but preferred to keep.

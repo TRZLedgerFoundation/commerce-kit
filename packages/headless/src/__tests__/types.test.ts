@@ -214,10 +214,10 @@ describe('Types & Configuration', () => {
                 });
             });
 
-            it('should use trezoa-labs token-list for icons', () => {
+            it('should use trezoa-team token-list for icons', () => {
                 Object.values(STABLECOINS).forEach(config => {
                     if (config.icon) {
-                        expect(config.icon).toContain('trezoa-labs/token-list');
+                        expect(config.icon).toContain('trezoa-team/token-list');
                         expect(config.icon).toContain('mainnet');
                     }
                 });
